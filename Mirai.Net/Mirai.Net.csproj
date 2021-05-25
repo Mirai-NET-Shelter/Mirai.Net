@@ -5,4 +5,8 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="RestSharp" Version="106.11.8-alpha.0.14" />
+    </ItemGroup>
+
 </Project>
