@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Mirai.Net.Utilities.Extensions;
 using RestSharp;
 
 namespace Mirai.Net.Utilities
@@ -13,6 +14,7 @@ namespace Mirai.Net.Utilities
 
         internal static async Task<IRestResponse> Get(string url)
         {
+            RestClient.BaseUrl = url.ToUri();
             return await RestClient.ExecuteAsync(new RestRequest(), Method.GET);
         }
     }

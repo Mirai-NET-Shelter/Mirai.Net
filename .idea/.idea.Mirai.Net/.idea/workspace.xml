@@ -4,9 +4,8 @@
     <projectFile>Mirai.Net/Mirai.Net.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added Restsharp">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added StringExtensions.cs and insert ToUri method">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,10 +21,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Utilities/HttpUtility.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -76,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1621950554509</updated>
-      <workItem from="1621950561003" duration="972000" />
+      <workItem from="1621950561003" duration="1295000" />
     </task>
     <task id="LOCAL-00001" summary="Build up">
       <created>1621950588091</created>
@@ -92,7 +95,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621951211858</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added HttpUtility.cs and insert Get method">
+      <created>1621951680946</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1621951680946</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added StringExtensions.cs and insert ToUri method">
+      <created>1621951695129</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1621951695129</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +132,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Build up" />
     <MESSAGE value="Added Restsharp" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Restsharp" />
+    <MESSAGE value="Added HttpUtility.cs and insert Get method" />
+    <MESSAGE value="Added StringExtensions.cs and insert ToUri method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added StringExtensions.cs and insert ToUri method" />
   </component>
 </project>
