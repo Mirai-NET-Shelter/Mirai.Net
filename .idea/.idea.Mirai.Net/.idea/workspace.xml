@@ -4,9 +4,8 @@
     <projectFile>Mirai.Net/Mirai.Net.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added Post method">
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,13 +23,14 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B8EF69D3-A481-43FE-8568-E981A8FFA98B/3b/1ddd38e8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Utilities/HttpUtility.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -55,7 +55,7 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected=".NET Project.Mirai.Net">
     <configuration name="Mirai.Net" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -65,6 +65,24 @@
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="Mirai.Net.Test" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Mirai.Net.Test/Mirai.Net.Test.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
@@ -84,7 +102,7 @@
       <option name="presentableId" value="Default" />
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
-      <workItem from="1622035447651" duration="1203000" />
+      <workItem from="1622035447651" duration="1502000" />
     </task>
     <task id="LOCAL-00001" summary="Build up">
       <created>1621950588091</created>
@@ -128,7 +146,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621952186496</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added Json.net">
+      <created>1622036873112</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1622036873112</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added Post method">
+      <created>1622036879711</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1622036879711</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +188,8 @@
     <MESSAGE value="Added StringExtensions.cs and insert ToUri method" />
     <MESSAGE value="Fixed baseurl" />
     <MESSAGE value="Added MiraiSession.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added MiraiSession.cs" />
+    <MESSAGE value="Added Json.net" />
+    <MESSAGE value="Added Post method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Post method" />
   </component>
 </project>
