@@ -5,9 +5,11 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added ToJson method">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Move ToJson method to JsonExtensions.cs">
+      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,10 +35,11 @@
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -109,7 +112,7 @@
       <option name="presentableId" value="Default" />
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
-      <workItem from="1622035447651" duration="2205000" />
+      <workItem from="1622035447651" duration="2645000" />
     </task>
     <task id="LOCAL-00001" summary="Build up">
       <created>1621950588091</created>
@@ -195,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622037602285</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Move ToJson method to JsonExtensions.cs">
+      <created>1622037781766</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1622037781766</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +240,7 @@
     <MESSAGE value="Added ToJson test" />
     <MESSAGE value="Added ToJsonTest" />
     <MESSAGE value="Added ToJson method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ToJson method" />
+    <MESSAGE value="Move ToJson method to JsonExtensions.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Move ToJson method to JsonExtensions.cs" />
   </component>
 </project>

@@ -16,5 +16,17 @@ namespace Mirai.Net.Utilities.Extensions
                 throw new ArgumentException("This type can't be a json entity!");
             }
         }
+
+        public static T ToObject<T>(this string json)
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(json);
+            }
+            catch
+            {
+                throw new ArgumentException($"{json}\nIs not a valid json!");
+            }
+        }
     }
 }
