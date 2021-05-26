@@ -17,5 +17,15 @@ namespace Mirai.Net.Utilities
             RestClient.BaseUrl = url.ToUri();
             return await RestClient.ExecuteAsync(new RestRequest(), Method.GET);
         }
+
+        internal static async Task<IRestResponse> Post(string url, object content)
+        {
+            RestClient.BaseUrl = url.ToUri();
+
+            var request = new RestRequest();
+            request.AddJsonBody(content);
+
+            return await RestClient.ExecuteAsync(request, Method.POST);
+        }
     }
 }
