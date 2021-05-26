@@ -18,17 +18,5 @@ namespace Mirai.Net.Utilities.Extensions
                 throw new ArgumentException("Invalid uri format!");
             }
         }
-
-        public static string ToJson<T>(this T type)
-        {
-            try
-            {
-                return JsonConvert.SerializeObject(type);
-            }
-            catch
-            {
-                throw new ArgumentException("This type can't be a json entity!");
-            }
-        }
     }
 }

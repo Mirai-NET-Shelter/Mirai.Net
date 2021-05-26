@@ -5,11 +5,9 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added Mirai.Net.Test.csproj">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Mirai.Net.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Mirai.Net.Test.csproj" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added ToJson method">
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,16 +25,18 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B8EF69D3-A481-43FE-8568-E981A8FFA98B/3b/1ddd38e8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Utilities/Extensions/StringExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Utilities/HttpUtility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Sessions/MiraiSession.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -109,7 +109,7 @@
       <option name="presentableId" value="Default" />
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
-      <workItem from="1622035447651" duration="1905000" />
+      <workItem from="1622035447651" duration="2205000" />
     </task>
     <task id="LOCAL-00001" summary="Build up">
       <created>1621950588091</created>
@@ -174,7 +174,28 @@
       <option name="project" value="LOCAL" />
       <updated>1622037171212</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added ToJson test">
+      <created>1622037502711</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1622037502711</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added ToJsonTest">
+      <created>1622037592238</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1622037592238</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added ToJson method">
+      <created>1622037602285</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1622037602285</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,6 +227,9 @@
     <MESSAGE value="Added Json.net" />
     <MESSAGE value="Added Post method" />
     <MESSAGE value="Added Mirai.Net.Test.csproj" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Mirai.Net.Test.csproj" />
+    <MESSAGE value="Added ToJson test" />
+    <MESSAGE value="Added ToJsonTest" />
+    <MESSAGE value="Added ToJson method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ToJson method" />
   </component>
 </project>
