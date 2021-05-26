@@ -4,9 +4,9 @@
     <projectFile>Mirai.Net/Mirai.Net.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Fixed baseurl">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Program.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,16 +24,13 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B8EF69D3-A481-43FE-8568-E981A8FFA98B/3b/1ddd38e8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Utilities/HttpUtility.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Utilities/HttpUtility.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -86,7 +83,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1621950554509</updated>
-      <workItem from="1621950561003" duration="1595000" />
+      <workItem from="1621950561003" duration="1864000" />
+      <workItem from="1622035447651" duration="1203000" />
     </task>
     <task id="LOCAL-00001" summary="Build up">
       <created>1621950588091</created>
@@ -123,13 +121,20 @@
       <option name="project" value="LOCAL" />
       <updated>1621952141720</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added MiraiSession.cs">
+      <created>1621952186496</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1621952186496</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -141,6 +146,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
@@ -149,6 +155,7 @@
     <MESSAGE value="Added HttpUtility.cs and insert Get method" />
     <MESSAGE value="Added StringExtensions.cs and insert ToUri method" />
     <MESSAGE value="Fixed baseurl" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed baseurl" />
+    <MESSAGE value="Added MiraiSession.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added MiraiSession.cs" />
   </component>
 </project>
