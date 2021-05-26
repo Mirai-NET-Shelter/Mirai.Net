@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Mirai.Net.Utilities.Extensions
 {
@@ -26,6 +27,18 @@ namespace Mirai.Net.Utilities.Extensions
             catch
             {
                 throw new ArgumentException($"{json}\nIs not a valid json!");
+            }
+        }
+
+        public static string GetValue(this JObject obj, string propertyName)
+        {
+            try
+            {
+                return obj[propertyName].ToString();
+            }
+            catch
+            {
+                throw new ArgumentException($"{propertyName}\nNo such property!");
             }
         }
     }
