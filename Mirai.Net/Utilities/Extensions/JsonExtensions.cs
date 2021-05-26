@@ -30,7 +30,7 @@ namespace Mirai.Net.Utilities.Extensions
             }
         }
 
-        public static string GetValue(this JObject obj, string propertyName)
+        public static string GetPropertyValue(this JObject obj, string propertyName)
         {
             try
             {
@@ -39,6 +39,18 @@ namespace Mirai.Net.Utilities.Extensions
             catch
             {
                 throw new ArgumentException($"{propertyName}\nNo such property!");
+            }
+        }
+
+        public static JObject ToJObject(this object ex)
+        {
+            try
+            {
+                return JObject.Parse(ex.ToString()!);
+            }
+            catch
+            {
+                throw new ArgumentException($"{ex}\nIs not a valid json!");
             }
         }
     }

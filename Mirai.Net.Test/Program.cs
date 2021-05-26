@@ -1,31 +1,33 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
+using Mirai.Net.Sessions;
 using Mirai.Net.Utilities.Extensions;
-using Xunit;
+using Newtonsoft.Json.Linq;
 
 namespace Mirai.Net.Test
 {
     public class Program
     {
-        [Theory]
-        [InlineData(typeof(MyClass))]
-        internal void ToJson(Type type)
+        public static async Task Main()
         {
-            type.ToJson();
-        }
-        
-        [Fact]
-        internal void ToObject()
-        {
-            var obj = new MyClass
+            var mirai = new MiraiSession
             {
-                Name = "Ahpx",
-                Identify = "114514"
+                Host = "127.0.0.1",
+                Port = "2334",
+                Key = "68d5cbe220cf4ab08b55abf66c8786e5",
+                QQ = "1590454991"
             };
 
-            var otj = obj.ToJson().ToObject<MyClass>();
-            var jto = otj.ToJson();
+            await mirai.Connect();
 
-            Assert.True(otj.Name == jto.ToObject<MyClass>().Name);
+            Console.WriteLine("Connected!");
+
+            await Task.Delay(5000);
+
+            await mirai.Disconnect();
+            Console.WriteLine("Disconnected!");
         }
     }
 

@@ -5,7 +5,9 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Move ToJson method to JsonExtensions.cs">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GetValue method in JsonExtensions.cs">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Mirai.Net.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Mirai.Net.Test.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" afterDir="false" />
@@ -35,10 +37,11 @@
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/Mirai.Net.Test.csproj" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
     </changedPaths>
   </component>
@@ -65,7 +68,7 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Project.Mirai.Net">
+  <component name="RunManager" selected=".NET Project.Mirai.Net.Test">
     <configuration name="Mirai.Net" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -112,7 +115,7 @@
       <option name="presentableId" value="Default" />
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
-      <workItem from="1622035447651" duration="2645000" />
+      <workItem from="1622035447651" duration="5268000" />
     </task>
     <task id="LOCAL-00001" summary="Build up">
       <created>1621950588091</created>
@@ -205,7 +208,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622037781766</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added ToObject method">
+      <created>1622038122452</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1622038122452</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Added GetValue method in JsonExtensions.cs">
+      <created>1622038356384</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1622038356384</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +258,8 @@
     <MESSAGE value="Added ToJsonTest" />
     <MESSAGE value="Added ToJson method" />
     <MESSAGE value="Move ToJson method to JsonExtensions.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Move ToJson method to JsonExtensions.cs" />
+    <MESSAGE value="Added ToObject method" />
+    <MESSAGE value="Added GetValue method in JsonExtensions.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GetValue method in JsonExtensions.cs" />
   </component>
 </project>
