@@ -6,6 +6,9 @@ namespace Mirai.Net.Data.Messages.Concrete
     {
         public override string Type { get; set; } = "Plain";
         
+        /// <summary>
+        /// 文字消息
+        /// </summary>
         [JsonProperty("text")]
         public string Text {get; set;}
 

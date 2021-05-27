@@ -5,8 +5,14 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added FileMessage.cs">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/MusicShareMessage.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added MusicShareMessage.cs">
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/AppMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/AppMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/AtMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/AtMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/FaceMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/FaceMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/FlashImageMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/FlashImageMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/ImageMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/ImageMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/PlainMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/PlainMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/VoiceMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/VoiceMessage.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,22 +38,23 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Mirai.Net.Test.csproj" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/AtMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/AtAllMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/FaceMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/ImageMessage.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/FlashImageMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Enums/VoiceMessageType.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/VoiceMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/XmlMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/JsonMessage.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/AppMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/PokeMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/ForwardMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/FileMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/MusicShareMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/AppMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/AtMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/FaceMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/PlainMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/ImageMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/FlashImageMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/VoiceMessage.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -325,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622124668376</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Added MusicShareMessage.cs">
+      <created>1622124926098</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1622124926098</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,7 +362,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Fixed baseurl" />
     <MESSAGE value="Added MiraiSession.cs" />
     <MESSAGE value="Added Json.net" />
     <MESSAGE value="Added Post method" />
@@ -373,7 +386,8 @@
     <MESSAGE value="Added PokeMessage.cs" />
     <MESSAGE value="Added ForwardMessage.cs" />
     <MESSAGE value="Added FileMessage.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added FileMessage.cs" />
+    <MESSAGE value="Added MusicShareMessage.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added MusicShareMessage.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

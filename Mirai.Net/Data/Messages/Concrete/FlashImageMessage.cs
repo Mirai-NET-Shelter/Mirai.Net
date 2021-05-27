@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Messages.Concrete
 {
+    /// <summary>
+    /// 三个参数任选其一，出现多个参数时，按照imageId > url > path的优先级
+    /// </summary>
     public class FlashImageMessage : MessageBase
     {
         public override string Type { get; set; } = "FlashImage";
