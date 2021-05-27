@@ -28,13 +28,13 @@ namespace Mirai.Net.Test
             Console.WriteLine(await Bot.GetPluginVersion());
             
             var messenger = new GroupMessenger("809830266");
-            var callback = await messenger.Send(new PlainMessage {Text = "Hello, World!"},
-                new ImageMessage("https://picsum.photos/200"));
+            var callback = await messenger.Send(new PlainMessage {Text = "Hello, World!"});
             
             Console.WriteLine(callback.MessageId);
             await Task.Delay(1000);
-            
-            await messenger.Send(callback.MessageId, new PlainMessage {Text = "Hi, I got a gift for you"});
+
+            await new RecallMessenger(callback.MessageId).Recall();
+            // await messenger.Send(callback.MessageId, new PlainMessage {Text = "Hi, I got a gift for you"});
             
             await Bot.Terminate();
             Console.WriteLine("Disconnected!");
