@@ -8,13 +8,13 @@ namespace Mirai.Net.Data.Messages.Concrete
     {
         public override string Type { get; set; } = "Image";
         
-        [JsonProperty("imageId", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("imageId")]
         public string ImageId {get; set;}
         
-        [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("url")]
         public string Url {get; set;}
         
-        [JsonProperty("path", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("path")]
         public string Path {get; set;}
 
         public ImageMessage(string param, ImageMessageType type = ImageMessageType.Url)
