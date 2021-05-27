@@ -8,11 +8,8 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Accomplished TempMessenger.cs">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/ImageMessage.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Enums/ImageMessageType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GroupMessenger.cs">
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/GroupMessenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/GroupMessenger.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,14 +63,15 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageCallback.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MessengerBase.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/PlainMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/QuoteMessage.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/TempMessenger.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Enums/ImageMessageType.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/ImageMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MessengerBase.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/TempMessenger.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/GroupMessenger.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -436,7 +434,28 @@
       <option name="project" value="LOCAL" />
       <updated>1622107017388</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Added ImageMessage.cs &amp; ImageMessageType.cs">
+      <created>1622108152755</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1622108152755</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Added Send overload in MessengerBase.cs">
+      <created>1622108359361</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1622108359361</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Added GroupMessenger.cs">
+      <created>1622108385254</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1622108385254</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,9 +518,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added global Bot.cs" />
-    <MESSAGE value="Added GetPropertyValue for JToken" />
-    <MESSAGE value="Added simple Bot.cs" />
     <MESSAGE value="Added MessageBase.cs" />
     <MESSAGE value="Added protected modify" />
     <MESSAGE value="Added SourceMessage.cs" />
@@ -524,7 +540,10 @@
     <MESSAGE value="Added constructor for Message types" />
     <MESSAGE value="Added TempMessenger.cs" />
     <MESSAGE value="Accomplished TempMessenger.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Accomplished TempMessenger.cs" />
+    <MESSAGE value="Added ImageMessage.cs &amp; ImageMessageType.cs" />
+    <MESSAGE value="Added Send overload in MessengerBase.cs" />
+    <MESSAGE value="Added GroupMessenger.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GroupMessenger.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

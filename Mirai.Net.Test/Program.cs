@@ -15,30 +15,28 @@ namespace Mirai.Net.Test
     {
         public static async Task Main()
         {
-            // Bot.Session = new MiraiSession
-            // {
-            //     Host = "127.0.0.1",
-            //     Port = "2334",
-            //     Key = "232511772e8745e0bd697f1dfb72f748",
-            //     QQ = "2672886221"
-            // };;
-            // await Bot.Launch();
-            //
-            // Console.WriteLine("Connected!");
-            // Console.WriteLine(await Bot.GetPluginVersion());
-            //
-            // var messenger = new TempMessenger("1590454991", "389105053");
-            // var callback = await messenger.Send(new PlainMessage {Text = "Hello, World!"});
-            //
-            // Console.WriteLine(callback.MessageId);
-            // await Task.Delay(1000);
-            //
-            // await messenger.Send(callback.MessageId, new PlainMessage {Text = "Hi, I got a gift for you"});
-            //
-            // await Bot.Terminate();
-            // Console.WriteLine("Disconnected!");
-
-            Console.WriteLine(new ImageMessage("alwshdjl"));
+            Bot.Session = new MiraiSession
+            {
+                Host = "127.0.0.1",
+                Port = "2334",
+                Key = "232511772e8745e0bd697f1dfb72f748",
+                QQ = "2672886221"
+            };;
+            await Bot.Launch();
+            
+            Console.WriteLine("Connected!");
+            Console.WriteLine(await Bot.GetPluginVersion());
+            
+            var messenger = new GroupMessenger("110838222");
+            var callback = await messenger.Send(new PlainMessage {Text = "Hello, World!"});
+            
+            Console.WriteLine(callback.MessageId);
+            await Task.Delay(1000);
+            
+            await messenger.Send(callback.MessageId, new PlainMessage {Text = "Hi, I got a gift for you"});
+            
+            await Bot.Terminate();
+            Console.WriteLine("Disconnected!");
         }
     }
 }
