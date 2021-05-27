@@ -5,9 +5,9 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added FlashImageMessage.cs">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/VoiceMessage.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Enums/VoiceMessageType.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added PokeMessage.cs">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/ForwardMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +42,11 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/FlashImageMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Enums/VoiceMessageType.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/VoiceMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/XmlMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/JsonMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/AppMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/PokeMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/ForwardMessage.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -270,7 +275,42 @@
       <option name="project" value="LOCAL" />
       <updated>1622123518302</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Added VoiceMessage.cs">
+      <created>1622123735898</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1622123735898</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Added XmlMessage.cs">
+      <created>1622123805483</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1622123805483</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Added JsonMessage.cs">
+      <created>1622123842987</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1622123842987</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Added AppMessage.cs">
+      <created>1622123899518</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1622123899518</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Added PokeMessage.cs">
+      <created>1622123963093</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1622123963093</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,8 +333,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Build up" />
-    <MESSAGE value="Added Restsharp" />
     <MESSAGE value="Added HttpUtility.cs and insert Get method" />
     <MESSAGE value="Added StringExtensions.cs and insert ToUri method" />
     <MESSAGE value="Fixed baseurl" />
@@ -315,7 +353,12 @@
     <MESSAGE value="Make ToJson method add null value handling" />
     <MESSAGE value="Removed redundancy json property parameter" />
     <MESSAGE value="Added FlashImageMessage.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added FlashImageMessage.cs" />
+    <MESSAGE value="Added VoiceMessage.cs" />
+    <MESSAGE value="Added XmlMessage.cs" />
+    <MESSAGE value="Added JsonMessage.cs" />
+    <MESSAGE value="Added AppMessage.cs" />
+    <MESSAGE value="Added PokeMessage.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added PokeMessage.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
