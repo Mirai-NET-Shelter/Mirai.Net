@@ -29,9 +29,8 @@ namespace Mirai.Net.Test
                     
             Console.WriteLine("Connected!");
             Console.WriteLine(await Bot.GetPluginVersion());
-
-            var uploader = new ImageUploader();
-            var result = await uploader.Upload(@"C:\Users\ahpx\Desktop\Test\ahpx.png");
+            
+            var result = await ImageUploader.Upload(@"C:\Users\ahpx\Desktop\Test\ahpx.png");
 
             Console.WriteLine(result.ImageId);
 

@@ -11,7 +11,7 @@ namespace Mirai.Net.Messengers.MediaUploader
 {
     public class ImageUploader
     {
-        public async Task<ImageUploadCallback> Upload(string filePath, ImageUploaderType type = ImageUploaderType.Group)
+        public static async Task<ImageUploadCallback> Upload(byte[] file, ImageUploaderType type = ImageUploaderType.Group)
         {
             var requestType = type switch
             {
@@ -21,13 +21,18 @@ namespace Mirai.Net.Messengers.MediaUploader
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };
             var result = await HttpUtility.Post($"{Bot.Session.GetUrl()}/uploadImage",
-                filePath, new
+                file, new
                 {
                     sessionKey = Bot.Session.SessionKey,
                     type = requestType
                 }.ToJson());
 
             return result.Content.ToObject<ImageUploadCallback>();
+        }
+
+        public static async Task<ImageUploadCallback> Upload(string filePath, ImageUploaderType type = ImageUploaderType.Group)
+        {
+            return await Upload(await File.ReadAllBytesAsync(filePath), type);
         }
     }
 }
