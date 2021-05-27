@@ -41,6 +41,18 @@ namespace Mirai.Net.Utilities.Extensions
                 throw new ArgumentException($"{propertyName}\nNo such property!");
             }
         }
+        
+        public static string GetPropertyValue(this JToken obj, string propertyName)
+        {
+            try
+            {
+                return obj[propertyName].ToString();
+            }
+            catch
+            {
+                throw new ArgumentException($"{propertyName}\nNo such property!");
+            }
+        }
 
         public static JObject ToJObject(this object ex)
         {
