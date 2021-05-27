@@ -8,9 +8,9 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added RecallMessenger.cs">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Accomplished RecallMessenger.cs">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/ImageMessenger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/RecallMessenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/RecallMessenger.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" root0="SKIP_HIGHLIGHTING" />
@@ -34,6 +42,7 @@
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Messengers/Concrete/RecallMessenger.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" root0="SKIP_HIGHLIGHTING" />
@@ -72,8 +81,9 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/TempMessenger.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/GroupMessenger.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/RecallMessenger.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/ImageMessenger.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -471,7 +481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622109416720</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Accomplished RecallMessenger.cs">
+      <created>1622110001802</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1622110001802</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -534,7 +551,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added SourceMessage.cs" />
     <MESSAGE value="Added todo comment" />
     <MESSAGE value="Trimmed MessageBase.cs" />
     <MESSAGE value="Added QuoteMessage.cs" />
@@ -559,7 +575,8 @@
     <MESSAGE value="Added GroupMessenger.cs" />
     <MESSAGE value="Accomplished GroupMessenger.cs" />
     <MESSAGE value="Added RecallMessenger.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added RecallMessenger.cs" />
+    <MESSAGE value="Accomplished RecallMessenger.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Accomplished RecallMessenger.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
