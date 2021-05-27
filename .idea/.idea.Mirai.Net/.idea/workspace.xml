@@ -5,10 +5,10 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GetPropertyValue for JToken">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added simple Bot.cs">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Bot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Bot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,13 +32,14 @@
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Mirai.Net.Test.csproj" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -112,7 +113,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622095672503" duration="3272000" />
+      <workItem from="1622095672503" duration="5461000" />
     </task>
     <task id="LOCAL-00001" summary="Build up">
       <created>1621950588091</created>
@@ -240,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622098783249</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added simple Bot.cs">
+      <created>1622099221280</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1622099221280</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,6 +289,7 @@
     <MESSAGE value="Removed Program.cs in Mirai.Net.csproj to changing to ClassLibrary" />
     <MESSAGE value="Added global Bot.cs" />
     <MESSAGE value="Added GetPropertyValue for JToken" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added GetPropertyValue for JToken" />
+    <MESSAGE value="Added simple Bot.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added simple Bot.cs" />
   </component>
 </project>
