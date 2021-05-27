@@ -6,11 +6,14 @@ namespace Mirai.Net.Utilities.Extensions
 {
     public static class JsonExtensions
     {
-        public static string ToJson<T>(this T type)
+        public static string ToJson<T>(this T type, NullValueHandling nullValueHandling = NullValueHandling.Ignore)
         {
             try
             {
-                return JsonConvert.SerializeObject(type);
+                return JsonConvert.SerializeObject(type, Formatting.Indented, new JsonSerializerSettings
+                {
+                    NullValueHandling = nullValueHandling
+                });
             }
             catch
             {
