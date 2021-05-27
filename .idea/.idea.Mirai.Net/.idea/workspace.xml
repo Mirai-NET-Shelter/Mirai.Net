@@ -8,7 +8,9 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Apply GetUrl method in scenario" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Fixed redundancy string">
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,12 +53,12 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/SourceMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/PlainMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MessengerBase.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -349,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622104204921</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Fixed redundancy string">
+      <created>1622104623147</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1622104623147</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,7 +421,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added Json.net" />
     <MESSAGE value="Added Post method" />
     <MESSAGE value="Added Mirai.Net.Test.csproj" />
     <MESSAGE value="Added ToJson test" />
@@ -437,7 +445,8 @@
     <MESSAGE value="Exposed SessionKey property in MiraiSession.cs and setter modify set to private" />
     <MESSAGE value="Added GetUrl method" />
     <MESSAGE value="Apply GetUrl method in scenario" />
-    <option name="LAST_COMMIT_MESSAGE" value="Apply GetUrl method in scenario" />
+    <MESSAGE value="Fixed redundancy string" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed redundancy string" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
