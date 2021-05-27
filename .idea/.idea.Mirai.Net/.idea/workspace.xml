@@ -5,9 +5,7 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added MessageBase.cs">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/SourceMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added SourceMessage.cs">
       <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" afterDir="false" />
     </list>
@@ -27,8 +25,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B8EF69D3-A481-43FE-8568-E981A8FFA98B/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Data/Messages/MessageBase.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -39,9 +39,9 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/SourceMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -115,7 +115,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622095672503" duration="6483000" />
+      <workItem from="1622095672503" duration="6795000" />
     </task>
     <task id="LOCAL-00001" summary="Build up">
       <created>1621950588091</created>
@@ -257,7 +257,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622101215364</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Added protected modify">
+      <created>1622102425692</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1622102425692</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Added SourceMessage.cs">
+      <created>1622102441519</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1622102441519</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,7 +314,9 @@
     <MESSAGE value="Added GetPropertyValue for JToken" />
     <MESSAGE value="Added simple Bot.cs" />
     <MESSAGE value="Added MessageBase.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added MessageBase.cs" />
+    <MESSAGE value="Added protected modify" />
+    <MESSAGE value="Added SourceMessage.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added SourceMessage.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
