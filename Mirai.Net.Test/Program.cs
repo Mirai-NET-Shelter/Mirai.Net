@@ -23,12 +23,13 @@ namespace Mirai.Net.Test
                 QQ = "2672886221"
             };;
             await Bot.Launch();
-            
+                    
             Console.WriteLine("Connected!");
             Console.WriteLine(await Bot.GetPluginVersion());
             
-            var messenger = new GroupMessenger("110838222");
-            var callback = await messenger.Send(new PlainMessage {Text = "Hello, World!"});
+            var messenger = new GroupMessenger("809830266");
+            var callback = await messenger.Send(new PlainMessage {Text = "Hello, World!"},
+                new ImageMessage("https://picsum.photos/200"));
             
             Console.WriteLine(callback.MessageId);
             await Task.Delay(1000);
