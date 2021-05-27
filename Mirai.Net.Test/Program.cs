@@ -33,16 +33,18 @@ namespace Mirai.Net.Test
             Console.WriteLine(await Bot.GetPluginVersion());
 
             var result =
-                await ImageUploader.Upload(await File.ReadAllBytesAsync(@"C:\Users\ahpx\Desktop\Test\ADHZ_C1`6WB%JQ{{84`AM)Q.png"));
+                await FileUploader.Upload("110838222",
+                    @"C:\Users\ahpx\Desktop\Test\ADHZ_C1`6WB%JQ{{84`AM)Q.png",
+                    @"");
 
-            Console.WriteLine(result.ImageId);
+            Console.WriteLine(result.Message);
 
-            var msg = new GroupMessenger("110838222");
-            
-            await msg.Send(new ImageMessage
-            {
-                ImageId = result.ImageId
-            });
+            // var msg = new GroupMessenger("809830266");
+            //
+            // await msg.Send(new ImageMessage
+            // {
+            //     ImageId = result.ImageId
+            // });
             
             await Bot.Terminate();
             Console.WriteLine("Disconnected!");

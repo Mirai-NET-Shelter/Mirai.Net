@@ -8,14 +8,10 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Fixed HttpUtility.cs post bug">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added Json-based parameter list">
       <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Media/FileUploadCallback.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/FileUploader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/ImageUploader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/ImageUploader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/VoiceUploader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/VoiceUploader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,10 +67,10 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Media/VoiceUploadCallback.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/ImageMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Media/FileUploadCallback.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/FileUploader.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/ImageUploader.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/VoiceUploader.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/FileUploader.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
     </changedPaths>
   </component>
@@ -416,7 +412,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622130397162</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Added Json-based parameter list">
+      <created>1622132488778</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1622132488778</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -439,7 +442,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added ToObject method" />
     <MESSAGE value="Added GetValue method in JsonExtensions.cs" />
     <MESSAGE value="Added AtMessage.cs" />
     <MESSAGE value="Added AtAllMessage.cs" />
@@ -464,7 +466,8 @@
     <MESSAGE value="Accomplished VoiceUploader.cs" />
     <MESSAGE value="Fixed ImageMessage.cs constructor" />
     <MESSAGE value="Fixed HttpUtility.cs post bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed HttpUtility.cs post bug" />
+    <MESSAGE value="Added Json-based parameter list" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Json-based parameter list" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
