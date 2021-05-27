@@ -14,10 +14,9 @@ namespace Mirai.Net.Test
     {
         public static async Task Main()
         {
-            var b = new SourceMessage
+            var b = new PlainMessage
             {
-                Id = "114514",
-                Time = "2021"
+                Text = "114514",
             };
 
             Console.WriteLine(b.ToJson());

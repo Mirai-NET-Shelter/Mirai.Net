@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Messages
 {
@@ -8,6 +9,7 @@ namespace Mirai.Net.Data.Messages
         /// <summary>
         /// 类型
         /// </summary>
+        [JsonProperty("type")]
         public abstract string Type { get; set; }
     }
 }
