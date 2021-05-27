@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 using Mirai.Net.Data.Messages;
@@ -13,6 +14,9 @@ using Mirai.Net.Sessions;
 using Mirai.Net.Utilities.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using WebSocketSharp;
+using WebSocket = WebSocketSharp.WebSocket;
+
 //TODO: Edit unused modify to internal
 namespace Mirai.Net.Test
 {
@@ -32,22 +36,38 @@ namespace Mirai.Net.Test
             Console.WriteLine("Connected!");
             Console.WriteLine(await Bot.GetPluginVersion());
 
-            var result =
-                await FileUploader.Upload("110838222",
-                    @"C:\Users\ahpx\Desktop\Test\ADHZ_C1`6WB%JQ{{84`AM)Q.png",
-                    @"");
+            var ws = new WebSocket(
+                $"ws://{Bot.Session.Host}:{Bot.Session.Port}/message?sessionKey={Bot.Session.SessionKey}");
 
-            Console.WriteLine(result.Message);
-
-            // var msg = new GroupMessenger("809830266");
-            //
-            // await msg.Send(new ImageMessage
-            // {
-            //     ImageId = result.ImageId
-            // });
+            ws.OnMessage += (sender, args) =>
+            {
+                string r = string.Empty;
+                try
+                {
+                    r = args.Data.ToJObject().GetPropertyValue("messageChain");
+                }
+                catch
+                {
+                    Console.WriteLine($"Exception: {args.Data.ToJson()}");
+                }
+                
+                foreach (var token in JArray.Parse(r))
+                {
+                    Console.WriteLine(token.ToString());
+                }
+            };
             
-            await Bot.Terminate();
-            Console.WriteLine("Disconnected!");
+            ws.Connect();
+
+            while (true)
+            {
+                if (Console.ReadLine() != "exit") continue;
+                
+                await Bot.Terminate();
+                Console.WriteLine("Disconnected!");
+                
+                return;
+            }
         }
     }
 }
