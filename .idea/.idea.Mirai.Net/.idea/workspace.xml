@@ -8,10 +8,7 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GetUrl method">
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Bot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Bot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" afterDir="false" />
-    </list>
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Apply GetUrl method in scenario" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -345,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622104044648</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Apply GetUrl method in scenario">
+      <created>1622104204921</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1622104204921</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,7 +412,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added MiraiSession.cs" />
     <MESSAGE value="Added Json.net" />
     <MESSAGE value="Added Post method" />
     <MESSAGE value="Added Mirai.Net.Test.csproj" />
@@ -433,7 +436,8 @@
     <MESSAGE value="Overrode MessageBase.cs ToString method" />
     <MESSAGE value="Exposed SessionKey property in MiraiSession.cs and setter modify set to private" />
     <MESSAGE value="Added GetUrl method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added GetUrl method" />
+    <MESSAGE value="Apply GetUrl method in scenario" />
+    <option name="LAST_COMMIT_MESSAGE" value="Apply GetUrl method in scenario" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

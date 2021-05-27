@@ -14,28 +14,21 @@ namespace Mirai.Net.Test
     {
         public static async Task Main()
         {
-            var b = new PlainMessage
+            Bot.Session = new MiraiSession
             {
-                Text = "114514",
-            };
-
-            Console.WriteLine(b.ToString());
+                Host = "127.0.0.1",
+                Port = "2334",
+                Key = "232511772e8745e0bd697f1dfb72f748",
+                QQ = "2672886221"
+            };;
+            await Bot.Launch();
             
-            // Bot.Session = new MiraiSession
-            // {
-            //     Host = "127.0.0.1",
-            //     Port = "2334",
-            //     Key = "232511772e8745e0bd697f1dfb72f748",
-            //     QQ = "2672886221"
-            // };;
-            // await Bot.Launch();
-            //
-            // Console.WriteLine("Connected!");
-            // Console.WriteLine(await Bot.GetPluginVersion());
-            // await Task.Delay(5000);
-            //
-            // await Bot.Terminate();
-            // Console.WriteLine("Disconnected!");
+            Console.WriteLine("Connected!");
+            Console.WriteLine(await Bot.GetPluginVersion());
+            await Task.Delay(5000);
+            
+            await Bot.Terminate();
+            Console.WriteLine("Disconnected!");
         }
     }
 }

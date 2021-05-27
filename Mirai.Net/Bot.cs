@@ -39,7 +39,7 @@ namespace Mirai.Net
 
         public static async Task<string> GetPluginVersion()
         {
-            var result = (await HttpUtility.Get($"http://{Session.GetUrl()}/about")).Content.ToJObject();
+            var result = (await HttpUtility.Get($"{Session.GetUrl()}/about")).Content.ToJObject();
 
             if (result.GetPropertyValue("code") != "0")
             {

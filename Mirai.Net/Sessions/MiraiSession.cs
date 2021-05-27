@@ -17,7 +17,7 @@ namespace Mirai.Net.Sessions
         
         private async Task<string> Authorize()
         {
-            var url = $"http://{this.GetUrl()}/auth";
+            var url = $"{this.GetUrl()}/auth";
             var result = (await HttpUtility.Post(url, new
             {
                 authKey = Key
@@ -33,7 +33,7 @@ namespace Mirai.Net.Sessions
 
         private async Task Verify(string sessionKey)
         {
-            var url = $"http://{this.GetUrl()}/verify";
+            var url = $"{this.GetUrl()}/verify";
             var result = (await HttpUtility.Post(url, new
             {
                 sessionKey,
@@ -48,7 +48,7 @@ namespace Mirai.Net.Sessions
         
         private async Task Release(string sessionKey)
         {
-            var url = $"http://{this.GetUrl()}/release";
+            var url = $"{this.GetUrl()}/release";
             var result = (await HttpUtility.Post(url, new
             {
                 sessionKey,
