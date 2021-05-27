@@ -5,9 +5,8 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added PokeMessage.cs">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/ForwardMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added ForwardMessage.cs">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/FileMessage.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +46,7 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/AppMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/PokeMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/ForwardMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/FileMessage.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -310,7 +310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622123963093</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Added ForwardMessage.cs">
+      <created>1622124542331</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1622124542331</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,7 +340,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added HttpUtility.cs and insert Get method" />
     <MESSAGE value="Added StringExtensions.cs and insert ToUri method" />
     <MESSAGE value="Fixed baseurl" />
     <MESSAGE value="Added MiraiSession.cs" />
@@ -358,7 +364,8 @@
     <MESSAGE value="Added JsonMessage.cs" />
     <MESSAGE value="Added AppMessage.cs" />
     <MESSAGE value="Added PokeMessage.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added PokeMessage.cs" />
+    <MESSAGE value="Added ForwardMessage.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ForwardMessage.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
