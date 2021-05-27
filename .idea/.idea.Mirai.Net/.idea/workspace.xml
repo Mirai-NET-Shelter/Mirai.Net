@@ -8,12 +8,8 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added QuoteMessage.cs">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/PlainMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/SourceMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/SourceMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Exposed SessionKey property in MiraiSession.cs and setter modify set to private">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/MessengerBase.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +26,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Data/Messages/MessageBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Data/Messages/MessageBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Data/Messages/MessageBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Data/Messages/MessageBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B8EF69D3-A481-43FE-8568-E981A8FFA98B/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Data/Messages/MessageBase.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -40,16 +40,17 @@
     <changedPaths>
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Program.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Mirai.Net.Test.csproj" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/QuoteMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/SourceMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/PlainMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/SourceMessage.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MessengerBase.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -123,7 +124,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622095672503" duration="7435000" />
+      <workItem from="1622095672503" duration="7767000" />
     </task>
     <task id="LOCAL-00001" summary="Build up">
       <created>1621950588091</created>
@@ -300,7 +301,35 @@
       <option name="project" value="LOCAL" />
       <updated>1622102944212</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Added json property attribute in MessageBase.cs">
+      <created>1622103206415</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1622103206415</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Added PlainMessage.cs">
+      <created>1622103213894</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1622103213894</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Overrode MessageBase.cs ToString method">
+      <created>1622103347134</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1622103347134</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Exposed SessionKey property in MiraiSession.cs and setter modify set to private">
+      <created>1622103443930</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1622103443930</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,10 +352,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Build up" />
-    <MESSAGE value="Added Restsharp" />
-    <MESSAGE value="Added HttpUtility.cs and insert Get method" />
-    <MESSAGE value="Added StringExtensions.cs and insert ToUri method" />
     <MESSAGE value="Fixed baseurl" />
     <MESSAGE value="Added MiraiSession.cs" />
     <MESSAGE value="Added Json.net" />
@@ -348,7 +373,11 @@
     <MESSAGE value="Added todo comment" />
     <MESSAGE value="Trimmed MessageBase.cs" />
     <MESSAGE value="Added QuoteMessage.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added QuoteMessage.cs" />
+    <MESSAGE value="Added json property attribute in MessageBase.cs" />
+    <MESSAGE value="Added PlainMessage.cs" />
+    <MESSAGE value="Overrode MessageBase.cs ToString method" />
+    <MESSAGE value="Exposed SessionKey property in MiraiSession.cs and setter modify set to private" />
+    <option name="LAST_COMMIT_MESSAGE" value="Exposed SessionKey property in MiraiSession.cs and setter modify set to private" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
