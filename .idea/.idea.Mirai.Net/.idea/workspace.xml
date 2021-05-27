@@ -5,14 +5,7 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GetValue method in JsonExtensions.cs">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Mirai.Net.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Mirai.Net.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" afterDir="false" />
-    </list>
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GetValue method in JsonExtensions.cs" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,13 +19,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B8EF69D3-A481-43FE-8568-E981A8FFA98B/3b/1ddd38e8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Utilities/Extensions/StringExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Utilities/HttpUtility.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Sessions/MiraiSession.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -116,6 +102,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
+      <workItem from="1622095672503" duration="409000" />
     </task>
     <task id="LOCAL-00001" summary="Build up">
       <created>1621950588091</created>
