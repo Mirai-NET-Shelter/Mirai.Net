@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Mirai.Net.Utilities.Extensions;
 using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Messages
@@ -11,5 +12,10 @@ namespace Mirai.Net.Data.Messages
         /// </summary>
         [JsonProperty("type")]
         public abstract string Type { get; set; }
+
+        public override string ToString()
+        {
+            return this.ToJson();
+        }
     }
 }

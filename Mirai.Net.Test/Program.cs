@@ -19,7 +19,7 @@ namespace Mirai.Net.Test
                 Text = "114514",
             };
 
-            Console.WriteLine(b.ToJson());
+            Console.WriteLine(b.ToString());
             
             // Bot.Session = new MiraiSession
             // {
