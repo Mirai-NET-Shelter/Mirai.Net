@@ -6,7 +6,7 @@ using Mirai.Net.Utilities.Extensions;
 
 namespace Mirai.Net.Messengers.MediaUploader
 {
-    [Obsolete("鉴于此部分的文档编写的过于迷惘，如果你知道path参数该怎么用的话或许可以试试使用这个类")]
+    [Obsolete("鉴于此部分的文档编写的过于迷惘，此库开发者看不懂。但如果你知道path参数该怎么用的话或许可以试试使用这个类")]
     public class FileUploader
     {
         public static async Task<FileUploadCallback> Upload(string target, byte[] file, string uploadPath)
