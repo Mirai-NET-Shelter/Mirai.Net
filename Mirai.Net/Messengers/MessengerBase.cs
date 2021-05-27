@@ -5,6 +5,6 @@ namespace Mirai.Net.Messengers
 {
     public abstract class MessengerBase
     {
-        public abstract Task Send(MessageBase message);
+        public abstract Task Send(params MessageBase[] message);
     }
 }

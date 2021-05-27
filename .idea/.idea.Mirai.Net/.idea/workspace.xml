@@ -8,8 +8,11 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Fixed redundancy string">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Make send method return task">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/MessengerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/MessengerBase.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +39,7 @@
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Data/Messages/MessageBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B8EF69D3-A481-43FE-8568-E981A8FFA98B/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Data/Messages/MessageBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
@@ -53,12 +57,12 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/SourceMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/PlainMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MessengerBase.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MessengerBase.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -358,7 +362,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622104623147</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Make send method return task">
+      <created>1622104904914</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1622104904914</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,7 +432,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added Post method" />
     <MESSAGE value="Added Mirai.Net.Test.csproj" />
     <MESSAGE value="Added ToJson test" />
     <MESSAGE value="Added ToJsonTest" />
@@ -446,7 +456,8 @@
     <MESSAGE value="Added GetUrl method" />
     <MESSAGE value="Apply GetUrl method in scenario" />
     <MESSAGE value="Fixed redundancy string" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed redundancy string" />
+    <MESSAGE value="Make send method return task" />
+    <option name="LAST_COMMIT_MESSAGE" value="Make send method return task" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

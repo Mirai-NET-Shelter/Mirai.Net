@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concrete;
+using Mirai.Net.Messengers.Concrete;
 using Mirai.Net.Sessions;
 using Mirai.Net.Utilities.Extensions;
 using Newtonsoft.Json.Linq;
@@ -25,6 +26,10 @@ namespace Mirai.Net.Test
             
             Console.WriteLine("Connected!");
             Console.WriteLine(await Bot.GetPluginVersion());
+
+            var messenger = new FriendMessenger("2933170747");
+            await messenger.Send(new PlainMessage {Text = "Hello, World!"});
+            
             await Task.Delay(5000);
             
             await Bot.Terminate();
