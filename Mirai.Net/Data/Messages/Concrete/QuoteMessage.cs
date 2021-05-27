@@ -21,5 +21,14 @@ namespace Mirai.Net.Data.Messages.Concrete
 
         [JsonProperty("origin")] 
         public IEnumerable<MessageBase> Origin { get; set; }
+
+        public QuoteMessage(string id = null, string groupId = null, string senderId = null, string targetId = null, IEnumerable<MessageBase> origin = null)
+        {
+            Id = id;
+            GroupId = groupId;
+            SenderId = senderId;
+            TargetId = targetId;
+            Origin = origin;
+        }
     }
 }

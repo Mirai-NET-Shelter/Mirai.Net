@@ -8,5 +8,10 @@ namespace Mirai.Net.Data.Messages.Concrete
         
         [JsonProperty("text")]
         public string Text {get; set;}
+
+        public PlainMessage(string text = null)
+        {
+            Text = text;
+        }
     }
 }
