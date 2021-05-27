@@ -29,5 +29,20 @@ namespace Mirai.Net.Messengers.Concrete
 
             return result.ToObject<MessageCallback>();
         }
+
+        public async Task<MessageCallback> Send(string messageId, params MessageBase[] messages)
+        {
+            var url = $"{Bot.Session.GetUrl()}/sendFriendMessage";
+
+            var result = (await HttpUtility.Post(url, new
+            {
+                sessionKey = Bot.Session.SessionKey,
+                target = Target,
+                messageChain = messages,
+                quote = messageId
+            }.ToJson())).Content.ToJObject();
+
+            return result.ToObject<MessageCallback>();
+        }
     }
 }
