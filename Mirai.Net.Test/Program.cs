@@ -4,7 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concrete;
+using Mirai.Net.Data.Messages.Enums;
 using Mirai.Net.Messengers.Concrete;
+using Mirai.Net.Messengers.MediaUploader;
 using Mirai.Net.Sessions;
 using Mirai.Net.Utilities.Extensions;
 using Newtonsoft.Json;
@@ -20,30 +22,23 @@ namespace Mirai.Net.Test
             {
                 Host = "127.0.0.1",
                 Port = "2334",
-                Key = "232511772e8745e0bd697f1dfb72f748",
+                Key = "68d5cbe220cf4ab08b55abf66c8786e5",
                 QQ = "2672886221"
             };;
             await Bot.Launch();
                     
             Console.WriteLine("Connected!");
             Console.WriteLine(await Bot.GetPluginVersion());
+
+            var uploader = new ImageUploader();
+            var result = await uploader.Upload(@"C:\Users\ahpx\Desktop\Test\ahpx.png");
+
+            Console.WriteLine(result.ImageId);
+
+            var msg = new GroupMessenger("809830266");
+
+            await msg.Send(new ImageMessage(result.ImageId, ImageMessageType.Id));
             
-            var messenger = new ImageMessenger(group: "110838222");
-            var callback = await messenger.Send(
-                "https://picsum.photos/800", 
-                "https://picsum.photos/200",
-                "https://picsum.photos/300"); 
-            
-            // Console.WriteLine(callback.MessageId);
-            // await Task.Delay(1000);
-            //
-            // await new RecallMessenger(callback.MessageId).Recall();
-            // await messenger.Send(callback.MessageId, new PlainMessage {Text = "Hi, I got a gift for you"});
-            
-            foreach (var s in callback)
-            {
-                Console.WriteLine(s);
-            }
             await Bot.Terminate();
             Console.WriteLine("Disconnected!");
         }
