@@ -5,9 +5,10 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added SourceMessage.cs">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added todo comment">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/QuoteMessage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +43,7 @@
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/SourceMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/QuoteMessage.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -115,7 +117,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622095672503" duration="6795000" />
+      <workItem from="1622095672503" duration="6957000" />
     </task>
     <task id="LOCAL-00001" summary="Build up">
       <created>1621950588091</created>
@@ -271,7 +273,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622102441519</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Added todo comment">
+      <created>1622102548004</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1622102548004</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,7 +325,8 @@
     <MESSAGE value="Added MessageBase.cs" />
     <MESSAGE value="Added protected modify" />
     <MESSAGE value="Added SourceMessage.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added SourceMessage.cs" />
+    <MESSAGE value="Added todo comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added todo comment" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

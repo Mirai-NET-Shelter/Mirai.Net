@@ -8,9 +8,9 @@ namespace Mirai.Net.Data.Messages.Concrete
         public override string Type { get; set; } = "Source";
         
         [JsonProperty("id")]
-        public new string Id { get; set; }
+        public string Id { get; set; }
         
         [JsonProperty("time")]
-        public new string Time { get; set; }
+        public string Time { get; set; }
     }
 }
