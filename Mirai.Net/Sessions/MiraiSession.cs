@@ -13,7 +13,7 @@ namespace Mirai.Net.Sessions
         public string QQ { get; set; }
         public string Key { get; set; }
 
-        private string SessionKey { get; set; }
+        public string SessionKey { get; private set; }
         
         private async Task<string> Authorize()
         {
