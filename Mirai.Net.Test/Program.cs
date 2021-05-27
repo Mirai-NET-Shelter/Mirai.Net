@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Mirai.Net.Data.Messages;
@@ -32,13 +33,12 @@ namespace Mirai.Net.Test
             Console.WriteLine(await Bot.GetPluginVersion());
 
             var result =
-                await ImageUploader.Upload(
-                    @"C:\Users\ahpx\Desktop\Assets\R0%1AD_EB0SM}[44M)N20GS.jpg");
+                await ImageUploader.Upload(await File.ReadAllBytesAsync(@"C:\Users\ahpx\Desktop\Test\ADHZ_C1`6WB%JQ{{84`AM)Q.png"));
 
             Console.WriteLine(result.ImageId);
 
-            var msg = new GroupMessenger("809830266");
-
+            var msg = new GroupMessenger("110838222");
+            
             await msg.Send(new ImageMessage
             {
                 ImageId = result.ImageId
