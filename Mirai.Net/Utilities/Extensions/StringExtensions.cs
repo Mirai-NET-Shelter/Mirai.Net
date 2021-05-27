@@ -24,5 +24,10 @@ namespace Mirai.Net.Utilities.Extensions
         {
             return $"http://{session.Host}:{session.Port}";
         }
+
+        public static bool IsNumber(this string s)
+        {
+            return int.TryParse(s, out _);
+        }
     }
 }
