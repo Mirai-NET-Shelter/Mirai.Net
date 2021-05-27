@@ -7,6 +7,7 @@ using Mirai.Net.Data.Messages.Concrete;
 using Mirai.Net.Messengers.Concrete;
 using Mirai.Net.Sessions;
 using Mirai.Net.Utilities.Extensions;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 //TODO: Edit unused modify to internal
 namespace Mirai.Net.Test
@@ -27,15 +28,22 @@ namespace Mirai.Net.Test
             Console.WriteLine("Connected!");
             Console.WriteLine(await Bot.GetPluginVersion());
             
-            var messenger = new GroupMessenger("809830266");
-            var callback = await messenger.Send(new PlainMessage {Text = "Hello, World!"});
+            var messenger = new ImageMessenger(group: "110838222");
+            var callback = await messenger.Send(
+                "https://picsum.photos/800", 
+                "https://picsum.photos/200",
+                "https://picsum.photos/300"); 
             
-            Console.WriteLine(callback.MessageId);
-            await Task.Delay(1000);
-
-            await new RecallMessenger(callback.MessageId).Recall();
+            // Console.WriteLine(callback.MessageId);
+            // await Task.Delay(1000);
+            //
+            // await new RecallMessenger(callback.MessageId).Recall();
             // await messenger.Send(callback.MessageId, new PlainMessage {Text = "Hi, I got a gift for you"});
             
+            foreach (var s in callback)
+            {
+                Console.WriteLine(s);
+            }
             await Bot.Terminate();
             Console.WriteLine("Disconnected!");
         }

@@ -8,9 +8,12 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Accomplished RecallMessenger.cs">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/ImageMessenger.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added ImageMessenger.cs">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Enums/ImageMessengerType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/ImageMessenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/ImageMessenger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +69,6 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Mirai.Net.Test.csproj" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/SourceMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
@@ -82,7 +84,9 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/GroupMessenger.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/RecallMessenger.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Enums/ImageMessengerType.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/ImageMessenger.cs" />
     </changedPaths>
   </component>
@@ -488,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622110001802</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Added ImageMessenger.cs">
+      <created>1622110593718</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1622110593718</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,7 +562,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added todo comment" />
     <MESSAGE value="Trimmed MessageBase.cs" />
     <MESSAGE value="Added QuoteMessage.cs" />
     <MESSAGE value="Added json property attribute in MessageBase.cs" />
@@ -576,7 +586,8 @@
     <MESSAGE value="Accomplished GroupMessenger.cs" />
     <MESSAGE value="Added RecallMessenger.cs" />
     <MESSAGE value="Accomplished RecallMessenger.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Accomplished RecallMessenger.cs" />
+    <MESSAGE value="Added ImageMessenger.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ImageMessenger.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
