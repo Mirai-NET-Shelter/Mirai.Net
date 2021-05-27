@@ -26,7 +26,7 @@ namespace Mirai.Net.Data.Messages.Concrete
         [JsonProperty("path")]
         public string Path {get; set;}
 
-        public ImageMessage(string param, ImageMessageType type = ImageMessageType.Url)
+        public ImageMessage(string param = null, ImageMessageType type = ImageMessageType.Url)
         {
             _ = type switch
             {
