@@ -1,4 +1,5 @@
 ﻿using System;
+using Mirai.Net.Sessions;
 using Newtonsoft.Json;
 
 namespace Mirai.Net.Utilities.Extensions
@@ -17,6 +18,11 @@ namespace Mirai.Net.Utilities.Extensions
             {
                 throw new ArgumentException("Invalid uri format!");
             }
+        }
+
+        public static string GetUrl(this MiraiSession session)
+        {
+            return $"http://{session.Host}:{session.Port}";
         }
     }
 }
