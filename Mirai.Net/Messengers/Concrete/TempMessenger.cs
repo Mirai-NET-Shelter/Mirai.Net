@@ -31,7 +31,7 @@ namespace Mirai.Net.Messengers.Concrete
             return result.ToObject<MessageCallback>();
         }
         
-        public async Task<MessageCallback> Send(string messageId, params MessageBase[] messages)
+        public override async Task<MessageCallback> Send(string messageId, params MessageBase[] messages)
         {
             var url = $"{Bot.Session.GetUrl()}/sendTempMessage";
 
