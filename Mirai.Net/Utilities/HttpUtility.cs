@@ -38,7 +38,7 @@ namespace Mirai.Net.Utilities
 
             var request = new RestRequest();
 
-            request.AddFileBytes("img", file, "img");
+            request.AddFileBytes(jObj.GetPropertyValue("key"), file, "img");
             request.AddParameter("sessionKey", jObj.GetPropertyValue("sessionKey"));
             request.AddParameter("type", jObj.GetPropertyValue("type"));
             request.AddHeader("Content-Type", "multipart/form-data");

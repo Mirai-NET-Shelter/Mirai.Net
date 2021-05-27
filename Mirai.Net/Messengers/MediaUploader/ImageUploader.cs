@@ -23,6 +23,7 @@ namespace Mirai.Net.Messengers.MediaUploader
             var result = await HttpUtility.Post($"{Bot.Session.GetUrl()}/uploadImage",
                 file, new
                 {
+                    key = "img",
                     sessionKey = Bot.Session.SessionKey,
                     type = requestType
                 }.ToJson());

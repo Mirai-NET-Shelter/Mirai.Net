@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concrete;
 using Mirai.Net.Data.Messages.Enums;
+using Mirai.Net.Data.Messengers.Media;
 using Mirai.Net.Messengers.Concrete;
 using Mirai.Net.Messengers.MediaUploader;
 using Mirai.Net.Sessions;
@@ -29,14 +30,19 @@ namespace Mirai.Net.Test
                     
             Console.WriteLine("Connected!");
             Console.WriteLine(await Bot.GetPluginVersion());
-            
-            var result = await ImageUploader.Upload(@"C:\Users\ahpx\Desktop\Test\ahpx.png");
+
+            var result =
+                await ImageUploader.Upload(
+                    @"C:\Users\ahpx\Desktop\Assets\R0%1AD_EB0SM}[44M)N20GS.jpg");
 
             Console.WriteLine(result.ImageId);
 
             var msg = new GroupMessenger("809830266");
 
-            await msg.Send(new ImageMessage(result.ImageId, ImageMessageType.Id));
+            await msg.Send(new ImageMessage
+            {
+                ImageId = result.ImageId
+            });
             
             await Bot.Terminate();
             Console.WriteLine("Disconnected!");

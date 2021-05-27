@@ -5,11 +5,12 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Accomplished Post with file">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Enums/ImageUploaderType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/ImageUploader.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Accomplished VoiceUploader.cs">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/ImageUploader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/ImageUploader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/VoiceUploader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/VoiceUploader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +31,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B8EF69D3-A481-43FE-8568-E981A8FFA98B/3b/1ddd38e8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/85946992-34F2-40F1-A5B4-721CF1CA5626/21/FileParameter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Utilities/HttpUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B8EF69D3-A481-43FE-8568-E981A8FFA98B/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -58,9 +61,12 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/UploaderBase.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Media/ImageUploadCallback.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Enums/ImageUploaderType.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Media/VoiceUploadType.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Media/VoiceUploadCallback.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/VoiceUploader.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/ImageUploader.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -83,7 +89,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="RiderCSharpLiveTemplatesSettingsId" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Project.Mirai.Net.Test">
@@ -366,7 +372,28 @@
       <option name="project" value="LOCAL" />
       <updated>1622128972757</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Added ImageUploader.cs">
+      <created>1622128988422</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1622128988422</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Accomplished ImageUploader.cs">
+      <created>1622129273171</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1622129273171</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Accomplished VoiceUploader.cs">
+      <created>1622129555661</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1622129555661</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,9 +416,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added Mirai.Net.Test.csproj" />
-    <MESSAGE value="Added ToJson test" />
-    <MESSAGE value="Added ToJsonTest" />
     <MESSAGE value="Added ToJson method" />
     <MESSAGE value="Move ToJson method to JsonExtensions.cs" />
     <MESSAGE value="Added ToObject method" />
@@ -414,7 +438,10 @@
     <MESSAGE value="Added summary for Messages" />
     <MESSAGE value="Added ImageUploadCallback.cs" />
     <MESSAGE value="Accomplished Post with file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Accomplished Post with file" />
+    <MESSAGE value="Added ImageUploader.cs" />
+    <MESSAGE value="Accomplished ImageUploader.cs" />
+    <MESSAGE value="Accomplished VoiceUploader.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Accomplished VoiceUploader.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
