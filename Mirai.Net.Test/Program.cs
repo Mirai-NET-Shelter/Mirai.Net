@@ -27,8 +27,10 @@ namespace Mirai.Net.Test
             Console.WriteLine("Connected!");
             Console.WriteLine(await Bot.GetPluginVersion());
 
-            var messenger = new FriendMessenger("2933170747");
-            await messenger.Send(new PlainMessage {Text = "Hello, World!"});
+            var messenger = new FriendMessenger("29331701747");
+            var callback = await messenger.Send(new PlainMessage {Text = "Hello, World!"});
+
+            Console.WriteLine(callback.MessageId);
             
             await Task.Delay(5000);
             
