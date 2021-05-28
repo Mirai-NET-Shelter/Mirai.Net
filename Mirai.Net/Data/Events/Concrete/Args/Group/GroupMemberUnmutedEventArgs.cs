@@ -2,7 +2,7 @@
 
 namespace Mirai.Net.Data.Events.Concrete.Args.Group
 {
-    public class GroupMemberUnmutedEventArgs
+    public class GroupMemberUnmutedEventArgs : EventArgsBase
     {
         [JsonProperty("durationSeconds")]
         public string Period {get; set;}
