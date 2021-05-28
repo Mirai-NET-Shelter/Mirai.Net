@@ -11,6 +11,7 @@ namespace Mirai.Net
         public static event Action<BotOnlineEventArgs> BotOnline;
         public static event Action<BotOfflineActiveEventArgs> BotOfflineActive;
         public static event Action<BotOfflinePassiveEventArgs> BotOfflinePassive;
+        public static event Action<BotDroppedEventArgs> BotDropped;
 
         private static void MatchEvents(string data)
         {
@@ -27,6 +28,9 @@ namespace Mirai.Net
                     break;
                 case "BotOfflineEventForce":
                     BotOfflinePassive?.Invoke(data.ToObject<BotOfflinePassiveEventArgs>());
+                    break;
+                case "BotOfflineEventDropped":
+                    BotDropped?.Invoke(data.ToObject<BotDroppedEventArgs>());
                     break;
                 
             }
