@@ -8,9 +8,8 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GroupAllowConfessTalkChangedEventArgs.cs">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowMemberInviteChangedEventArgs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GroupNewMemberJoinedEventArgs.cs">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberKickedEventArgs.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +57,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Media/VoiceUploadCallback.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/ImageMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Media/FileUploadCallback.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/ImageUploader.cs" />
@@ -108,7 +105,9 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowConfessTalkChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowMemberInviteChangedEventAargs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowMemberInviteChangedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupNewMemberJoinedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberKickedEventArgs.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -182,20 +181,6 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-    </task>
-    <task id="LOCAL-00024" summary="Added XmlMessage.cs">
-      <created>1622123805483</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1622123805483</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Added JsonMessage.cs">
-      <created>1622123842987</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1622123842987</updated>
     </task>
     <task id="LOCAL-00026" summary="Added AppMessage.cs">
       <created>1622123899518</created>
@@ -526,7 +511,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622216013734</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Added GroupAllowMemberInviteChangedEventArgs.cs">
+      <created>1622216139876</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1622216139876</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Added GroupNewMemberJoinedEventArgs.cs">
+      <created>1622216334327</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1622216334327</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,8 +548,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Rename OperationSender.cs to OperationSenderGroup.cs" />
-    <MESSAGE value="Added BotMutedEventArgs.cs" />
     <MESSAGE value="Added BotOnlineEventArgs.cs" />
     <MESSAGE value="Added Bot.Events.cs" />
     <MESSAGE value="Removed redundancy EventBase.cs" />
@@ -574,7 +571,9 @@
     <MESSAGE value="Added GroupMuteAllChangedEventArgs.cs" />
     <MESSAGE value="Added GroupAllowAnonymousChatChangedEventArgs.cs" />
     <MESSAGE value="Added GroupAllowConfessTalkChangedEventArgs.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added GroupAllowConfessTalkChangedEventArgs.cs" />
+    <MESSAGE value="Added GroupAllowMemberInviteChangedEventArgs.cs" />
+    <MESSAGE value="Added GroupNewMemberJoinedEventArgs.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GroupNewMemberJoinedEventArgs.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
