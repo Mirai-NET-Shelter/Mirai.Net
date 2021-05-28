@@ -2,7 +2,7 @@
 
 namespace Mirai.Net.Data
 {
-    public class OperationSender
+    public class OperationSenderGroup
     {
         [JsonProperty("id")]
         public string Id {get; set;}
