@@ -8,8 +8,8 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Removed redundancy modify">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageReceivedArgs.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added MessageReceivedArgs.cs">
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +62,8 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/MessageExtensions.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageReceivedArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/ImageMessenger.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageReceivedArgs.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -138,13 +138,6 @@
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
       <workItem from="1622095672503" duration="7767000" />
-    </task>
-    <task id="LOCAL-00003" summary="Added HttpUtility.cs and insert Get method">
-      <created>1621951680946</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1621951680946</updated>
     </task>
     <task id="LOCAL-00004" summary="Added StringExtensions.cs and insert ToUri method">
       <created>1621951695129</created>
@@ -482,7 +475,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622195323393</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Added MessageReceivedArgs.cs">
+      <created>1622195521916</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1622195521916</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -545,7 +545,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added PlainMessage.cs" />
     <MESSAGE value="Overrode MessageBase.cs ToString method" />
     <MESSAGE value="Exposed SessionKey property in MiraiSession.cs and setter modify set to private" />
     <MESSAGE value="Added GetUrl method" />
@@ -570,7 +569,8 @@
     <MESSAGE value="Make MessageBase.cs no longer abstract and Make its constructor protected" />
     <MESSAGE value="Added MessageExtensions.cs" />
     <MESSAGE value="Removed redundancy modify" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed redundancy modify" />
+    <MESSAGE value="Added MessageReceivedArgs.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added MessageReceivedArgs.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
