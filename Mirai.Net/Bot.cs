@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Mirai.Net.Data.Messages;
 using Mirai.Net.Modules;
 using Mirai.Net.Sessions;
 using Mirai.Net.Utilities;
 using Mirai.Net.Utilities.Extensions;
+using WebSocketSharp;
 
 namespace Mirai.Net
 {
@@ -30,14 +32,32 @@ namespace Mirai.Net
         }
 
         public static IEnumerable<IModule> Modules { get; set; }
+
+        private static WebSocket _webSocket;
         
         public static async Task Launch()
         {
             await Session.Connect();
+            
+            _webSocket = new WebSocket($"{_session.GetUrl(true)}/message?sessionKey={Session.SessionKey}");
+            _webSocket.OnMessage += (sender, args) =>
+            {
+                if (Modules != null)
+                {
+                    foreach (var module in Modules)
+                    {
+                        module.Execute(args.Data.ToObject<MessageReceivedArgs>());
+                    }
+                }
+            };
+            
+            _webSocket.Connect();
         }
 
         public static async Task Terminate()
         {
+            _webSocket.Close();
+            
             await Session.Disconnect();
         }
 
