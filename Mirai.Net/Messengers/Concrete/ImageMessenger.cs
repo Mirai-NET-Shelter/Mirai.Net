@@ -22,7 +22,7 @@ namespace Mirai.Net.Messengers.Concrete
         }
        
 
-        public new async Task<IEnumerable<string>> Send(params string[] images)
+        public async Task<IEnumerable<string>> Send(params string[] images)
         {
             var url = $"{Bot.Session.GetUrl()}/sendImageMessage";
 
