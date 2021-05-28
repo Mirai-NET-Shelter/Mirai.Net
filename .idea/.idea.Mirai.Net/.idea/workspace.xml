@@ -8,9 +8,8 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Integrated events branch handling to partial class Bot.Events.cs">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotOfflineActiveEventArgs.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotOfflinePassiveEventArgs.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added BotReloginEventArgs.cs">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotPermissionChangedEventArgs.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Events/Bot.Events.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Events/Bot.Events.cs" afterDir="false" />
     </list>
@@ -60,8 +59,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Program.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Mirai.Net.Test.csproj" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/AtAllMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" />
@@ -109,6 +106,9 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotOfflinePassive.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotOfflineActiveEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotOfflinePassiveEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotDroppedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotReloginEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotPermissionChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Events/Bot.Events.cs" />
     </changedPaths>
   </component>
@@ -183,27 +183,6 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-    </task>
-    <task id="LOCAL-00006" summary="Added MiraiSession.cs">
-      <created>1621952186496</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1621952186496</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Added Json.net">
-      <created>1622036873112</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1622036873112</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Added Post method">
-      <created>1622036879711</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1622036879711</updated>
     </task>
     <task id="LOCAL-00009" summary="Added Mirai.Net.Test.csproj">
       <created>1622037171212</created>
@@ -527,7 +506,28 @@
       <option name="project" value="LOCAL" />
       <updated>1622211937307</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Added Bot offline events">
+      <created>1622212555860</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1622212555860</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Added BotDroppedEventArgs.cs">
+      <created>1622212650638</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1622212650638</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Added BotReloginEventArgs.cs">
+      <created>1622212791178</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1622212791178</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,9 +550,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added MusicShareMessage.cs" />
-    <MESSAGE value="Added summary for Messages" />
-    <MESSAGE value="Added ImageUploadCallback.cs" />
     <MESSAGE value="Accomplished Post with file" />
     <MESSAGE value="Added ImageUploader.cs" />
     <MESSAGE value="Accomplished ImageUploader.cs" />
@@ -575,7 +572,10 @@
     <MESSAGE value="Removed redundancy EventBase.cs" />
     <MESSAGE value="Make Bot.cs partial" />
     <MESSAGE value="Integrated events branch handling to partial class Bot.Events.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Integrated events branch handling to partial class Bot.Events.cs" />
+    <MESSAGE value="Added Bot offline events" />
+    <MESSAGE value="Added BotDroppedEventArgs.cs" />
+    <MESSAGE value="Added BotReloginEventArgs.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added BotReloginEventArgs.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

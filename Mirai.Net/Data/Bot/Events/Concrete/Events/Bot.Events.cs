@@ -13,6 +13,7 @@ namespace Mirai.Net
         public static event Action<BotOfflinePassiveEventArgs> BotOfflinePassive;
         public static event Action<BotDroppedEventArgs> BotDropped;
         public static event Action<BotReloginEventArgs> BotRelogin;
+        public static event Action<BotPermissionChangedEventArgs> BotPermissionChanged;
 
         private static void MatchEvents(string data)
         {
@@ -35,6 +36,9 @@ namespace Mirai.Net
                     break;
                 case "BotReloginEvent":
                     BotRelogin?.Invoke(data.ToObject<BotReloginEventArgs>());
+                    break;
+                case "BotGroupPermissionChangeEvent":
+                    BotPermissionChanged?.Invoke(data.ToObject<BotPermissionChangedEventArgs>());
                     break;
             }
         }
