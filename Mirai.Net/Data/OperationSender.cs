@@ -11,6 +11,6 @@ namespace Mirai.Net.Data
         public string Name {get; set;}
         
         [JsonProperty("permission")]
-        public string Permission {get; set;}
+        public MemberPermissionType Permission {get; set;}
     }
 }
