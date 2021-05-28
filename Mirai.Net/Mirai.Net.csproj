@@ -10,8 +10,4 @@
       <PackageReference Include="WebSocketSharp" Version="1.0.3-rc11" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Modules\Concrete" />
-    </ItemGroup>
-
 </Project>
