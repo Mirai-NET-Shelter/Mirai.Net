@@ -20,9 +20,11 @@ namespace Mirai.Net.Utilities.Extensions
             }
         }
 
-        public static string GetUrl(this MiraiSession session)
+        public static string GetUrl(this MiraiSession session, bool isWebsocket = false)
         {
-            return $"http://{session.Host}:{session.Port}";
+            var prefix = isWebsocket ? "ws" : "http";
+
+            return $"{prefix}://{session.Host}:{session.Port}";
         }
 
         public static bool IsNumber(this string s)
