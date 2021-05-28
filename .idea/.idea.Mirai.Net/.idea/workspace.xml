@@ -8,10 +8,8 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Make MessageBase.cs no longer abstract and Make its constructor protected">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/MessageExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Removed redundancy modify">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageReceivedArgs.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,10 +59,11 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/RecallMessenger.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Enums/ImageMessengerType.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/ImageMessenger.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/MessageExtensions.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageReceivedArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/ImageMessenger.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -139,20 +138,6 @@
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
       <workItem from="1622095672503" duration="7767000" />
-    </task>
-    <task id="LOCAL-00001" summary="Build up">
-      <created>1621950588091</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1621950588091</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Added Restsharp">
-      <created>1621951211858</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1621951211858</updated>
     </task>
     <task id="LOCAL-00003" summary="Added HttpUtility.cs and insert Get method">
       <created>1621951680946</created>
@@ -483,7 +468,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622194773726</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Added MessageExtensions.cs">
+      <created>1622195062876</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1622195062876</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Removed redundancy modify">
+      <created>1622195323393</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1622195323393</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,8 +545,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added QuoteMessage.cs" />
-    <MESSAGE value="Added json property attribute in MessageBase.cs" />
     <MESSAGE value="Added PlainMessage.cs" />
     <MESSAGE value="Overrode MessageBase.cs ToString method" />
     <MESSAGE value="Exposed SessionKey property in MiraiSession.cs and setter modify set to private" />
@@ -571,7 +568,9 @@
     <MESSAGE value="Accomplished RecallMessenger.cs" />
     <MESSAGE value="Added ImageMessenger.cs" />
     <MESSAGE value="Make MessageBase.cs no longer abstract and Make its constructor protected" />
-    <option name="LAST_COMMIT_MESSAGE" value="Make MessageBase.cs no longer abstract and Make its constructor protected" />
+    <MESSAGE value="Added MessageExtensions.cs" />
+    <MESSAGE value="Removed redundancy modify" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed redundancy modify" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
