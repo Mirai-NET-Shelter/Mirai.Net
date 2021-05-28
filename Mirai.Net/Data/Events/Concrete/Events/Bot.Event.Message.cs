@@ -8,6 +8,7 @@ namespace Mirai.Net
     public static partial class Bot
     {
         public static event Action<GroupMessageRecalledEventArgs> GroupMessageRecalled;
+        public static event Action<FriendMessageRecalledEventArgs> FriendMessageRecalled;
 
         private static void MatchBotMessageEvents(string data)
         {
@@ -16,7 +17,9 @@ namespace Mirai.Net
                 case "GroupRecallEvent":
                     GroupMessageRecalled?.Invoke(data.ToObject<GroupMessageRecalledEventArgs>());
                     break;
-                
+                case "FriendRecallEvent":
+                    FriendMessageRecalled?.Invoke(data.ToObject<FriendMessageRecalledEventArgs>());
+                    break;
             }
         }
     }
