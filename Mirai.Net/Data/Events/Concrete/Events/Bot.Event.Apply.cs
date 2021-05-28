@@ -9,6 +9,7 @@ namespace Mirai.Net
     {
         public static event Action<NewFriendApplyEventArgs> ReceivedFriendRequest;
         public static event Action<MemberJoinApplyEventArgs> ReceivedGroupJoinRequest;
+        public static event Action<BotInvitedEventArgs> ReceivedGroupInvited;
         
         private static void MatchApplyEvents(string data)
         {
@@ -19,6 +20,9 @@ namespace Mirai.Net
                     break;
                 case "MemberJoinRequestEvent":
                     ReceivedGroupJoinRequest?.Invoke(data.ToObject<MemberJoinApplyEventArgs>());
+                    break;
+                case "BotInvitedJoinGroupRequestEvent":
+                    ReceivedGroupInvited?.Invoke(data.ToObject<BotInvitedEventArgs>());
                     break;
             }
         }
