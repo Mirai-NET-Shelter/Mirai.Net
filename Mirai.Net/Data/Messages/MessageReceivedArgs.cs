@@ -21,7 +21,7 @@ namespace Mirai.Net.Data.Messages
             [JsonProperty("id")]
             public string Id {get; set;}
             
-            [JsonProperty("name")]
+            [JsonProperty("memberName")]
             public string Name {get; set;}
             
             [JsonProperty("permission")]
