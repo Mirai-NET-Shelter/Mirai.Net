@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Mirai.Net.Data.Bot.Events
+namespace Mirai.Net.Data.Events
 {
     public class EventArgsBase
     {
