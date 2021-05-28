@@ -31,5 +31,23 @@ namespace Mirai.Net.Utilities.Extensions
         {
             return int.TryParse(s, out _);
         }
+
+        /// <summary>
+        /// Message: ture, Event: false
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static bool GetReceivedType(this string s)
+        {
+            try
+            {
+                return s.ToJObject().GetPropertyValue("type").Contains("Message");
+            }
+            catch
+            {
+                throw new Exception("Invalid json!");
+            }
+        }
     }
 }
