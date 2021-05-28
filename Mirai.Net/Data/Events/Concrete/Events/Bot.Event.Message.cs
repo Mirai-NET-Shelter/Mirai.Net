@@ -9,6 +9,7 @@ namespace Mirai.Net
     {
         public static event Action<GroupMessageRecalledEventArgs> GroupMessageRecalled;
         public static event Action<FriendMessageRecalledEventArgs> FriendMessageRecalled;
+        public static event Action<NudgeEventArgs> ReceivedNudge;
 
         private static void MatchBotMessageEvents(string data)
         {
@@ -19,6 +20,9 @@ namespace Mirai.Net
                     break;
                 case "FriendRecallEvent":
                     FriendMessageRecalled?.Invoke(data.ToObject<FriendMessageRecalledEventArgs>());
+                    break;
+                case "NudgeEvent":
+                    ReceivedNudge?.Invoke(data.ToObject<NudgeEventArgs>());
                     break;
             }
         }

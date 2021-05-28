@@ -8,9 +8,8 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added NewFriendApplyEventArgs.cs">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Apply/MemberJoinApplyEventArgs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Apply.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Apply.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added BotInvitedEventArgs.cs">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Message/NudgeEventArgs.cs" afterDir="false" />
     </list>
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,8 +70,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotDroppedEventArgs.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotReloginEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotPermissionChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotUnmutedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotJoinedGroupEventArgs.cs" />
@@ -121,7 +118,9 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Apply/NewFriendApplyEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Apply/MemberJoinApplyEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Apply/BotInvitedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Apply.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Message/NudgeEventArgs.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -196,20 +195,6 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-    </task>
-    <task id="LOCAL-00040" summary="Added FileUploader.cs">
-      <created>1622133112433</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1622133112433</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Changed obsolete info">
-      <created>1622133172238</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1622133172238</updated>
     </task>
     <task id="LOCAL-00042" summary="Renamed MemberPermission.cs to MemberPermissionType.cs">
       <created>1622206804469</created>
@@ -540,7 +525,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622218466394</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="Added MemberJoinApplyEventArgs.cs">
+      <created>1622218612494</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1622218612494</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Added BotInvitedEventArgs.cs">
+      <created>1622218809697</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1622218809697</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,8 +572,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Moved namespace" />
-    <MESSAGE value="Moved namespcae" />
     <MESSAGE value="Added Bot.Event.Message.cs" />
     <MESSAGE value="Added FriendMessageRecalledEventArgs.cs" />
     <MESSAGE value="Added Bot.Event.Group.cs" />
@@ -598,7 +595,9 @@
     <MESSAGE value="Extend to EventArgBase.cs" />
     <MESSAGE value="Added Bot.Event.Apply.cs" />
     <MESSAGE value="Added NewFriendApplyEventArgs.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added NewFriendApplyEventArgs.cs" />
+    <MESSAGE value="Added MemberJoinApplyEventArgs.cs" />
+    <MESSAGE value="Added BotInvitedEventArgs.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added BotInvitedEventArgs.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
