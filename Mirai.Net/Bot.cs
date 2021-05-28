@@ -56,6 +56,7 @@ namespace Mirai.Net
                 {
                     MatchBotMessageEvents(args.Data);
                     MatchGroupEvents(args.Data);
+                    MatchApplyEvents(args.Data);
                     MatchBotEvents(args.Data);
                 }
             };
