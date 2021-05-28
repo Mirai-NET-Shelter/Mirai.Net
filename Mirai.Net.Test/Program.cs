@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net.WebSockets;
@@ -28,7 +29,7 @@ namespace Mirai.Net.Test
             {
                 Host = "127.0.0.1",
                 Port = "2334",
-                Key = "68d5cbe220cf4ab08b55abf66c8786e5",
+                Key = "232511772e8745e0bd697f1dfb72f748",
                 QQ = "2672886221"
             };;
             await Bot.Launch();
@@ -41,19 +42,13 @@ namespace Mirai.Net.Test
 
             ws.OnMessage += (sender, args) =>
             {
-                string r = string.Empty;
-                try
-                {
-                    r = args.Data.ToJObject().GetPropertyValue("messageChain");
-                }
-                catch
-                {
-                    Console.WriteLine($"Exception: {args.Data.ToJson()}");
-                }
+                string r = args.Data.ToJObject().GetPropertyValue("messageChain");
+
+                var chain = JArray.Parse(r).ToObject<List<MessageBase>>();
                 
-                foreach (var token in JArray.Parse(r))
+                foreach (var token in chain)
                 {
-                    Console.WriteLine(token.ToString());
+                    Console.WriteLine(token.Type);
                 }
             };
             
