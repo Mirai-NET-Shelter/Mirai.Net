@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Mirai.Net.Data.Bot.Events;
-using Mirai.Net.Data.Bot.Events.Concrete.Args;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Modules;
 using Mirai.Net.Sessions;

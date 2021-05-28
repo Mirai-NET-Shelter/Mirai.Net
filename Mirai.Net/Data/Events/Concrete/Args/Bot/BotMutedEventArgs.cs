@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Mirai.Net.Data.Bot.Events.Concrete.Args
+namespace Mirai.Net.Data.Events.Concrete.Args.Bot
 {
     public class BotMutedEventArgs : EventArgsBase
     {

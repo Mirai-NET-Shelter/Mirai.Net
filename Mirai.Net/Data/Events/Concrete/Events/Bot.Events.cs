@@ -1,5 +1,5 @@
 ﻿using System;
-using Mirai.Net.Data.Bot.Events.Concrete.Args;
+using Mirai.Net.Data.Events.Concrete.Args.Bot;
 using Mirai.Net.Utilities.Extensions;
 
 // ReSharper disable once CheckNamespace

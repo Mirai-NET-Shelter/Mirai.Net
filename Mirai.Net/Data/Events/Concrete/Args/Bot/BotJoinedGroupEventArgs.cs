@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Mirai.Net.Data.Bot.Events.Concrete.Args
+namespace Mirai.Net.Data.Events.Concrete.Args.Bot
 {
-    public class BotKickedEventArgs : EventArgsBase
+    public class BotJoinedGroupEventArgs : EventArgsBase
     {
         public override string Type { get; set; }
         
