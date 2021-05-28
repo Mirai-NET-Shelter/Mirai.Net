@@ -8,10 +8,10 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Make Bot.cs partial">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Integrated events branch handling to partial class Bot.Events.cs">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotOfflineActiveEventArgs.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotOfflinePassiveEventArgs.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Bot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Bot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Events/Bot.Events.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Events/Bot.Events.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +39,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Messages/MessageReceivedArgs.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/85946992-34F2-40F1-A5B4-721CF1CA5626/21/FileParameter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
@@ -104,6 +105,10 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageReceivedArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/OperationSenderGroup.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotOfflineActive.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotOfflinePassive.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotOfflineActiveEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotOfflinePassiveEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Events/Bot.Events.cs" />
     </changedPaths>
   </component>
@@ -127,7 +132,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="RiderCSharpLiveTemplatesSettingsId" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Project.Mirai.Net.Test">
@@ -178,13 +183,6 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-    </task>
-    <task id="LOCAL-00005" summary="Fixed baseurl">
-      <created>1621952141720</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1621952141720</updated>
     </task>
     <task id="LOCAL-00006" summary="Added MiraiSession.cs">
       <created>1621952186496</created>
@@ -522,7 +520,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622211650540</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Integrated events branch handling to partial class Bot.Events.cs">
+      <created>1622211937307</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1622211937307</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -545,7 +550,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added FileMessage.cs" />
     <MESSAGE value="Added MusicShareMessage.cs" />
     <MESSAGE value="Added summary for Messages" />
     <MESSAGE value="Added ImageUploadCallback.cs" />
@@ -570,7 +574,8 @@
     <MESSAGE value="Added Bot.Events.cs" />
     <MESSAGE value="Removed redundancy EventBase.cs" />
     <MESSAGE value="Make Bot.cs partial" />
-    <option name="LAST_COMMIT_MESSAGE" value="Make Bot.cs partial" />
+    <MESSAGE value="Integrated events branch handling to partial class Bot.Events.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Integrated events branch handling to partial class Bot.Events.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

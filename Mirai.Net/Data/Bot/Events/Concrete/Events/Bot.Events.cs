@@ -8,6 +8,9 @@ namespace Mirai.Net
     public static partial class Bot
     {
         public static event Action<BotMutedEventArgs> BotMuted;
+        public static event Action<BotOnlineEventArgs> BotOnline;
+        public static event Action<BotOfflineActiveEventArgs> BotOfflineActive;
+        public static event Action<BotOfflinePassiveEventArgs> BotOfflinePassive;
 
         private static void MatchEvents(string data)
         {
@@ -16,6 +19,16 @@ namespace Mirai.Net
                 case "BotMuteEvent":
                     BotMuted?.Invoke(data.ToObject<BotMutedEventArgs>());
                     break;
+                case "BotOnlineEvent":
+                    BotOnline?.Invoke(data.ToObject<BotOnlineEventArgs>());
+                    break;
+                case "BotOfflineEventActive":
+                    BotOfflineActive?.Invoke(data.ToObject<BotOfflineActiveEventArgs>());
+                    break;
+                case "BotOfflineEventForce":
+                    BotOfflinePassive?.Invoke(data.ToObject<BotOfflinePassiveEventArgs>());
+                    break;
+                
             }
         }
     }
