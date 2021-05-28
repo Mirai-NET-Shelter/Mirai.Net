@@ -31,28 +31,17 @@ namespace Mirai.Net.Test
                 Port = "2334",
                 Key = "232511772e8745e0bd697f1dfb72f748",
                 QQ = "2672886221"
-            };;
+            };
+            Bot.Modules = new[]
+            {
+                new TestModule()
+            };
             await Bot.Launch();
                     
             Console.WriteLine("Connected!");
             Console.WriteLine(await Bot.GetPluginVersion());
 
-            var ws = new WebSocket(
-                $"ws://{Bot.Session.Host}:{Bot.Session.Port}/message?sessionKey={Bot.Session.SessionKey}");
-
-            ws.OnMessage += (sender, args) =>
-            {
-                string r = args.Data.ToJObject().GetPropertyValue("messageChain");
-
-                var chain = JArray.Parse(r).ToObject<List<MessageBase>>();
-                
-                foreach (var token in chain)
-                {
-                    Console.WriteLine(token.Type);
-                }
-            };
-            
-            ws.Connect();
+            Console.WriteLine("This is a test");
 
             while (true)
             {

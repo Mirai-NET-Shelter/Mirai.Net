@@ -8,7 +8,12 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added MessageReceivedArgs.cs">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added isWebsocket parameter for GetUrl method">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net.Test/TestModule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/MessageTypeConverter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Bot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Bot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +40,8 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B8EF69D3-A481-43FE-8568-E981A8FFA98B/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Data/Messages/MessageBase.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -44,9 +51,7 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Mirai.Net.Test.csproj" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/SourceMessage.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Sessions/MiraiSession.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageCallback.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/PlainMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/QuoteMessage.cs" />
@@ -61,9 +66,14 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/MessageExtensions.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/ImageMessenger.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageReceivedArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Modules/IModule.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/TestModule.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/MessageTypeConverter.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -138,27 +148,6 @@
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
       <workItem from="1622095672503" duration="7767000" />
-    </task>
-    <task id="LOCAL-00004" summary="Added StringExtensions.cs and insert ToUri method">
-      <created>1621951695129</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1621951695129</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Fixed baseurl">
-      <created>1621952141720</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1621952141720</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Added MiraiSession.cs">
-      <created>1621952186496</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1621952186496</updated>
     </task>
     <task id="LOCAL-00007" summary="Added Json.net">
       <created>1622036873112</created>
@@ -482,7 +471,28 @@
       <option name="project" value="LOCAL" />
       <updated>1622195521916</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Added IModule.cs">
+      <created>1622195765611</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1622195765611</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Added Modules property">
+      <created>1622195772925</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1622195772925</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Added isWebsocket parameter for GetUrl method">
+      <created>1622195957208</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1622195957208</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -545,9 +555,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Overrode MessageBase.cs ToString method" />
-    <MESSAGE value="Exposed SessionKey property in MiraiSession.cs and setter modify set to private" />
-    <MESSAGE value="Added GetUrl method" />
     <MESSAGE value="Apply GetUrl method in scenario" />
     <MESSAGE value="Fixed redundancy string" />
     <MESSAGE value="Make send method return task" />
@@ -570,7 +577,10 @@
     <MESSAGE value="Added MessageExtensions.cs" />
     <MESSAGE value="Removed redundancy modify" />
     <MESSAGE value="Added MessageReceivedArgs.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added MessageReceivedArgs.cs" />
+    <MESSAGE value="Added IModule.cs" />
+    <MESSAGE value="Added Modules property" />
+    <MESSAGE value="Added isWebsocket parameter for GetUrl method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added isWebsocket parameter for GetUrl method" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

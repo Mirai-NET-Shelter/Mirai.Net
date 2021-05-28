@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Mirai.Net.Data.Messages
 {
     public class MessageReceivedArgs
     {
         [JsonProperty("type")]
-        public string Type {get; set;}
+        [JsonConverter(typeof(StringEnumConverter))]
+        public MessageType Type {get; set;}
         
         [JsonProperty("messageChain")]
         public IEnumerable<MessageBase> MessageChain {get; set;}
@@ -27,6 +29,13 @@ namespace Mirai.Net.Data.Messages
             
             [JsonProperty("group")]
             public MessageSender Group {get; set;}
+        }
+        
+        public enum MessageType
+        {
+            GroupMessage,
+            FriendMessage,
+            TempMessage
         }
     }
 }
