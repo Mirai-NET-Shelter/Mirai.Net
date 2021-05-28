@@ -17,6 +17,7 @@ namespace Mirai.Net
         public static event Action<BotUnmutedEventArgs> BotUnmuted;
         public static event Action<BotJoinedGroupEventArgs> BotJoinedGroup;
         public static event Action<BotLeftGroupActiveEventArgs> BotLeftGroupActive;
+        public static event Action<BotKickedEventArgs> BotKicked;
 
         private static void MatchEvents(string data)
         {
@@ -51,6 +52,9 @@ namespace Mirai.Net
                     break;
                 case "BotLeaveEventActive":
                     BotLeftGroupActive?.Invoke(data.ToObject<BotLeftGroupActiveEventArgs>());
+                    break;
+                case "BotLeaveEventKick":
+                    BotKicked?.Invoke(data.ToObject<BotKickedEventArgs>());
                     break;
             }
         }
