@@ -8,7 +8,7 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GroupNewMemberJoinedEventArgs.cs">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Use GroupMember.cs instead of internal classes">
       <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberKickedEventArgs.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,9 +57,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Media/FileUploadCallback.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/ImageUploader.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/VoiceUploader.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/FileUploader.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/MemberPermissionType.cs" />
@@ -98,15 +95,18 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Message/FriendMessageRecalledEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Message.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupNameChangedEventArgs.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupEntranceAnnouncementChangedEventArgs.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMuteAllChangedEventArgs.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowAnonymousChatChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowConfessTalkChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowMemberInviteChangedEventAargs.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowMemberInviteChangedEventArgs.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupNewMemberJoinedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/GroupMember.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Bot/BotMutedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Bot/BotUnmutedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowAnonymousChatChangedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowMemberInviteChangedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupEntranceAnnouncementChangedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMuteAllChangedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupNameChangedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupNewMemberJoinedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberKickedEventArgs.cs" />
     </changedPaths>
   </component>
@@ -181,20 +181,6 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-    </task>
-    <task id="LOCAL-00026" summary="Added AppMessage.cs">
-      <created>1622123899518</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1622123899518</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Added PokeMessage.cs">
-      <created>1622123963093</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1622123963093</updated>
     </task>
     <task id="LOCAL-00028" summary="Added ForwardMessage.cs">
       <created>1622124542331</created>
@@ -525,7 +511,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622216334327</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Added GroupMember.cs">
+      <created>1622216508201</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1622216508201</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Use GroupMember.cs instead of internal classes">
+      <created>1622216705005</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1622216705005</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,8 +548,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added BotOnlineEventArgs.cs" />
-    <MESSAGE value="Added Bot.Events.cs" />
     <MESSAGE value="Removed redundancy EventBase.cs" />
     <MESSAGE value="Make Bot.cs partial" />
     <MESSAGE value="Integrated events branch handling to partial class Bot.Events.cs" />
@@ -573,7 +571,9 @@
     <MESSAGE value="Added GroupAllowConfessTalkChangedEventArgs.cs" />
     <MESSAGE value="Added GroupAllowMemberInviteChangedEventArgs.cs" />
     <MESSAGE value="Added GroupNewMemberJoinedEventArgs.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added GroupNewMemberJoinedEventArgs.cs" />
+    <MESSAGE value="Added GroupMember.cs" />
+    <MESSAGE value="Use GroupMember.cs instead of internal classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Use GroupMember.cs instead of internal classes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
