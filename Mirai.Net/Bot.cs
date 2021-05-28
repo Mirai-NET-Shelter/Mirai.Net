@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Mirai.Net.Modules;
 using Mirai.Net.Sessions;
 using Mirai.Net.Utilities;
 using Mirai.Net.Utilities.Extensions;
@@ -26,6 +28,8 @@ namespace Mirai.Net
             }
             set => _session = value;
         }
+
+        public static IEnumerable<IModule> Modules { get; set; }
         
         public static async Task Launch()
         {
