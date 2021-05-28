@@ -10,6 +10,7 @@ namespace Mirai.Net
         public static event Action<GroupEntranceAnnouncementChangedEventArgs> GroupEntranceAnnouncementChanged;
         public static event Action<GroupMuteAllChangedEventArgs> GroupMuteAllChanged;
         public static event Action<GroupAllowAnonymousChatChangedEventArgs> GroupAllowAnonymousChanged;
+        public static event Action<GroupAllowConfessTalkChangedEventArgs> GroupAllowConfessTalkChanged;
 
         private static void MatchGroupEvents(string data)
         {
@@ -27,7 +28,9 @@ namespace Mirai.Net
                 case "GroupAllowAnonymousChatEvent":
                     GroupAllowAnonymousChanged?.Invoke(data.ToObject<GroupAllowAnonymousChatChangedEventArgs>());
                     break;
-                
+                case "GroupAllowConfessTalkEvent":
+                    GroupAllowConfessTalkChanged?.Invoke(data.ToObject<GroupAllowConfessTalkChangedEventArgs>());
+                    break;
             }
         }
     }
