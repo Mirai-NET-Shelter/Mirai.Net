@@ -7,6 +7,7 @@ namespace Mirai.Net
     public static partial class Bot
     {
         public static event Action<GroupNameChangedEventArgs> GroupNameChanged;
+        public static event Action<GroupEntranceAnnouncementChangedEventArgs> GroupEntranceAnnouncementChanged;
 
         private static void MatchGroupEvents(string data)
         {
@@ -15,6 +16,10 @@ namespace Mirai.Net
                 case "GroupNameChangeEvent":
                     GroupNameChanged?.Invoke(data.ToObject<GroupNameChangedEventArgs>());
                     break;
+                case "GroupEntranceAnnouncementChangeEvent":
+                    GroupEntranceAnnouncementChanged?.Invoke(data.ToObject<GroupEntranceAnnouncementChangedEventArgs>());
+                    break;
+                
             }
         }
     }
