@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Mirai.Net.Data.Bot.Events;
+using Mirai.Net.Data.Bot.Events.Concrete.Args;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Modules;
 using Mirai.Net.Sessions;
@@ -13,7 +15,7 @@ namespace Mirai.Net
     /// <summary>
     /// Singleton
     /// </summary>
-    public static class Bot
+    public static partial class Bot
     {
         private static MiraiSession _session;
 
@@ -39,14 +41,24 @@ namespace Mirai.Net
         {
             await Session.Connect();
             
-            _webSocket = new WebSocket($"{_session.GetUrl(true)}/message?sessionKey={Session.SessionKey}");
+            _webSocket = new WebSocket($"{_session.GetUrl(true)}/all?sessionKey={Session.SessionKey}");
             _webSocket.OnMessage += (sender, args) =>
             {
-                if (Modules != null)
+                if (args.Data.GetReceivedType())
                 {
-                    foreach (var module in Modules)
+                    if (Modules != null)
                     {
-                        module.Execute(args.Data.ToObject<MessageReceivedArgs>());
+                        foreach (var module in Modules)
+                        {
+                            module.Execute(args.Data.ToObject<MessageReceivedArgs>());
+                        }
+                    }
+                }
+                else
+                {
+                    if (args.Data.ToJObject().GetPropertyValue("type") == "BotMuteEvent")
+                    {
+                        BotMuted?.Invoke(args.Data.ToObject<BotMutedEventArgs>());
                     }
                 }
             };
