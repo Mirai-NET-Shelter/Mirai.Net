@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Data
 {
-    public enum MemberPermission
+    public enum MemberPermissionType
     {
         [EnumMember(Value = "MEMBER")]
         Member,

@@ -25,7 +25,7 @@ namespace Mirai.Net.Data.Messages
             public string Name {get; set;}
             
             [JsonProperty("permission")]
-            public MemberPermission Permission {get; set;}
+            public MemberPermissionType PermissionType {get; set;}
             
             [JsonProperty("group")]
             public MessageSender Group {get; set;}
