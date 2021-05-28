@@ -15,6 +15,7 @@ namespace Mirai.Net
         public static event Action<GroupNewMemberJoinedEventArgs> GroupNewMemberJoined;
         public static event Action<GroupMemberKickedEventArgs> GroupMemberKicked;
         public static event Action<GroupMemberLeftGroupActiveEventArgs> GroupMemberLeftGroupActive;
+        public static event Action<GroupMemberCardChangedEventArgs> GroupMemberCardChanged;
 
         private static void MatchGroupEvents(string data)
         {
@@ -46,6 +47,9 @@ namespace Mirai.Net
                     break;
                 case "MemberLeaveEventQuit":
                     GroupMemberLeftGroupActive?.Invoke(data.ToObject<GroupMemberLeftGroupActiveEventArgs>());
+                    break;
+                case "MemberCardChangeEvent":
+                    GroupMemberCardChanged?.Invoke(data.ToObject<GroupMemberCardChangedEventArgs>());
                     break;
             }
         }
