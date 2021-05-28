@@ -19,7 +19,7 @@ namespace Mirai.Net
         public static event Action<BotLeftGroupActiveEventArgs> BotLeftGroupActive;
         public static event Action<BotKickedEventArgs> BotKicked;
 
-        private static void MatchEvents(string data)
+        private static void MatchBotEvents(string data)
         {
             switch (data.ToJObject().GetPropertyValue("type"))
             {

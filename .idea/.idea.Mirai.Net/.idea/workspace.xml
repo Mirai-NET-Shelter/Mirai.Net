@@ -8,7 +8,13 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added BotKickedEventArgs.cs" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Moved namespcae">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Message/GroupMessageRecalledEventArgs.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Message.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Bot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Bot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Events.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Events.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,10 +61,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/AppMessage.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/AtMessage.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/FaceMessage.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/PlainMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/FlashImageMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/VoiceMessage.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/PokeMessage.cs" />
@@ -90,7 +92,6 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotMutedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageReceivedArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/OperationSenderGroup.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotOfflineActive.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotOfflinePassive.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotOfflineActiveEventArgs.cs" />
@@ -106,6 +107,11 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupKick.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotKicked.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Events/Bot.Events.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/EventArgsBase.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Message/GroupMessageRecalledEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Events.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Message.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -179,20 +185,6 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-    </task>
-    <task id="LOCAL-00014" summary="Added ToObject method">
-      <created>1622038122452</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1622038122452</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Added GetValue method in JsonExtensions.cs">
-      <created>1622038356384</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1622038356384</updated>
     </task>
     <task id="LOCAL-00016" summary="Added AtMessage.cs">
       <created>1622122809139</created>
@@ -523,7 +515,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622213706790</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Moved namespace">
+      <created>1622214095362</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1622214095362</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Moved namespcae">
+      <created>1622214110502</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1622214110502</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,8 +552,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Fixed HttpUtility.cs post bug" />
-    <MESSAGE value="Added Json-based parameter list" />
     <MESSAGE value="Added FileUploader.cs" />
     <MESSAGE value="Changed obsolete info" />
     <MESSAGE value="Renamed MemberPermission.cs to MemberPermissionType.cs" />
@@ -571,7 +575,9 @@
     <MESSAGE value="Added BotJoinedGroupEventArgs.cs" />
     <MESSAGE value="Added BotLeftGroupActiveEventArgs.cs" />
     <MESSAGE value="Added BotKickedEventArgs.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added BotKickedEventArgs.cs" />
+    <MESSAGE value="Moved namespace" />
+    <MESSAGE value="Moved namespcae" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved namespcae" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
