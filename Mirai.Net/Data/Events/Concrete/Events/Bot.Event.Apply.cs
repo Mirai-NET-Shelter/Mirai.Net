@@ -1,5 +1,6 @@
 ﻿using System;
 using Mirai.Net.Data.Events.Concrete.Args.Apply;
+using Mirai.Net.Data.Events.Concrete.Args.Group;
 using Mirai.Net.Utilities.Extensions;
 
 namespace Mirai.Net
@@ -7,6 +8,7 @@ namespace Mirai.Net
     public static partial class Bot
     {
         public static event Action<NewFriendApplyEventArgs> ReceivedFriendRequest;
+        public static event Action<MemberJoinApplyEventArgs> ReceivedGroupJoinRequest;
         
         private static void MatchApplyEvents(string data)
         {
@@ -14,6 +16,9 @@ namespace Mirai.Net
             {
                 case "NewFriendRequestEvent":
                     ReceivedFriendRequest?.Invoke(data.ToObject<NewFriendApplyEventArgs>());
+                    break;
+                case "MemberJoinRequestEvent":
+                    ReceivedGroupJoinRequest?.Invoke(data.ToObject<MemberJoinApplyEventArgs>());
                     break;
             }
         }
