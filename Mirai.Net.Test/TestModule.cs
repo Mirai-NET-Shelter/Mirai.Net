@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using Mirai.Net.Data;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concrete;
 using Mirai.Net.Messengers.Concrete;
@@ -10,11 +11,15 @@ namespace Mirai.Net.Test
     {
         public async void Execute(MessageReceivedArgs args)
         {
-            if (args.Type == MessageReceivedArgs.MessageType.FriendMessage)
+            if (args.Type == MessageReceivedArgs.MessageType.GroupMessage)
             {
-                var messenger = new FriendMessenger("2933170747");
+                var messenger = new GroupMessenger("110838222");
 
-                await messenger.Send(new PlainMessage($"Hello, {args.Sender.Id}"));
+                if (args.Sender.PermissionType == MemberPermissionType.Administrator)
+                {
+                    await messenger.Send(new PlainMessage($"Hello, {args.Sender.Id}"));
+                }
+                
             }   
         }
     }

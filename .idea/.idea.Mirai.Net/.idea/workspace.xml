@@ -8,8 +8,12 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Changed obsolete info">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Renamed MemberPermission.cs to MemberPermissionType.cs">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Arguments/BotOnlineEventArgs.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/BotOnlineEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/EventBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/TestModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/TestModule.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +40,10 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B8EF69D3-A481-43FE-8568-E981A8FFA98B/3b/1ddd38e8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/85946992-34F2-40F1-A5B4-721CF1CA5626/21/FileParameter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B8EF69D3-A481-43FE-8568-E981A8FFA98B/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -71,6 +79,11 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/VoiceUploader.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MediaUploader/FileUploader.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/MemberPermissionType.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/TestModule.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/EventBase.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/BotOnlineEvent.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Arguments/BotOnlineEventArgs.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -432,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622133172238</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Renamed MemberPermission.cs to MemberPermissionType.cs">
+      <created>1622206804469</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1622206804469</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -455,7 +475,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added AtAllMessage.cs" />
     <MESSAGE value="Added IsNumber method for StringExtensions.cs" />
     <MESSAGE value="Added FaceMessage.cs" />
     <MESSAGE value="Make ToJson method add null value handling" />
@@ -480,7 +499,8 @@
     <MESSAGE value="Added Json-based parameter list" />
     <MESSAGE value="Added FileUploader.cs" />
     <MESSAGE value="Changed obsolete info" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed obsolete info" />
+    <MESSAGE value="Renamed MemberPermission.cs to MemberPermissionType.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed MemberPermission.cs to MemberPermissionType.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
