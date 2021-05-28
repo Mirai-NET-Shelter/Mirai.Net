@@ -4,8 +4,6 @@ namespace Mirai.Net.Data.Events.Concrete.Args.Group
 {
     public class GroupEntranceAnnouncementChangedEventArgs : EventArgsBase
     {
-        public override string Type { get; set; }
-        
         [JsonProperty("origin")]
         public string Origin {get; set;}
         

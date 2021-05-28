@@ -4,8 +4,6 @@ namespace Mirai.Net.Data.Events.Concrete.Args.Bot
 {
     public class BotPermissionChangedEventArgs : EventArgsBase
     {
-        public override string Type { get; set; }
-        
         [JsonProperty("origin")]
         public MemberPermissionType Origin {get; set;}
         

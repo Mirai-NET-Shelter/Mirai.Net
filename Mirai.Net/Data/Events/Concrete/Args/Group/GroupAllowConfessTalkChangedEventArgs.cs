@@ -4,8 +4,6 @@ namespace Mirai.Net.Data.Events.Concrete.Args.Group
 {
     public class GroupAllowConfessTalkChangedEventArgs : EventArgsBase
     {
-        public override string Type { get; set; }
-        
         [JsonProperty("origin")]
         public bool Origin {get; set;}
         
