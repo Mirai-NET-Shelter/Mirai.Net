@@ -56,10 +56,7 @@ namespace Mirai.Net
                 }
                 else
                 {
-                    if (args.Data.ToJObject().GetPropertyValue("type") == "BotMuteEvent")
-                    {
-                        BotMuted?.Invoke(args.Data.ToObject<BotMutedEventArgs>());
-                    }
+                    MatchEvents(args.Data);
                 }
             };
             
