@@ -9,6 +9,7 @@ namespace Mirai.Net
         public static event Action<GroupNameChangedEventArgs> GroupNameChanged;
         public static event Action<GroupEntranceAnnouncementChangedEventArgs> GroupEntranceAnnouncementChanged;
         public static event Action<GroupMuteAllChangedEventArgs> GroupMuteAllChanged;
+        public static event Action<GroupAllowAnonymousChatChangedEventArgs> GroupAllowAnonymousChanged;
 
         private static void MatchGroupEvents(string data)
         {
@@ -23,6 +24,10 @@ namespace Mirai.Net
                 case "GroupMuteAllEvent":
                     GroupMuteAllChanged?.Invoke(data.ToObject<GroupMuteAllChangedEventArgs>());
                     break;
+                case "GroupAllowAnonymousChatEvent":
+                    GroupAllowAnonymousChanged?.Invoke(data.ToObject<GroupAllowAnonymousChatChangedEventArgs>());
+                    break;
+                
             }
         }
     }

@@ -8,7 +8,10 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GroupEntranceAnnouncementChangedEventArgs.cs" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GroupMuteAllChangedEventArgs.cs">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowAnonymousChatChangedEventArgs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,8 +58,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/Concrete/MusicShareMessage.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/UploaderBase.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Media/ImageUploadCallback.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Enums/ImageUploaderType.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messengers/Media/VoiceUploadType.cs" />
@@ -105,6 +106,8 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupNameChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupEntranceAnnouncementChangedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMuteAllChangedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowAnonymousChatChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" />
     </changedPaths>
   </component>
@@ -179,13 +182,6 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-    </task>
-    <task id="LOCAL-00021" summary="Removed redundancy json property parameter">
-      <created>1622123366642</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1622123366642</updated>
     </task>
     <task id="LOCAL-00022" summary="Added FlashImageMessage.cs">
       <created>1622123518302</created>
@@ -523,7 +519,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622215303121</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Added GroupMuteAllChangedEventArgs.cs">
+      <created>1622215589726</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1622215589727</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,7 +549,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added GetReceived type method" />
     <MESSAGE value="Changed property Permission to MemberPermissionType" />
     <MESSAGE value="Fixed JsonProperty name to memberName" />
     <MESSAGE value="Rename OperationSender.cs to OperationSenderGroup.cs" />
@@ -571,7 +573,8 @@
     <MESSAGE value="Added Bot.Event.Group.cs" />
     <MESSAGE value="Added GroupNameChangedEventArgs.cs" />
     <MESSAGE value="Added GroupEntranceAnnouncementChangedEventArgs.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added GroupEntranceAnnouncementChangedEventArgs.cs" />
+    <MESSAGE value="Added GroupMuteAllChangedEventArgs.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GroupMuteAllChangedEventArgs.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
