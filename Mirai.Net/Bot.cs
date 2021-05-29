@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Mirai.Net.Data;
 using Mirai.Net.Data.Contact;
 using Mirai.Net.Data.Events.Concrete.Args.Apply;
 using Mirai.Net.Data.Events.Enums;
@@ -127,6 +128,13 @@ namespace Mirai.Net
             var result = await HttpUtility.Get($"{Session.GetUrl()}//groupList?sessionKey={Session.SessionKey}");
 
             return JArray.Parse(result.Content).ToObject<IEnumerable<BotGroup>>();
+        }
+
+        public static async Task<IEnumerable<GroupMember>> GetGroupMemberList(string target)
+        {
+            var result = await HttpUtility.Get($"{Session.GetUrl()}//memberList?sessionKey={Session.SessionKey}&target={target}");
+
+            return JArray.Parse(result.Content).ToObject<IEnumerable<GroupMember>>();
         }
     }
 }

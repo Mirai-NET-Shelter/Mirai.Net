@@ -8,8 +8,8 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GetFriendList method">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Contact/BotGroup.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GetGroupListMethod">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Bot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Bot.cs" afterDir="false" />
     </list>
@@ -169,14 +169,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622270665939" duration="5754000" />
-    </task>
-    <task id="LOCAL-00047" summary="Fixed JsonProperty name to memberName">
-      <created>1622211565360</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1622211565360</updated>
+      <workItem from="1622270665939" duration="6658000" />
     </task>
     <task id="LOCAL-00048" summary="Rename OperationSender.cs to OperationSenderGroup.cs">
       <created>1622211579557</created>
@@ -514,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622276431134</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Added GetGroupListMethod">
+      <created>1622276631809</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1622276631810</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -547,7 +547,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added GroupMuteAllChangedEventArgs.cs" />
     <MESSAGE value="Added GroupAllowAnonymousChatChangedEventArgs.cs" />
     <MESSAGE value="Added GroupAllowConfessTalkChangedEventArgs.cs" />
     <MESSAGE value="Added GroupAllowMemberInviteChangedEventArgs.cs" />
@@ -572,7 +571,8 @@
     <MESSAGE value="Removed redundancy statements" />
     <MESSAGE value="Added HandleInvitedRequest method" />
     <MESSAGE value="Added GetFriendList method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added GetFriendList method" />
+    <MESSAGE value="Added GetGroupListMethod" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GetGroupListMethod" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

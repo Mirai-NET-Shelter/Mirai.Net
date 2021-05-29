@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
+using Mirai.Net.Data;
 using Mirai.Net.Data.Events.Enums;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concrete;
@@ -39,7 +41,8 @@ namespace Mirai.Net.Test
             Console.WriteLine("Connected!");
             Console.WriteLine(await Bot.GetPluginVersion());
 
-            var f = await Bot.GetGroupList();
+            var f = (await Bot.GetGroupMemberList("809830266")).Where(x =>
+                x.Permission == MemberPermissionType.Administrator);
             
             foreach (var friend in f)
             {
