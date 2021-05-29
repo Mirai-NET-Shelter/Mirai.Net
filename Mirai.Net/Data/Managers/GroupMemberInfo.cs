@@ -8,7 +8,7 @@ namespace Mirai.Net.Data.Managers
         public string Name {get; set;}
         
         [JsonProperty("nick")]
-        public string Nic {get; set;}
+        public string Nick {get; set;}
         
         [JsonProperty("specialTitle")]
         public string Title {get; set;}
