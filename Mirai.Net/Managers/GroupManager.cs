@@ -143,5 +143,32 @@ namespace Mirai.Net.Managers
 
             return result.Content.ToObject<GroupSettings>();
         }
+
+        public async Task<GroupMemberInfo> GetGroupMemberInfo(string target)
+        {
+            var result =
+                await HttpUtility.Get(
+                    $"{Bot.Session.GetUrl()}/memberInfo?sessionKey={Bot.Session.SessionKey}&target={GroupId}&memberId={target}");
+
+            return result.Content.ToObject<GroupMemberInfo>();
+        }
+
+        public async Task SetGroupMemberInfo(GroupMemberInfo info, string memberId)
+        {
+            var result = await HttpUtility.Post($"{Bot.Session.GetUrl()}/memberInfo", new
+            {
+                sessionKey = Bot.Session.SessionKey,
+                target = GroupId,
+                memberId,
+                info
+            }.ToJson());
+
+            var jObject = result.Content.ToJObject();
+
+            if (jObject.GetPropertyValue("code") != "0")
+            {
+                throw new Exception(jObject.GetPropertyValue("msg"));
+            }
+        }
     }
 }

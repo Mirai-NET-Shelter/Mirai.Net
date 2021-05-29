@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Mirai.Net.Data;
 using Mirai.Net.Data.Events.Enums;
+using Mirai.Net.Data.Managers;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concrete;
 using Mirai.Net.Data.Messages.Enums;
@@ -73,11 +74,14 @@ namespace Mirai.Net.Test
 
         public static async Task Do()
         {
-            var mgr = new GroupManager("110838222");
+            var mgr = new GroupManager("389105053");
 
-            var re = await mgr.GetGroupSettings();
+            await mgr.SetGroupMemberInfo(new GroupMemberInfo
+            {
+                Name = "一般路过破晓"
+            }, "2933170747");
 
-            Console.WriteLine(re.ToJson());
+            Console.WriteLine("Done");
         }
     }
 }
