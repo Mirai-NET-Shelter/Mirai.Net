@@ -8,8 +8,10 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GetGroupMemberList">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Sessions/GroupManager.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GroupManager.cs">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Sessions/GroupManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Sessions/GroupManager.cs" afterDir="false" />
     </list>
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +40,7 @@
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B8EF69D3-A481-43FE-8568-E981A8FFA98B/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -167,14 +170,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622270665939" duration="6961000" />
-    </task>
-    <task id="LOCAL-00049" summary="Added BotMutedEventArgs.cs">
-      <created>1622211598195</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1622211598195</updated>
+      <workItem from="1622270665939" duration="7636000" />
     </task>
     <task id="LOCAL-00050" summary="Added BotOnlineEventArgs.cs">
       <created>1622211604434</created>
@@ -512,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622277782375</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="Added GroupManager.cs">
+      <created>1622278070948</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1622278070948</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -545,7 +548,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added GroupAllowConfessTalkChangedEventArgs.cs" />
     <MESSAGE value="Added GroupAllowMemberInviteChangedEventArgs.cs" />
     <MESSAGE value="Added GroupNewMemberJoinedEventArgs.cs" />
     <MESSAGE value="Added GroupMember.cs" />
@@ -570,7 +572,8 @@
     <MESSAGE value="Added GetFriendList method" />
     <MESSAGE value="Added GetGroupListMethod" />
     <MESSAGE value="Added GetGroupMemberList" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added GetGroupMemberList" />
+    <MESSAGE value="Added GroupManager.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GroupManager.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -41,13 +41,7 @@ namespace Mirai.Net.Test
             Console.WriteLine("Connected!");
             Console.WriteLine(await Bot.GetPluginVersion());
 
-            var f = (await Bot.GetGroupMemberList("809830266")).Where(x =>
-                x.Permission == MemberPermissionType.Administrator);
-            
-            foreach (var friend in f)
-            {
-                Console.WriteLine(friend.Name + $" {friend.Permission}");
-            }
+            await Do();
 
             while (true)
             {
@@ -58,6 +52,17 @@ namespace Mirai.Net.Test
                 
                 return;
             }
+        }
+
+        public static async Task Do()
+        {
+            var mgr = new GroupManager("389105053");
+
+            await mgr.Mute("1590454991", 720000);
+
+            await Task.Delay(10000);
+
+            await mgr.UnMute("1590454991");
         }
     }
 }
