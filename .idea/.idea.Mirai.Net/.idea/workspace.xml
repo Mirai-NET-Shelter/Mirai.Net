@@ -8,10 +8,13 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added MuteAll/UnMuteAll methods">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Moved GroupManager.cs to Manager folder">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Managers/GroupSettings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Managers/GroupManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Managers/GroupManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Sessions/GroupManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Managers/GroupManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" afterDir="false" />
     </list>
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,8 +51,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupKick.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotKicked.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Events/Bot.Events.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/EventArgsBase.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Events.cs" />
@@ -96,9 +97,11 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Contact/BotFriend.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Contact/BotGroup.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Sessions/GroupManager.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Managers/GroupSettings.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Managers/GroupManager.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -173,14 +176,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622270665939" duration="8938000" />
-    </task>
-    <task id="LOCAL-00056" summary="Added BotDroppedEventArgs.cs">
-      <created>1622212650638</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1622212650638</updated>
+      <workItem from="1622270665939" duration="10302000" />
     </task>
     <task id="LOCAL-00057" summary="Added BotReloginEventArgs.cs">
       <created>1622212791178</created>
@@ -518,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622279973457</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="Moved GroupManager.cs to Manager folder">
+      <created>1622280067757</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1622280067757</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,7 +554,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Removed redundancy override type property" />
     <MESSAGE value="Added GroupMemberCardChangedEventArgs.cs" />
     <MESSAGE value="Added Group" />
     <MESSAGE value="Added GroupMemberTitleChangedEventArgs.cs" />
@@ -576,7 +578,8 @@
     <MESSAGE value="Added Leave method" />
     <MESSAGE value="Remove redundancy return statement" />
     <MESSAGE value="Added MuteAll/UnMuteAll methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added MuteAll/UnMuteAll methods" />
+    <MESSAGE value="Moved GroupManager.cs to Manager folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved GroupManager.cs to Manager folder" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

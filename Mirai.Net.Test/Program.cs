@@ -36,6 +36,10 @@ namespace Mirai.Net.Test
                 Key = "232511772e8745e0bd697f1dfb72f748",
                 QQ = "2672886221"
             };
+            Bot.Modules = new[]
+            {
+                new TestModule()
+            };
 
             Bot.ReceivedGroupJoinRequest += args =>
             {
@@ -69,13 +73,11 @@ namespace Mirai.Net.Test
 
         public static async Task Do()
         {
-            var mgr = new GroupManager("389105053");
+            var mgr = new GroupManager("110838222");
 
-            await mgr.MuteAll();
+            var re = await mgr.GetGroupSettings();
 
-            await Task.Delay(10000);
-
-            await mgr.UnMuteAll();
+            Console.WriteLine(re.ToJson());
         }
     }
 }

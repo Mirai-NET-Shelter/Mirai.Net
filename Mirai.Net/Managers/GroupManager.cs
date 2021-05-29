@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Mirai.Net.Data.Managers;
 using Mirai.Net.Utilities;
 using Mirai.Net.Utilities.Extensions;
 
@@ -113,6 +114,34 @@ namespace Mirai.Net.Managers
             {
                 throw new Exception(jObject.GetPropertyValue("msg"));
             }
+        }
+        
+        public async Task<GroupSettings> GetGroupSettings()
+        {
+            var result =
+                await HttpUtility.Get(
+                    $"{Bot.Session.GetUrl()}/groupConfig?sessionKey={Bot.Session.SessionKey}&target={GroupId}");
+
+            return result.Content.ToObject<GroupSettings>();
+        }
+        
+        public async Task<GroupSettings> SetGroupSettings(GroupSettings settings)
+        {
+            var result = await HttpUtility.Post($"{Bot.Session.GetUrl()}/unmuteAll", new
+            {
+                sessionKey = Bot.Session.SessionKey,
+                target = GroupId,
+                config = settings
+            }.ToJson());
+
+            var jObject = result.Content.ToJObject();
+
+            if (jObject.GetPropertyValue("code") != "0")
+            {
+                throw new Exception(jObject.GetPropertyValue("msg"));
+            }
+
+            return result.Content.ToObject<GroupSettings>();
         }
     }
 }
