@@ -121,5 +121,12 @@ namespace Mirai.Net
 
             return JArray.Parse(result.Content).ToObject<IEnumerable<BotFriend>>();
         }
+        
+        public static async Task<IEnumerable<BotGroup>> GetGroupList()
+        {
+            var result = await HttpUtility.Get($"{Session.GetUrl()}//groupList?sessionKey={Session.SessionKey}");
+
+            return JArray.Parse(result.Content).ToObject<IEnumerable<BotGroup>>();
+        }
     }
 }

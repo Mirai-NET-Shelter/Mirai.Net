@@ -39,11 +39,11 @@ namespace Mirai.Net.Test
             Console.WriteLine("Connected!");
             Console.WriteLine(await Bot.GetPluginVersion());
 
-            var f = await Bot.GetFriendList();
+            var f = await Bot.GetGroupList();
             
             foreach (var friend in f)
             {
-                Console.WriteLine(friend.Remark);
+                Console.WriteLine(friend.Name + $" {friend.Permission}");
             }
 
             while (true)
