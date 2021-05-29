@@ -8,9 +8,9 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Removed redundancy statements">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added HandleInvitedRequest method">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Contact/BotFriend.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Bot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Bot.cs" afterDir="false" />
     </list>
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
@@ -44,8 +44,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotUnmutedEventArgs.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotJoinedGroupEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeaveGroupActive.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupActive.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupActiveEventArgs.cs" />
@@ -93,8 +91,10 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Apply.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Message/NudgeEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Enums/MemberJoinApplyOperateType.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Contact/FriendItem.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Contact/BotFriend.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -169,14 +169,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622270665939" duration="4275000" />
-    </task>
-    <task id="LOCAL-00045" summary="Added GetReceived type method">
-      <created>1622209140971</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1622209140971</updated>
+      <workItem from="1622270665939" duration="5445000" />
     </task>
     <task id="LOCAL-00046" summary="Changed property Permission to MemberPermissionType">
       <created>1622210125417</created>
@@ -514,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622274512785</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="Added HandleInvitedRequest method">
+      <created>1622275354687</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1622275354687</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -547,7 +547,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added GroupNameChangedEventArgs.cs" />
     <MESSAGE value="Added GroupEntranceAnnouncementChangedEventArgs.cs" />
     <MESSAGE value="Added GroupMuteAllChangedEventArgs.cs" />
     <MESSAGE value="Added GroupAllowAnonymousChatChangedEventArgs.cs" />
@@ -572,7 +571,8 @@
     <MESSAGE value="Added MemberJoinApplyOperateType.cs" />
     <MESSAGE value="Added HandleGroupJoinRequest method" />
     <MESSAGE value="Removed redundancy statements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed redundancy statements" />
+    <MESSAGE value="Added HandleInvitedRequest method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added HandleInvitedRequest method" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

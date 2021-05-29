@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Mirai.Net.Data.Contact;
 using Mirai.Net.Data.Events.Concrete.Args.Apply;
 using Mirai.Net.Data.Events.Enums;
 using Mirai.Net.Data.Messages;
@@ -8,6 +9,7 @@ using Mirai.Net.Modules;
 using Mirai.Net.Sessions;
 using Mirai.Net.Utilities;
 using Mirai.Net.Utilities.Extensions;
+using Newtonsoft.Json.Linq;
 using WebSocketSharp;
 
 namespace Mirai.Net
@@ -111,6 +113,13 @@ namespace Mirai.Net
             }.ToJson());
 
             Console.WriteLine(re.Content);
+        }
+
+        public static async Task<IEnumerable<BotFriend>> GetFriendList()
+        {
+            var result = await HttpUtility.Get($"{Session.GetUrl()}//friendList?sessionKey={Session.SessionKey}");
+
+            return JArray.Parse(result.Content).ToObject<IEnumerable<BotFriend>>();
         }
     }
 }

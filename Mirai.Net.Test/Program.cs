@@ -33,22 +33,18 @@ namespace Mirai.Net.Test
                 Key = "232511772e8745e0bd697f1dfb72f748",
                 QQ = "2672886221"
             };
-            Bot.Modules = new[]
-            {
-                new TestModule()
-            };
-            Bot.ReceivedGroupInvited += args =>
-            {
-                Console.WriteLine($"Received invited to group request: {args.FromId}");
-                Bot.HandleInvitedRequest(args, true);
-            };
-            
+
             await Bot.Launch();
                     
             Console.WriteLine("Connected!");
             Console.WriteLine(await Bot.GetPluginVersion());
 
-            Console.WriteLine("This is a test");
+            var f = await Bot.GetFriendList();
+            
+            foreach (var friend in f)
+            {
+                Console.WriteLine(friend.Remark);
+            }
 
             while (true)
             {
