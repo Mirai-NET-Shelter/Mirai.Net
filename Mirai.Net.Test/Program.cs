@@ -36,9 +36,9 @@ namespace Mirai.Net.Test
             {
                 new TestModule()
             };
-            Bot.GroupMuteAllChanged += args =>
+            Bot.BotMuted += args =>
             {
-                Console.WriteLine(args.Operator.Name);
+                Console.WriteLine(args.Operator.Name + "muted me!!!");
             };
             
             await Bot.Launch();
