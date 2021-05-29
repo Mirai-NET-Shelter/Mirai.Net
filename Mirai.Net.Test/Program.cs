@@ -5,6 +5,7 @@ using System.IO;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
+using Mirai.Net.Data.Events.Enums;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concrete;
 using Mirai.Net.Data.Messages.Enums;
@@ -36,9 +37,10 @@ namespace Mirai.Net.Test
             {
                 new TestModule()
             };
-            Bot.BotMuted += args =>
+            Bot.ReceivedGroupJoinRequest += args =>
             {
-                Console.WriteLine(args.Operator.Name + "muted me!!!");
+                Console.WriteLine($"Received join group request: {args.FromId} Message: {args.Message}");
+                Bot.HandleGroupJoinRequest(args, MemberJoinApplyOperateType.Accept);
             };
             
             await Bot.Launch();
