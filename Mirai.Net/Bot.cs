@@ -87,30 +87,15 @@ namespace Mirai.Net
 
         public static async Task HandleGroupJoinRequest(MemberJoinApplyEventArgs args, MemberJoinApplyOperateType operateType, string responseMessage = "")
         {
-            var operate = operateType switch
-            {
-                MemberJoinApplyOperateType.Accept => 0,
-                MemberJoinApplyOperateType.Reject => 1,
-                MemberJoinApplyOperateType.Ignore => 2,
-                MemberJoinApplyOperateType.RejectAndBlock => 3,
-                MemberJoinApplyOperateType.IgnoreAndBlock => 4,
-                _ => throw new ArgumentOutOfRangeException(nameof(operateType), operateType, null)
-            };
-
-            var json = new
+            await HttpUtility.Post($"{Session.GetUrl()}/resp/memberJoinRequestEvent", new
             {
                 sessionKey = Session.SessionKey,
                 eventId = args.EventId,
                 fromId = args.FromId,
                 groupId = args.GroupId,
-                operate,
+                operate = operateType,
                 message = responseMessage
-            }.ToJson();
-            Console.WriteLine(json);
-            
-            var result = await HttpUtility.Post($"{Session.GetUrl()}/resp/memberJoinRequestEvent", json);
-
-            Console.WriteLine(result.Content);
+            }.ToJson());
         }
     }
 }
