@@ -27,6 +27,7 @@ namespace Mirai.Net.Utilities
 
             var request = new RestRequest();
             request.AddJsonBody(content);
+            request.AddHeader("charset", "utf-8");
 
             return await RestClient.ExecuteAsync(request, Method.POST);
         }
