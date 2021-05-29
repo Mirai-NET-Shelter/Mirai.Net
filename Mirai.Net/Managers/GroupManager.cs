@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Mirai.Net.Utilities;
 using Mirai.Net.Utilities.Extensions;
 
-namespace Mirai.Net.Sessions
+namespace Mirai.Net.Managers
 {
     public class GroupManager
     {

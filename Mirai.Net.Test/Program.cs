@@ -12,6 +12,7 @@ using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concrete;
 using Mirai.Net.Data.Messages.Enums;
 using Mirai.Net.Data.Messengers.Media;
+using Mirai.Net.Managers;
 using Mirai.Net.Messengers.Concrete;
 using Mirai.Net.Messengers.MediaUploader;
 using Mirai.Net.Sessions;
