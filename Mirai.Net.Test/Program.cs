@@ -68,9 +68,9 @@ namespace Mirai.Net.Test
 
         public static async Task Do()
         {
-            var mgr = new GroupManager("389105053");
+            var mgr = new GroupManager("110838222");
 
-            await mgr.Kick("1590454991", "YOU HAS BEEN KICKED");
+            await mgr.Leave();
         }
     }
 }
