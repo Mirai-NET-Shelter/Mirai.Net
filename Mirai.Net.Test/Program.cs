@@ -70,7 +70,11 @@ namespace Mirai.Net.Test
         {
             var mgr = new GroupManager("389105053");
 
-            await mgr.Kick("1590454991", "YOU HAS BEEN KICKED");
+            await mgr.MuteAll();
+
+            await Task.Delay(10000);
+
+            await mgr.UnMuteAll();
         }
     }
 }

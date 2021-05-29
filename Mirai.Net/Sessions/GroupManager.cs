@@ -31,7 +31,7 @@ namespace Mirai.Net.Sessions
                 throw new Exception(jObject.GetPropertyValue("msg"));
             }
         }
-        
+
         public async Task UnMute(string target)
         {
             var result = await HttpUtility.Post($"{Bot.Session.GetUrl()}/unmute", new
@@ -48,7 +48,7 @@ namespace Mirai.Net.Sessions
                 throw new Exception(jObject.GetPropertyValue("msg"));
             }
         }
-        
+
         public async Task Kick(string target, string message = "")
         {
             var result = await HttpUtility.Post($"{Bot.Session.GetUrl()}/kick", new
@@ -66,8 +66,8 @@ namespace Mirai.Net.Sessions
                 throw new Exception(jObject.GetPropertyValue("msg"));
             }
         }
-        
-        public async Task<bool> Leave()
+
+        public async Task Leave()
         {
             var result = await HttpUtility.Post($"{Bot.Session.GetUrl()}/quit", new
             {
@@ -81,10 +81,38 @@ namespace Mirai.Net.Sessions
             {
                 throw new Exception(jObject.GetPropertyValue("msg"));
             }
-            
-            return jObject.GetPropertyValue("code") == "0";
+        }
+
+        public async Task MuteAll()
+        {
+            var result = await HttpUtility.Post($"{Bot.Session.GetUrl()}/muteAll", new
+            {
+                sessionKey = Bot.Session.SessionKey,
+                target = GroupId,
+            }.ToJson());
+
+            var jObject = result.Content.ToJObject();
+
+            if (jObject.GetPropertyValue("code") != "0")
+            {
+                throw new Exception(jObject.GetPropertyValue("msg"));
+            }
         }
         
-       
+        public async Task UnMuteAll()
+        {
+            var result = await HttpUtility.Post($"{Bot.Session.GetUrl()}/unmuteAll", new
+            {
+                sessionKey = Bot.Session.SessionKey,
+                target = GroupId,
+            }.ToJson());
+
+            var jObject = result.Content.ToJObject();
+
+            if (jObject.GetPropertyValue("code") != "0")
+            {
+                throw new Exception(jObject.GetPropertyValue("msg"));
+            }
+        }
     }
 }
