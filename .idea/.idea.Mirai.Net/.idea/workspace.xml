@@ -8,10 +8,8 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GetGroupListMethod">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Bot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Bot.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GetGroupMemberList">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Sessions/GroupManager.cs" afterDir="false" />
     </list>
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +42,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupActive.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupActiveEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupKick.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotKicked.cs" />
@@ -95,6 +92,7 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Contact/BotGroup.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Sessions/GroupManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -169,14 +167,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622270665939" duration="6658000" />
-    </task>
-    <task id="LOCAL-00048" summary="Rename OperationSender.cs to OperationSenderGroup.cs">
-      <created>1622211579557</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1622211579557</updated>
+      <workItem from="1622270665939" duration="6961000" />
     </task>
     <task id="LOCAL-00049" summary="Added BotMutedEventArgs.cs">
       <created>1622211598195</created>
@@ -514,7 +505,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622276631810</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="Added GetGroupMemberList">
+      <created>1622277782375</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1622277782375</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -547,7 +545,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added GroupAllowAnonymousChatChangedEventArgs.cs" />
     <MESSAGE value="Added GroupAllowConfessTalkChangedEventArgs.cs" />
     <MESSAGE value="Added GroupAllowMemberInviteChangedEventArgs.cs" />
     <MESSAGE value="Added GroupNewMemberJoinedEventArgs.cs" />
@@ -572,7 +569,8 @@
     <MESSAGE value="Added HandleInvitedRequest method" />
     <MESSAGE value="Added GetFriendList method" />
     <MESSAGE value="Added GetGroupListMethod" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added GetGroupListMethod" />
+    <MESSAGE value="Added GetGroupMemberList" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GetGroupMemberList" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
