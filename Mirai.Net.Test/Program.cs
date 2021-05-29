@@ -36,6 +36,18 @@ namespace Mirai.Net.Test
                 QQ = "2672886221"
             };
 
+            Bot.ReceivedGroupJoinRequest += args =>
+            {
+                if (args.GroupId == "389105053")
+                {
+                    Bot.HandleGroupJoinRequest(args, MemberJoinApplyOperateType.Accept);
+                }
+            };
+            Bot.ReceivedGroupInvited += args =>
+            {
+                Bot.HandleInvitedRequest(args, true);
+            };
+            
             await Bot.Launch();
                     
             Console.WriteLine("Connected!");
@@ -58,11 +70,7 @@ namespace Mirai.Net.Test
         {
             var mgr = new GroupManager("389105053");
 
-            await mgr.Mute("1590454991", 720000);
-
-            await Task.Delay(10000);
-
-            await mgr.UnMute("1590454991");
+            await mgr.Kick("1590454991", "YOU HAS BEEN KICKED");
         }
     }
 }

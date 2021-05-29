@@ -52,5 +52,25 @@ namespace Mirai.Net.Sessions
             
             return jObject.GetPropertyValue("code") == "0";
         }
+        
+        public async Task<bool> Kick(string target, string message = "")
+        {
+            var result = await HttpUtility.Post($"{Bot.Session.GetUrl()}/kick", new
+            {
+                sessionKey = Bot.Session.SessionKey,
+                target = GroupId,
+                memberId = target,
+                msg = message
+            }.ToJson());
+
+            var jObject = result.Content.ToJObject();
+
+            if (jObject.GetPropertyValue("code") != "0")
+            {
+                throw new Exception(jObject.GetPropertyValue("msg"));
+            }
+            
+            return jObject.GetPropertyValue("code") == "0";
+        }
     }
 }

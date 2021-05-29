@@ -8,7 +8,7 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GroupManager.cs">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added Mute methods">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Sessions/GroupManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Sessions/GroupManager.cs" afterDir="false" />
@@ -94,8 +94,8 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Contact/BotFriend.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Contact/BotGroup.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Sessions/GroupManager.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -170,14 +170,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622270665939" duration="7636000" />
-    </task>
-    <task id="LOCAL-00050" summary="Added BotOnlineEventArgs.cs">
-      <created>1622211604434</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1622211604435</updated>
+      <workItem from="1622270665939" duration="8272000" />
     </task>
     <task id="LOCAL-00051" summary="Added Bot.Events.cs">
       <created>1622211613000</created>
@@ -515,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622278070948</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="Added Mute methods">
+      <created>1622278940009</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1622278940009</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,7 +548,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added GroupAllowMemberInviteChangedEventArgs.cs" />
     <MESSAGE value="Added GroupNewMemberJoinedEventArgs.cs" />
     <MESSAGE value="Added GroupMember.cs" />
     <MESSAGE value="Use GroupMember.cs instead of internal classes" />
@@ -573,7 +572,8 @@
     <MESSAGE value="Added GetGroupListMethod" />
     <MESSAGE value="Added GetGroupMemberList" />
     <MESSAGE value="Added GroupManager.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added GroupManager.cs" />
+    <MESSAGE value="Added Mute methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Mute methods" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
