@@ -97,5 +97,20 @@ namespace Mirai.Net
                 message = responseMessage
             }.ToJson());
         }
+
+        public static async Task HandleInvitedRequest(BotInvitedEventArgs args, bool accept, string responseMessage = "")
+        {
+            var re = await HttpUtility.Post($"{Session.GetUrl()}/resp/botInvitedJoinGroupRequestEvent", new
+            {
+                sessionKey = Session.SessionKey,
+                eventId = args.EventId,
+                fromId = args.FromId,
+                groupId = args.GroupId,
+                operate = accept ? 0 : 1,
+                message = responseMessage
+            }.ToJson());
+
+            Console.WriteLine(re.Content);
+        }
     }
 }

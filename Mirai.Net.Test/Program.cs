@@ -37,10 +37,10 @@ namespace Mirai.Net.Test
             {
                 new TestModule()
             };
-            Bot.ReceivedGroupJoinRequest += args =>
+            Bot.ReceivedGroupInvited += args =>
             {
-                Console.WriteLine($"Received join group request: {args.FromId} Message: {args.Message}");
-                Bot.HandleGroupJoinRequest(args, MemberJoinApplyOperateType.Accept);
+                Console.WriteLine($"Received invited to group request: {args.FromId}");
+                Bot.HandleInvitedRequest(args, true);
             };
             
             await Bot.Launch();
