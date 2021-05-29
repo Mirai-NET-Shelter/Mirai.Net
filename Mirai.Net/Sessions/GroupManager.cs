@@ -14,7 +14,7 @@ namespace Mirai.Net.Sessions
             GroupId = groupId;
         }
 
-        public async Task<bool> Mute(string target, int seconds = 600)
+        public async Task Mute(string target, int seconds = 600)
         {
             var result = await HttpUtility.Post($"{Bot.Session.GetUrl()}/mute", new
             {
@@ -30,11 +30,9 @@ namespace Mirai.Net.Sessions
             {
                 throw new Exception(jObject.GetPropertyValue("msg"));
             }
-            
-            return jObject.GetPropertyValue("code") == "0";
         }
         
-        public async Task<bool> UnMute(string target)
+        public async Task UnMute(string target)
         {
             var result = await HttpUtility.Post($"{Bot.Session.GetUrl()}/unmute", new
             {
@@ -49,11 +47,9 @@ namespace Mirai.Net.Sessions
             {
                 throw new Exception(jObject.GetPropertyValue("msg"));
             }
-            
-            return jObject.GetPropertyValue("code") == "0";
         }
         
-        public async Task<bool> Kick(string target, string message = "")
+        public async Task Kick(string target, string message = "")
         {
             var result = await HttpUtility.Post($"{Bot.Session.GetUrl()}/kick", new
             {
@@ -69,8 +65,6 @@ namespace Mirai.Net.Sessions
             {
                 throw new Exception(jObject.GetPropertyValue("msg"));
             }
-            
-            return jObject.GetPropertyValue("code") == "0";
         }
         
         public async Task<bool> Leave()
@@ -90,5 +84,7 @@ namespace Mirai.Net.Sessions
             
             return jObject.GetPropertyValue("code") == "0";
         }
+        
+       
     }
 }
