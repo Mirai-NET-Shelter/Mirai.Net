@@ -112,8 +112,6 @@ namespace Mirai.Net
                 operate = accept ? 0 : 1,
                 message = responseMessage
             }.ToJson());
-
-            Console.WriteLine(re.Content);
         }
 
         public static async Task<IEnumerable<BotFriend>> GetFriendList()
