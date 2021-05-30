@@ -8,11 +8,8 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GroupSettings changed methods">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Managers/GroupMemberInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Managers/GroupManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Managers/GroupManager.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added BotInvitedEventArgs.cs">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Message/NudgeEventArgs.cs" afterDir="false" />
     </list>
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,24 +35,57 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Sessions/GroupManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net/Utilities/HttpUtility.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Administrator/RiderProjects/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Events.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/85946992-34F2-40F1-A5B4-721CF1CA5626/21/FileParameter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Events.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Events.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/OperationSender.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Events.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Messages/MessageReceivedArgs.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="vcs://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B8EF69D3-A481-43FE-8568-E981A8FFA98B/3b/1ddd38e8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B8EF69D3-A481-43FE-8568-E981A8FFA98B/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Bot/Events/EventArgsBase.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotPermissionChangedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotUnmutedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotJoinedGroupEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeaveGroupActive.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupActive.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupActiveEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupKick.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotKicked.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Events/Bot.Events.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/EventArgsBase.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Events.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Message.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowMemberInviteChangedEventAargs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/GroupMember.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMuteAllChangedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowAnonymousChatChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowConfessTalkChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowMemberInviteChangedEventArgs.cs" />
@@ -86,21 +116,11 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberUnmutedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberMutedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Apply/NewFriendApplyEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Apply/MemberJoinApplyEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Apply/BotInvitedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Apply.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Message/NudgeEventArgs.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Enums/MemberJoinApplyOperateType.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Contact/FriendItem.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Contact/BotFriend.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Contact/BotGroup.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Sessions/GroupManager.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Managers/GroupSettings.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Utilities/HttpUtility.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Managers/GroupMemberInfo.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Managers/GroupManager.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -113,7 +133,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.3498452" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.35020804" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -175,7 +195,125 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622270665939" duration="11538000" />
+    </task>
+    <task id="LOCAL-00042" summary="Renamed MemberPermission.cs to MemberPermissionType.cs">
+      <created>1622206804469</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1622206804469</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Added EventBase.cs &amp; EventArgsBase.cs">
+      <created>1622208088697</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1622208088697</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Make EventArgsBase.cs Type property virtual">
+      <created>1622208402094</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1622208402094</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Added GetReceived type method">
+      <created>1622209140971</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1622209140971</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Changed property Permission to MemberPermissionType">
+      <created>1622210125417</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1622210125417</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Fixed JsonProperty name to memberName">
+      <created>1622211565360</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1622211565360</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Rename OperationSender.cs to OperationSenderGroup.cs">
+      <created>1622211579557</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1622211579557</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Added BotMutedEventArgs.cs">
+      <created>1622211598195</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1622211598195</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Added BotOnlineEventArgs.cs">
+      <created>1622211604434</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1622211604435</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Added Bot.Events.cs">
+      <created>1622211613000</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1622211613000</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Removed redundancy EventBase.cs">
+      <created>1622211622890</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1622211622890</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Make Bot.cs partial">
+      <created>1622211650540</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1622211650540</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Integrated events branch handling to partial class Bot.Events.cs">
+      <created>1622211937307</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1622211937307</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Added Bot offline events">
+      <created>1622212555860</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1622212555860</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Added BotDroppedEventArgs.cs">
+      <created>1622212650638</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1622212650638</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Added BotReloginEventArgs.cs">
+      <created>1622212791178</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1622212791178</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Added BotPermissionChangedEventArgs.cs">
+      <created>1622213173928</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1622213173928</updated>
     </task>
     <task id="LOCAL-00059" summary="Added BotUnmutedEventArgs.cs">
       <created>1622213312304</created>
@@ -401,126 +539,7 @@
       <option name="project" value="LOCAL" />
       <updated>1622218809697</updated>
     </task>
-    <task id="LOCAL-00091" summary="Added MemberJoinApplyOperateType.cs">
-      <created>1622272044622</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1622272044623</updated>
-    </task>
-    <task id="LOCAL-00092" summary="Added HandleGroupJoinRequest method">
-      <created>1622274012342</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1622274012342</updated>
-    </task>
-    <task id="LOCAL-00093" summary="Removed redundancy statements">
-      <created>1622274512785</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1622274512785</updated>
-    </task>
-    <task id="LOCAL-00094" summary="Added HandleInvitedRequest method">
-      <created>1622275354687</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1622275354687</updated>
-    </task>
-    <task id="LOCAL-00095" summary="Added GetFriendList method">
-      <created>1622276431134</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1622276431134</updated>
-    </task>
-    <task id="LOCAL-00096" summary="Added GetGroupListMethod">
-      <created>1622276631809</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1622276631810</updated>
-    </task>
-    <task id="LOCAL-00097" summary="Added GetGroupMemberList">
-      <created>1622277782375</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1622277782375</updated>
-    </task>
-    <task id="LOCAL-00098" summary="Added GroupManager.cs">
-      <created>1622278070948</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1622278070948</updated>
-    </task>
-    <task id="LOCAL-00099" summary="Added Mute methods">
-      <created>1622278940009</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1622278940009</updated>
-    </task>
-    <task id="LOCAL-00100" summary="Added Kick method">
-      <created>1622279400285</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1622279400285</updated>
-    </task>
-    <task id="LOCAL-00101" summary="Removed redundancy output statement">
-      <created>1622279684829</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1622279684829</updated>
-    </task>
-    <task id="LOCAL-00102" summary="Added Leave method">
-      <created>1622279697161</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1622279697161</updated>
-    </task>
-    <task id="LOCAL-00103" summary="Remove redundancy return statement">
-      <created>1622279789090</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1622279789090</updated>
-    </task>
-    <task id="LOCAL-00104" summary="Added MuteAll/UnMuteAll methods">
-      <created>1622279973457</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1622279973457</updated>
-    </task>
-    <task id="LOCAL-00105" summary="Moved GroupManager.cs to Manager folder">
-      <created>1622280067757</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1622280067757</updated>
-    </task>
-    <task id="LOCAL-00106" summary="Make post request charset to utf-8">
-      <created>1622281511906</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1622281511906</updated>
-    </task>
-    <task id="LOCAL-00107" summary="Added GroupSettings changed methods">
-      <created>1622281607816</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1622281607816</updated>
-    </task>
-    <option name="localTasksCounter" value="108" />
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -553,6 +572,23 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Added Bot.Event.Message.cs" />
+    <MESSAGE value="Added FriendMessageRecalledEventArgs.cs" />
+    <MESSAGE value="Added Bot.Event.Group.cs" />
+    <MESSAGE value="Added GroupNameChangedEventArgs.cs" />
+    <MESSAGE value="Added GroupEntranceAnnouncementChangedEventArgs.cs" />
+    <MESSAGE value="Added GroupMuteAllChangedEventArgs.cs" />
+    <MESSAGE value="Added GroupAllowAnonymousChatChangedEventArgs.cs" />
+    <MESSAGE value="Added GroupAllowConfessTalkChangedEventArgs.cs" />
+    <MESSAGE value="Added GroupAllowMemberInviteChangedEventArgs.cs" />
+    <MESSAGE value="Added GroupNewMemberJoinedEventArgs.cs" />
+    <MESSAGE value="Added GroupMember.cs" />
+    <MESSAGE value="Use GroupMember.cs instead of internal classes" />
+    <MESSAGE value="Added GroupMemberKickedEventArgs.cs" />
+    <MESSAGE value="Added GroupMemberLeftGroupActiveEventArgs.cs" />
+    <MESSAGE value="Removed redundancy override type property" />
+    <MESSAGE value="Added GroupMemberCardChangedEventArgs.cs" />
+    <MESSAGE value="Added Group" />
     <MESSAGE value="Added GroupMemberTitleChangedEventArgs.cs" />
     <MESSAGE value="Added GroupMemberPermissionChangedEventArgs.cs" />
     <MESSAGE value="Added member muted event args" />
@@ -561,24 +597,7 @@
     <MESSAGE value="Added NewFriendApplyEventArgs.cs" />
     <MESSAGE value="Added MemberJoinApplyEventArgs.cs" />
     <MESSAGE value="Added BotInvitedEventArgs.cs" />
-    <MESSAGE value="Added MemberJoinApplyOperateType.cs" />
-    <MESSAGE value="Added HandleGroupJoinRequest method" />
-    <MESSAGE value="Removed redundancy statements" />
-    <MESSAGE value="Added HandleInvitedRequest method" />
-    <MESSAGE value="Added GetFriendList method" />
-    <MESSAGE value="Added GetGroupListMethod" />
-    <MESSAGE value="Added GetGroupMemberList" />
-    <MESSAGE value="Added GroupManager.cs" />
-    <MESSAGE value="Added Mute methods" />
-    <MESSAGE value="Added Kick method" />
-    <MESSAGE value="Removed redundancy output statement" />
-    <MESSAGE value="Added Leave method" />
-    <MESSAGE value="Remove redundancy return statement" />
-    <MESSAGE value="Added MuteAll/UnMuteAll methods" />
-    <MESSAGE value="Moved GroupManager.cs to Manager folder" />
-    <MESSAGE value="Make post request charset to utf-8" />
-    <MESSAGE value="Added GroupSettings changed methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added GroupSettings changed methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added BotInvitedEventArgs.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
