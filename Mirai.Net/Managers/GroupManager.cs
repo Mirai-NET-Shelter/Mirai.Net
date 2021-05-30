@@ -170,5 +170,22 @@ namespace Mirai.Net.Managers
                 throw new Exception(jObject.GetPropertyValue("msg"));
             }
         }
+
+        [Obsolete("不推荐使用")]
+        public async Task SetBibleMessage(string messageId)
+        {
+            var result = await HttpUtility.Post($"{Bot.Session.GetUrl()}/setEssence", new
+            {
+                sessionKey = Bot.Session.SessionKey,
+                target = messageId
+            }.ToJson());
+            
+            var jObj = result.Content.ToJObject();
+
+            if (jObj.GetPropertyValue("code") != "0")
+            {
+                throw new Exception(jObj.GetPropertyValue("msg"));
+            }
+        }
     }
 }
