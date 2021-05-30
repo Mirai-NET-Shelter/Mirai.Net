@@ -37,7 +37,7 @@ namespace Mirai.Net.Managers
                 dir = dirName
             }.ToJson());
 
-            var jObj = result.ToJObject();
+            var jObj = result.Content.ToJObject();
 
             if (jObj.GetPropertyValue("code") != "0")
             {
@@ -53,6 +53,24 @@ namespace Mirai.Net.Managers
             var result = await HttpUtility.Get(url);
 
             return result.Content.ToObject<GroupFileInfoDetail>();
+        }
+
+        public async Task Rename(string fileId, string newName)
+        {
+            var result = await HttpUtility.Post($"{Bot.Session.GetUrl()}/groupFileRename", new
+            {
+                sessionKey = Bot.Session.SessionKey,
+                target = GroupId,
+                id = fileId,
+                rename = newName
+            }.ToJson());
+
+            var jObj = result.Content.ToJObject();
+
+            if (jObj.GetPropertyValue("code") != "0")
+            {
+                throw new Exception(jObj.GetPropertyValue("msg"));
+            }
         }
     }
 }
