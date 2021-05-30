@@ -1,9 +1,11 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 using Mirai.Net.Data;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concrete;
 using Mirai.Net.Messengers.Concrete;
 using Mirai.Net.Modules;
+using Mirai.Net.Utilities.Extensions;
 
 namespace Mirai.Net.Test
 {
@@ -15,9 +17,10 @@ namespace Mirai.Net.Test
             {
                 var messenger = new GroupMessenger("110838222");
 
-                if (args.Sender.PermissionType == MemberPermissionType.Administrator)
+                if (args.Sender.Id == "2933170747")
                 {
-                    await messenger.Send(new PlainMessage($"Hello, {args.Sender.Id}"));
+                    await messenger.Send(new PlainMessage(
+                        $"Hello, {args.Sender.Id}, content: {args.MessageChain.ToJson()}"));
                 }
                 
             }   

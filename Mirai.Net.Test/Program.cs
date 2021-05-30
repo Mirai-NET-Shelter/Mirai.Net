@@ -11,7 +11,6 @@ using Mirai.Net.Data.Events.Enums;
 using Mirai.Net.Data.Managers;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concrete;
-using Mirai.Net.Data.Messages.Enums;
 using Mirai.Net.Data.Messengers.Media;
 using Mirai.Net.Managers;
 using Mirai.Net.Messengers.Concrete;
@@ -75,15 +74,7 @@ namespace Mirai.Net.Test
 
         public static async Task Do()
         {
-            var msg = new GroupMessenger("809830266");
-
-            var re = await msg.Send(new PlainMessage("你好"));
-
-            await Task.Delay(5000);
-
-            var mgr = new GroupManager(msg.Group);
-
-            await new RecallMessenger(re.MessageId).Recall();
+            
         }
     }
 }

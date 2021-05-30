@@ -53,7 +53,20 @@ namespace Mirai.Net
                     {
                         foreach (var module in Modules)
                         {
-                            module.Execute(args.Data.ToObject<MessageReceivedArgs>());
+                            var re = args.Data.ToObject<MessageReceivedArgs>();
+                            var arr = JArray.Parse(args.Data.ToJObject()["messageChain"]?.ToString()!);
+                            var chain = new List<MessageBase>();
+                            
+                            foreach (var token in arr)
+                            {
+                                chain.Add(token.ToString().ToConcreteMessage());
+                            }
+
+                            re.MessageChain = chain;
+
+                            Console.WriteLine(re.MessageChain.ToJson());
+                            
+                            module.Execute(re);
                         }
                     }
                 }
