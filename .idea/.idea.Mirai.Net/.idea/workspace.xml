@@ -8,9 +8,7 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added untested CreateDirectory and GetFileList methods">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Managers/GroupFileInfoDetail.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added untested Rename method">
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Managers/GroupFileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Managers/GroupFileManager.cs" afterDir="false" />
     </list>
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
@@ -169,20 +167,6 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-    </task>
-    <task id="LOCAL-00044" summary="Make EventArgsBase.cs Type property virtual">
-      <created>1622208402094</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1622208402094</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Added GetReceived type method">
-      <created>1622209140971</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1622209140971</updated>
     </task>
     <task id="LOCAL-00046" summary="Changed property Permission to MemberPermissionType">
       <created>1622210125417</created>
@@ -513,7 +497,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622382881643</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="Added untested GetFileInfoDetail method">
+      <created>1622383224952</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1622383224952</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Added untested Rename method">
+      <created>1622383428695</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1622383428695</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,8 +544,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added Bot.Event.Group.cs" />
-    <MESSAGE value="Added GroupNameChangedEventArgs.cs" />
     <MESSAGE value="Added GroupEntranceAnnouncementChangedEventArgs.cs" />
     <MESSAGE value="Added GroupMuteAllChangedEventArgs.cs" />
     <MESSAGE value="Added GroupAllowAnonymousChatChangedEventArgs.cs" />
@@ -571,7 +567,9 @@
     <MESSAGE value="Added BotInvitedEventArgs.cs" />
     <MESSAGE value="Added GroupFileManager.cs &amp; GroupFileInfo.cs" />
     <MESSAGE value="Added untested CreateDirectory and GetFileList methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added untested CreateDirectory and GetFileList methods" />
+    <MESSAGE value="Added untested GetFileInfoDetail method" />
+    <MESSAGE value="Added untested Rename method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added untested Rename method" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
