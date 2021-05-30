@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Mirai.Net.Data;
 using Mirai.Net.Data.Contact;
 using Mirai.Net.Data.Events.Concrete.Args.Apply;
 using Mirai.Net.Data.Events.Enums;
 using Mirai.Net.Data.Messages;
+using Mirai.Net.Data.Messages.Concrete;
 using Mirai.Net.Modules;
+using Mirai.Net.Modules.Commands;
 using Mirai.Net.Sessions;
 using Mirai.Net.Utilities;
 using Mirai.Net.Utilities.Extensions;
@@ -54,6 +57,7 @@ namespace Mirai.Net
                         foreach (var module in Modules)
                         {
                             var re = args.Data.ToObject<MessageReceivedArgs>();
+
                             var arr = JArray.Parse(args.Data.ToJObject()["messageChain"]?.ToString()!);
                             var chain = new List<MessageBase>();
                             
@@ -64,7 +68,23 @@ namespace Mirai.Net
 
                             re.MessageChain = chain;
 
-                            Console.WriteLine(re.MessageChain.ToJson());
+                            if (module is CommandModuleBase commandModule)
+                            {
+                                foreach (var messageBase in re.MessageChain)
+                                {
+                                    if (messageBase is PlainMessage plainMessage)
+                                    {
+                                        foreach (var executor in commandModule.Command.Executors)
+                                        {
+                                            if (plainMessage.Text.Contains(executor))
+                                            {
+                                                commandModule.ExecuteCommand(re,
+                                                    plainMessage.Text.Replace(executor, "").Split(" "));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                             
                             module.Execute(re);
                         }

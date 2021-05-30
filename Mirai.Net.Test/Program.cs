@@ -7,6 +7,7 @@ using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 using Mirai.Net.Data;
+using Mirai.Net.Data.Commands;
 using Mirai.Net.Data.Events.Enums;
 using Mirai.Net.Data.Managers;
 using Mirai.Net.Data.Messages;
@@ -39,7 +40,19 @@ namespace Mirai.Net.Test
             };
             Bot.Modules = new[]
             {
-                new TestModule()
+                new Test2Module
+                {
+                    Command = new Command
+                    {
+                        Executors = new []
+                        {
+                            "/Hello",
+                            "/hello",
+                            "/hi",
+                            "/你好"
+                        }
+                    }
+                }
             };
 
             Bot.ReceivedGroupJoinRequest += args =>
