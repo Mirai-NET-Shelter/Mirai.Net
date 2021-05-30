@@ -77,7 +77,7 @@ namespace Mirai.Net.Test
         {
             var mgr = new GroupFileManager("809830266");
 
-            await mgr.CreateDirectory("TestDir");
+            await mgr.CreateDirectory("./TestDir");
 
             Console.WriteLine("Done");
         }
