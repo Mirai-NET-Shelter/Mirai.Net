@@ -1,5 +1,4 @@
 ﻿using System;
-using Mirai.Net.Data.Messages.Enums;
 using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Messages.Concrete

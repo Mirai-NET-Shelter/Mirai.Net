@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Mirai.Net.Data.Messages;
-using Mirai.Net.Data.Messages.Enums;
 using Mirai.Net.Data.Messengers.Enums;
 using Mirai.Net.Utilities;
 using Mirai.Net.Utilities.Extensions;

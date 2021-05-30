@@ -1,5 +1,4 @@
 ﻿using System;
-using Mirai.Net.Data.Messages.Enums;
 using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Messages.Concrete
@@ -19,16 +18,5 @@ namespace Mirai.Net.Data.Messages.Concrete
         
         [JsonProperty("path")]
         public string Path {get; set;}
-        
-        public FlashImageMessage(string param, ImageMessageType type = ImageMessageType.Url)
-        {
-            _ = type switch
-            {
-                ImageMessageType.Id => ImageId = param,
-                ImageMessageType.Url => Url = param,
-                ImageMessageType.Path => Path = param,
-                _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
-            };
-        }
     }
 }
