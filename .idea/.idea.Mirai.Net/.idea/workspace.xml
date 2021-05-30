@@ -8,8 +8,8 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added untested Rename method">
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Managers/GroupFileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Managers/GroupFileManager.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added untested DeleteMethod">
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Managers/GroupManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Managers/GroupManager.cs" afterDir="false" />
     </list>
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +42,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeaveGroupActive.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupActive.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupActiveEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupKick.cs" />
@@ -90,9 +89,10 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Apply.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Message/NudgeEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Managers/GroupFileInfo.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Managers/GroupFileInfoDetail.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Managers/GroupFileManager.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Managers/GroupManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -167,20 +167,6 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-    </task>
-    <task id="LOCAL-00046" summary="Changed property Permission to MemberPermissionType">
-      <created>1622210125417</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1622210125417</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Fixed JsonProperty name to memberName">
-      <created>1622211565360</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1622211565360</updated>
     </task>
     <task id="LOCAL-00048" summary="Rename OperationSender.cs to OperationSenderGroup.cs">
       <created>1622211579557</created>
@@ -511,7 +497,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622383428695</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="Added untested Move method">
+      <created>1622383527061</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1622383527061</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Added untested DeleteMethod">
+      <created>1622383618002</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1622383618002</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,8 +544,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added GroupEntranceAnnouncementChangedEventArgs.cs" />
-    <MESSAGE value="Added GroupMuteAllChangedEventArgs.cs" />
     <MESSAGE value="Added GroupAllowAnonymousChatChangedEventArgs.cs" />
     <MESSAGE value="Added GroupAllowConfessTalkChangedEventArgs.cs" />
     <MESSAGE value="Added GroupAllowMemberInviteChangedEventArgs.cs" />
@@ -569,7 +567,9 @@
     <MESSAGE value="Added untested CreateDirectory and GetFileList methods" />
     <MESSAGE value="Added untested GetFileInfoDetail method" />
     <MESSAGE value="Added untested Rename method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added untested Rename method" />
+    <MESSAGE value="Added untested Move method" />
+    <MESSAGE value="Added untested DeleteMethod" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added untested DeleteMethod" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

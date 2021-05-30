@@ -75,11 +75,15 @@ namespace Mirai.Net.Test
 
         public static async Task Do()
         {
-            var mgr = new GroupFileManager("809830266");
+            var msg = new GroupMessenger("809830266");
 
-            await mgr.CreateDirectory("./TestDir");
+            var re = await msg.Send(new PlainMessage("你好"));
 
-            Console.WriteLine("Done");
+            await Task.Delay(5000);
+
+            var mgr = new GroupManager(msg.Group);
+
+            await new RecallMessenger(re.MessageId).Recall();
         }
     }
 }

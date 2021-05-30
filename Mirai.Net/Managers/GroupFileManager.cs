@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Mirai.Net.Managers
 {
+    [Obsolete("此类所有的方法未经测试通过，不推荐使用")]
     public class GroupFileManager
     {
         public string GroupId { get; set; }
