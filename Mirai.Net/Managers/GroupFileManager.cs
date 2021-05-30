@@ -44,5 +44,15 @@ namespace Mirai.Net.Managers
                 throw new Exception(jObj.GetPropertyValue("msg"));
             }
         }
+
+        public async Task<GroupFileInfoDetail> GetFileInfoDetail(string fileId)
+        {
+            var url =
+                $"{Bot.Session.GetUrl()}/groupFileInfo?sessionKey={Bot.Session.SessionKey}&target={GroupId}&id={fileId}";
+
+            var result = await HttpUtility.Get(url);
+
+            return result.Content.ToObject<GroupFileInfoDetail>();
+        }
     }
 }

@@ -8,9 +8,9 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GroupFileManager.cs &amp; GroupFileInfo.cs">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added untested CreateDirectory and GetFileList methods">
+      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Managers/GroupFileInfoDetail.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Managers/GroupFileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Managers/GroupFileManager.cs" afterDir="false" />
     </list>
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
@@ -40,10 +40,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B8EF69D3-A481-43FE-8568-E981A8FFA98B/3b/1ddd38e8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/85946992-34F2-40F1-A5B4-721CF1CA5626/21/FileParameter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B8EF69D3-A481-43FE-8568-E981A8FFA98B/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Managers/GroupFileManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotJoinedGroupEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeaveGroupActive.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupActive.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupActiveEventArgs.cs" />
@@ -92,8 +92,9 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Apply.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Message/NudgeEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Managers/GroupFileInfo.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Managers/GroupFileManager.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Managers/GroupFileInfoDetail.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Managers/GroupFileManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -168,13 +169,6 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-    </task>
-    <task id="LOCAL-00043" summary="Added EventBase.cs &amp; EventArgsBase.cs">
-      <created>1622208088697</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1622208088697</updated>
     </task>
     <task id="LOCAL-00044" summary="Make EventArgsBase.cs Type property virtual">
       <created>1622208402094</created>
@@ -512,7 +506,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622380428135</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Added untested CreateDirectory and GetFileList methods">
+      <created>1622382881643</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1622382881643</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -545,7 +546,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added FriendMessageRecalledEventArgs.cs" />
     <MESSAGE value="Added Bot.Event.Group.cs" />
     <MESSAGE value="Added GroupNameChangedEventArgs.cs" />
     <MESSAGE value="Added GroupEntranceAnnouncementChangedEventArgs.cs" />
@@ -570,7 +570,8 @@
     <MESSAGE value="Added MemberJoinApplyEventArgs.cs" />
     <MESSAGE value="Added BotInvitedEventArgs.cs" />
     <MESSAGE value="Added GroupFileManager.cs &amp; GroupFileInfo.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added GroupFileManager.cs &amp; GroupFileInfo.cs" />
+    <MESSAGE value="Added untested CreateDirectory and GetFileList methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added untested CreateDirectory and GetFileList methods" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
