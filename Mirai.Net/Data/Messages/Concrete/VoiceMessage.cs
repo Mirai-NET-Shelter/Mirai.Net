@@ -26,16 +26,5 @@ namespace Mirai.Net.Data.Messages.Concrete
         /// </summary>  
         [JsonProperty("path")]
         public string Path {get; set;}
-
-        public VoiceMessage(string param = null, VoiceMessageType voiceMessageType = VoiceMessageType.Url)
-        {
-            _ = voiceMessageType switch
-            {
-                VoiceMessageType.Url => Url = param,
-                VoiceMessageType.Path => Path = param,
-                VoiceMessageType.Id => VoiceId = param,
-                _ => throw new ArgumentOutOfRangeException(nameof(voiceMessageType), voiceMessageType, null)
-            };
-        }
     }
 }

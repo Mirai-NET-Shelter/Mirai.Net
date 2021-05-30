@@ -25,16 +25,5 @@ namespace Mirai.Net.Data.Messages.Concrete
         /// </summary>
         [JsonProperty("path")]
         public string Path {get; set;}
-
-        public ImageMessage(string param = null, ImageMessageType type = ImageMessageType.Url)
-        {
-            _ = type switch
-            {
-                ImageMessageType.Id => ImageId = param,
-                ImageMessageType.Url => Url = param,
-                ImageMessageType.Path => Path = param,
-                _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
-            };
-        }
     }
 }
