@@ -24,6 +24,7 @@ using WebSocketSharp;
 using WebSocket = WebSocketSharp.WebSocket;
 
 //TODO: Edit unused modify to internal
+//TODO: Added effective exception handle
 namespace Mirai.Net.Test
 {
     public class Program
@@ -74,12 +75,9 @@ namespace Mirai.Net.Test
 
         public static async Task Do()
         {
-            var mgr = new GroupManager("389105053");
+            var mgr = new GroupFileManager("809830266");
 
-            await mgr.SetGroupMemberInfo(new GroupMemberInfo
-            {
-                Name = "一般路过破晓"
-            }, "2933170747");
+            await mgr.CreateDirectory("TestDir");
 
             Console.WriteLine("Done");
         }

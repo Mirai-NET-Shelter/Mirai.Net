@@ -8,8 +8,10 @@
     <projectFile>Mirai.Net.Test/Mirai.Net.Test.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added BotInvitedEventArgs.cs">
-      <change afterPath="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Message/NudgeEventArgs.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added GroupFileManager.cs &amp; GroupFileInfo.cs">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Managers/GroupFileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Managers/GroupFileManager.cs" afterDir="false" />
     </list>
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,43 +37,12 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Events.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/85946992-34F2-40F1-A5B4-721CF1CA5626/21/FileParameter.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Events.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Events.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/OperationSender.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Events.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Messages/MessageReceivedArgs.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="vcs://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B8EF69D3-A481-43FE-8568-E981A8FFA98B/3b/1ddd38e8/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/85946992-34F2-40F1-A5B4-721CF1CA5626/21/FileParameter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B8EF69D3-A481-43FE-8568-E981A8FFA98B/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net.Test/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Bot.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/CodeBase/Bots/Mirai.Net/Mirai.Net/Mirai.Net/Data/Bot/Events/EventArgsBase.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotPermissionChangedEventArgs.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotUnmutedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotJoinedGroupEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeaveGroupActive.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Bot/Events/Concrete/Args/BotLeftGroupActive.cs" />
@@ -85,7 +56,6 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowMemberInviteChangedEventAargs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/GroupMember.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMuteAllChangedEventArgs.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowAnonymousChatChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowConfessTalkChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupAllowMemberInviteChangedEventArgs.cs" />
@@ -121,6 +91,9 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Apply/BotInvitedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Apply.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Message/NudgeEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Managers/GroupFileInfo.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Managers/GroupFileManager.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -133,7 +106,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.35020804" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34951457" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -195,13 +168,6 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-    </task>
-    <task id="LOCAL-00042" summary="Renamed MemberPermission.cs to MemberPermissionType.cs">
-      <created>1622206804469</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1622206804469</updated>
     </task>
     <task id="LOCAL-00043" summary="Added EventBase.cs &amp; EventArgsBase.cs">
       <created>1622208088697</created>
@@ -539,7 +505,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622218809697</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="Added GroupFileManager.cs &amp; GroupFileInfo.cs">
+      <created>1622380428135</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1622380428135</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +545,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added Bot.Event.Message.cs" />
     <MESSAGE value="Added FriendMessageRecalledEventArgs.cs" />
     <MESSAGE value="Added Bot.Event.Group.cs" />
     <MESSAGE value="Added GroupNameChangedEventArgs.cs" />
@@ -597,7 +569,8 @@
     <MESSAGE value="Added NewFriendApplyEventArgs.cs" />
     <MESSAGE value="Added MemberJoinApplyEventArgs.cs" />
     <MESSAGE value="Added BotInvitedEventArgs.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added BotInvitedEventArgs.cs" />
+    <MESSAGE value="Added GroupFileManager.cs &amp; GroupFileInfo.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GroupFileManager.cs &amp; GroupFileInfo.cs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
