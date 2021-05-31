@@ -12,7 +12,7 @@ namespace Mirai.Net.Messengers.Concrete
             throw new System.NotImplementedException();
         }
 
-        public override Task<MessageCallback> Send(string messageId, params MessageBase[] message)
+        public override Task<MessageCallback> Quote(string messageId, params MessageBase[] message)
         {
             throw new System.NotImplementedException();
         }

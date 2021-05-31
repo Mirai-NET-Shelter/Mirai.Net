@@ -28,7 +28,7 @@ namespace Mirai.Net.Messengers.Concrete
             return result.ToObject<MessageCallback>();
         }
         
-        public override async Task<MessageCallback> Send(string messageId, params MessageBase[] messages)
+        public override async Task<MessageCallback> Quote(string messageId, params MessageBase[] messages)
         {
             var url = $"{Bot.Session.GetUrl()}/sendGroupMessage";
 

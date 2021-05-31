@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Messages.Concrete
 {
     public class QuoteMessage : MessageBase
     {
-        public override string Type { get; set; } = "Quote";
+        public override string Type { get; set; } = "Send";
 
         [JsonProperty("id")] 
         public string Id { get; set; }

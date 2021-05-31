@@ -11,14 +11,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Removed redundancy todo">
       <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Test2Module.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Test2Module.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/TestModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/TestModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Modules/Commands/CommandModuleBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Modules/Commands/CommandModuleBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/MessageExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/MessageExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/GroupMessenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/GroupMessenger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/ImageMessenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/ImageMessenger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/RecallMessenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/RecallMessenger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/TempMessenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/TempMessenger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/MessengerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/MessengerBase.cs" afterDir="false" />
     </list>
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,9 +53,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberKickedEventArgs.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberLeftGroupActiveEventArgs.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupNameChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupNewMemberJoinedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Bot/BotDroppedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Bot/BotJoinedGroupEventArgs.cs" />
@@ -103,6 +101,9 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Modules/Commands/CommandModuleBase.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/TestModule.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net.Test/Test2Module.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/TempMessenger.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MessengerBase.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -177,21 +178,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622464711457" duration="422000" />
-    </task>
-    <task id="LOCAL-00055" summary="Added Bot offline events">
-      <created>1622212555860</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1622212555860</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Added BotDroppedEventArgs.cs">
-      <created>1622212650638</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1622212650638</updated>
+      <workItem from="1622464711457" duration="738000" />
     </task>
     <task id="LOCAL-00057" summary="Added BotReloginEventArgs.cs">
       <created>1622212791178</created>
@@ -522,7 +509,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622398138221</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="Make useless methods internal">
+      <created>1622465334990</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1622465334991</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Removed redundancy todo">
+      <created>1622465413207</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1622465413207</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -622,8 +623,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added GroupMemberLeftGroupActiveEventArgs.cs" />
-    <MESSAGE value="Removed redundancy override type property" />
     <MESSAGE value="Added GroupMemberCardChangedEventArgs.cs" />
     <MESSAGE value="Added Group" />
     <MESSAGE value="Added GroupMemberTitleChangedEventArgs.cs" />
@@ -647,7 +646,9 @@
     <MESSAGE value="Removed null using statement" />
     <MESSAGE value="Fixed MessageChain fatal bug" />
     <MESSAGE value="Accomplished simple command system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Accomplished simple command system" />
+    <MESSAGE value="Make useless methods internal" />
+    <MESSAGE value="Removed redundancy todo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed redundancy todo" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

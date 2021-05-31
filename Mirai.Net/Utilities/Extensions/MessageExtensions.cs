@@ -16,7 +16,7 @@ namespace Mirai.Net.Utilities.Extensions
             return jObj.GetPropertyValue("type") switch
             {
                 "Source" => JsonConvert.DeserializeObject<SourceMessage>(message),
-                "Quote" => JsonConvert.DeserializeObject<QuoteMessage>(message),
+                "Send" => JsonConvert.DeserializeObject<QuoteMessage>(message),
                 "At" => JsonConvert.DeserializeObject<AtMessage>(message),
                 "AtAll" => JsonConvert.DeserializeObject<AtAllMessage>(message),
                 "Face" => JsonConvert.DeserializeObject<FaceMessage>(message),
