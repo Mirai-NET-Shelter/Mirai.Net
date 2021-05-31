@@ -11,7 +11,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Build up jekyll environment" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Build up jekyll environment">
+      <change beforePath="$PROJECT_DIR$/docs/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Gemfile.lock" afterDir="false" />
+    </list>
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,14 +172,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622464711457" duration="6350000" />
-    </task>
-    <task id="LOCAL-00065" summary="Added Bot.Event.Message.cs">
-      <created>1622214577195</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1622214577195</updated>
+      <workItem from="1622464711457" duration="7045000" />
     </task>
     <task id="LOCAL-00066" summary="Added FriendMessageRecalledEventArgs.cs">
       <created>1622214744185</created>
@@ -514,7 +510,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622473254572</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="Build up jekyll environment">
+      <created>1622473341581</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1622473341581</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,6 +547,31 @@
                     <value>
                       <list>
                         <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="9d5da63a-41aa-4025-92bf-0c9738da26b4">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:D:/CodeBase/Bots/Mirai.Net/Mirai.Net/docs" />
                       </list>
                     </value>
                   </entry>
@@ -586,6 +614,7 @@
     </option>
     <option name="OPEN_GENERIC_TABS">
       <map>
+        <entry key="9d5da63a-41aa-4025-92bf-0c9738da26b4" value="TOOL_WINDOW" />
         <entry key="d60fac78-2939-420d-8828-215763ef6c55" value="TOOL_WINDOW" />
       </map>
     </option>
