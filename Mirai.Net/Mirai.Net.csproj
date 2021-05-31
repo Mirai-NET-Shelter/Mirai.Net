@@ -2,6 +2,13 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>AHpxChina</Authors>
+        <Description>基于mirai-api-http的mirai .net sdk</Description>
+        <Copyright>© 2021 AHpx</Copyright>
+        <PackageProjectUrl>https://github.com/AHpxChina/Mirai.Net</PackageProjectUrl>
+        <PackageLicense>https://github.com/AHpxChina/Mirai.Net/blob/master/LICENSE</PackageLicense>
+        <RepositoryUrl>https://github.com/AHpxChina/Mirai.Net</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>

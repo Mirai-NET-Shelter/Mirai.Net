@@ -11,15 +11,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Removed redundancy todo">
-      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Test2Module.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Test2Module.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/TestModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/TestModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/FriendMessenger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/GroupMessenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/GroupMessenger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/ImageMessenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/ImageMessenger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/RecallMessenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/RecallMessenger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/TempMessenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/TempMessenger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Messengers/MessengerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Messengers/MessengerBase.cs" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added missing inheritance">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" afterDir="false" />
     </list>
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +47,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupNewMemberJoinedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Bot/BotDroppedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Bot/BotJoinedGroupEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Bot/BotKickedEventArgs.cs" />
@@ -68,9 +61,7 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Message/FriendMessageRecalledEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Message/GroupMessageRecalledEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberCardChangedEventArgs.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberTitleChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberPermissionChangedEevntArgs.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberPermissionChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberMutedArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Events/Bot.Event.Group.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberUnmutedEventArgs.cs" />
@@ -104,6 +95,9 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/Concrete/TempMessenger.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Messages/MessageBase.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Messengers/MessengerBase.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberPermissionChangedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberTitleChangedEventArgs.cs" />
+      <option value="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -178,28 +172,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622464711457" duration="738000" />
-    </task>
-    <task id="LOCAL-00057" summary="Added BotReloginEventArgs.cs">
-      <created>1622212791178</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1622212791178</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Added BotPermissionChangedEventArgs.cs">
-      <created>1622213173928</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1622213173928</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Added BotUnmutedEventArgs.cs">
-      <created>1622213312304</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1622213312304</updated>
+      <workItem from="1622464711457" duration="1813000" />
     </task>
     <task id="LOCAL-00060" summary="Added BotJoinedGroupEventArgs.cs">
       <created>1622213435093</created>
@@ -523,7 +496,28 @@
       <option name="project" value="LOCAL" />
       <updated>1622465413207</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="Rename send overload to Quote">
+      <created>1622465467515</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1622465467515</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Rename send overload to Quote">
+      <created>1622465505546</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1622465505546</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Added missing inheritance">
+      <created>1622465692986</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1622465692987</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -623,8 +617,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added GroupMemberCardChangedEventArgs.cs" />
-    <MESSAGE value="Added Group" />
     <MESSAGE value="Added GroupMemberTitleChangedEventArgs.cs" />
     <MESSAGE value="Added GroupMemberPermissionChangedEventArgs.cs" />
     <MESSAGE value="Added member muted event args" />
@@ -648,7 +640,9 @@
     <MESSAGE value="Accomplished simple command system" />
     <MESSAGE value="Make useless methods internal" />
     <MESSAGE value="Removed redundancy todo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed redundancy todo" />
+    <MESSAGE value="Rename send overload to Quote" />
+    <MESSAGE value="Added missing inheritance" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added missing inheritance" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
