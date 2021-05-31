@@ -38,6 +38,7 @@ namespace Mirai.Net.Test
                 Key = "232511772e8745e0bd697f1dfb72f748",
                 QQ = "2672886221"
             };
+            
             Bot.Modules = new[]
             {
                 new Test2Module
@@ -71,6 +72,8 @@ namespace Mirai.Net.Test
                     
             Console.WriteLine("Connected!");
             Console.WriteLine(await Bot.GetPluginVersion());
+
+            var groupMessenger = new GroupMessenger("");
 
             await Do();
 

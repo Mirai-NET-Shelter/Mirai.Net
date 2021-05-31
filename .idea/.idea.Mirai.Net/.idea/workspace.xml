@@ -11,9 +11,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Build up jekyll environment">
-      <change beforePath="$PROJECT_DIR$/docs/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Gemfile.lock" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Updated description">
+      <change afterPath="$PROJECT_DIR$/docs/_posts/2021-05-31-get-start-to-mirai-net.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_posts/2021-05-31-welcome-to-jekyll.markdown" beforeDir="false" />
     </list>
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +87,6 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Commands/Command.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Bot.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Managers/CommandManager.cs" />
-      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/MessageExtensions.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/JsonExtensions.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Utilities/Extensions/StringExtensions.cs" />
@@ -97,6 +99,7 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberPermissionChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberTitleChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" />
+      <option value="$PROJECT_DIR$/Mirai.Net.Test/Program.cs" />
       <option value="$PROJECT_DIR$/README.md" />
     </changedPaths>
   </component>
@@ -172,14 +175,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622464711457" duration="7045000" />
-    </task>
-    <task id="LOCAL-00066" summary="Added FriendMessageRecalledEventArgs.cs">
-      <created>1622214744185</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1622214744185</updated>
+      <workItem from="1622464711457" duration="9202000" />
     </task>
     <task id="LOCAL-00067" summary="Added Bot.Event.Group.cs">
       <created>1622214887731</created>
@@ -517,7 +513,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622473341581</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="Updated description">
+      <created>1622474136241</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1622474136241</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +646,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Extend to EventArgBase.cs" />
     <MESSAGE value="Added Bot.Event.Apply.cs" />
     <MESSAGE value="Added NewFriendApplyEventArgs.cs" />
     <MESSAGE value="Added MemberJoinApplyEventArgs.cs" />
@@ -668,7 +670,8 @@
     <MESSAGE value="Updated nuget package info" />
     <MESSAGE value="Updated README.md" />
     <MESSAGE value="Build up jekyll environment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Build up jekyll environment" />
+    <MESSAGE value="Updated description" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated description" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
