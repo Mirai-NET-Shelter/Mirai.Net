@@ -11,9 +11,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Updated nuget package info">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" afterDir="false" />
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Updated README.md">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +46,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Bot/BotDroppedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Bot/BotJoinedGroupEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Bot/BotKickedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Bot/BotLeftGroupActiveEventArgs.cs" />
@@ -98,6 +96,7 @@
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberPermissionChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Data/Events/Concrete/Args/Group/GroupMemberTitleChangedEventArgs.cs" />
       <option value="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" />
+      <option value="$PROJECT_DIR$/README.md" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1t1xm6VTfBp7obGghNnOSIHEvYH" />
@@ -172,14 +171,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622464711457" duration="3486000" />
-    </task>
-    <task id="LOCAL-00061" summary="Added BotLeftGroupActiveEventArgs.cs">
-      <created>1622213598619</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1622213598619</updated>
+      <workItem from="1622464711457" duration="3804000" />
     </task>
     <task id="LOCAL-00062" summary="Added BotKickedEventArgs.cs">
       <created>1622213706790</created>
@@ -517,7 +509,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622466560260</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="Updated README.md">
+      <created>1622468981563</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1622468981563</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,7 +616,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added GroupMemberPermissionChangedEventArgs.cs" />
     <MESSAGE value="Added member muted event args" />
     <MESSAGE value="Extend to EventArgBase.cs" />
     <MESSAGE value="Added Bot.Event.Apply.cs" />
@@ -642,7 +640,8 @@
     <MESSAGE value="Rename send overload to Quote" />
     <MESSAGE value="Added missing inheritance" />
     <MESSAGE value="Updated nuget package info" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated nuget package info" />
+    <MESSAGE value="Updated README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated README.md" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
