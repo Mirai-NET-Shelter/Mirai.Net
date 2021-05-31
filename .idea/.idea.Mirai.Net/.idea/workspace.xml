@@ -11,7 +11,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Added missing inheritance">
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Updated nuget package info">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mirai.Net/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Mirai.Net/Mirai.Net.csproj" afterDir="false" />
     </list>
@@ -172,14 +172,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622464711457" duration="1813000" />
-    </task>
-    <task id="LOCAL-00060" summary="Added BotJoinedGroupEventArgs.cs">
-      <created>1622213435093</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1622213435093</updated>
+      <workItem from="1622464711457" duration="3486000" />
     </task>
     <task id="LOCAL-00061" summary="Added BotLeftGroupActiveEventArgs.cs">
       <created>1622213598619</created>
@@ -517,7 +510,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622465692987</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="Updated nuget package info">
+      <created>1622466560260</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1622466560260</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,7 +617,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added GroupMemberTitleChangedEventArgs.cs" />
     <MESSAGE value="Added GroupMemberPermissionChangedEventArgs.cs" />
     <MESSAGE value="Added member muted event args" />
     <MESSAGE value="Extend to EventArgBase.cs" />
@@ -642,7 +641,8 @@
     <MESSAGE value="Removed redundancy todo" />
     <MESSAGE value="Rename send overload to Quote" />
     <MESSAGE value="Added missing inheritance" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added missing inheritance" />
+    <MESSAGE value="Updated nuget package info" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated nuget package info" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
