@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Utilities.Extensions
 {
-    public static class StringExtensions
+    internal static class StringExtensions
     {
-        public static Uri ToUri(this string s)
+        internal static Uri ToUri(this string s)
         {
             try
             {
@@ -20,14 +20,14 @@ namespace Mirai.Net.Utilities.Extensions
             }
         }
 
-        public static string GetUrl(this MiraiSession session, bool isWebsocket = false)
+        internal static string GetUrl(this MiraiSession session, bool isWebsocket = false)
         {
             var prefix = isWebsocket ? "ws" : "http";
 
             return $"{prefix}://{session.Host}:{session.Port}";
         }
 
-        public static bool IsNumber(this string s)
+        internal static bool IsNumber(this string s)
         {
             return int.TryParse(s, out _);
         }
@@ -38,7 +38,7 @@ namespace Mirai.Net.Utilities.Extensions
         /// <param name="s"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static bool GetReceivedType(this string s)
+        internal static bool GetReceivedType(this string s)
         {
             try
             {

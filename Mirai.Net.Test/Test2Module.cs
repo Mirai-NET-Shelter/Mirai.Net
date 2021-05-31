@@ -8,11 +8,6 @@ namespace Mirai.Net.Test
 {
     public class Test2Module : CommandModuleBase 
     {
-        public override void Execute(MessageReceivedArgs args)
-        {
-            
-        }
-
         public override async void ExecuteCommand(MessageReceivedArgs args, string[] commandArgs)
         {
             if (args.Type == MessageReceivedArgs.MessageType.GroupMessage)

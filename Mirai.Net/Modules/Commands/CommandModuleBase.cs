@@ -5,7 +5,10 @@ namespace Mirai.Net.Modules.Commands
 {
     public abstract class CommandModuleBase : IModule
     {
-        public abstract void Execute(MessageReceivedArgs args);
+        public virtual void Execute(MessageReceivedArgs args)
+        {
+            //do nothing unless user implement this
+        }
 
         public abstract void ExecuteCommand(MessageReceivedArgs args, string[] commandArgs);
 

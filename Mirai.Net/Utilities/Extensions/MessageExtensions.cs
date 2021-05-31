@@ -7,9 +7,9 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Utilities.Extensions
 {
-    public static class MessageExtensions
+    internal static class MessageExtensions
     {
-        public static MessageBase ToConcreteMessage(this string message)
+        internal static MessageBase ToConcreteMessage(this string message)
         {
             var jObj = message.ToJObject();
 

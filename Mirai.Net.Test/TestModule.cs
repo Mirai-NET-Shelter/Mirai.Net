@@ -19,8 +19,8 @@ namespace Mirai.Net.Test
 
                 if (args.Sender.Id == "2933170747")
                 {
-                    await messenger.Send(new PlainMessage(
-                        $"Hello, {args.Sender.Id}, content: {args.MessageChain.ToJson()}"));
+                    //await messenger.Send(new PlainMessage(
+                    //    $"Hello, {args.Sender.Id}, content: {args.MessageChain.ToJson()}"));
                 }
                 
             }   

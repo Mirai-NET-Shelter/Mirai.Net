@@ -4,9 +4,9 @@ using Newtonsoft.Json.Linq;
 
 namespace Mirai.Net.Utilities.Extensions
 {
-    public static class JsonExtensions
+    internal static class JsonExtensions
     {
-        public static string ToJson<T>(this T type, NullValueHandling nullValueHandling = NullValueHandling.Ignore)
+        internal static string ToJson<T>(this T type, NullValueHandling nullValueHandling = NullValueHandling.Ignore)
         {
             try
             {
@@ -21,7 +21,7 @@ namespace Mirai.Net.Utilities.Extensions
             }
         }
 
-        public static T ToObject<T>(this string json)
+        internal static T ToObject<T>(this string json)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace Mirai.Net.Utilities.Extensions
             }
         }
 
-        public static string GetPropertyValue(this JObject obj, string propertyName)
+        internal static string GetPropertyValue(this JObject obj, string propertyName)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace Mirai.Net.Utilities.Extensions
             }
         }
         
-        public static string GetPropertyValue(this JToken obj, string propertyName)
+        internal static string GetPropertyValue(this JToken obj, string propertyName)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace Mirai.Net.Utilities.Extensions
             }
         }
 
-        public static JObject ToJObject(this object ex)
+        internal static JObject ToJObject(this object ex)
         {
             try
             {
