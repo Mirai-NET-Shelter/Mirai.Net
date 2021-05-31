@@ -11,9 +11,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Updated README.md">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="9fc6488c-8906-46f6-a894-2fb104034384" name="Default Changelist" comment="Build up jekyll environment" />
     <list id="a245b0cc-5466-4779-98cc-1b45aa15523f" name="Revert &quot;Added Group&quot;" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,28 +169,7 @@
       <updated>1621950554509</updated>
       <workItem from="1621950561003" duration="1864000" />
       <workItem from="1622035447651" duration="5268000" />
-      <workItem from="1622464711457" duration="3804000" />
-    </task>
-    <task id="LOCAL-00062" summary="Added BotKickedEventArgs.cs">
-      <created>1622213706790</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1622213706790</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Moved namespace">
-      <created>1622214095362</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1622214095362</updated>
-    </task>
-    <task id="LOCAL-00064" summary="Moved namespcae">
-      <created>1622214110502</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1622214110502</updated>
+      <workItem from="1622464711457" duration="6350000" />
     </task>
     <task id="LOCAL-00065" summary="Added Bot.Event.Message.cs">
       <created>1622214577195</created>
@@ -516,7 +493,28 @@
       <option name="project" value="LOCAL" />
       <updated>1622468981563</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="Updated README.md">
+      <created>1622469246198</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1622469246198</updated>
+    </task>
+    <task id="LOCAL-00112" summary="Updated README.md">
+      <created>1622469505743</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1622469505743</updated>
+    </task>
+    <task id="LOCAL-00113" summary="Build up jekyll environment">
+      <created>1622473254572</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1622473254572</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,7 +614,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added member muted event args" />
     <MESSAGE value="Extend to EventArgBase.cs" />
     <MESSAGE value="Added Bot.Event.Apply.cs" />
     <MESSAGE value="Added NewFriendApplyEventArgs.cs" />
@@ -641,7 +638,8 @@
     <MESSAGE value="Added missing inheritance" />
     <MESSAGE value="Updated nuget package info" />
     <MESSAGE value="Updated README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated README.md" />
+    <MESSAGE value="Build up jekyll environment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Build up jekyll environment" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
