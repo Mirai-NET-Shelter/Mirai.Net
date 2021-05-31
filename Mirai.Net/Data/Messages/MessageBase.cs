@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Messages
 {
-    //TODO: add comment for concrete types
     public class MessageBase
     {
         /// <summary>
