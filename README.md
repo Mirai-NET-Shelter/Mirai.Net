@@ -1,6 +1,6 @@
 # Mirai.Net
 
-[![Build](https://github.com/AHpxChina/Mirai.Net/actions/workflows/dotnet.yml/badge.svg?branch=master)](https://github.com/AHpxChina/Mirai.Net/actions/workflows/dotnet.yml)![Maintaner](https://img.shields.io/badge/maintainer-ahpxchina-blue)[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](![img](file:///C:\Users\ahpx\AppData\Roaming\Tencent\QQ\Temp\%W@GJ$ACOF(TYDYECOKVDYB.png)https://jq.qq.com/?_wv=1027&k=Enlo0eiv)
+[![Build](https://github.com/AHpxChina/Mirai.Net/actions/workflows/dotnet.yml/badge.svg?branch=master)](https://github.com/AHpxChina/Mirai.Net/actions/workflows/dotnet.yml)![Maintaner](https://img.shields.io/badge/maintainer-ahpxchina-blue)![Ask Me Anything !]https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](![img](file:///C:\Users\ahpx\AppData\Roaming\Tencent\QQ\Temp\%W@GJ$ACOF(TYDYECOKVDYB.png)https://jq.qq.com/?_wv=1027&k=Enlo0eiv)
 
 Mirai.Net是基于[mirai-api-http](https://github.com/project-mirai/mirai-api-http)实现的轻量级[mirai](https://github.com/mamoe/mirai)社区sdk。
 
