@@ -2,7 +2,7 @@
 
 namespace Mirai.Net.Data.Events.Concrete.Args.Group
 {
-    public class GroupMemberTitleChangedEventArgs
+    public class GroupMemberTitleChangedEventArgs : EventArgsBase
     {
         [JsonProperty("origin")]
         public string Origin {get; set;}
