@@ -24,4 +24,4 @@ Mirai.Net是基于
 
 # 文档
 
-+ [Mirai.Net.Document](https://ahpxchina.github.io/Mirai.Net/)
++ [Mirai.Net.Document](https://ahpxchina.github.io/Mirai.Net.Documents/)
