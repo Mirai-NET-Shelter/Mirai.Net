@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Mirai.Net.Utilities;
 using Mirai.Net.Utilities.Extensions;
-using Newtonsoft.Json.Linq;
 
 namespace Mirai.Net.Sessions
 {
