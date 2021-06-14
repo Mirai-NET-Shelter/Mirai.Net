@@ -7,7 +7,7 @@
         <Copyright>© 2021 AHpx</Copyright>
         <PackageProjectUrl>https://github.com/AHpxChina/Mirai.Net</PackageProjectUrl>
         <PackageLicenseUrl>https://github.com/AHpxChina/Mirai.Net/blob/master/LICENSE</PackageLicenseUrl>
-        <TargetFrameworks>net5.0;net5.0-windows;netcoreapp3.1</TargetFrameworks>
+        <TargetFrameworks>net5.0;net5.0-windows</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>
