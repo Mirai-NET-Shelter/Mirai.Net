@@ -27,15 +27,7 @@ namespace Mirai.Net
 
         public static MiraiSession Session
         {
-            get
-            {
-                if (_session == null)
-                {
-                    throw new NullReferenceException("Session can't be null!");
-                }
-
-                return _session;
-            }
+            get => _session ?? throw new NullReferenceException("Session can't be null!");
             set => _session = value;
         }
 
@@ -52,42 +44,35 @@ namespace Mirai.Net
             {
                 if (args.Data.GetReceivedType())
                 {
-                    if (Modules != null)
+                    if (Modules == null) return;
+
+                    foreach (var module in Modules)
                     {
-                        foreach (var module in Modules)
+                        var re = args.Data.ToObject<MessageReceivedArgs>();
+
+                        var arr = JArray.Parse(args.Data.ToJObject()["messageChain"]?.ToString()!);
+                        var chain = arr.Select(token => token.ToString().ToConcreteMessage()).ToList();
+
+                        re.MessageChain = chain;
+
+                        if (module is CommandModuleBase commandModule)
                         {
-                            var re = args.Data.ToObject<MessageReceivedArgs>();
-
-                            var arr = JArray.Parse(args.Data.ToJObject()["messageChain"]?.ToString()!);
-                            var chain = new List<MessageBase>();
-                            
-                            foreach (var token in arr)
+                            foreach (var messageBase in re.MessageChain)
                             {
-                                chain.Add(token.ToString().ToConcreteMessage());
-                            }
+                                if (messageBase is not PlainMessage plainMessage) continue;
 
-                            re.MessageChain = chain;
-
-                            if (module is CommandModuleBase commandModule)
-                            {
-                                foreach (var messageBase in re.MessageChain)
+                                foreach (var executor in commandModule.Command.Executors)
                                 {
-                                    if (messageBase is PlainMessage plainMessage)
+                                    if (plainMessage.Text.Contains(executor))
                                     {
-                                        foreach (var executor in commandModule.Command.Executors)
-                                        {
-                                            if (plainMessage.Text.Contains(executor))
-                                            {
-                                                commandModule.ExecuteCommand(re,
-                                                    plainMessage.Text.Replace(executor, "").Split(" "));
-                                            }
-                                        }
+                                        commandModule.ExecuteCommand(re,
+                                            plainMessage.Text.Replace(executor, "").Split(" "));
                                     }
                                 }
                             }
-                            
-                            module.Execute(re);
                         }
+                            
+                        module.Execute(re);
                     }
                 }
                 else
@@ -136,7 +121,7 @@ namespace Mirai.Net
 
         public static async Task HandleInvitedRequest(BotInvitedEventArgs args, bool accept, string responseMessage = "")
         {
-            var re = await HttpUtility.Post($"{Session.GetUrl()}/resp/botInvitedJoinGroupRequestEvent", new
+            await HttpUtility.Post($"{Session.GetUrl()}/resp/botInvitedJoinGroupRequestEvent", new
             {
                 sessionKey = Session.SessionKey,
                 eventId = args.EventId,
