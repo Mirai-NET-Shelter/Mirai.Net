@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mirai.Net", "Mirai.Net\Mirai.Net.csproj", "{EEA0F9F3-88DF-4C8C-838A-CA5789E5375A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mirai.Net.Test", "Mirai.Net.Test\Mirai.Net.Test.csproj", "{2DB28C2A-5C1E-4D68-93D2-1D1C0B231595}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEA0F9F3-88DF-4C8C-838A-CA5789E5375A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEA0F9F3-88DF-4C8C-838A-CA5789E5375A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEA0F9F3-88DF-4C8C-838A-CA5789E5375A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEA0F9F3-88DF-4C8C-838A-CA5789E5375A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DB28C2A-5C1E-4D68-93D2-1D1C0B231595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DB28C2A-5C1E-4D68-93D2-1D1C0B231595}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DB28C2A-5C1E-4D68-93D2-1D1C0B231595}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DB28C2A-5C1E-4D68-93D2-1D1C0B231595}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
