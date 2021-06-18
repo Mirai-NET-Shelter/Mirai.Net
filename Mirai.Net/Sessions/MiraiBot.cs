@@ -1,6 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Net.WebSockets;
+using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Websocket.Client;
 
 namespace Mirai.Net.Sessions
@@ -32,23 +36,19 @@ namespace Mirai.Net.Sessions
 
         public async Task Launch()
         {
-            var url = new Uri($@"ws://{Address}");
-            var factor = new Func<ClientWebSocket>(() =>
+            var url = new Uri($@"ws://{Address}/message?verifyKey={VerifyKey}&qq={QQ}");
+            var exit = new ManualResetEvent(false);
+
+            using var client = new WebsocketClient(url);
+
+            client.MessageReceived.Subscribe(s =>
             {
-                var ws = new ClientWebSocket();
-
-                ws.Options.SetRequestHeader("verifyKey", VerifyKey);
-                ws.Options.SetRequestHeader("qq", QQ);
-                // ws.Options.SetRequestHeader("sessionKey", null);
-
-                return ws;
+                Console.WriteLine(s.Text);
             });
-
-            using var client = new WebsocketClient(url, factor);
-
-            client.MessageReceived.Subscribe(Console.WriteLine);
             
             await client.StartOrFail();
+
+            exit.WaitOne();
         }
     }
 }
