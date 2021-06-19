@@ -36,7 +36,7 @@ namespace Mirai.Net.Sessions
 
         public async Task Launch()
         {
-            var url = new Uri($@"ws://{Address}/message?verifyKey={VerifyKey}&qq={QQ}");
+            var url = new Uri($@"ws://{Address}/all?verifyKey={VerifyKey}&qq={QQ}");
             var exit = new ManualResetEvent(false);
 
             using var client = new WebsocketClient(url);
