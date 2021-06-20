@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
+using Mirai.Net.Data.Events;
+using Mirai.Net.Listeners;
 using Mirai.Net.Utils.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -30,6 +34,8 @@ namespace Mirai.Net.Sessions
         /// </summary>
         public string Address { get; set; }
 
+        public List<IEventListener> EventListeners { get; set; } = new List<IEventListener>();
+
         /// <summary>
         /// 绑定的账号, singleMode 模式下为空, 非 singleMode 下新建连接不可为空
         /// </summary>
@@ -49,9 +55,17 @@ namespace Mirai.Net.Sessions
             {
                 if (s.IsEvent())
                 {
-                    Console.WriteLine(s.Text);
+                    foreach (var listener in EventListeners)
+                    {
+                        var json = s.Text.ToJObject().Fetch("data");
+                        var entity = json.ToEntity<EventArgsBase>();
+
+                        if (listener.EventType == entity.Type)
+                        {
+                            listener.Execute(entity);
+                        }
+                    }
                 }
-                
             });
             
             await client.StartOrFail();

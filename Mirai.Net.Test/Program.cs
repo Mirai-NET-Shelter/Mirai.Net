@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Bot;
+using Mirai.Net.Listeners;
 using Mirai.Net.Sessions;
 using Mirai.Net.Utils.Extensions;
 using Newtonsoft.Json.Linq;
@@ -19,7 +21,11 @@ namespace Mirai.Net.Test
             {
                 Address = "127.0.0.1:8080",
                 QQ = "2672886221",
-                VerifyKey = "1145141919810"
+                VerifyKey = "1145141919810",
+                EventListeners = new List<IEventListener>
+                {
+                    new TestListener()
+                }
             };
             
             await bot.Launch();
