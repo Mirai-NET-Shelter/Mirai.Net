@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
@@ -60,7 +61,7 @@ namespace Mirai.Net.Sessions
                         var json = s.Text.ToJObject().Fetch("data");
                         var entity = json.ToEntity<EventArgsBase>();
 
-                        if (listener.EventType == entity.Type)
+                        if (listener.EventTypes.Any(x => x == entity.Type))
                         {
                             listener.Execute(entity);
                         }
