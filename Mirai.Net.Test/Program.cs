@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Mirai.Net.Data.Events;
+using Mirai.Net.Data.Events.Bot;
 using Mirai.Net.Sessions;
+using Mirai.Net.Utils.Extensions;
 using Newtonsoft.Json.Linq;
 
 namespace Mirai.Net.Test
@@ -12,14 +15,17 @@ namespace Mirai.Net.Test
     {
         static async Task Main(string[] args)
         {
-            var bot = new MiraiBot
-            {
-                Address = "127.0.0.1:8080",
-                QQ = "2672886221",
-                VerifyKey = "1145141919810"
-            };
+            var s = "{\"qq\": \"a\", \"type\": \"awd\"}";
+            Console.WriteLine(s.ToEntity<EventArgsBase>());
 
-            await bot.Launch();
+            // var bot = new MiraiBot
+            // {
+            //     Address = "127.0.0.1:8080",
+            //     QQ = "2672886221",
+            //     VerifyKey = "1145141919810"
+            // };
+            //
+            // await bot.Launch();
         }
     }
 }

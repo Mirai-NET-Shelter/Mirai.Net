@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Mirai.Net.Utils.Extensions
 {
@@ -38,6 +40,43 @@ namespace Mirai.Net.Utils.Extensions
         public static JArray ToJArray(this string primitive)
         {
             return JArray.Parse(primitive);
+        }
+
+        /// <summary>
+        /// 将一个可序列化为json的对象转换为json文本
+        /// </summary>
+        /// <returns></returns>
+        public static string ToJsonString<T>(this T type, NullValueHandling nullValueHandling = NullValueHandling.Ignore)
+        {
+            try
+            {
+                return JsonConvert.SerializeObject(type, Formatting.Indented, new JsonSerializerSettings
+                {
+                    NullValueHandling = nullValueHandling
+                });
+            }
+            catch (Exception e)
+            {
+                throw new ArgumentException("此对象不可以序列化！", e);
+            }
+        }
+
+        /// <summary>
+        /// 将一个可以json文本反序列化为指定的对象
+        /// </summary>
+        /// <param name="s"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T ToEntity<T>(this string s)
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(s);
+            }
+            catch (Exception e)
+            {
+                throw new ArgumentException("此对象不可以序列化！", e);
+            }
         }
     }
 }
