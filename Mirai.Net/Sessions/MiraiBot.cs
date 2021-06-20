@@ -59,7 +59,7 @@ namespace Mirai.Net.Sessions
                     foreach (var listener in EventListeners)
                     {
                         var json = s.Text.ToJObject().Fetch("data");
-                        var entity = json.ToEntity<EventArgsBase>();
+                        var entity = json.ConvertToConcrete();
 
                         if (listener.EventTypes.Any(x => x == entity.Type))
                         {
