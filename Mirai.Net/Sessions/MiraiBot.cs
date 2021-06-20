@@ -3,6 +3,7 @@ using System.IO;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
+using Mirai.Net.Utils.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Websocket.Client;
@@ -46,7 +47,11 @@ namespace Mirai.Net.Sessions
 
             client.MessageReceived.Subscribe(s =>
             {
-                Console.WriteLine(s.Text);
+                if (s.IsEvent())
+                {
+                    Console.WriteLine(s.Text);
+                }
+                
             });
             
             await client.StartOrFail();

@@ -15,17 +15,14 @@ namespace Mirai.Net.Test
     {
         static async Task Main(string[] args)
         {
-            var s = "{\"qq\": \"a\", \"type\": \"awd\"}";
-            Console.WriteLine(s.ToEntity<EventArgsBase>());
-
-            // var bot = new MiraiBot
-            // {
-            //     Address = "127.0.0.1:8080",
-            //     QQ = "2672886221",
-            //     VerifyKey = "1145141919810"
-            // };
-            //
-            // await bot.Launch();
+            var bot = new MiraiBot
+            {
+                Address = "127.0.0.1:8080",
+                QQ = "2672886221",
+                VerifyKey = "1145141919810"
+            };
+            
+            await bot.Launch();
         }
     }
 }

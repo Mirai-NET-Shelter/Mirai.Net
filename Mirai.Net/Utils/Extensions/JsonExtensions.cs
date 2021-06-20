@@ -17,9 +17,17 @@ namespace Mirai.Net.Utils.Extensions
         /// <returns></returns>
         public static string Fetch(this JToken token, string key)
         {
-            var value = token[key].ToString();
+            try
+            {
+                var value = token[key].ToString();
 
-            return value;
+                return value;
+            }
+            catch (Exception e)
+            {
+                throw new ArgumentException("没有与此key对应的value！", e);
+            }
+            
         }
 
         /// <summary>
