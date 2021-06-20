@@ -10,7 +10,7 @@ using Websocket.Client;
 namespace Mirai.Net.Sessions
 {
     /// <summary>
-    /// 这是用来描述一个Mirai机器人的类
+    /// Mirai机器人
     /// </summary>
     public class MiraiBot
     {
@@ -34,6 +34,9 @@ namespace Mirai.Net.Sessions
         /// </summary>
         public string QQ { get; set; }
 
+        /// <summary>
+        /// 启动Websocket监听
+        /// </summary>
         public async Task Launch()
         {
             var url = new Uri($@"ws://{Address}/all?verifyKey={VerifyKey}&qq={QQ}");
