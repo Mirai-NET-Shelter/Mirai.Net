@@ -50,4 +50,22 @@ namespace Mirai.Net.Data.Events.Bot
         [JsonProperty("group")]
         public Group Group {get; set;}
     }
+
+    public class BotLeaveGroupEventArgs
+    {
+        /// <summary>
+        /// 主动退出的群信息
+        /// </summary>
+        [JsonProperty("group")]
+        public Group Group {get; set;}
+    }
+
+    public class BotLeaveGroupKickEventArgs
+    {
+        /// <summary>
+        /// bot被踢的群信息
+        /// </summary>
+        [JsonProperty("group")]
+        public Group Group {get; set;}
+    }
 }
