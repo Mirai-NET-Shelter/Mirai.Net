@@ -3,13 +3,6 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Events.Friend
 {
-    public class FriendEvent
-    {
-        public Action<FriendInputStatusChangedEventArgs> InputChanged;
-        public Action<FriendNickChangedEventArgs> NickChanged;
-        public Action<FriendRecallEventArgs> Recall;
-    }
-
     /// <summary>
     /// 好友输入状态改变
     /// </summary>

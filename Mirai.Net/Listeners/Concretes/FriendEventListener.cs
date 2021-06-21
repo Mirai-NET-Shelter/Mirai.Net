@@ -14,20 +14,22 @@ namespace Mirai.Net.Listeners.Concretes
             EventType.FriendInputStatusChangedEvent
         };
 
-        protected abstract FriendEvent Events { get; set; }
+        public event Action<FriendInputStatusChangedEventArgs> InputChanged;
+        public event Action<FriendNickChangedEventArgs> NickChanged;
+        public event Action<FriendRecallEventArgs> Recall;
         
         public void Execute(EventArgsBase args)
         {
             switch (args.Type)
             {
                 case EventType.FriendInputStatusChangedEvent:
-                    Events.InputChanged?.Invoke(args as FriendInputStatusChangedEventArgs);
+                    InputChanged?.Invoke(args as FriendInputStatusChangedEventArgs);
                     break;
                 case EventType.FriendNickChangedEvent:
-                    Events.NickChanged?.Invoke(args as FriendNickChangedEventArgs);
+                    NickChanged?.Invoke(args as FriendNickChangedEventArgs);
                     break;
                 case EventType.FriendRecallEvent:
-                    Events.Recall?.Invoke(args as FriendRecallEventArgs);
+                    Recall?.Invoke(args as FriendRecallEventArgs);
                     break;
             }
         }

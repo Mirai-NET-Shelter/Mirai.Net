@@ -10,16 +10,11 @@ namespace Mirai.Net.Test
 {
     public class TestListener : FriendEventListener
     {
-        protected override FriendEvent Events { get; set; }
-
         public TestListener()
         {
-            Events = new FriendEvent
+            NickChanged += args =>
             {
-                NickChanged = args =>
-                {
-                    Console.WriteLine(args.ToJsonString());
-                }
+                Console.WriteLine(args.ToJsonString());
             };
         }
     }
