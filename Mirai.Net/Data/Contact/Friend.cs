@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Mirai.Net.Data.Person
+namespace Mirai.Net.Data.Contact
 {
     /// <summary>
     /// 好友对象

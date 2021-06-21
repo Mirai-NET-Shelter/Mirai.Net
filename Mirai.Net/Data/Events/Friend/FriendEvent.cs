@@ -18,7 +18,7 @@ namespace Mirai.Net.Data.Events.Friend
         /// 发出此事件的好友
         /// </summary>
         [JsonProperty("friend")]
-        public Person.Friend Friend {get; set;}
+        public Contact.Friend Friend {get; set;}
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ namespace Mirai.Net.Data.Events.Friend
         /// 发出此事件的好友
         /// </summary>
         [JsonProperty("friend")]
-        public Person.Friend Friend {get; set;}
+        public Contact.Friend Friend {get; set;}
         
         /// <summary>
         /// 原昵称
