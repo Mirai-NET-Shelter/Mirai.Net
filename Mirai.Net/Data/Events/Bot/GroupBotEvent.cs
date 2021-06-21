@@ -15,7 +15,7 @@ namespace Mirai.Net.Data.Events.Bot
         public GroupPermission Current {get; set;}  
         
         [JsonProperty("group")]
-        public Group Group {get; set;}
+        public Contact.Group Group {get; set;}
     }
 
     public class BotMuteEventArgs : EventArgsBase
@@ -48,7 +48,7 @@ namespace Mirai.Net.Data.Events.Bot
         /// 加入的新群信息
         /// </summary>
         [JsonProperty("group")]
-        public Group Group {get; set;}
+        public Contact.Group Group {get; set;}
     }
 
     public class BotLeaveGroupEventArgs : EventArgsBase
@@ -57,7 +57,7 @@ namespace Mirai.Net.Data.Events.Bot
         /// 主动退出的群信息
         /// </summary>
         [JsonProperty("group")]
-        public Group Group {get; set;}
+        public Contact.Group Group {get; set;}
     }
 
     public class BotLeaveGroupKickEventArgs : EventArgsBase
@@ -66,6 +66,6 @@ namespace Mirai.Net.Data.Events.Bot
         /// bot被踢的群信息
         /// </summary>
         [JsonProperty("group")]
-        public Group Group {get; set;}
+        public Contact.Group Group {get; set;}
     }
 }
