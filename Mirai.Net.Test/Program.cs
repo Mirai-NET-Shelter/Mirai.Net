@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Bot;
 using Mirai.Net.Listeners;
-using Mirai.Net.Listeners.Concretes;
 using Mirai.Net.Sessions;
 using Mirai.Net.Utils.Extensions;
 using Newtonsoft.Json.Linq;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Bot;
 
-namespace Mirai.Net.Listeners.Concretes
+namespace Mirai.Net.Listeners.EventListeners
 {
     public abstract class BotEventListener : IEventListener
     {
