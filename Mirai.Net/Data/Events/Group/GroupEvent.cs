@@ -44,13 +44,13 @@ namespace Mirai.Net.Data.Events.Group
     public abstract class GroupSettingChangeEventArgs<T> : EventArgsBase
     {
         /// <summary>
-        /// 原来的群名称
+        /// 原来的
         /// </summary>
         [JsonProperty("origin")]
         public T Origin {get; set;}
         
         /// <summary>
-        /// 目前的群名称
+        /// 目前的
         /// </summary>
         [JsonProperty("current")]
         public T Current {get; set;}
