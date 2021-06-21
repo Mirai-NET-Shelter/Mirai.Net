@@ -2,6 +2,7 @@
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Bot;
 using Mirai.Net.Data.Events.Friend;
+using Mirai.Net.Data.Events.Group;
 using Websocket.Client;
 
 namespace Mirai.Net.Utils.Extensions
@@ -52,14 +53,14 @@ namespace Mirai.Net.Utils.Extensions
                 EventType.BotJoinGroupEvent => data.ToEntity<BotJoinGroupEventArgs>(),
                 EventType.BotLeaveEventActive => data.ToEntity<BotLeaveGroupEventArgs>(),
                 EventType.BotLeaveEventKick => data.ToEntity<BotLeaveGroupKickEventArgs>(),
-                EventType.GroupRecallEvent => data.ToEntity<FriendNickChangedEventArgs>(),
+                EventType.GroupRecallEvent => data.ToEntity<GroupRecallEventArgs>(),
                 EventType.FriendRecallEvent => data.ToEntity<FriendRecallEventArgs>(),
-                EventType.GroupNameChangeEvent => data.ToEntity<FriendNickChangedEventArgs>(),
-                EventType.GroupEntranceAnnouncementChangeEvent => data.ToEntity<FriendNickChangedEventArgs>(),
-                EventType.GroupMuteAllEvent => data.ToEntity<FriendNickChangedEventArgs>(),
-                EventType.GroupAllowAnonymousChatEvent => data.ToEntity<FriendNickChangedEventArgs>(),
-                EventType.GroupAllowConfessTalkEvent => data.ToEntity<FriendNickChangedEventArgs>(),
-                EventType.GroupAllowMemberInviteEvent => data.ToEntity<FriendNickChangedEventArgs>(),
+                EventType.GroupNameChangeEvent => data.ToEntity<GroupNameChangeEventArgs>(),
+                EventType.GroupEntranceAnnouncementChangeEvent => data.ToEntity<GroupEntranceAnnouncementChangeEventArgs>(),
+                EventType.GroupMuteAllEvent => data.ToEntity<GroupMuteAllEventArgs>(),
+                EventType.GroupAllowAnonymousChatEvent => data.ToEntity<GroupAllowAnonymousChatEventArgs>(),
+                EventType.GroupAllowConfessTalkEvent => data.ToEntity<GroupAllowConfessTalkEventArgs>(),
+                EventType.GroupAllowMemberInviteEvent => data.ToEntity<GroupAllowMemberInviteEventArgs>(),
                 EventType.MemberJoinEvent => data.ToEntity<FriendNickChangedEventArgs>(),
                 EventType.MemberLeaveEventKick => data.ToEntity<FriendNickChangedEventArgs>(),
                 EventType.MemberLeaveEventQuit => data.ToEntity<FriendNickChangedEventArgs>(),
