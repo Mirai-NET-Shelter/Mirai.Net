@@ -51,7 +51,7 @@ namespace Mirai.Net.Data.Events.Bot
         public Group Group {get; set;}
     }
 
-    public class BotLeaveGroupEventArgs
+    public class BotLeaveGroupEventArgs : EventArgsBase
     {
         /// <summary>
         /// 主动退出的群信息
@@ -60,7 +60,7 @@ namespace Mirai.Net.Data.Events.Bot
         public Group Group {get; set;}
     }
 
-    public class BotLeaveGroupKickEventArgs
+    public class BotLeaveGroupKickEventArgs : EventArgsBase
     {
         /// <summary>
         /// bot被踢的群信息
