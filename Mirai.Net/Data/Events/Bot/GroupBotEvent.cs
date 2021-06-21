@@ -1,6 +1,6 @@
 ﻿using Mirai.Net.Data.Contact;
 using Newtonsoft.Json;
-
+//QQ群内有关bot的事件
 namespace Mirai.Net.Data.Events.Bot
 {
     /// <summary>
@@ -14,6 +14,39 @@ namespace Mirai.Net.Data.Events.Bot
         [JsonProperty("current")]
         public GroupPermission Current {get; set;}  
         
+        [JsonProperty("group")]
+        public Group Group {get; set;}
+    }
+
+    public class BotMuteEventArgs : EventArgsBase
+    {
+        /// <summary>
+        /// 被禁言的时间，单位：秒
+        /// </summary>
+        [JsonProperty("durationSeconds")]
+        public string Period {get; set;}
+        
+        /// <summary>
+        /// 禁言bot的操作者
+        /// </summary>
+        [JsonProperty("operator")]
+        public GroupActionOperator Operator {get; set;}
+    }
+
+    public class BotUnmuteEventArgs : EventArgsBase
+    {
+        /// <summary>
+        /// 取消禁言bot的操作者
+        /// </summary>
+        [JsonProperty("operator")]
+        public GroupActionOperator Operator {get; set;}
+    }
+
+    public class BotJoinGroupEventArgs : EventArgsBase
+    {
+        /// <summary>
+        /// 加入的新群信息
+        /// </summary>
         [JsonProperty("group")]
         public Group Group {get; set;}
     }
