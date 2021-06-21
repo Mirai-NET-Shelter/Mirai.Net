@@ -66,7 +66,7 @@ namespace Mirai.Net.Utils.Extensions
                 EventType.MemberLeaveEventQuit => data.ToEntity<MemberLeaveEventQuitArgs>(),
                 EventType.MemberCardChangeEvent => data.ToEntity<MemberCardChangeEventArgs>(),
                 EventType.MemberSpecialTitleChangeEvent => data.ToEntity<MemberSpecialTitleChangeEventArgs>(),
-                EventType.MemberPermissionChangeEvent => data.ToEntity<MemberPermissionChangeEvent>(),
+                EventType.MemberPermissionChangeEvent => data.ToEntity<MemberPermissionChangeEventArgs>(),
                 EventType.MemberMuteEvent => data.ToEntity<MemberMuteEventArgs>(),
                 EventType.MemberUnmuteEvent => data.ToEntity<BotUnmuteEventArgs>(),
                 EventType.MemberHonorChangeEvent => data.ToEntity<MemberHonorChangeEventArgs>(),

@@ -54,7 +54,7 @@ namespace Mirai.Net.Data.Events.Group
     
     public class MemberSpecialTitleChangeEventArgs : GroupSettingChangeEventArgs<string> {}
     
-    public class MemberPermissionChangeEvent : GroupMemberSettingChangeEvent<GroupPermission>{}
+    public class MemberPermissionChangeEventArgs : GroupMemberSettingChangeEvent<GroupPermission>{}
 
     public class MemberMuteEventArgs : EventArgsBase
     {
