@@ -8,13 +8,13 @@ using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Test
 {
-    public class TestListener : FriendEventListener
+    public class TestListener : GroupBotEventListener
     {
         public TestListener()
         {
-            NickChanged += args =>
+            Mute += args =>
             {
-                Console.WriteLine(args.ToJsonString());
+                Console.WriteLine($"{args.Operator.Name} muted me in {args.Operator.Group.Name}!");
             };
         }
     }

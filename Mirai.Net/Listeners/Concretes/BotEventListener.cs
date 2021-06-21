@@ -5,7 +5,7 @@ using Mirai.Net.Data.Events.Bot;
 
 namespace Mirai.Net.Listeners.Concretes
 {
-    public class BotEventListener : IEventListener
+    public abstract class BotEventListener : IEventListener
     {
         public IEnumerable<EventType> EventTypes { get; set; } = new[]
         {
