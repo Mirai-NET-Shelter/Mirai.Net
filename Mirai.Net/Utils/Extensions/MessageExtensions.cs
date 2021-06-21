@@ -1,5 +1,6 @@
 ﻿using System;
 using Mirai.Net.Data.Events;
+using Mirai.Net.Data.Events.Apply;
 using Mirai.Net.Data.Events.Bot;
 using Mirai.Net.Data.Events.Friend;
 using Mirai.Net.Data.Events.Group;
@@ -70,9 +71,9 @@ namespace Mirai.Net.Utils.Extensions
                 EventType.MemberMuteEvent => data.ToEntity<MemberMuteEventArgs>(),
                 EventType.MemberUnmuteEvent => data.ToEntity<BotUnmuteEventArgs>(),
                 EventType.MemberHonorChangeEvent => data.ToEntity<MemberHonorChangeEventArgs>(),
-                EventType.NewFriendRequestEvent => data.ToEntity<FriendNickChangedEventArgs>(),
-                EventType.MemberJoinRequestEvent => data.ToEntity<FriendNickChangedEventArgs>(),
-                EventType.BotInvitedJoinGroupRequestEvent => data.ToEntity<FriendNickChangedEventArgs>(),
+                EventType.NewFriendRequestEvent => data.ToEntity<NewFriendRequestEventArgs>(),
+                EventType.MemberJoinRequestEvent => data.ToEntity<MemberJoinEventArgs>(),
+                EventType.BotInvitedJoinGroupRequestEvent => data.ToEntity<BotInvitedJoinGroupRequestEvent>(),
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
