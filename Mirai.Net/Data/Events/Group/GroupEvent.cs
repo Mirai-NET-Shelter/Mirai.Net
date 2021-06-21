@@ -35,4 +35,48 @@ namespace Mirai.Net.Data.Events.Group
         [JsonProperty("operator")]
         public GroupActionOperator Operator {get; set;}
     }
+
+    /// <summary>
+    /// 请不要使用此对象
+    /// origin, current, group, operator
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public abstract class GroupSettingChangeEventArgs<T> : EventArgsBase
+    {
+        /// <summary>
+        /// 原来的群名称
+        /// </summary>
+        [JsonProperty("origin")]
+        public T Origin {get; set;}
+        
+        /// <summary>
+        /// 目前的群名称
+        /// </summary>
+        [JsonProperty("current")]
+        public T Current {get; set;}
+        
+        /// <summary>
+        /// 产生此事件的群
+        /// </summary>
+        [JsonProperty("group")]
+        public Contact.Group Group {get; set;}
+        
+        /// <summary>
+        /// 操作者
+        /// </summary>
+        [JsonProperty("operator")]
+        public GroupActionOperator Operator {get; set;}
+    }
+    
+    public class GroupNameChangeEventArgs : GroupSettingChangeEventArgs<string> { }
+
+    public class GroupEntranceAnnouncementChangeEventArgs : GroupSettingChangeEventArgs<string> { }
+
+    public class GroupMuteAllEventArgs : GroupSettingChangeEventArgs<bool> { }
+    
+    public class GroupAllowAnonymousChatEventArgs : GroupSettingChangeEventArgs<bool>{}
+    
+    public class GroupAllowConfessTalkEventArgs : GroupSettingChangeEventArgs<bool>{}
+    
+    public class GroupAllowMemberInviteEventArgs : GroupSettingChangeEventArgs<bool>{}
 }
