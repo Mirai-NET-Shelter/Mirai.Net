@@ -5,6 +5,7 @@ using Mirai.Net.Data.Events.Bot;
 using Mirai.Net.Data.Events.Friend;
 using Mirai.Net.Data.Events.Group;
 using Mirai.Net.Data.Message;
+using Mirai.Net.Data.Message.Args;
 using Mirai.Net.Data.Message.Concrete;
 using Websocket.Client;
 
@@ -29,8 +30,24 @@ namespace Mirai.Net.Utils.Extensions
             }
             
             var type = json["data"].Fetch("type");
+            var re = type.ToLower().Contains("event");
+                
+            return re;
+        }
+        
+        public static bool IsMessage(this ResponseMessage message)
+        {
+            var json = message.Text.ToJObject();
 
-            return type.ToLower().Contains("event");
+            if (json.Fetch("data").ToJObject().ContainsKey("session"))
+            {
+                return false;
+            }
+            
+            var type = json["data"].Fetch("type");
+            var re = type.ToLower().Contains("message");
+            
+            return re;
         }
 
         /// <summary>
@@ -80,29 +97,44 @@ namespace Mirai.Net.Utils.Extensions
             };
         }
 
-        public static MessageBase ConvertToConcreteMessage(this string data)
+        public static MessageArgs ConvertToConcreteMessageArgs(this string data)
         {
-            var args = data.ToEntity<MessageBase>();
+            var args = data.ToEntity<MessageArgs>();
 
             return args.Type switch
             {
-                MessageType.Source => data.ToEntity<SourceMessage>(),
-                MessageType.Quote => data.ToEntity<QuoteMessage>(),
-                MessageType.At => data.ToEntity<AtMessage>(),
-                MessageType.AtAll => data.ToEntity<AtAllMessage>(),
-                MessageType.Face => data.ToEntity<FaceMessage>(),
-                MessageType.Plain => data.ToEntity<PlainMessage>(),
-                MessageType.Image => data.ToEntity<ImageMessage>(),
-                MessageType.FlashImage => data.ToEntity<FlashImageMessage>(),
-                MessageType.Voice => data.ToEntity<VoiceMessage>(),
-                MessageType.Xml => data.ToEntity<XmlMessage>(),
-                MessageType.Json => data.ToEntity<JsonMessage>(),
-                MessageType.App => data.ToEntity<AppMessage>(),
-                MessageType.Poke => data.ToEntity<PokeMessage>(),
-                MessageType.Dice => data.ToEntity<DiceMessage>(),
-                MessageType.MusicShare => data.ToEntity<MusicShareMessage>(),
-                MessageType.Forward => data.ToEntity<ForwardMessage>(),
-                MessageType.File => data.ToEntity<FileMessage>(),
+                MessageReceiveType.Group => data.ToEntity<GroupMessageArgs>(),
+                MessageReceiveType.Friend => data.ToEntity<FriendMessageArgs>(),
+                MessageReceiveType.Temp => data.ToEntity<TempMessageArgs>(),
+                MessageReceiveType.Stranger => data.ToEntity<StrangerMessageArgs>(),
+                MessageReceiveType.OtherClient => data.ToEntity<OtherClientMessageArgs>(),
+                _ => throw new ArgumentOutOfRangeException()
+            };
+        }
+        
+        public static MessageBase ConvertToConcreteMessage(this string node)
+        {
+            var args = node.ToEntity<MessageBase>();
+
+            return args.Type switch
+            {
+                MessageType.Source => node.ToEntity<SourceMessage>(),
+                MessageType.Quote => node.ToEntity<QuoteMessage>(),
+                MessageType.At => node.ToEntity<AtMessage>(),
+                MessageType.AtAll => node.ToEntity<AtAllMessage>(),
+                MessageType.Face => node.ToEntity<FaceMessage>(),
+                MessageType.Plain => node.ToEntity<PlainMessage>(),
+                MessageType.Image => node.ToEntity<ImageMessage>(),
+                MessageType.FlashImage => node.ToEntity<FlashImageMessage>(),
+                MessageType.Voice => node.ToEntity<VoiceMessage>(),
+                MessageType.Xml => node.ToEntity<XmlMessage>(),
+                MessageType.Json => node.ToEntity<JsonMessage>(),
+                MessageType.App => node.ToEntity<AppMessage>(),
+                MessageType.Poke => node.ToEntity<PokeMessage>(),
+                MessageType.Dice => node.ToEntity<DiceMessage>(),
+                MessageType.MusicShare => node.ToEntity<MusicShareMessage>(),
+                MessageType.Forward => node.ToEntity<ForwardMessage>(),
+                MessageType.File => node.ToEntity<FileMessage>(),
                 _ => throw new ArgumentOutOfRangeException()
             };
         }

@@ -8,13 +8,13 @@ namespace Mirai.Net.Data.Message
         /// <summary>
         /// 群消息
         /// </summary>
-        [EnumMember(Value = "FriendMessage")]
+        [EnumMember(Value = "GroupMessage")]
         Group,
 
         /// <summary>
         /// 好友消息
         /// </summary>
-        [EnumMember(Value = "GroupMessage")]
+        [EnumMember(Value = "FriendMessage")]
         Friend,
 
         /// <summary>

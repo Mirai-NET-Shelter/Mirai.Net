@@ -57,7 +57,7 @@ namespace Mirai.Net.Sessions
             {
                 if (s.IsEvent())
                 {
-                    if (EventListeners is {Count: > 0})
+                    if (EventListeners != null && EventListeners.Count > 0)
                     {
                         foreach (var listener in EventListeners)
                         {
@@ -71,26 +71,32 @@ namespace Mirai.Net.Sessions
                         }
                     }
                 }
+                else if (s.IsMessage())
+                {
+                    if (MessageListeners != null && MessageListeners.Count > 0)
+                    {
+                        foreach (var listener in MessageListeners)
+                        {
+                            var json = s.Text.ToJObject().Fetch("data");
+                            var entity = json.ConvertToConcreteMessageArgs();
+                            entity.Chain = json.ToJObject()["messageChain"]?.ToObject<JArray>()!
+                                .Select(x => x.ToString().ConvertToConcreteMessage());
+                            
+                            if (listener.Executors.Any(x => x == entity.Type))
+                            {
+                                listener.Execute(entity);
+                            }
+                        }
+                    }
+                }
                 else
                 {
-                    // if (MessageListeners is {Count: > 0})
-                    // {
-                    //     foreach (var listener in MessageListeners)
-                    //     {
-                    //         var json = s.Text.ToJObject().Fetch("data");
-                    //         var entity = json.ConvertToConcreteEventArgs();
-                    //
-                    //         if (listener.Executors.Any(x => x == entity.Type))
-                    //         {
-                    //             listener.Execute(entity);
-                    //         }
-                    //     }
-                    // }
+                    Console.WriteLine(s.Text);
                 }
             });
             
             await client.StartOrFail();
-
+            
             exit.WaitOne();
         }
     }

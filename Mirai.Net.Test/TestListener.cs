@@ -1,24 +1,45 @@
 ﻿using System;using System.Collections.Generic;
+using System.Linq;
 using Mirai.Net.Data.Events;
+using Mirai.Net.Data.Events.Bot;
 using Mirai.Net.Data.Events.Friend;
 using Mirai.Net.Data.Events.Group;
+using Mirai.Net.Data.Message;
+using Mirai.Net.Data.Message.Concrete;
 using Mirai.Net.Listeners;
 using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Test
 {
-    public class TestListener : IEventListener
+    public class TestListener : IMessageListener, IEventListener
     {
-        public TestListener()
+        private IEnumerable<EventType> _executors = new []
         {
-            
-        }
-        
-        public IEnumerable<EventType> Executors { get; init; }
+            EventType.BotMuteEvent
+        };
+
+        public IEnumerable<MessageReceiveType> Executors { get; set; } = new[]
+        {
+            MessageReceiveType.Group
+        };
 
         public void Execute(EventArgsBase args)
         {
-            throw new NotImplementedException();
+            if (args is BotMuteEventArgs botMuteEventArgs)
+            {
+                Console.WriteLine($"{botMuteEventArgs.Operator.Name} muted me!");
+            }
+        }
+
+        public void Execute(MessageArgs args)
+        {
+            Console.WriteLine((args.Chain.ToList()[1] as PlainMessage)?.Text);
+        }
+
+        IEnumerable<EventType> IEventListener.Executors
+        {
+            get => _executors;
+            set => _executors = value;
         }
     }
 }

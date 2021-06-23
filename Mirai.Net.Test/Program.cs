@@ -25,13 +25,13 @@ namespace Mirai.Net.Test
                 Address = "127.0.0.1:8080",
                 QQ = "2672886221",
                 VerifyKey = "1145141919810",
-                EventListeners = new List<IEventListener>
+                MessageListeners = new List<IMessageListener>
                 {
                     new TestListener()
                 }
             };
             
-            await bot.Launch();   
+            await bot.Launch();
 
             #endregion
         }

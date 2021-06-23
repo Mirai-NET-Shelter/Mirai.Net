@@ -6,7 +6,7 @@ namespace Mirai.Net.Listeners
 {
     public interface IEventListener
     {
-        public IEnumerable<EventType> Executors { get; init; }
+        public IEnumerable<EventType> Executors { get; set; }
 
         public void Execute(EventArgsBase args);
     }
