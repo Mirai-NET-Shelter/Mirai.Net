@@ -10,8 +10,4 @@
       <PackageReference Include="Websocket.Client" Version="4.3.32" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Data\Message\Concrete" />
-    </ItemGroup>
-
 </Project>
