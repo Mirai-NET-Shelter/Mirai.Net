@@ -3,7 +3,10 @@ using Mirai.Net.Data.Message;
 
 namespace Mirai.Net.Listeners
 {
-    public interface IMessageListener : IListener<MessageType, MessageArgs>
+    public interface IMessageListener
     {
+        public IEnumerable<MessageType> Executors { get; init; }
+
+        public void Execute(MessageArgs args);
     }
 }
