@@ -14,7 +14,7 @@ namespace Mirai.Net.Test
             
         }
 
-        public IEnumerable<EventType> EventTypes { get; set; }
+        public IEnumerable<EventType> EventTypes { get; init; }
         public void Execute(EventArgsBase args)
         {
             throw new NotImplementedException();

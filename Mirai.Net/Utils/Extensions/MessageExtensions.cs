@@ -30,11 +30,11 @@ namespace Mirai.Net.Utils.Extensions
 
             return type.ToLower().Contains("event");
         }
-        
+
         /// <summary>
         /// 根据传进来json，解析为EventArgsBase的type，再转换成具体的EventArgs
         /// </summary>
-        /// <param name="json"></param>
+        /// <param name="data"></param>
         /// <returns></returns>
         public static EventArgsBase ConvertToConcrete(this string data)
         {
