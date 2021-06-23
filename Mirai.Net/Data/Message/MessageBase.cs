@@ -7,6 +7,6 @@ namespace Mirai.Net.Data.Message
     {
         [JsonConverter(typeof(StringEnumConverter))]
         [JsonProperty("type")]
-        public MessageType Type {get; protected set; }
+        public MessageType Type {get; init; }
     }
 }

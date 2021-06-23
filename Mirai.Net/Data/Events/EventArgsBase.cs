@@ -9,7 +9,7 @@ namespace Mirai.Net.Data.Events
     {
         [JsonConverter(typeof(StringEnumConverter))]
         [JsonProperty("type")]
-        public EventType Type {get; protected set; }
+        public EventType Type {get; init; }
 
         public override string ToString()
         {
