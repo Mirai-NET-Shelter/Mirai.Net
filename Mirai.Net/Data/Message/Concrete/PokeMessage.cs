@@ -14,5 +14,7 @@ namespace Mirai.Net.Data.Message.Concrete
         /// </summary>
         [JsonProperty("name")]
         public string Name {get; set;}
+        
+        public override MessageType Type { get; init; } = MessageType.Poke;
     }
 }

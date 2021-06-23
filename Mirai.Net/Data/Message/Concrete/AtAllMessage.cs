@@ -2,6 +2,6 @@
 {
     public class AtAllMessage : MessageBase
     {
-        
+        public override MessageType Type { get; init; } = MessageType.AtAll;
     }
 }

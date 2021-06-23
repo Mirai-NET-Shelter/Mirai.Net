@@ -15,5 +15,7 @@ namespace Mirai.Net.Data.Message.Concrete
         /// </summary>
         [JsonProperty("time")]
         public string Time {get; set;}
+        
+        public override MessageType Type { get; init; } = MessageType.Source;
     }
 }

@@ -2,6 +2,6 @@
 {
     public class FlashImageMessage : ImageMessage
     {
-        
+        public override MessageType Type { get; init; } = MessageType.FlashImage;
     }
 }

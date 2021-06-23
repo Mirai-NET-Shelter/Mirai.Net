@@ -21,5 +21,7 @@ namespace Mirai.Net.Data.Message.Concrete
         /// </summary>
         [JsonProperty("size")]
         public long Size {get; set;}
+        
+        public override MessageType Type { get; init; } = MessageType.File;
     }
 }

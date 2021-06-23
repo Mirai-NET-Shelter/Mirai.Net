@@ -43,5 +43,7 @@ namespace Mirai.Net.Data.Message.Concrete
             [JsonProperty("sourceId")]
             public string SourceId {get; set;}
         }
+        
+        public override MessageType Type { get; init; } = MessageType.Forward;
     }
 }

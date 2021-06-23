@@ -30,5 +30,7 @@ namespace Mirai.Net.Data.Message.Concrete
         /// </summary>
         [JsonProperty("base64")]
         public string Base64 {get; set;}
+        
+        public override MessageType Type { get; init; } = MessageType.Voice;
     }
 }

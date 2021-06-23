@@ -6,5 +6,7 @@ namespace Mirai.Net.Data.Message.Concrete
     {
         [JsonProperty("json")]
         public string Json {get; set;}
+        
+        public override MessageType Type { get; init; } = MessageType.Json;
     }
 }

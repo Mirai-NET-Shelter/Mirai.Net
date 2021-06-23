@@ -35,5 +35,7 @@ namespace Mirai.Net.Data.Message.Concrete
         /// </summary>
         [JsonProperty("origin")]
         public IEnumerable<MessageBase> Origin {get; set;}
+        
+        public override MessageType Type { get; init; } = MessageType.Quote;
     }
 }

@@ -6,5 +6,7 @@ namespace Mirai.Net.Data.Message.Concrete
     {
         [JsonProperty("xml")]
         public string Xml {get; set;}
+        
+        public override MessageType Type { get; init; } = MessageType.Xml;
     }
 }

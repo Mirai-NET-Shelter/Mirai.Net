@@ -9,5 +9,7 @@ namespace Mirai.Net.Data.Message.Concrete
         /// </summary>
         [JsonProperty("value")]
         public string Value {get; set;}
+        
+        public override MessageType Type { get; init; } = MessageType.Dice;
     }
 }

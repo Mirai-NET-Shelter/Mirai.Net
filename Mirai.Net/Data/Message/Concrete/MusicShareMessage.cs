@@ -24,5 +24,7 @@ namespace Mirai.Net.Data.Message.Concrete
         
         [JsonProperty("brief")]
         public string Brief {get; set;}
+        
+        public override MessageType Type { get; init; } = MessageType.MusicShare;
     }
 }

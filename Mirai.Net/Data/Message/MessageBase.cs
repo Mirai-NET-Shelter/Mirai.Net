@@ -11,7 +11,7 @@ namespace Mirai.Net.Data.Message
     {
         [JsonConverter(typeof(StringEnumConverter))]
         [JsonProperty("type")]
-        public MessageType Type {get; init; }
+        public virtual MessageType Type {get; init; }
 
         public static implicit operator MessageBase(string s)
         {
