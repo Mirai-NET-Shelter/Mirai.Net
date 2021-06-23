@@ -4,6 +4,8 @@ using Mirai.Net.Data.Events.Apply;
 using Mirai.Net.Data.Events.Bot;
 using Mirai.Net.Data.Events.Friend;
 using Mirai.Net.Data.Events.Group;
+using Mirai.Net.Data.Message;
+using Mirai.Net.Data.Message.Concrete;
 using Websocket.Client;
 
 namespace Mirai.Net.Utils.Extensions
@@ -74,6 +76,33 @@ namespace Mirai.Net.Utils.Extensions
                 EventType.NewFriendRequestEvent => data.ToEntity<NewFriendRequestEventArgs>(),
                 EventType.MemberJoinRequestEvent => data.ToEntity<MemberJoinRequestEventArgs>(),
                 EventType.BotInvitedJoinGroupRequestEvent => data.ToEntity<BotInvitedJoinGroupRequestEvent>(),
+                _ => throw new ArgumentOutOfRangeException()
+            };
+        }
+
+        public static MessageBase ConvertToConcreteMessage(this string data)
+        {
+            var args = data.ToEntity<MessageBase>();
+
+            return args.Type switch
+            {
+                MessageType.Source => data.ToEntity<SourceMessage>(),
+                MessageType.Quote => data.ToEntity<QuoteMessage>(),
+                MessageType.At => data.ToEntity<AtMessage>(),
+                MessageType.AtAll => data.ToEntity<AtAllMessage>(),
+                MessageType.Face => data.ToEntity<FaceMessage>(),
+                MessageType.Plain => data.ToEntity<PlainMessage>(),
+                MessageType.Image => data.ToEntity<ImageMessage>(),
+                MessageType.FlashImage => data.ToEntity<FlashImageMessage>(),
+                MessageType.Voice => data.ToEntity<VoiceMessage>(),
+                MessageType.Xml => data.ToEntity<XmlMessage>(),
+                MessageType.Json => data.ToEntity<JsonMessage>(),
+                MessageType.App => data.ToEntity<AppMessage>(),
+                MessageType.Poke => data.ToEntity<PokeMessage>(),
+                MessageType.Dice => data.ToEntity<DiceMessage>(),
+                MessageType.MusicShare => data.ToEntity<MusicShareMessage>(),
+                MessageType.Forward => data.ToEntity<ForwardMessage>(),
+                MessageType.File => data.ToEntity<FileMessage>(),
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
