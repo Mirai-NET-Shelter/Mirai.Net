@@ -72,7 +72,7 @@ namespace Mirai.Net.Utils.Extensions
                 EventType.MemberUnmuteEvent => data.ToEntity<BotUnmuteEventArgs>(),
                 EventType.MemberHonorChangeEvent => data.ToEntity<MemberHonorChangeEventArgs>(),
                 EventType.NewFriendRequestEvent => data.ToEntity<NewFriendRequestEventArgs>(),
-                EventType.MemberJoinRequestEvent => data.ToEntity<MemberJoinEventArgs>(),
+                EventType.MemberJoinRequestEvent => data.ToEntity<MemberJoinRequestEventArgs>(),
                 EventType.BotInvitedJoinGroupRequestEvent => data.ToEntity<BotInvitedJoinGroupRequestEvent>(),
                 _ => throw new ArgumentOutOfRangeException()
             };
