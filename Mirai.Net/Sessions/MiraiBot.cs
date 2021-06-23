@@ -48,6 +48,11 @@ namespace Mirai.Net.Sessions
         /// </summary>
         public async Task Launch()
         {
+            await LaunchWebSocketListener();
+        }
+
+        private async Task LaunchWebSocketListener()
+        {
             var url = new Uri($@"ws://{Address}/all?verifyKey={VerifyKey}&qq={QQ}");
             var exit = new ManualResetEvent(false);
 
@@ -91,7 +96,7 @@ namespace Mirai.Net.Sessions
                 }
                 else
                 {
-                    Console.WriteLine(s.Text);
+                    //Console.WriteLine(s.Text);
                 }
             });
             

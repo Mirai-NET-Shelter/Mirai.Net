@@ -20,6 +20,7 @@ namespace Mirai.Net.Test
         {
             #region Bot definition
 
+            var lis = new TestListener();
             var bot = new MiraiBot
             {
                 Address = "127.0.0.1:8080",
@@ -27,7 +28,11 @@ namespace Mirai.Net.Test
                 VerifyKey = "1145141919810",
                 MessageListeners = new List<IMessageListener>
                 {
-                    new TestListener()
+                    lis
+                },
+                EventListeners = new List<IEventListener>
+                {
+                    lis
                 }
             };
             
