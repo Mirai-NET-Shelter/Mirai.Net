@@ -36,6 +36,7 @@ namespace Mirai.Net.Sessions
         public string Address { get; set; }
 
         public List<IEventListener> EventListeners { get; set; } = new List<IEventListener>();
+        public List<IMessageListener> MessageListeners { get; set; } = new List<IMessageListener>();
 
         /// <summary>
         /// 绑定的账号, singleMode 模式下为空, 非 singleMode 下新建连接不可为空
@@ -56,16 +57,35 @@ namespace Mirai.Net.Sessions
             {
                 if (s.IsEvent())
                 {
-                    foreach (var listener in EventListeners)
+                    if (EventListeners is {Count: > 0})
                     {
-                        var json = s.Text.ToJObject().Fetch("data");
-                        var entity = json.ConvertToConcrete();
-
-                        if (listener.Executors.Any(x => x == entity.Type))
+                        foreach (var listener in EventListeners)
                         {
-                            listener.Execute(entity);
+                            var json = s.Text.ToJObject().Fetch("data");
+                            var entity = json.ConvertToConcreteEventArgs();
+
+                            if (listener.Executors.Any(x => x == entity.Type))
+                            {
+                                listener.Execute(entity);
+                            }
                         }
                     }
+                }
+                else
+                {
+                    // if (MessageListeners is {Count: > 0})
+                    // {
+                    //     foreach (var listener in MessageListeners)
+                    //     {
+                    //         var json = s.Text.ToJObject().Fetch("data");
+                    //         var entity = json.ConvertToConcreteEventArgs();
+                    //
+                    //         if (listener.Executors.Any(x => x == entity.Type))
+                    //         {
+                    //             listener.Execute(entity);
+                    //         }
+                    //     }
+                    // }
                 }
             });
             

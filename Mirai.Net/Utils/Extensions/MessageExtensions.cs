@@ -36,7 +36,7 @@ namespace Mirai.Net.Utils.Extensions
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static EventArgsBase ConvertToConcrete(this string data)
+        public static EventArgsBase ConvertToConcreteEventArgs(this string data)
         {
             var args = data.ToEntity<EventArgsBase>();
             return args.Type switch
