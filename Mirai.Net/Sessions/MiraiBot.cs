@@ -61,7 +61,7 @@ namespace Mirai.Net.Sessions
                         var json = s.Text.ToJObject().Fetch("data");
                         var entity = json.ConvertToConcrete();
 
-                        if (listener.EventTypes.Any(x => x == entity.Type))
+                        if (listener.Executors.Any(x => x == entity.Type))
                         {
                             listener.Execute(entity);
                         }
