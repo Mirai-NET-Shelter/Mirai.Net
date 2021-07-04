@@ -10,16 +10,16 @@ namespace Mirai.Net.Utils.Extensions
     public static class JsonExtensions
     {
         /// <summary>
-        /// 从JToken里取出指定key的值，JObject和JArray都继承自JToken
+        /// 从JToken里取出指定path的值，JObject和JArray都继承自JToken
         /// </summary>
         /// <param name="token"></param>
-        /// <param name="key"></param>
+        /// <param name="path"></param>
         /// <returns></returns>
-        public static string Fetch(this JToken token, string key)
+        public static string Fetch(this JToken token, string path)
         {
             try
             {
-                var value = token[key].ToString();
+                var value = token.SelectToken(path)!.ToString();
 
                 return value;
             }
