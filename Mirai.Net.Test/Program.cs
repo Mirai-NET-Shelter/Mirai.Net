@@ -36,7 +36,9 @@ namespace Mirai.Net.Test
                 }
             };
             
-            await bot.Launch();
+            // await bot.Launch();
+
+            Console.WriteLine(await bot.GetPluginVersion());
 
             #endregion
         }
