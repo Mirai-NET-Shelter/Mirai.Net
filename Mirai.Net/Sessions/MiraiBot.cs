@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Listeners;
+using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -18,7 +19,7 @@ namespace Mirai.Net.Sessions
     /// <summary>
     /// Mirai机器人
     /// </summary>
-    public class MiraiBot
+    public class MiraiBot : IDisposable
     {
         /// <summary>
         /// Mirai.Net总是需要一个VerifyKey
@@ -48,61 +49,151 @@ namespace Mirai.Net.Sessions
         /// </summary>
         public async Task Launch()
         {
+            await LaunchHttpListener();
             await LaunchWebSocketListener();
         }
 
+        #region Http
+
+        /// <summary>
+        /// 获取mirai-http-api插件的版本
+        /// </summary>
+        /// <returns></returns>
+        public async Task<string> GetPluginVersion()
+        {
+            var url = $"http://{Address}/about";
+            var response = await HttpUtilities.Get(url);
+            
+            response.EnsureSuccess();
+
+            return response.ToJObject().Fetch("data.version");
+        }
+        
+        private async Task LaunchHttpListener()
+        {
+            await Verify();
+            await Bind();
+        }
+        
+        /// <summary>
+        /// 通过verifyKey验证sessionKey
+        /// </summary>
+        private async Task Verify()
+        {
+            var url = $"http://{Address}/verify";
+            var content = new
+            {
+                verifyKey = VerifyKey
+            }.ToJsonString();
+
+            var response = await HttpUtilities.PostJson(url, content);
+                
+            response.EnsureSuccess();
+            
+            SessionKey = response.ToJObject().Fetch("session");
+        }
+
+        /// <summary>
+        /// 把sessionKey绑定到指定的bot
+        /// </summary>
+        private async Task Bind()
+        {
+            var url = $"http://{Address}/verify";
+            var content = new
+            {
+                sessionKey = SessionKey,
+                qq = QQ
+            }.ToJsonString();
+
+            var response = await HttpUtilities.PostJson(url, content);
+                
+            response.EnsureSuccess();
+        }
+
+        /// <summary>
+        /// 释放bot请求的资源
+        /// </summary>
+        private async Task Release()
+        {
+            var url = $"http://{Address}/release";
+            var content = new
+            {
+                sessionKey = SessionKey,
+                qq = QQ
+            }.ToJsonString();
+
+            var response = await HttpUtilities.PostJson(url, content);
+                
+            response.EnsureSuccess();
+        }
+
+        #endregion
+
+        #region Websocket
+
+        private WebsocketClient _client;
         private async Task LaunchWebSocketListener()
         {
             var url = new Uri($@"ws://{Address}/all?verifyKey={VerifyKey}&qq={QQ}");
             var exit = new ManualResetEvent(false);
 
-            using var client = new WebsocketClient(url);
-
-            client.MessageReceived.Subscribe(s =>
+            using (_client = new WebsocketClient(url))
             {
-                if (s.IsEvent())
+                _client.MessageReceived.Subscribe(s =>
                 {
-                    if (EventListeners != null && EventListeners.Count > 0)
+                    if (s.IsEvent())
                     {
-                        foreach (var listener in EventListeners)
+                        if (EventListeners != null && EventListeners.Count > 0)
                         {
-                            var json = s.Text.ToJObject().Fetch("data");
-                            var entity = json.ConvertToConcreteEventArgs();
+                            foreach (var listener in EventListeners)
+                            {
+                                var json = s.Text.ToJObject().Fetch("data");
+                                var entity = json.ConvertToConcreteEventArgs();
 
-                            if (listener.Executors.Any(x => x == entity.Type))
-                            {
-                                listener.Execute(entity);
+                                if (listener.Executors.Any(x => x == entity.Type))
+                                {
+                                    listener.Execute(entity);
+                                }
                             }
                         }
                     }
-                }
-                else if (s.IsMessage())
-                {
-                    if (MessageListeners != null && MessageListeners.Count > 0)
+                    else if (s.IsMessage())
                     {
-                        foreach (var listener in MessageListeners)
+                        if (MessageListeners != null && MessageListeners.Count > 0)
                         {
-                            var json = s.Text.ToJObject().Fetch("data");
-                            var entity = json.ConvertToConcreteMessageArgs();
-                            entity.Chain = json.ToJObject()["messageChain"]?.ToObject<JArray>()!
-                                .Select(x => x.ToString().ConvertToConcreteMessage());
-                            
-                            if (listener.Executors.Any(x => x == entity.Type))
+                            foreach (var listener in MessageListeners)
                             {
-                                listener.Execute(entity);
+                                var json = s.Text.ToJObject().Fetch("data");
+                                var entity = json.ConvertToConcreteMessageArgs();
+                                entity.Chain = json.ToJObject()["messageChain"]?.ToObject<JArray>()!
+                                    .Select(x => x.ToString().ConvertToConcreteMessage());
+                            
+                                if (listener.Executors.Any(x => x == entity.Type))
+                                {
+                                    listener.Execute(entity);
+                                }
                             }
                         }
                     }
-                }
-                else
-                {
-                    //Console.WriteLine(s.Text);
-                }
-            });
+                    else
+                    {
+                        //Console.WriteLine(s.Text);
+                    }
+                });
             
-            await client.StartOrFail();
+                await _client.StartOrFail();
             
-            exit.WaitOne();
+                exit.WaitOne();
+            }
+        }
+
+        #endregion
+
+        public async void Dispose()
+        {
+            _client.Dispose();
+
+            await Release();
         }
     }
 }
