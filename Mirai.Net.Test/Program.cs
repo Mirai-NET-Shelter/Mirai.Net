@@ -39,13 +39,11 @@ namespace Mirai.Net.Test
             
             await bot.Launch();
 
-            Console.WriteLine(await bot.GetPluginVersion());
-
             var manager = new ContactManager(bot);
             
-            foreach (var friend in await manager.GetFriendList())
+            foreach (var friend in await manager.GetGroupList())
             {
-                Console.WriteLine(friend.NickName);
+                Console.WriteLine(friend.ToJsonString());
             }
 
             Console.WriteLine("This is a test");

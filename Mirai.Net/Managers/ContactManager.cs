@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Mirai.Net.Data.Contact;
 using Mirai.Net.Sessions;
@@ -25,7 +26,18 @@ namespace Mirai.Net.Managers
                 .Fetch("data")
                 .ToJArray();
 
-            return result.Select(token => token.ToObject<Friend>()).ToList();
+            return result.Select(token => token.ToObject<Friend>());
+        }
+        
+        public async Task<IEnumerable<Group>> GetGroupList()
+        {
+            var response = await _bot.Get("groupList");
+            var result = response
+                .ToJObject()
+                .Fetch("data")
+                .ToJArray();
+
+            return result.Select(token => token.ToObject<Group>());
         }
     }
 }

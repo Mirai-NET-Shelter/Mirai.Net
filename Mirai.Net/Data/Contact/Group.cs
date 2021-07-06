@@ -1,5 +1,6 @@
 ﻿using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Mirai.Net.Data.Contact
 {
@@ -21,6 +22,7 @@ namespace Mirai.Net.Data.Contact
         /// 权限类型
         /// </summary>
         [JsonProperty("permission")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public GroupPermission Permission {get; set;}
     }
 
@@ -42,6 +44,7 @@ namespace Mirai.Net.Data.Contact
         /// 操作者在群中的权限
         /// </summary>
         [JsonProperty("permission")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public GroupPermission Permission {get; set;}
 
         /// <summary>
