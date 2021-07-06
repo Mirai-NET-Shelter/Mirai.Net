@@ -30,7 +30,7 @@ namespace Mirai.Net.Data.Events.Bot
         /// 禁言bot的操作者
         /// </summary>
         [JsonProperty("operator")]
-        public GroupActionOperator Operator {get; set;}
+        public GroupMember Operator {get; set;}
     }
 
     public class BotUnmuteEventArgs : EventArgsBase
@@ -39,7 +39,7 @@ namespace Mirai.Net.Data.Events.Bot
         /// 取消禁言bot的操作者
         /// </summary>
         [JsonProperty("operator")]
-        public GroupActionOperator Operator {get; set;}
+        public GroupMember Operator {get; set;}
     }
 
     public class BotJoinGroupEventArgs : EventArgsBase

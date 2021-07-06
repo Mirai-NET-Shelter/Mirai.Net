@@ -6,6 +6,6 @@ namespace Mirai.Net.Data.Message.Args
     public class TempMessageArgs : MessageArgs
     {
         [JsonProperty("sender")]
-        public GroupActionOperator Sender {get; set;}
+        public GroupMember Sender {get; set;}
     }
 }

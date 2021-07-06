@@ -33,7 +33,7 @@ namespace Mirai.Net.Data.Events.Group
         /// 操作者
         /// </summary>
         [JsonProperty("operator")]
-        public GroupActionOperator Operator {get; set;}
+        public GroupMember Operator {get; set;}
     }
 
     /// <summary>
@@ -65,7 +65,7 @@ namespace Mirai.Net.Data.Events.Group
         /// 操作者
         /// </summary>
         [JsonProperty("operator")]
-        public GroupActionOperator Operator {get; set;}
+        public GroupMember Operator {get; set;}
     }
     
     public class GroupNameChangeEventArgs : GroupSettingChangeEventArgs<string> { }

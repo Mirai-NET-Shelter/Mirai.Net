@@ -41,9 +41,9 @@ namespace Mirai.Net.Test
 
             var manager = new ContactManager(bot);
             
-            foreach (var friend in await manager.GetGroupList())
+            foreach (var item in await manager.GetGroupMemberList("110838222"))
             {
-                Console.WriteLine(friend.ToJsonString());
+                Console.WriteLine(item.ToJsonString());
             }
 
             Console.WriteLine("This is a test");

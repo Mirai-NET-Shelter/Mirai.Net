@@ -26,7 +26,7 @@ namespace Mirai.Net.Data.Contact
         public GroupPermission Permission {get; set;}
     }
 
-    public class GroupActionOperator
+    public class GroupMember
     {
         /// <summary>
         /// 操作者的QQ号

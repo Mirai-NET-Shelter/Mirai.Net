@@ -7,22 +7,22 @@ namespace Mirai.Net.Data.Events.Group
     public class MemberJoinEventArgs : EventArgsBase
     {
         [JsonProperty("member")]
-        public GroupActionOperator Member {get; set;}
+        public GroupMember Member {get; set;}
     }
 
     public class MemberLeaveEventKickArgs : EventArgsBase
     {
         [JsonProperty("member")]
-        public GroupActionOperator Member {get; set;}
+        public GroupMember Member {get; set;}
         
         [JsonProperty("operator")]
-        public GroupActionOperator Operator {get; set;}
+        public GroupMember Operator {get; set;}
     }
 
     public class MemberLeaveEventQuitArgs : EventArgsBase
     {
         [JsonProperty("member")]
-        public GroupActionOperator Member {get; set;}
+        public GroupMember Member {get; set;}
     }
 
     /// <summary>
@@ -47,7 +47,7 @@ namespace Mirai.Net.Data.Events.Group
         /// 操作者
         /// </summary>
         [JsonProperty("member")]
-        public GroupActionOperator Member {get; set;}
+        public GroupMember Member {get; set;}
     }
     
     public class MemberCardChangeEventArgs : GroupMemberSettingChangeEvent<string>{}
@@ -62,25 +62,25 @@ namespace Mirai.Net.Data.Events.Group
         public string Period {get; set;}
         
         [JsonProperty("Member")]
-        public GroupActionOperator Member {get; set;}
+        public GroupMember Member {get; set;}
         
         [JsonProperty("Operator")]
-        public GroupActionOperator Operator {get; set;}
+        public GroupMember Operator {get; set;}
     }
     
     public class MemberUnmuteEventArgs : EventArgsBase
     {
         [JsonProperty("Member")]
-        public GroupActionOperator Member {get; set;}
+        public GroupMember Member {get; set;}
         
         [JsonProperty("Operator")]
-        public GroupActionOperator Operator {get; set;}
+        public GroupMember Operator {get; set;}
     }
 
     public class MemberHonorChangeEventArgs : EventArgsBase
     {
         [JsonProperty("member")]
-        public GroupActionOperator Member {get; set;}
+        public GroupMember Member {get; set;}
         
         /// <summary>
         /// 获得还是失去称号
