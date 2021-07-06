@@ -8,11 +8,11 @@ using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Managers
 {
-    public class AccountManager
+    public class ContactManager
     {
         private readonly MiraiBot _bot;
 
-        public AccountManager(MiraiBot bot)
+        public ContactManager(MiraiBot bot)
         {
             _bot = bot;
         }
