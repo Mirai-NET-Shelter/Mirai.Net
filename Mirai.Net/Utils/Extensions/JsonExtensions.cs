@@ -19,13 +19,13 @@ namespace Mirai.Net.Utils.Extensions
         {
             try
             {
-                var value = token.SelectToken(path)!.ToString();
+                var value = token.SelectToken(path) ?? throw new ArgumentException($"没有与此path: {path} 对应的value！");
 
-                return value;
+                return value.ToString();
             }
             catch (Exception e)
             {
-                throw new ArgumentException("没有与此key对应的value！", e);
+                throw new ArgumentException($"没有与此path: {path} 对应的value！", e);
             }
             
         }
