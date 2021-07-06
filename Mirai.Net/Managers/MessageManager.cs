@@ -7,11 +7,11 @@ using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Managers
 {
-    public class Messenger
+    public class MessageManager
     {
         private readonly MiraiBot _bot;
 
-        public Messenger(MiraiBot bot)
+        public MessageManager(MiraiBot bot)
         {
             _bot = bot;
         }

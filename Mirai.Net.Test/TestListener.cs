@@ -25,7 +25,7 @@ namespace Mirai.Net.Test
         {
             if (args is FriendMessageArgs friendMessageArgs)
             {
-                var messenger = new Messenger(bot);
+                var messenger = new MessageManager(bot);
 
                 await messenger.SendFriendMessage(friendMessageArgs.Sender.Id, friendMessageArgs.Chain.ToArray());
             }
