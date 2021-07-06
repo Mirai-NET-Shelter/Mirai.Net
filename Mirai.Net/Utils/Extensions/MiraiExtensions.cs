@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Mirai.Net.Utils.Extensions
 {
@@ -11,11 +12,22 @@ namespace Mirai.Net.Utils.Extensions
         public static void EnsureSuccess(this string s)
         {
             var obj = s.ToJObject();
-            var code = obj.Fetch("code");
 
-            if (code != "0")
+            try
             {
-                throw new Exception(obj.Fetch("msg"));
+                var code = obj.Fetch("code");
+
+                if (code != "0")
+                {
+                    throw new Exception(obj.Fetch("msg"));
+                }
+            }
+            catch (Exception e)
+            {
+                if (!e.Message.Contains("没有与此path:"))
+                {
+                    throw;
+                }
             }
         }
     }
