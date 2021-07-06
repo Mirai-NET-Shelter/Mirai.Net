@@ -37,14 +37,12 @@ namespace Mirai.Net.Test
             
             #endregion
 
-            // var manager = new ContactManager(bot);
-            //
-            // Console.WriteLine((await manager.GetBotProfile()).ToJsonString());
-            //
-            // foreach (var item in await manager.GetGroupMemberList("858594947"))
-            // {
-            //     Console.WriteLine((await manager.GetGroupMemberProfile(item)).ToJsonString());
-            // }
+            var file = new FileManager(bot);
+            
+            foreach (var file1 in await file.GetFiles("110838222"))
+            {
+                Console.WriteLine(file1.ToJsonString());
+            }
 
             #region Post handler
 

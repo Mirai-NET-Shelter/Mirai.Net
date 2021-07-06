@@ -13,20 +13,13 @@ namespace Mirai.Net.Utils.Extensions
         {
             var obj = s.ToJObject();
 
-            try
+            if (obj.ContainsKey("code"))
             {
                 var code = obj.Fetch("code");
 
                 if (code != "0")
                 {
                     throw new Exception(obj.Fetch("msg"));
-                }
-            }
-            catch (Exception e)
-            {
-                if (!e.Message.Contains("没有与此path:"))
-                {
-                    throw;
                 }
             }
         }
