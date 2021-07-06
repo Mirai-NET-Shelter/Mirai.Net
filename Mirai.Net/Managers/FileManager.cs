@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Mirai.Net.Data.Files;
@@ -8,6 +9,7 @@ using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Managers
 {
+    [Obsolete("BUGGGGGG")]
     public class FileManager
     {
         private readonly MiraiBot _bot;
