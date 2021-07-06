@@ -60,7 +60,7 @@ namespace Mirai.Net.Utils
             var url = $"http://{bot.Address}/{endpoint}";
             var content = new StringContent(json, Encoding.Default, "application/json");
 
-            content.Headers.Add("Authorization", $"sessionKey {bot.SessionKey}");
+            client.DefaultRequestHeaders.Add("Authorization", $"sessionKey {bot.SessionKey}");
 
             var response = await client.PostAsync(url, content);
             var result = await response.Content.ReadAsStringAsync();

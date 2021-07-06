@@ -22,16 +22,12 @@ namespace Mirai.Net.Test
             #region Bot definition
 
             var lis = new TestListener();
-            var bot = new MiraiBot
+            using var bot = new MiraiBot
             {
                 Address = "127.0.0.1:8080",
                 QQ = "2672886221",
                 VerifyKey = "1145141919810",
                 MessageListeners = new List<IMessageListener>
-                {
-                    lis
-                },
-                EventListeners = new List<IEventListener>
                 {
                     lis
                 }
@@ -41,14 +37,14 @@ namespace Mirai.Net.Test
             
             #endregion
 
-            var manager = new ContactManager(bot);
-
-            Console.WriteLine((await manager.GetBotProfile()).ToJsonString());
-            
-            foreach (var item in await manager.GetGroupMemberList("858594947"))
-            {
-                Console.WriteLine((await manager.GetGroupMemberProfile(item)).ToJsonString());
-            }
+            // var manager = new ContactManager(bot);
+            //
+            // Console.WriteLine((await manager.GetBotProfile()).ToJsonString());
+            //
+            // foreach (var item in await manager.GetGroupMemberList("858594947"))
+            // {
+            //     Console.WriteLine((await manager.GetGroupMemberProfile(item)).ToJsonString());
+            // }
 
             #region Post handler
 

@@ -5,45 +5,30 @@ using Mirai.Net.Data.Events.Bot;
 using Mirai.Net.Data.Events.Friend;
 using Mirai.Net.Data.Events.Group;
 using Mirai.Net.Data.Message;
+using Mirai.Net.Data.Message.Args;
 using Mirai.Net.Data.Message.Concrete;
 using Mirai.Net.Listeners;
+using Mirai.Net.Managers;
 using Mirai.Net.Sessions;
 using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Test
 {
-    public class TestListener : IMessageListener, IEventListener
+    public class TestListener : IMessageListener
     {
-        private IEnumerable<EventType> _executors = new []
-        {
-            EventType.BotMuteEvent
-        };
-
         public IEnumerable<MessageReceiveType> Executors { get; set; } = new[]
         {
-            MessageReceiveType.Group
+            MessageReceiveType.Friend
         };
 
-        public void Execute(EventArgsBase args, MiraiBot bot)
+        public async void Execute(MessageArgs args, MiraiBot bot)
         {
-            if (args is BotMuteEventArgs botMuteEventArgs)
+            if (args is FriendMessageArgs friendMessageArgs)
             {
-                Console.WriteLine($"{botMuteEventArgs.Operator.Name} muted me!");
-            }
-        }
+                var messenger = new Messenger(bot);
 
-        public void Execute(MessageArgs args, MiraiBot bot)
-        {
-            if (args.Chain.ToList()[1] is PlainMessage p)
-            {
-                Console.WriteLine(p.Text);
+                await messenger.SendFriendMessage(friendMessageArgs.Sender.Id, friendMessageArgs.Chain.ToArray());
             }
-        }
-
-        IEnumerable<EventType> IEventListener.Executors
-        {
-            get => _executors;
-            set => _executors = value;
         }
     }
 }
