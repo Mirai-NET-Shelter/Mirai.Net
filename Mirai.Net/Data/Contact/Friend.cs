@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Contact
 {
@@ -24,5 +25,23 @@ namespace Mirai.Net.Data.Contact
         /// </summary>
         [JsonProperty("remark")]
         public string Remark {get; set;}
+    }
+
+    public enum NewFriendRequestOperate
+    {
+        /// <summary>
+        /// 同意
+        /// </summary>
+        Approve = 0,
+        
+        /// <summary>
+        /// 拒绝
+        /// </summary>
+        Reject = 1,
+        
+        /// <summary>
+        /// 拒绝并拉黑
+        /// </summary>
+        RejectAndBlock = 2
     }
 }
