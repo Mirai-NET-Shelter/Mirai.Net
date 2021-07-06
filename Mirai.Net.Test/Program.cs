@@ -43,12 +43,10 @@ namespace Mirai.Net.Test
 
             Console.WriteLine((await manager.GetBotProfile()).ToJsonString());
             
-            foreach (var item in await manager.GetFriendList())
+            foreach (var item in await manager.GetGroupMemberList("858594947"))
             {
-                Console.WriteLine((await manager.GetFriendProfile(item.Id)).ToJsonString());
+                Console.WriteLine((await manager.GetGroupMemberProfile(item)).ToJsonString());
             }
-
-            Console.WriteLine("This is a test");
 
             while (Console.ReadLine() == "exit")
             {

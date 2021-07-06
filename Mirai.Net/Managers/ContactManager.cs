@@ -87,5 +87,23 @@ namespace Mirai.Net.Managers
 
             return result.ToObject<Profile>();
         }
+
+        public async Task<Profile> GetFriendProfile(Friend friend) => await GetFriendProfile(friend.Id);
+        
+        public async Task<Profile> GetGroupMemberProfile(string groupId, string memberId)
+        {
+            var response = await _bot.Get("memberProfile", new[]
+            {
+                ("target", groupId),
+                ("memberId", memberId),
+            });
+            var result = response
+                .ToJObject();
+
+            return result.ToObject<Profile>();
+        }
+
+        public async Task<Profile> GetGroupMemberProfile(GroupMember groupMember) =>
+            await GetGroupMemberProfile(groupMember.Group.Id, groupMember.Id);
     }
 }
