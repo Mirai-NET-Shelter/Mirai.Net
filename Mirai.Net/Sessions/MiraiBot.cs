@@ -156,7 +156,7 @@ namespace Mirai.Net.Sessions
 
                             if (listener.Executors.Any(x => x == entity.Type))
                             {
-                                listener.Execute(entity);
+                                listener.Execute(entity, this);
                             }
                         }
                     }
@@ -174,7 +174,7 @@ namespace Mirai.Net.Sessions
 
                             if (listener.Executors.Any(x => x == entity.Type))
                             {
-                                listener.Execute(entity);
+                                listener.Execute(entity, this);
                             }
                         }
                     }

@@ -38,6 +38,8 @@ namespace Mirai.Net.Test
             };
             
             await bot.Launch();
+            
+            #endregion
 
             var manager = new ContactManager(bot);
 
@@ -48,10 +50,13 @@ namespace Mirai.Net.Test
                 Console.WriteLine((await manager.GetGroupMemberProfile(item)).ToJsonString());
             }
 
+            #region Post handler
+
             while (Console.ReadLine() == "exit")
             {
                 return;
             }
+
             #endregion
         }
     }

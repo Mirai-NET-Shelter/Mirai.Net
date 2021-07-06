@@ -7,6 +7,7 @@ using Mirai.Net.Data.Events.Group;
 using Mirai.Net.Data.Message;
 using Mirai.Net.Data.Message.Concrete;
 using Mirai.Net.Listeners;
+using Mirai.Net.Sessions;
 using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Test
@@ -23,7 +24,7 @@ namespace Mirai.Net.Test
             MessageReceiveType.Group
         };
 
-        public void Execute(EventArgsBase args)
+        public void Execute(EventArgsBase args, MiraiBot bot)
         {
             if (args is BotMuteEventArgs botMuteEventArgs)
             {
@@ -31,7 +32,7 @@ namespace Mirai.Net.Test
             }
         }
 
-        public void Execute(MessageArgs args)
+        public void Execute(MessageArgs args, MiraiBot bot)
         {
             if (args.Chain.ToList()[1] is PlainMessage p)
             {
