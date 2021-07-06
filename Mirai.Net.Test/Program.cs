@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Bot;
 using Mirai.Net.Listeners;
+using Mirai.Net.Managers;
 using Mirai.Net.Sessions;
 using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions;
@@ -36,10 +37,23 @@ namespace Mirai.Net.Test
                 }
             };
             
-            // await bot.Launch();
+            await bot.Launch();
 
             Console.WriteLine(await bot.GetPluginVersion());
 
+            var manager = new ContactManager(bot);
+            
+            foreach (var friend in await manager.GetFriendList())
+            {
+                Console.WriteLine(friend.NickName);
+            }
+
+            Console.WriteLine("This is a test");
+
+            while (Console.ReadLine() == "exit")
+            {
+                return;
+            }
             #endregion
         }
     }

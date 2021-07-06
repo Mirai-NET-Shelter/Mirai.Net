@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.WebSockets;
+using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Mirai.Net.Data.Events;
@@ -63,18 +64,18 @@ namespace Mirai.Net.Sessions
         {
             var url = $"http://{Address}/about";
             var response = await HttpUtilities.Get(url);
-            
+
             response.EnsureSuccess();
 
             return response.ToJObject().Fetch("data.version");
         }
-        
+
         private async Task LaunchHttpListener()
         {
             await Verify();
             await Bind();
         }
-        
+
         /// <summary>
         /// 通过verifyKey验证sessionKey
         /// </summary>
@@ -87,9 +88,9 @@ namespace Mirai.Net.Sessions
             }.ToJsonString();
 
             var response = await HttpUtilities.PostJson(url, content);
-                
+
             response.EnsureSuccess();
-            
+
             SessionKey = response.ToJObject().Fetch("session");
         }
 
@@ -98,7 +99,7 @@ namespace Mirai.Net.Sessions
         /// </summary>
         private async Task Bind()
         {
-            var url = $"http://{Address}/verify";
+            var url = $"http://{Address}/bind";
             var content = new
             {
                 sessionKey = SessionKey,
@@ -106,7 +107,7 @@ namespace Mirai.Net.Sessions
             }.ToJsonString();
 
             var response = await HttpUtilities.PostJson(url, content);
-                
+
             response.EnsureSuccess();
         }
 
@@ -123,7 +124,7 @@ namespace Mirai.Net.Sessions
             }.ToJsonString();
 
             var response = await HttpUtilities.PostJson(url, content);
-                
+
             response.EnsureSuccess();
         }
 
@@ -132,59 +133,55 @@ namespace Mirai.Net.Sessions
         #region Websocket
 
         private WebsocketClient _client;
+
         private async Task LaunchWebSocketListener()
         {
             var url = new Uri($@"ws://{Address}/all?verifyKey={VerifyKey}&qq={QQ}");
-            var exit = new ManualResetEvent(false);
 
-            using (_client = new WebsocketClient(url))
+            _client = new WebsocketClient(url);
+
+            _client.MessageReceived
+                .Where(x => !string.IsNullOrEmpty(x.Text))
+                .Where(x => x.IsEvent() || x.IsMessage())
+                .Subscribe(s =>
             {
-                _client.MessageReceived.Subscribe(s =>
+                if (s.IsEvent())
                 {
-                    if (s.IsEvent())
+                    if (EventListeners != null && EventListeners.Count > 0)
                     {
-                        if (EventListeners != null && EventListeners.Count > 0)
+                        foreach (var listener in EventListeners)
                         {
-                            foreach (var listener in EventListeners)
-                            {
-                                var json = s.Text.ToJObject().Fetch("data");
-                                var entity = json.ConvertToConcreteEventArgs();
+                            var json = s.Text.ToJObject().Fetch("data");
+                            var entity = json.ConvertToConcreteEventArgs();
 
-                                if (listener.Executors.Any(x => x == entity.Type))
-                                {
-                                    listener.Execute(entity);
-                                }
-                            }
-                        }
-                    }
-                    else if (s.IsMessage())
-                    {
-                        if (MessageListeners != null && MessageListeners.Count > 0)
-                        {
-                            foreach (var listener in MessageListeners)
+                            if (listener.Executors.Any(x => x == entity.Type))
                             {
-                                var json = s.Text.ToJObject().Fetch("data");
-                                var entity = json.ConvertToConcreteMessageArgs();
-                                entity.Chain = json.ToJObject()["messageChain"]?.ToObject<JArray>()!
-                                    .Select(x => x.ToString().ConvertToConcreteMessage());
-                            
-                                if (listener.Executors.Any(x => x == entity.Type))
-                                {
-                                    listener.Execute(entity);
-                                }
+                                listener.Execute(entity);
                             }
                         }
                     }
-                    else
+                }
+                else if (s.IsMessage())
+                {
+                    if (MessageListeners != null && MessageListeners.Count > 0)
                     {
-                        //Console.WriteLine(s.Text);
+                        foreach (var listener in MessageListeners)
+                        {
+                            var json = s.Text.ToJObject().Fetch("data");
+                            var entity = json.ConvertToConcreteMessageArgs();
+                            entity.Chain = json.ToJObject()["messageChain"]?.ToObject<JArray>()!
+                                .Select(x => x.ToString().ConvertToConcreteMessage());
+
+                            if (listener.Executors.Any(x => x == entity.Type))
+                            {
+                                listener.Execute(entity);
+                            }
+                        }
                     }
-                });
-            
-                await _client.StartOrFail();
-            
-                exit.WaitOne();
-            }
+                }
+            });
+
+            await _client.StartOrFail();
         }
 
         #endregion

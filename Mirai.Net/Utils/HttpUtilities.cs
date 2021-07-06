@@ -20,7 +20,7 @@ namespace Mirai.Net.Utils
         /// <returns></returns>
         public static async Task<string> Get(string url)
         {
-            var client = new HttpClient();
+            using var client = new HttpClient();
 
             var response = await client.GetAsync(url);
 
@@ -37,7 +37,7 @@ namespace Mirai.Net.Utils
         /// <returns></returns>
         public static async Task<string> PostJson(string url, string json)
         {
-            var client = new HttpClient();
+            using var client = new HttpClient();
             var content = new StringContent(json, Encoding.Default, "application/json");
 
             var response = await client.PostAsync(url, content);
@@ -56,7 +56,7 @@ namespace Mirai.Net.Utils
         /// <returns></returns>
         public static async Task<string> PostJson(this MiraiBot bot, string endpoint, string json)
         {
-            var client = new HttpClient();
+            using var client = new HttpClient();
             var url = $"http://{bot.Address}/{endpoint}";
             var content = new StringContent(json, Encoding.Default, "application/json");
 
@@ -78,14 +78,15 @@ namespace Mirai.Net.Utils
         /// <param name="endpoint"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public static async Task<string> Get(this MiraiBot bot, string endpoint, IEnumerable<(string, string)> parameters)
+        public static async Task<string> Get(this MiraiBot bot, string endpoint, IEnumerable<(string, string)> parameters = null)
         {
             var url = $"http://{bot.Address}/{endpoint}?sessionKey={bot.SessionKey}";
 
-            url = parameters.Aggregate(url,
-                (current, keyValuePair) => current + $"&{keyValuePair.Item1}={keyValuePair.Item2}");
+            if (parameters != null)
+                url = parameters.Aggregate(url,
+                    (current, keyValuePair) => current + $"&{keyValuePair.Item1}={keyValuePair.Item2}");
 
-            var client = new HttpClient();
+            using var client = new HttpClient();
 
             client.DefaultRequestHeaders.Add("Authorization", $"sessionKey {bot.SessionKey}");
 

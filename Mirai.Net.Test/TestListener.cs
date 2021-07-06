@@ -33,7 +33,10 @@ namespace Mirai.Net.Test
 
         public void Execute(MessageArgs args)
         {
-            Console.WriteLine((args.Chain.ToList()[1] as PlainMessage)?.Text);
+            if (args.Chain.ToList()[1] is PlainMessage p)
+            {
+                Console.WriteLine(p.Text);
+            }
         }
 
         IEnumerable<EventType> IEventListener.Executors
