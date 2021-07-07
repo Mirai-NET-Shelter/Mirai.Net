@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Bot;
+using Mirai.Net.Data.Message.Concrete;
 using Mirai.Net.Listeners;
 using Mirai.Net.Managers;
 using Mirai.Net.Sessions;
@@ -20,8 +22,7 @@ namespace Mirai.Net.Test
         public static async Task Main()
         {
             #region Bot definition
-
-            var lis = new TestListener();
+            
             using var bot = new MiraiBot
             {
                 Address = "127.0.0.1:8080",
@@ -29,7 +30,11 @@ namespace Mirai.Net.Test
                 VerifyKey = "1145141919810",
                 MessageListeners = new List<IMessageListener>
                 {
-                    lis
+                    new TestListener()
+                },
+                EventListeners = new List<IEventListener>
+                {
+                    new TestListenerEvent()
                 }
             };
             
@@ -37,18 +42,21 @@ namespace Mirai.Net.Test
             
             #endregion
 
-            var file = new FileManager(bot);
-            
-            foreach (var file1 in await file.GetFiles("110838222"))
+            var mgr = new MessageManager(bot);
+
+            await mgr.SendGroupMessage("809830266", new ImageMessage
             {
-                Console.WriteLine(file1.ToJsonString());
-            }
+                Url = "https://picsum.photos/200"
+            });
 
             #region Post handler
 
-            while (Console.ReadLine() == "exit")
+            while (true)
             {
-                return;
+                if (Console.ReadLine() == "exit")
+                {
+                    return;
+                }
             }
 
             #endregion
