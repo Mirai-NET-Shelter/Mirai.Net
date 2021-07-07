@@ -3,6 +3,13 @@
     <PropertyGroup>
         <LangVersion>9</LangVersion>
         <TargetFrameworks>net5.0;net5.0-windows</TargetFrameworks>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Mirai.Net</Title>
+        <Description>基于mirai-api-http的mirai .net sdk</Description>
+        <Copyright>© 2021 AHpx</Copyright>
+        <PackageProjectUrl>https://github.com/AHpxChina/Mirai.Net</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/AHpxChina/Mirai.Net</RepositoryUrl>
+        <PackageTags>Bot, Mirai</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>

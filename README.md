@@ -10,7 +10,11 @@ Mirai.Net是基于
 [mirai](https://github.com/mamoe/mirai)
 社区sdk。
 
-本项目遵循[MIT](https://github.com/AHpxChina/Mirai.Net/blob/master/LICENSE)协议开放源代码，使用C# 9.0开发。基于[.Net Standard 2.0 ](https://docs.microsoft.com/en-us/dotnet/standard/net-standard)。
+本项目遵循
+[MIT](https://github.com/AHpxChina/Mirai.Net/blob/master/LICENSE)
+协议开放源代码，使用C# 9.0开发。基于
+[.Net Standard 2.1](https://docs.microsoft.com/en-us/dotnet/standard/net-standard)
+。
 
 # 安装
 
