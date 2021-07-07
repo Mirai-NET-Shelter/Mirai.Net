@@ -8,5 +8,10 @@ namespace Mirai.Net.Data.Message.Concrete
         public string Text {get; set;}
         
         public override MessageType Type { get; init; } = MessageType.Plain;
+
+        public PlainMessage(string text = null)
+        {
+            Text = text;
+        }
     }
 }

@@ -17,5 +17,10 @@ namespace Mirai.Net.Data.Message.Concrete
         public string Display {get; set;}
         
         public override MessageType Type { get; init; } = MessageType.At;
+
+        public AtMessage(string target = null)
+        {
+            Target = target;
+        }
     }
 }
