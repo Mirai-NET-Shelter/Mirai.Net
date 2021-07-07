@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Mirai.Net.Data.Contact;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Bot;
 using Mirai.Net.Data.Message.Concrete;
@@ -42,15 +43,45 @@ namespace Mirai.Net.Test
             
             #endregion
 
-            var mgr = new MessageManager(bot);
+            var group = "809830266";
+            var msg = new MessageManager(bot);
+            var mgr = new GroupManager(bot, group);
+            var cgr = new ContactManager(bot);
 
-            await mgr.SendGroupMessage("809830266", new ImageMessage
+            await msg.SendGroupMessage(group, new PlainMessage
             {
-                Url = "https://picsum.photos/200"
+                Text = "现在，我将随机挑选一位幸运群员赠送一份禁言套餐!"
             });
 
-            #region Post handler
+            var list = (await cgr.GetGroupMemberList(group))
+                .Where(x => x.Permission == GroupPermission.Member)
+                .ToList();
 
+            var random = new Random();
+
+            var member = list[random.Next(list.Count)];
+
+            await msg.SendGroupMessage(group, new PlainMessage
+            {
+                Text = $"那么，这位幸运儿就是: "
+            }, new AtMessage
+            {
+                Target = member.Name
+            });
+
+            await mgr.Mute(member.Id, TimeSpan.FromDays(30));
+
+            await Task.Delay(TimeSpan.FromMinutes(1));
+
+            await msg.SendGroupMessage(group, new PlainMessage
+            {
+                Text = $"当然啦，是开玩笑的!"
+            });
+            
+            await mgr.UnMute(member.Id);
+
+            #region Post handler
+            
             while (true)
             {
                 if (Console.ReadLine() == "exit")
@@ -58,7 +89,7 @@ namespace Mirai.Net.Test
                     return;
                 }
             }
-
+            
             #endregion
         }
     }
