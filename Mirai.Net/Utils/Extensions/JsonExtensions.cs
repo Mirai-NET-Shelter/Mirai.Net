@@ -7,7 +7,7 @@ namespace Mirai.Net.Utils.Extensions
     /// <summary>
     /// 关于json操作的拓展方法集
     /// </summary>
-    public static class JsonExtensions
+    internal static class JsonExtensions
     {
         /// <summary>
         /// 从JToken里取出指定path的值，JObject和JArray都继承自JToken
@@ -15,7 +15,7 @@ namespace Mirai.Net.Utils.Extensions
         /// <param name="token"></param>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static string Fetch(this JToken token, string path)
+        internal static string Fetch(this JToken token, string path)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace Mirai.Net.Utils.Extensions
         /// </summary>
         /// <param name="primitive"></param>
         /// <returns></returns>
-        public static JObject ToJObject(this string primitive)
+        internal static JObject ToJObject(this string primitive)
         {
             return JObject.Parse(primitive);
         }
@@ -45,7 +45,7 @@ namespace Mirai.Net.Utils.Extensions
         /// </summary>
         /// <param name="primitive"></param>
         /// <returns></returns>
-        public static JArray ToJArray(this string primitive)
+        internal static JArray ToJArray(this string primitive)
         {
             return JArray.Parse(primitive);
         }
@@ -54,7 +54,7 @@ namespace Mirai.Net.Utils.Extensions
         /// 将一个可序列化为json的对象转换为json文本
         /// </summary>
         /// <returns></returns>
-        public static string ToJsonString<T>(this T type, NullValueHandling nullValueHandling = NullValueHandling.Ignore)
+        internal static string ToJsonString<T>(this T type, NullValueHandling nullValueHandling = NullValueHandling.Ignore)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace Mirai.Net.Utils.Extensions
         /// <param name="s"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static T ToEntity<T>(this string s)
+        internal static T ToEntity<T>(this string s)
         {
             try
             {

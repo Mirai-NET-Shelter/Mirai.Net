@@ -12,13 +12,13 @@ using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Utils
 {
-    public static class HttpUtilities
+    internal static class HttpUtilities
     {
         /// <summary>
         /// 发送一个Get请求到指定的url，如果失败则抛出异常
         /// </summary>
         /// <returns></returns>
-        public static async Task<string> Get(string url)
+        internal static async Task<string> Get(string url)
         {
             using var client = new HttpClient();
 
@@ -35,7 +35,7 @@ namespace Mirai.Net.Utils
         /// <param name="url"></param>
         /// <param name="json"></param>
         /// <returns></returns>
-        public static async Task<string> PostJson(string url, string json)
+        internal static async Task<string> PostJson(string url, string json)
         {
             using var client = new HttpClient();
             var content = new StringContent(json, Encoding.Default, "application/json");
@@ -54,7 +54,7 @@ namespace Mirai.Net.Utils
         /// <param name="endpoint"></param>
         /// <param name="json"></param>
         /// <returns></returns>
-        public static async Task<string> PostJson(this MiraiBot bot, string endpoint, string json)
+        internal static async Task<string> PostJson(this MiraiBot bot, string endpoint, string json)
         {
             using var client = new HttpClient();
             var url = $"http://{bot.Address}/{endpoint}";
@@ -78,7 +78,7 @@ namespace Mirai.Net.Utils
         /// <param name="endpoint"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public static async Task<string> Get(this MiraiBot bot, string endpoint, IEnumerable<(string, string)> parameters = null)
+        internal static async Task<string> Get(this MiraiBot bot, string endpoint, IEnumerable<(string, string)> parameters = null)
         {
             var url = $"http://{bot.Address}/{endpoint}?sessionKey={bot.SessionKey}";
 

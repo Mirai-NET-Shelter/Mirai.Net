@@ -21,7 +21,7 @@ namespace Mirai.Net.Test
         {
             if (args is NewFriendRequestEventArgs fArgs)
             {
-                Console.WriteLine($"Received new friend request: \n{fArgs.ToJsonString()}");
+                Console.WriteLine($"Received new friend request: \n{fArgs}");
 
                 var mar = new ContactManager(bot);
 

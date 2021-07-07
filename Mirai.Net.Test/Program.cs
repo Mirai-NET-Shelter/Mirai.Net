@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Mirai.Net.Data.Contact;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Bot;
+using Mirai.Net.Data.Message;
 using Mirai.Net.Data.Message.Concrete;
 using Mirai.Net.Listeners;
 using Mirai.Net.Managers;
@@ -27,7 +28,7 @@ namespace Mirai.Net.Test
             using var bot = new MiraiBot
             {
                 Address = "127.0.0.1:8080",
-                QQ = "2672886221",
+                QQ = "xx",
                 VerifyKey = "1145141919810",
                 MessageListeners = new List<IMessageListener>
                 {
@@ -43,7 +44,7 @@ namespace Mirai.Net.Test
             
             #endregion
 
-            var group = "809830266";
+            var group = "xxx";
             var msg = new MessageManager(bot);
             var mgr = new GroupManager(bot, group);
             var cgr = new ContactManager(bot);
@@ -73,10 +74,7 @@ namespace Mirai.Net.Test
 
             await Task.Delay(TimeSpan.FromMinutes(1));
 
-            await msg.SendGroupMessage(group, new PlainMessage
-            {
-                Text = $"当然啦，是开玩笑的!"
-            });
+            await msg.SendGroupMessage(group, new PlainMessage(""));
             
             await mgr.UnMute(member.Id);
 

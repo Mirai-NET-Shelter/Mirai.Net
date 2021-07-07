@@ -3,13 +3,13 @@ using System.Linq;
 
 namespace Mirai.Net.Utils.Extensions
 {
-    public static class MiraiExtensions
+    internal static class MiraiExtensions
     {
         /// <summary>
         /// 根据mirai-http-api的响应json来判断对应请求是否成功。
         /// </summary>
         /// <param name="s">mirai的api响应json</param>
-        public static void EnsureSuccess(this string s)
+        internal static void EnsureSuccess(this string s)
         {
             var obj = s.ToJObject();
 

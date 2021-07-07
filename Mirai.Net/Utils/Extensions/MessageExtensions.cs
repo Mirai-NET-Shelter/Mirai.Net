@@ -14,13 +14,13 @@ namespace Mirai.Net.Utils.Extensions
     /// <summary>
     /// 消息相关拓展封装
     /// </summary>
-    public static class MessageExtensions
+    internal static class MessageExtensions
     {
         /// <summary>
         /// 判断websocket收到的消息是不是事件消息
         /// </summary>
         /// <returns></returns>
-        public static bool IsEvent(this ResponseMessage message)
+        internal static bool IsEvent(this ResponseMessage message)
         {
             var json = message.Text.ToJObject();
 
@@ -35,7 +35,7 @@ namespace Mirai.Net.Utils.Extensions
             return re;
         }
         
-        public static bool IsMessage(this ResponseMessage message)
+        internal static bool IsMessage(this ResponseMessage message)
         {
             var json = message.Text.ToJObject();
 
@@ -55,7 +55,7 @@ namespace Mirai.Net.Utils.Extensions
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static EventArgsBase ConvertToConcreteEventArgs(this string data)
+        internal static EventArgsBase ConvertToConcreteEventArgs(this string data)
         {
             var args = data.ToEntity<EventArgsBase>();
             return args.Type switch
@@ -97,7 +97,7 @@ namespace Mirai.Net.Utils.Extensions
             };
         }
 
-        public static MessageArgs ConvertToConcreteMessageArgs(this string data)
+        internal static MessageArgs ConvertToConcreteMessageArgs(this string data)
         {
             var args = data.ToEntity<MessageArgs>();
 
@@ -112,7 +112,7 @@ namespace Mirai.Net.Utils.Extensions
             };
         }
         
-        public static MessageBase ConvertToConcreteMessage(this string node)
+        internal static MessageBase ConvertToConcreteMessage(this string node)
         {
             var args = node.ToEntity<MessageBase>();
 
