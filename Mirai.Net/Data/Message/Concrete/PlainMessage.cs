@@ -13,5 +13,10 @@ namespace Mirai.Net.Data.Message.Concrete
         {
             Text = text;
         }
+
+        public static implicit operator PlainMessage(string s)
+        {
+            return new(s);
+        }
     }
 }
