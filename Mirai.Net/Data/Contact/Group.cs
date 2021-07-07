@@ -126,4 +126,13 @@ namespace Mirai.Net.Data.Contact
         [JsonProperty("anonymousChat")]
         public bool AnonymousChat {get; set;}
     }
+    
+    public enum NewGroupMemberRequest
+    {
+        Approve = 0,
+        Reject = 1,
+        Ignore = 2,
+        RejectAndBlock = 3,
+        IgnoreAndBlock = 4
+    }
 }
