@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mirai.Net", "Mirai.Net\Mirai.Net.csproj", "{56E11D18-23D5-4F7B-B9B3-E4B4C2DB8D3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mirai.Net.Test", "Mirai.Net.Test\Mirai.Net.Test.csproj", "{F540E08A-1E92-4C80-8B01-539B5B36514A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mirai.Net.UnitTest", "Mirai.Net.UnitTest\Mirai.Net.UnitTest.csproj", "{61E302AE-F792-420C-A46B-B4EAD491D8B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56E11D18-23D5-4F7B-B9B3-E4B4C2DB8D3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E11D18-23D5-4F7B-B9B3-E4B4C2DB8D3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E11D18-23D5-4F7B-B9B3-E4B4C2DB8D3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E11D18-23D5-4F7B-B9B3-E4B4C2DB8D3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F540E08A-1E92-4C80-8B01-539B5B36514A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F540E08A-1E92-4C80-8B01-539B5B36514A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F540E08A-1E92-4C80-8B01-539B5B36514A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F540E08A-1E92-4C80-8B01-539B5B36514A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61E302AE-F792-420C-A46B-B4EAD491D8B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E302AE-F792-420C-A46B-B4EAD491D8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E302AE-F792-420C-A46B-B4EAD491D8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E302AE-F792-420C-A46B-B4EAD491D8B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
