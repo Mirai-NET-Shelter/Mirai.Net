@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Linq;
+using System.Reactive;
+using System.Reactive.Subjects;
+using System.Threading;
 using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
 using AHpx.Extensions.Utils;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Utils.Extensions;
+using Websocket.Client;
 
 namespace Mirai.Net.Sessions
 {
@@ -17,12 +21,10 @@ namespace Mirai.Net.Sessions
         /// <param name="address">地址，比如localhost:8080</param>
         /// <param name="verifyKey">验证密钥，Mirai.Net总是需要一个验证密钥</param>
         /// <param name="qq">bot的qq号</param>
-        /// <param name="sessionKey">会话密钥，第一次连接时不需要</param>
-        public MiraiBot(string address = null, string verifyKey = null, long qq = default, string sessionKey = null)
+        public MiraiBot(string address = null, string verifyKey = null, long qq = default)
         {
             _address = address;
             VerifyKey = verifyKey;
-            SessionKey = sessionKey;
             QQ = qq;
         }
 
@@ -34,6 +36,7 @@ namespace Mirai.Net.Sessions
             try
             {
                 await LaunchHttpAdapter();
+                await LaunchWebsocketAdapter();
             }
             catch (Exception e)
             {
@@ -49,13 +52,22 @@ namespace Mirai.Net.Sessions
 
         private async Task LaunchHttpAdapter()
         {
-            SessionKey = await GetSessionKey();
+            HttpSessionKey = await GetSessionKey();
             await BindQqToSession();
         }
 
-        private void LaunchWebsocketAdapter()
+        private async Task LaunchWebsocketAdapter()
         {
-                
+            var url = this.GetUrl(WebsocketEndpoints.All);
+
+            _client = new WebsocketClient(new Uri(url));
+
+            _client.MessageReceived.Subscribe(message =>
+            {
+                Console.WriteLine(message.Text);
+            });
+
+            await _client.StartOrFail();
         }
 
         #endregion
@@ -70,9 +82,16 @@ namespace Mirai.Net.Sessions
         /// <summary>
         /// 新建连接 或 singleMode 模式下为空, 通过已有 sessionKey 连接时不可为空
         /// </summary>
-        public string SessionKey { get; set; }
+        internal string HttpSessionKey { get; set; }
+        
+        /// <summary>
+        /// 新建连接 或 singleMode 模式下为空, 通过已有 sessionKey 连接时不可为空
+        /// </summary>
+        internal string WebsocketSessionKey { get; set; }
 
         private string _address;
+        private WebsocketClient _client;
+
         /// <summary>
         /// 比如：localhost:114514
         /// </summary>
@@ -81,20 +100,14 @@ namespace Mirai.Net.Sessions
             get => _address.TrimEnd('/').Empty("http://").Empty("https://");
             set
             {
-                if (value.Contains(":"))
-                {
-                    var split = value.Split(':');
-
-                    if (split.Length == 2)
-                    {
-                        if (split.Last().IsInteger())
-                        {
-                            _address = value;
-                        }
-                    }
-                }
+                if (!value.Contains(":")) throw new Exception($"错误的地址: {value}");
                 
-                throw new Exception($"错误的地址: {value}");
+                var split = value.Split(':');
+
+                if (split.Length != 2) throw new Exception($"错误的地址: {value}");
+                if (!split.Last().IsInteger()) throw new Exception($"错误的地址: {value}");
+                
+                _address = value;
             }
         }
 
@@ -134,7 +147,7 @@ namespace Mirai.Net.Sessions
             var url = this.GetUrl(HttpEndpoints.Bind);
             var response = await HttpUtilities.PostJsonAsync(url, new
             {
-                sessionKey = SessionKey,
+                sessionKey = HttpSessionKey,
                 qq = QQ
             }.ToJsonString());
 
@@ -149,7 +162,7 @@ namespace Mirai.Net.Sessions
             var url = this.GetUrl(HttpEndpoints.Release);
             var response = await HttpUtilities.PostJsonAsync(url, new
             {
-                sessionKey = SessionKey,
+                sessionKey = HttpSessionKey,
                 qq = QQ
             }.ToJsonString());
 
@@ -175,6 +188,7 @@ namespace Mirai.Net.Sessions
         public async void Dispose()
         {
             await ReleaseOccupy();
+            _client.Dispose();
         }
 
         #endregion

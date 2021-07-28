@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
@@ -7,6 +8,7 @@ using AHpx.Extensions.StringExtensions;
 using AHpx.Extensions.Utils;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Sessions;
+using Websocket.Client;
 
 namespace Mirai.Net.Utils.Extensions
 {
@@ -56,6 +58,32 @@ namespace Mirai.Net.Utils.Extensions
 
                     throw new Exception(message);
                 }
+            }
+        }
+        
+        /// <summary>
+        /// 拓展方法，确保MiraiBot类内部建立的websocket连接正常，否则抛出异常
+        /// </summary>
+        /// <param name="bot"></param>
+        /// <param name="responseMessage"></param>
+        /// <exception cref="Exception"></exception>
+        internal static void EnsureSuccess(this MiraiBot bot, ResponseMessage responseMessage)
+        {
+            if (responseMessage.MessageType == WebSocketMessageType.Text)
+            {
+                var content = responseMessage.Text.Fetch("data");
+
+                if (content.ToJObject().ContainsKey("code"))
+                {
+                    if (content.Fetch("code") != "0")
+                    {
+                        var message = content.ToJObject().ContainsKey("msg")
+                            ? $"{content.Fetch("msg")}\n{bot}"
+                            : $"请求失败: {bot}";
+
+                        throw new Exception(message);
+                    }
+                }   
             }
         }
         
