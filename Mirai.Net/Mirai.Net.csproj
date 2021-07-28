@@ -2,10 +2,12 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="AHpx.Extensions" Version="1.0.1" />
+      <PackageReference Include="Websocket.Client" Version="4.3.35" />
     </ItemGroup>
 
 </Project>

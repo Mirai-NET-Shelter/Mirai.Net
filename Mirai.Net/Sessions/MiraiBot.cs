@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
 using AHpx.Extensions.Utils;
+using Mirai.Net.Data.Sessions;
 using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Sessions
@@ -50,6 +51,11 @@ namespace Mirai.Net.Sessions
         {
             SessionKey = await GetSessionKey();
             await BindQqToSession();
+        }
+
+        private void LaunchWebsocketAdapter()
+        {
+                
         }
 
         #endregion
@@ -102,12 +108,12 @@ namespace Mirai.Net.Sessions
         #region Http adapter
 
         /// <summary>
-        /// 调用端点: /verify，返回session key
+        /// 调用端点: /verify，返回一个新的session key
         /// </summary>
         /// <returns>返回sessionKey</returns>
         private async Task<string> GetSessionKey()
         {
-            var url = this.GetUrl("verify");
+            var url = this.GetUrl(HttpEndpoints.Verify);
             var response = await HttpUtilities.PostJsonAsync(url, new
             {
                 verifyKey = VerifyKey
@@ -125,7 +131,7 @@ namespace Mirai.Net.Sessions
         /// </summary>
         private async Task BindQqToSession()
         {
-            var url = this.GetUrl("bind");
+            var url = this.GetUrl(HttpEndpoints.Bind);
             var response = await HttpUtilities.PostJsonAsync(url, new
             {
                 sessionKey = SessionKey,
@@ -140,7 +146,7 @@ namespace Mirai.Net.Sessions
         /// </summary>
         private async Task ReleaseOccupy()
         {
-            var url = this.GetUrl("release");
+            var url = this.GetUrl(HttpEndpoints.Release);
             var response = await HttpUtilities.PostJsonAsync(url, new
             {
                 sessionKey = SessionKey,

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
 using AHpx.Extensions.Utils;
+using Mirai.Net.Data.Sessions;
 using Mirai.Net.Sessions;
 
 namespace Mirai.Net.Utils.Extensions
@@ -16,9 +18,20 @@ namespace Mirai.Net.Utils.Extensions
         /// <param name="bot"></param>
         /// <param name="endpoint">端点</param>
         /// <returns></returns>
-        internal static string GetUrl(this MiraiBot bot, string endpoint)
+        internal static string GetUrl(this MiraiBot bot, HttpEndpoints endpoint)
         {
-            return $"http://{bot.Address}/{endpoint}";
+            return $"http://{bot.Address}/{endpoint.GetDescription()}";
+        }
+        
+        /// <summary>
+        /// 拓展方法，获取MiraiBot类所需要的websocket请求的url
+        /// </summary>
+        /// <param name="bot"></param>
+        /// <param name="endpoint">端点</param>
+        /// <returns></returns>
+        internal static string GetUrl(this MiraiBot bot, WebsocketEndpoints endpoint)
+        {
+            return $"ws://{bot.Address}/{endpoint.GetDescription()}?verifyKey={bot.VerifyKey}&qq={bot.QQ}";
         }
 
         /// <summary>
@@ -52,7 +65,7 @@ namespace Mirai.Net.Utils.Extensions
         /// <returns></returns>
         public static async Task<string> GetPluginVersion(this MiraiBot bot)
         {
-            var url = bot.GetUrl("about");
+            var url = bot.GetUrl(HttpEndpoints.About);
 
             try
             {
