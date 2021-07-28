@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
@@ -12,6 +13,10 @@ namespace Mirai.Net.Sessions
     /// </summary>
     public class MiraiBot : IDisposable
     {
+        /// <param name="address">地址，比如localhost:8080</param>
+        /// <param name="verifyKey">验证密钥，Mirai.Net总是需要一个验证密钥</param>
+        /// <param name="qq">bot的qq号</param>
+        /// <param name="sessionKey">会话密钥，第一次连接时不需要</param>
         public MiraiBot(string address = null, string verifyKey = null, long qq = default, string sessionKey = null)
         {
             _address = address;
@@ -25,7 +30,18 @@ namespace Mirai.Net.Sessions
         /// </summary>
         public async Task Launch()
         {
-            await LaunchHttpAdapter();
+            try
+            {
+                await LaunchHttpAdapter();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"启动失败: {e.Message}\n{this}", e);
+            }
+            finally
+            {
+                Dispose();
+            }
         }
 
         #region Adapter launcher
@@ -57,7 +73,23 @@ namespace Mirai.Net.Sessions
         public string Address
         {
             get => _address.TrimEnd('/').Empty("http://").Empty("https://");
-            set => _address = value;
+            set
+            {
+                if (value.Contains(":"))
+                {
+                    var split = value.Split(':');
+
+                    if (split.Length == 2)
+                    {
+                        if (split.Last().IsInteger())
+                        {
+                            _address = value;
+                        }
+                    }
+                }
+                
+                throw new Exception($"错误的地址: {value}");
+            }
         }
 
         /// <summary>

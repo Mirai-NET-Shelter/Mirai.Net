@@ -53,12 +53,20 @@ namespace Mirai.Net.Utils.Extensions
         public static async Task<string> GetPluginVersion(this MiraiBot bot)
         {
             var url = bot.GetUrl("about");
-            var response = await HttpUtilities.GetAsync(url);
 
-            await bot.EnsureSuccess(response);
+            try
+            {
+                var response = await HttpUtilities.GetAsync(url);
 
-            var content = await response.FetchContent();
-            return content.Fetch("data.version");
+                await bot.EnsureSuccess(response);
+
+                var content = await response.FetchContent();
+                return content.Fetch("data.version");
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"获取失败: {e.Message}\n{bot}");
+            }
         }
     }
 }
