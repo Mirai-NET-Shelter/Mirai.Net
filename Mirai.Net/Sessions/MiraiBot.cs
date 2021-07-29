@@ -50,6 +50,9 @@ namespace Mirai.Net.Sessions
         
         #region Adapter launcher
 
+        /// <summary>
+        /// 认证http
+        /// </summary>
         private async Task LaunchHttpAdapter()
         {
             HttpSessionKey = await GetSessionKey();
@@ -58,6 +61,9 @@ namespace Mirai.Net.Sessions
 
         private WebsocketClient _client;
         
+        /// <summary>
+        /// 启动websocket监听
+        /// </summary>
         private async Task LaunchWebsocketAdapter()
         {
             var url = this.GetUrl(WebsocketEndpoints.All);
@@ -85,11 +91,6 @@ namespace Mirai.Net.Sessions
         /// 新建连接 或 singleMode 模式下为空, 通过已有 sessionKey 连接时不可为空
         /// </summary>
         internal string HttpSessionKey { get; set; }
-        
-        /// <summary>
-        /// 新建连接 或 singleMode 模式下为空, 通过已有 sessionKey 连接时不可为空
-        /// </summary>
-        internal string WebsocketSessionKey { get; set; }
 
         private string _address;
 

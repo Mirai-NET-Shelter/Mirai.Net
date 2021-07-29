@@ -13,24 +13,18 @@ namespace Mirai.Net.Test
     {
         private static async Task Main()
         {
+            var exit = new ManualResetEvent(false);
             using var bot = new MiraiBot
             {
                 Address = "localhost:8080",
                 QQ = 2672886221,
                 VerifyKey = "1145141919810"
             };
-
+            
             await bot.Launch();
             Console.WriteLine(await bot.GetPluginVersion());
 
-            
-            while (true)
-            {
-                if (Console.ReadLine() == "exit")
-                {
-                    return;
-                }
-            }
+            exit.WaitOne(TimeSpan.FromSeconds(30));
         }
 
         enum MyEnum
