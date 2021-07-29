@@ -2,8 +2,10 @@
 using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
+using Mirai.Net.Data.Sessions;
 using Mirai.Net.Sessions;
 using Mirai.Net.Utils.Extensions;
+using Websocket.Client;
 
 namespace Mirai.Net.Test
 {
@@ -17,13 +19,18 @@ namespace Mirai.Net.Test
                 QQ = 2672886221,
                 VerifyKey = "1145141919810"
             };
-            
+
+            await bot.Launch();
             Console.WriteLine(await bot.GetPluginVersion());
 
-            var exit = new ManualResetEvent(false);
-            await bot.Launch();
             
-            exit.WaitOne(TimeSpan.FromSeconds(31));
+            while (true)
+            {
+                if (Console.ReadLine() == "exit")
+                {
+                    return;
+                }
+            }
         }
 
         enum MyEnum

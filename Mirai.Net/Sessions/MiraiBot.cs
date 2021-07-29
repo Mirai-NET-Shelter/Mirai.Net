@@ -18,6 +18,8 @@ namespace Mirai.Net.Sessions
     /// </summary>
     public class MiraiBot : IDisposable
     {
+        #region Exposed
+
         /// <param name="address">地址，比如localhost:8080</param>
         /// <param name="verifyKey">验证密钥，Mirai.Net总是需要一个验证密钥</param>
         /// <param name="qq">bot的qq号</param>
@@ -42,12 +44,10 @@ namespace Mirai.Net.Sessions
             {
                 throw new Exception($"启动失败: {e.Message}\n{this}", e);
             }
-            finally
-            {
-                Dispose();
-            }
         }
 
+        #endregion
+        
         #region Adapter launcher
 
         private async Task LaunchHttpAdapter()
@@ -56,6 +56,8 @@ namespace Mirai.Net.Sessions
             await BindQqToSession();
         }
 
+        private WebsocketClient _client;
+        
         private async Task LaunchWebsocketAdapter()
         {
             var url = this.GetUrl(WebsocketEndpoints.All);
@@ -90,7 +92,6 @@ namespace Mirai.Net.Sessions
         internal string WebsocketSessionKey { get; set; }
 
         private string _address;
-        private WebsocketClient _client;
 
         /// <summary>
         /// 比如：localhost:114514
@@ -181,14 +182,11 @@ namespace Mirai.Net.Sessions
         {
             return this.ToJsonString();
         }
-
-        /// <summary>
-        /// 释放MiraiBot对象占用的资源
-        /// </summary>
+        
         public async void Dispose()
         {
+            _client?.Dispose();
             await ReleaseOccupy();
-            _client.Dispose();
         }
 
         #endregion
