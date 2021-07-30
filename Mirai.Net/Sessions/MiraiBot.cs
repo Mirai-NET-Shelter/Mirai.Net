@@ -88,11 +88,20 @@ namespace Mirai.Net.Sessions
                     switch (type)
                     {
                         case WebsocketAdapterNotifications.Message:
-                            // Console.WriteLine(data);
+                            var messageBase = data.GetMessageReceiverBase();
+                            var messageChain = data
+                                .Fetch("messageChain")
+                                .ToJArray()
+                                .Select(token => token.ToString().GetMessageBase())
+                                .ToList();
+
+                            messageBase.MessageChain = messageChain;
+
+                            _messageReceivedSubject.OnNext(messageBase);
                             break;
                         case WebsocketAdapterNotifications.Event:
-                            var value = data.GetEventBase();
-                            _eventReceivedSubject.OnNext(value);
+                            var eventBase = data.GetEventBase();
+                            _eventReceivedSubject.OnNext(eventBase);
                             break;
                         case WebsocketAdapterNotifications.Unknown:
                             Console.WriteLine($"received unknown notification: {data}");

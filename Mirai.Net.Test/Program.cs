@@ -12,8 +12,10 @@ using AHpx.Extensions.IOExtensions;
 using AHpx.Extensions.StringExtensions;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Concretes.Group;
+using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Sessions;
+using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions;
 using Newtonsoft.Json;
 using Websocket.Client;
@@ -33,13 +35,15 @@ namespace Mirai.Net.Test
             };
             
             await bot.Launch();
-            bot.EventReceived
-                .Where(x => x is GroupMutedAllEvent)
-                .Cast<GroupMutedAllEvent>()
-                .Subscribe(x =>
-                {
-                    Console.WriteLine(x.ToJsonString());
-                });
+            bot.MessageReceived.Subscribe(x =>
+            {
+                Console.WriteLine(x.MessageChain.ToList()[1].ToJsonString());
+            });
+            
+            bot.EventReceived.Subscribe(x =>
+            {
+                Console.WriteLine(x.Type);
+            });
             
             exit.WaitOne(TimeSpan.FromMinutes(1));
         }

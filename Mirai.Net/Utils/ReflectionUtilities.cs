@@ -34,7 +34,7 @@ namespace Mirai.Net.Utils
                 }
             }
 
-            return _list;
+            return _list.Where(x => x != null);
         }
     }
 }

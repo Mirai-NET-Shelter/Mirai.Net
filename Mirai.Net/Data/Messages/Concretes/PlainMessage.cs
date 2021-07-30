@@ -9,9 +9,13 @@ namespace Mirai.Net.Data.Messages.Concretes
         
         public override Messages Type { get; set; } = Messages.Plain;
 
-        public PlainMessage(string text = null)
+        public PlainMessage(string text)
         {
             Text = text;
+        }
+
+        public PlainMessage()
+        {
         }
     }
 }
