@@ -24,7 +24,7 @@ namespace Mirai.Net.Data.Shared
         /// 操作者在群中的权限
         /// </summary>
         [JsonProperty("permission")]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public Permissions Permission { get; set; }
 
         /// <summary>

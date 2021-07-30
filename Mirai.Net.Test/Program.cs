@@ -35,9 +35,10 @@ namespace Mirai.Net.Test
             await bot.Launch();
             bot.EventReceived
                 .Where(x => x is GroupMutedAllEvent)
+                .Cast<GroupMutedAllEvent>()
                 .Subscribe(x =>
                 {
-                    Console.WriteLine(x.ToJsonString());
+                    Console.WriteLine(x.Type);
                 });
             
             exit.WaitOne(TimeSpan.FromMinutes(1));

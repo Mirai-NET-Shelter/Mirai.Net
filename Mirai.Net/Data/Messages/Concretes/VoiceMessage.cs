@@ -27,8 +27,7 @@ namespace Mirai.Net.Data.Messages.Concretes
         /// </summary>
         [JsonProperty("base64")]
         public string Base64 {get; set;}
-
-        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        
         public override Messages Type { get; set; } = Messages.Voice;
     }
 }

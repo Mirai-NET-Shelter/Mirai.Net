@@ -5,7 +5,6 @@ namespace Mirai.Net.Data.Messages.Concretes
 {
     public class QuoteMessage : MessageBase
     {
-        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         public override Messages Type { get; set; } = Messages.Quote;
 
         /// <summary>

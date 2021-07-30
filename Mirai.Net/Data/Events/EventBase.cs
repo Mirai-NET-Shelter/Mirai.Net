@@ -12,7 +12,7 @@ namespace Mirai.Net.Data.Events
         }
         
         [JsonProperty("type")]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public virtual Events Type {get; set; }
 
         public override string ToString()

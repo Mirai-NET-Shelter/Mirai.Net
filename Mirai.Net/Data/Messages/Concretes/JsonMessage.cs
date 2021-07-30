@@ -6,8 +6,7 @@ namespace Mirai.Net.Data.Messages.Concretes
     {
         [JsonProperty("json")]
         public string Json {get; set;}
-
-        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        
         public override Messages Type { get; set; } = Messages.Json;
     }
 }

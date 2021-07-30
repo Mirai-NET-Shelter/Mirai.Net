@@ -7,7 +7,6 @@ namespace Mirai.Net.Data.Events.Concretes.Group
 {
     public class MemberHonorChangedEvent : EventBase
     {
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         public override Events Type { get; set; } = Events.MemberHonorChanged;
         
         [JsonProperty("member")]
@@ -17,7 +16,7 @@ namespace Mirai.Net.Data.Events.Concretes.Group
         /// 获得还是失去称号
         /// </summary>
         [JsonProperty("action")]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         public MemberHonorAction Action {get; set;}
         
         /// <summary>

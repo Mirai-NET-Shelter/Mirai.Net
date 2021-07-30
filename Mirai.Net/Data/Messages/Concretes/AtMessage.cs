@@ -15,8 +15,7 @@ namespace Mirai.Net.Data.Messages.Concretes
         /// </summary>
         [JsonProperty("display")]
         public string Display {get; set;}
-
-        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        
         public override Messages Type { get; set; } = Messages.At;
 
         public AtMessage(string target = null)

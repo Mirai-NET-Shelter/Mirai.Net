@@ -2,7 +2,6 @@
 {
     public class GroupEntranceAnnouncementChangedEvent : GroupSettingChangedEventBase<string>
     {
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         public override Events Type { get; set; } = Events.GroupEntranceAnnouncementChanged;
     }
 }
