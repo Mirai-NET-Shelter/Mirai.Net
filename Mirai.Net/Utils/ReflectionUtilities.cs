@@ -3,49 +3,62 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Mirai.Net.Data.Events;
+using Mirai.Net.Data.Messages;
 
 namespace Mirai.Net.Utils
 {
     public static class ReflectionUtilities
     {
-        private static readonly List<EventBase> EventBases;
-        private static readonly List<Type> EventBaseTypes;
+        private static List<EventBase> _eventBases = new ();
+        private static List<Type> _eventBaseTypes = new ();
 
-        static ReflectionUtilities()
+        public static IEnumerable<EventBase> GetDefaultEventBaseInstances(out List<Type> output)
         {
-            EventBases = new List<EventBase>();
-            EventBaseTypes = new List<Type>();
+            output = _eventBaseTypes;
+            
+            return GetDefaultInstances("Mirai.Net.Data.Events.Concretes", ref _eventBases,
+                ref _eventBaseTypes);
         }
 
-        public static IEnumerable<EventBase> GetDefaultEventBaseInstances()
+        private static List<MessageBase> _messageBases = new ();
+        private static List<Type> _messageBaseTypes = new ();
+        public static IEnumerable<MessageBase> GetDefaultMessageBaseInstances(out List<Type> output)
         {
-            if (EventBases.Count != 0) return EventBases;
+            output = _messageBaseTypes;
+            
+            return GetDefaultInstances("Mirai.Net.Data.Messages.Concretes", ref _messageBases,
+                ref _messageBaseTypes);
+        }
+        
+        private static IEnumerable<T> GetDefaultInstances<T>(string location, ref List<T> output, ref List<Type> typeOutput) where T : class
+        {
+            if (_eventBases.Count != 0) return output;
 
-            var types = GetEventBaseTypes();
+            var types = GetTypes(location, ref typeOutput);
                 
             foreach (var type in types)
             {
                 if (!type.IsAbstract)
                 {
-                    var instance = Activator.CreateInstance(type) as EventBase;
-                    EventBases.Add(instance);
+                    var instance = Activator.CreateInstance(type) as T;
+                    output.Add(instance);
                 }
             }
 
-            return EventBases;
+            return output;
         }
 
-        public static IEnumerable<Type> GetEventBaseTypes()
+        private static IEnumerable<Type> GetTypes(string location, ref List<Type> output)
         {
-            if (EventBaseTypes.Count != 0) return EventBaseTypes;
+            if (_eventBaseTypes.Count != 0) return _eventBaseTypes;
             
             var assembly = Assembly.GetExecutingAssembly();
             var all = assembly.GetTypes();
+            
+            output.AddRange(all
+                .Where(x => x.FullName!.Contains(location)));
 
-            EventBaseTypes.AddRange(all
-                .Where(x => x.FullName.Contains("Mirai.Net.Data.Events.Concretes")));
-
-            return EventBaseTypes;
+            return output;
         }
     }
 }

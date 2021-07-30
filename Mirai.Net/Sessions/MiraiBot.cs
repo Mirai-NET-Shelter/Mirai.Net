@@ -10,6 +10,7 @@ using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
 using AHpx.Extensions.Utils;
 using Mirai.Net.Data.Events;
+using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Utils.Extensions;
 using Newtonsoft.Json;
@@ -86,7 +87,7 @@ namespace Mirai.Net.Sessions
                     switch (type)
                     {
                         case WebsocketAdapterNotifications.Message:
-                            Console.WriteLine($"received message: {data.Fetch("type")}");
+                            // Console.WriteLine(data);
                             break;
                         case WebsocketAdapterNotifications.Event:
                             var value = GetEventBase(data);
@@ -111,9 +112,11 @@ namespace Mirai.Net.Sessions
         /// <exception cref="Exception"></exception>
         private EventBase GetEventBase(string json)
         {
-            var instances = ReflectionUtilities.GetDefaultEventBaseInstances().ToList();
+            var instances = ReflectionUtilities
+                .GetDefaultEventBaseInstances(out var types)
+                .ToList();
+            
             var root = JsonConvert.DeserializeObject<EventBase>(json);
-            var types = ReflectionUtilities.GetEventBaseTypes();
 
             if (instances.Any(x => x.Type == root!.Type))
             {
@@ -130,6 +133,20 @@ namespace Mirai.Net.Sessions
 
             throw new Exception($"错误的json: {json}");
         }
+
+        private MessageBase GetMessageBase(string json)
+        {
+            var instances = ReflectionUtilities
+                .GetDefaultMessageBaseInstances(out var types)
+                .ToList();
+
+            var root = JsonConvert.DeserializeObject<MessageBase>(json);
+            
+            
+
+            return null;
+        }
+        
         
         #endregion
 
@@ -139,6 +156,11 @@ namespace Mirai.Net.Sessions
         public IObservable<EventBase> EventReceived => _eventReceivedSubject.AsObservable();
 
         private readonly Subject<EventBase> _eventReceivedSubject = new();
+
+        [JsonIgnore]
+        public IObservable<MessageReceiverBase> MessageReceived => _messageReceivedSubject.AsObservable();
+
+        private readonly Subject<MessageReceiverBase> _messageReceivedSubject = new();
         
         /// <summary>
         /// Mirai.Net总是需要一个VerifyKey
