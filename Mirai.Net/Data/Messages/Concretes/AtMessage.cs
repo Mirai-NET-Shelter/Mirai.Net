@@ -1,0 +1,27 @@
+﻿using Newtonsoft.Json;
+
+namespace Mirai.Net.Data.Messages.Concretes
+{
+    public class AtMessage : MessageBase
+    {
+        /// <summary>
+        /// 群员QQ号
+        /// </summary>
+        [JsonProperty("target")]
+        public string Target {get; set;}
+        
+        /// <summary>
+        /// At时显示的文字，发送消息时无效，自动使用群名片
+        /// </summary>
+        [JsonProperty("display")]
+        public string Display {get; set;}
+
+        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public override Messages Type { get; set; } = Messages.At;
+
+        public AtMessage(string target = null)
+        {
+            Target = target;
+        }
+    }
+}
