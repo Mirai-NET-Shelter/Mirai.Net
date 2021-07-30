@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using AHpx.Extensions.StringExtensions;
+﻿using AHpx.Extensions.StringExtensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -10,10 +9,10 @@ namespace Mirai.Net.Data.Events
         protected EventBase()
         {
         }
-        
+
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public virtual Events Type {get; set; }
+        public virtual Events Type { get; set; }
 
         public override string ToString()
         {

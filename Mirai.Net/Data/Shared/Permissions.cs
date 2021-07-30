@@ -5,14 +5,13 @@ namespace Mirai.Net.Data.Shared
 {
     public enum Permissions
     {
-        [EnumMember(Value = "OWNER")]
-        [Description("OWNER")]
+        [EnumMember(Value = "OWNER")] [Description("OWNER")]
         Owner,
-        [EnumMember(Value = "ADMINISTRATOR")]
-        [Description("ADMINISTRATOR")]
+
+        [EnumMember(Value = "ADMINISTRATOR")] [Description("ADMINISTRATOR")]
         Administrator,
-        [EnumMember(Value = "MEMBER")]
-        [Description("MEMBER")]
+
+        [EnumMember(Value = "MEMBER")] [Description("MEMBER")]
         Member
     }
 }

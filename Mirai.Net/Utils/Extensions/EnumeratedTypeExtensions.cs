@@ -7,7 +7,7 @@ namespace Mirai.Net.Utils.Extensions
     public static class EnumeratedTypeExtensions
     {
         /// <summary>
-        /// 获取某枚举值的Description attribute值，如果没有这个特性则直接返回该值的ToString
+        ///     获取某枚举值的Description attribute值，如果没有这个特性则直接返回该值的ToString
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>

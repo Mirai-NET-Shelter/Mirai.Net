@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Mirai.Net.Data.Messages.Concretes
+﻿namespace Mirai.Net.Data.Messages.Concretes
 {
     public class AtAllMessage : MessageBase
     {

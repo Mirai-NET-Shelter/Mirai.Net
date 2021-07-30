@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.WebSockets;
-using System.Text;
 using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
@@ -15,7 +14,7 @@ namespace Mirai.Net.Utils.Extensions
     public static class MiraiBotExtensions
     {
         /// <summary>
-        /// 拓展方法，获取MiraiBot类所需要的http请求的url
+        ///     拓展方法，获取MiraiBot类所需要的http请求的url
         /// </summary>
         /// <param name="bot"></param>
         /// <param name="endpoint">端点</param>
@@ -24,9 +23,9 @@ namespace Mirai.Net.Utils.Extensions
         {
             return $"http://{bot.Address}/{endpoint.GetDescription()}";
         }
-        
+
         /// <summary>
-        /// 拓展方法，获取MiraiBot类所需要的websocket请求的url
+        ///     拓展方法，获取MiraiBot类所需要的websocket请求的url
         /// </summary>
         /// <param name="bot"></param>
         /// <param name="endpoint">端点</param>
@@ -37,7 +36,7 @@ namespace Mirai.Net.Utils.Extensions
         }
 
         /// <summary>
-        /// 拓展方法，确保MiraiBot类内部进行的http请求正常，否则抛出异常
+        ///     拓展方法，确保MiraiBot类内部进行的http请求正常，否则抛出异常
         /// </summary>
         /// <param name="bot"></param>
         /// <param name="responseMessage">HttpClient响应消息</param>
@@ -49,7 +48,6 @@ namespace Mirai.Net.Utils.Extensions
             var content = await responseMessage.FetchContent();
 
             if (content.ToJObject().ContainsKey("code"))
-            {
                 if (content.Fetch("code") != "0")
                 {
                     var message = content.ToJObject().ContainsKey("msg")
@@ -58,11 +56,10 @@ namespace Mirai.Net.Utils.Extensions
 
                     throw new Exception(message);
                 }
-            }
         }
-        
+
         /// <summary>
-        /// 拓展方法，确保MiraiBot类内部建立的websocket连接正常，否则抛出异常
+        ///     拓展方法，确保MiraiBot类内部建立的websocket连接正常，否则抛出异常
         /// </summary>
         /// <param name="bot"></param>
         /// <param name="responseMessage"></param>
@@ -74,7 +71,6 @@ namespace Mirai.Net.Utils.Extensions
                 var content = responseMessage.Text.Fetch("data");
 
                 if (content.ToJObject().ContainsKey("code"))
-                {
                     if (content.Fetch("code") != "0")
                     {
                         var message = content.ToJObject().ContainsKey("msg")
@@ -83,12 +79,11 @@ namespace Mirai.Net.Utils.Extensions
 
                         throw new Exception(message);
                     }
-                }   
             }
         }
-        
+
         /// <summary>
-        /// 拓展方法，获取mirai-api-http插件的版本，此方法不需要经过任何认证
+        ///     拓展方法，获取mirai-api-http插件的版本，此方法不需要经过任何认证
         /// </summary>
         /// <returns></returns>
         public static async Task<string> GetPluginVersion(this MiraiBot bot)

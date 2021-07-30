@@ -11,9 +11,15 @@ namespace Mirai.Net.Utils.Extensions
     {
         private static List<Type> _eventTypes = new();
         private static List<EventBase> _events = new();
-        
+
+        private static List<MessageReceiverBase> _messageReceivers = new();
+        private static List<Type> _messageReceiversTypes = new();
+
+        private static List<MessageBase> _messageBases = new();
+        private static List<Type> _messageBasesTypes = new();
+
         /// <summary>
-        /// 根据raw json转换成EventBase，十分酷哥的反射
+        ///     根据raw json转换成EventBase，十分酷哥的反射
         /// </summary>
         /// <param name="json"></param>
         /// <returns></returns>
@@ -21,9 +27,9 @@ namespace Mirai.Net.Utils.Extensions
         public static EventBase GetEventBase(this string json)
         {
             if (_events.Count == 0)
-            { 
+            {
                 var utilities = new ReflectionUtilities<EventBase>();
-                
+
                 _events = utilities
                     .GetDefaultInstances("Mirai.Net.Data.Events.Concretes", ref _eventTypes)
                     .ToList();
@@ -36,30 +42,24 @@ namespace Mirai.Net.Utils.Extensions
                 var instance = _events.First(x => x.Type == root!.Type);
 
                 foreach (var type in _eventTypes)
-                {
                     if (instance.GetType() == type)
-                    {
                         return JsonConvert.DeserializeObject(json, type) as EventBase;
-                    }
-                }
             }
 
             throw new Exception($"错误的json: {json}");
         }
 
-        private static List<MessageReceiverBase> _messageReceivers = new ();
-        private static List<Type> _messageReceiversTypes = new ();
         public static MessageReceiverBase GetMessageReceiverBase(this string json)
         {
             if (_messageReceivers.Count == 0)
             {
                 var utilities = new ReflectionUtilities<MessageReceiverBase>();
-                
+
                 _messageReceivers = utilities
                     .GetDefaultInstances("Mirai.Net.Data.Messages.Receivers", ref _messageReceiversTypes)
                     .ToList();
             }
-            
+
             var root = JsonConvert.DeserializeObject<MessageReceiverBase>(json);
 
             if (_messageReceivers.Any(x => x.Type == root!.Type))
@@ -67,20 +67,13 @@ namespace Mirai.Net.Utils.Extensions
                 var instance = _messageReceivers.First(x => x.Type == root!.Type);
 
                 foreach (var type in _messageReceiversTypes)
-                {
                     if (instance.GetType() == type)
-                    {
                         return JsonConvert.DeserializeObject(json, type) as MessageReceiverBase;
-                    }
-                }
             }
 
             throw new Exception($"错误的json: {json}");
         }
 
-        private static List<MessageBase> _messageBases = new();
-        private static List<Type> _messageBasesTypes = new();
-        
         public static MessageBase GetMessageBase(this string json)
         {
             if (_messageBases.Count == 0)
@@ -91,7 +84,7 @@ namespace Mirai.Net.Utils.Extensions
                     .GetDefaultInstances("Mirai.Net.Data.Messages.Concretes", ref _messageBasesTypes)
                     .ToList();
             }
-            
+
             var root = JsonConvert.DeserializeObject<MessageBase>(json);
 
             if (_messageBases.Any(x => x.Type == root!.Type))
@@ -99,12 +92,8 @@ namespace Mirai.Net.Utils.Extensions
                 var instance = _messageBases.First(x => x.Type == root!.Type);
 
                 foreach (var type in _messageBasesTypes)
-                {
                     if (instance.GetType() == type)
-                    {
                         return JsonConvert.DeserializeObject(json, type) as MessageBase;
-                    }
-                }
             }
 
             throw new Exception($"错误的json: {json}");

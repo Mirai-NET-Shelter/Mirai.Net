@@ -7,6 +7,6 @@ namespace Mirai.Net.Data.Messages
     {
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public virtual Messages Type {get; set; }
+        public virtual Messages Type { get; set; }
     }
 }

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.WebSockets;
-using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
-using System.Threading;
 using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
@@ -13,7 +10,6 @@ using AHpx.Extensions.Utils;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
-using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions;
 using Newtonsoft.Json;
 using Websocket.Client;
@@ -21,7 +17,7 @@ using Websocket.Client;
 namespace Mirai.Net.Sessions
 {
     /// <summary>
-    /// Mirai机器人
+    ///     Mirai机器人
     /// </summary>
     public class MiraiBot : IDisposable
     {
@@ -38,7 +34,7 @@ namespace Mirai.Net.Sessions
         }
 
         /// <summary>
-        /// 启动bot对象
+        ///     启动bot对象
         /// </summary>
         public async Task Launch()
         {
@@ -54,11 +50,11 @@ namespace Mirai.Net.Sessions
         }
 
         #endregion
-        
+
         #region Adapter launcher
 
         /// <summary>
-        /// 认证http
+        ///     认证http
         /// </summary>
         private async Task LaunchHttpAdapter()
         {
@@ -67,9 +63,9 @@ namespace Mirai.Net.Sessions
         }
 
         private WebsocketClient _client;
-        
+
         /// <summary>
-        /// 启动websocket监听
+        ///     启动websocket监听
         /// </summary>
         private async Task LaunchWebsocketAdapter()
         {
@@ -113,35 +109,33 @@ namespace Mirai.Net.Sessions
 
             await _client.StartOrFail();
         }
-        
+
         #endregion
 
         #region Property definitions
 
-        [JsonIgnore]
-        public IObservable<EventBase> EventReceived => _eventReceivedSubject.AsObservable();
+        [JsonIgnore] public IObservable<EventBase> EventReceived => _eventReceivedSubject.AsObservable();
 
         private readonly Subject<EventBase> _eventReceivedSubject = new();
 
-        [JsonIgnore]
-        public IObservable<MessageReceiverBase> MessageReceived => _messageReceivedSubject.AsObservable();
+        [JsonIgnore] public IObservable<MessageReceiverBase> MessageReceived => _messageReceivedSubject.AsObservable();
 
         private readonly Subject<MessageReceiverBase> _messageReceivedSubject = new();
-        
+
         /// <summary>
-        /// Mirai.Net总是需要一个VerifyKey
+        ///     Mirai.Net总是需要一个VerifyKey
         /// </summary>
         public string VerifyKey { get; set; }
 
         /// <summary>
-        /// 新建连接 或 singleMode 模式下为空, 通过已有 sessionKey 连接时不可为空
+        ///     新建连接 或 singleMode 模式下为空, 通过已有 sessionKey 连接时不可为空
         /// </summary>
         internal string HttpSessionKey { get; set; }
 
         private string _address;
 
         /// <summary>
-        /// 比如：localhost:114514
+        ///     比如：localhost:114514
         /// </summary>
         public string Address
         {
@@ -149,18 +143,18 @@ namespace Mirai.Net.Sessions
             set
             {
                 if (!value.Contains(":")) throw new Exception($"错误的地址: {value}");
-                
+
                 var split = value.Split(':');
 
                 if (split.Length != 2) throw new Exception($"错误的地址: {value}");
                 if (!split.Last().IsInteger()) throw new Exception($"错误的地址: {value}");
-                
+
                 _address = value;
             }
         }
 
         /// <summary>
-        /// 绑定的账号, singleMode 模式下为空, 非 singleMode 下新建连接不可为空
+        ///     绑定的账号, singleMode 模式下为空, 非 singleMode 下新建连接不可为空
         /// </summary>
         public long QQ { get; set; }
 
@@ -169,7 +163,7 @@ namespace Mirai.Net.Sessions
         #region Http adapter
 
         /// <summary>
-        /// 调用端点: /verify，返回一个新的session key
+        ///     调用端点: /verify，返回一个新的session key
         /// </summary>
         /// <returns>返回sessionKey</returns>
         private async Task<string> GetSessionKey()
@@ -188,7 +182,7 @@ namespace Mirai.Net.Sessions
         }
 
         /// <summary>
-        /// 调用端点：/bind，将当前对象的qq好绑定的指定的sessionKey
+        ///     调用端点：/bind，将当前对象的qq好绑定的指定的sessionKey
         /// </summary>
         private async Task BindQqToSession()
         {
@@ -203,7 +197,7 @@ namespace Mirai.Net.Sessions
         }
 
         /// <summary>
-        /// 调用端口：/release，释放bot的资源占用
+        ///     调用端口：/release，释放bot的资源占用
         /// </summary>
         private async Task ReleaseOccupy()
         {
@@ -222,14 +216,14 @@ namespace Mirai.Net.Sessions
         #region Diagnose stuff
 
         /// <summary>
-        /// 重写了默认的ToString方法，本质上是替代为ToJsonString
+        ///     重写了默认的ToString方法，本质上是替代为ToJsonString
         /// </summary>
         /// <returns></returns>
         public override string ToString()
         {
             return this.ToJsonString();
         }
-        
+
         public async void Dispose()
         {
             _client?.Dispose();
