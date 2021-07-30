@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using AHpx.Extensions.StringExtensions;
@@ -40,31 +42,31 @@ namespace Mirai.Net.Test
             var types = new[] {typeof(MyClass2), typeof(MyClass3), typeof(MyClass4)};
 
             var re = new List<MyClass>();
+
+            var instances = types.Select(x => Activator.CreateInstance(x) as MyClass);
+
             foreach (var json in jsons)
             {
                 var root = JsonConvert.DeserializeObject<MyClass>(json);
                 
                 foreach (var type in types)
                 {
-                    var obj = JsonConvert.DeserializeObject(json, type);
-
-                    Console.WriteLine(obj.ToJsonString());
-
-                    var value = obj?.GetType().GetProperty("Type")?.GetValue(obj, null);
-                    if (value is Events events)
+                    if (instances.Any(x => x.Type == root.Type))
                     {
-                        if (root.Type == events)
+                        var obj = instances.First(x => x.Type == root.Type);
+
+                        if (type == obj.GetType())
                         {
-                            re.Add(obj as MyClass);
+                            re.Add(JsonConvert.DeserializeObject(json, type) as MyClass);
                         }
                     }
                 }
             }
             
-            // foreach (var myClass in re)
-            // {
-            //     Console.WriteLine(myClass.ToJsonString());
-            // }
+            foreach (var myClass in re)
+            {
+                Console.WriteLine(myClass.ToJsonString());
+            }
         }
 
         public class MyClass
@@ -72,7 +74,7 @@ namespace Mirai.Net.Test
             protected MyClass()
             {
             }
-
+            
             public virtual Events Type { get; set; }
 
             public override string ToString()
