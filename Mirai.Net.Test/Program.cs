@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using AHpx.Extensions.IOExtensions;
 using AHpx.Extensions.StringExtensions;
 using Mirai.Net.Data.Events;
+using Mirai.Net.Data.Events.Concretes.Group;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Sessions;
 using Mirai.Net.Utils.Extensions;
@@ -31,12 +34,13 @@ namespace Mirai.Net.Test
             
             await bot.Launch();
             bot.EventReceived
+                .Where(x => x is GroupMutedAllEvent)
                 .Subscribe(x =>
                 {
-                    Console.WriteLine(x.Type);
+                    Console.WriteLine(x.ToJsonString());
                 });
             
-            exit.WaitOne(TimeSpan.FromSeconds(30));
+            exit.WaitOne(TimeSpan.FromMinutes(1));
         }
 
         #region MyRegion

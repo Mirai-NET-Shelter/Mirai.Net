@@ -81,7 +81,6 @@ namespace Mirai.Net.Sessions
                 .Subscribe(message =>
                 {
                     var type = message.GetNotificationType();
-                    Console.WriteLine(type);
                     var data = message.Text.Fetch("data");
 
                     switch (type)
@@ -90,11 +89,8 @@ namespace Mirai.Net.Sessions
                             Console.WriteLine($"received message: {data.Fetch("type")}");
                             break;
                         case WebsocketAdapterNotifications.Event:
-                            //? application trapped here
                             var value = GetEventBase(data);
                             _eventReceivedSubject.OnNext(value);
-                            Console.WriteLine($"received event: {data.Fetch("type")}");
-                            Console.WriteLine($"{value.ToJsonString()}");
                             break;
                         case WebsocketAdapterNotifications.Unknown:
                             Console.WriteLine($"received unknown notification: {data}");
@@ -106,8 +102,13 @@ namespace Mirai.Net.Sessions
 
             await _client.StartOrFail();
         }
-
-        //! Fix performance issue
+        
+        /// <summary>
+        /// 根据raw json转换成EventBase，十分酷哥的反射
+        /// </summary>
+        /// <param name="json"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         private EventBase GetEventBase(string json)
         {
             var instances = ReflectionUtilities.GetDefaultEventBaseInstances().ToList();

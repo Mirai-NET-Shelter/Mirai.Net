@@ -8,33 +8,44 @@ namespace Mirai.Net.Utils
 {
     public static class ReflectionUtilities
     {
-        private static readonly List<EventBase> _eventBases = new();
-        private static readonly List<Type> _eventBaseTypes = new();
-        
+        private static readonly List<EventBase> EventBases;
+        private static readonly List<Type> EventBaseTypes;
+
+        static ReflectionUtilities()
+        {
+            EventBases = new List<EventBase>();
+            EventBaseTypes = new List<Type>();
+        }
+
         public static IEnumerable<EventBase> GetDefaultEventBaseInstances()
         {
-            if (_eventBases.Count != 0) return _eventBases;
+            if (EventBases.Count != 0) return EventBases;
 
             var types = GetEventBaseTypes();
                 
             foreach (var type in types)
             {
-                var instance = Activator.CreateInstance(type) as EventBase;
-                _eventBases.Add(instance);
+                if (!type.IsAbstract)
+                {
+                    var instance = Activator.CreateInstance(type) as EventBase;
+                    EventBases.Add(instance);
+                }
             }
 
-            return _eventBases;
+            return EventBases;
         }
 
         public static IEnumerable<Type> GetEventBaseTypes()
         {
-            if (_eventBaseTypes.Count != 0) return _eventBaseTypes;
+            if (EventBaseTypes.Count != 0) return EventBaseTypes;
             
             var assembly = Assembly.GetExecutingAssembly();
-            _eventBaseTypes.AddRange(assembly.GetTypes()
-                .Where(x => x.Namespace!.Contains("Mirai.Net.Data.Events.Concretes")));
+            var all = assembly.GetTypes();
 
-            return _eventBaseTypes;
+            EventBaseTypes.AddRange(all
+                .Where(x => x.FullName.Contains("Mirai.Net.Data.Events.Concretes")));
+
+            return EventBaseTypes;
         }
     }
 }
