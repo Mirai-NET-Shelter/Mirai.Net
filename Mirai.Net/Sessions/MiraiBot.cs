@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Reactive;
+using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Threading;
 using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
 using AHpx.Extensions.Utils;
+using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Utils.Extensions;
+using Newtonsoft.Json;
 using Websocket.Client;
+using ReflectionUtilities = Mirai.Net.Utils.ReflectionUtilities;
 
 namespace Mirai.Net.Sessions
 {
@@ -70,18 +75,70 @@ namespace Mirai.Net.Sessions
 
             _client = new WebsocketClient(new Uri(url));
 
-            _client.MessageReceived.Subscribe(message =>
-            {
-                Console.WriteLine(message.Text);
-            });
+            _client
+                .MessageReceived
+                .Where(x => x.MessageType == WebSocketMessageType.Text)
+                .Subscribe(message =>
+                {
+                    var type = message.GetNotificationType();
+                    Console.WriteLine(type);
+                    var data = message.Text.Fetch("data");
+
+                    switch (type)
+                    {
+                        case WebsocketAdapterNotifications.Message:
+                            Console.WriteLine($"received message: {data.Fetch("type")}");
+                            break;
+                        case WebsocketAdapterNotifications.Event:
+                            //? application trapped here
+                            var value = GetEventBase(data);
+                            _eventReceivedSubject.OnNext(value);
+                            Console.WriteLine($"received event: {data.Fetch("type")}");
+                            Console.WriteLine($"{value.ToJsonString()}");
+                            break;
+                        case WebsocketAdapterNotifications.Unknown:
+                            Console.WriteLine($"received unknown notification: {data}");
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                });
 
             await _client.StartOrFail();
         }
 
+        //! Fix performance issue
+        private EventBase GetEventBase(string json)
+        {
+            var instances = ReflectionUtilities.GetDefaultEventBaseInstances().ToList();
+            var root = JsonConvert.DeserializeObject<EventBase>(json);
+            var types = ReflectionUtilities.GetEventBaseTypes();
+
+            if (instances.Any(x => x.Type == root!.Type))
+            {
+                var instance = instances.First(x => x.Type == root!.Type);
+
+                foreach (var type in types)
+                {
+                    if (instance.GetType() == type)
+                    {
+                        return JsonConvert.DeserializeObject(json, type) as EventBase;
+                    }
+                }
+            }
+
+            throw new Exception($"错误的json: {json}");
+        }
+        
         #endregion
 
         #region Property definitions
 
+        [JsonIgnore]
+        public IObservable<EventBase> EventReceived => _eventReceivedSubject.AsObservable();
+
+        private readonly Subject<EventBase> _eventReceivedSubject = new();
+        
         /// <summary>
         /// Mirai.Net总是需要一个VerifyKey
         /// </summary>
@@ -187,6 +244,7 @@ namespace Mirai.Net.Sessions
         public async void Dispose()
         {
             _client?.Dispose();
+            _eventReceivedSubject.OnCompleted();
             await ReleaseOccupy();
         }
 
