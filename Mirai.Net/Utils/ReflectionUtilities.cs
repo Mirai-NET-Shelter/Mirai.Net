@@ -4,61 +4,37 @@ using System.Linq;
 using System.Reflection;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Messages;
+using Newtonsoft.Json;
 
 namespace Mirai.Net.Utils
 {
-    public static class ReflectionUtilities
+    public class ReflectionUtilities<T> where T : class
     {
-        private static List<EventBase> _eventBases = new ();
-        private static List<Type> _eventBaseTypes = new ();
+        private readonly List<T> _list = new ();
+        private readonly List<Type> _types = new ();
 
-        public static IEnumerable<EventBase> GetDefaultEventBaseInstances(out List<Type> output)
+        public IEnumerable<T> GetDefaultInstances(string location, ref List<Type> types)
         {
-            output = _eventBaseTypes;
+            if (_list.Count != 0) return _list;
+
+            if (_types.Count != 0) types = _types;
             
-            return GetDefaultInstances("Mirai.Net.Data.Events.Concretes", ref _eventBases,
-                ref _eventBaseTypes);
-        }
-
-        private static List<MessageBase> _messageBases = new ();
-        private static List<Type> _messageBaseTypes = new ();
-        public static IEnumerable<MessageBase> GetDefaultMessageBaseInstances(out List<Type> output)
-        {
-            output = _messageBaseTypes;
+            var assembly = Assembly.GetExecutingAssembly();
+            var all = assembly.GetTypes();
             
-            return GetDefaultInstances("Mirai.Net.Data.Messages.Concretes", ref _messageBases,
-                ref _messageBaseTypes);
-        }
-        
-        private static IEnumerable<T> GetDefaultInstances<T>(string location, ref List<T> output, ref List<Type> typeOutput) where T : class
-        {
-            if (_eventBases.Count != 0) return output;
+            types.AddRange(all
+                .Where(x => x.FullName!.Contains(location)));
 
-            var types = GetTypes(location, ref typeOutput);
-                
             foreach (var type in types)
             {
                 if (!type.IsAbstract)
                 {
                     var instance = Activator.CreateInstance(type) as T;
-                    output.Add(instance);
+                    _list.Add(instance);
                 }
             }
 
-            return output;
-        }
-
-        private static IEnumerable<Type> GetTypes(string location, ref List<Type> output)
-        {
-            if (_eventBaseTypes.Count != 0) return _eventBaseTypes;
-            
-            var assembly = Assembly.GetExecutingAssembly();
-            var all = assembly.GetTypes();
-            
-            output.AddRange(all
-                .Where(x => x.FullName!.Contains(location)));
-
-            return output;
+            return _list;
         }
     }
 }

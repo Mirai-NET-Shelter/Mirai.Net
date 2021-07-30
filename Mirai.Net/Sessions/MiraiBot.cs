@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.WebSockets;
 using System.Reactive;
@@ -12,10 +13,10 @@ using AHpx.Extensions.Utils;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
+using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions;
 using Newtonsoft.Json;
 using Websocket.Client;
-using ReflectionUtilities = Mirai.Net.Utils.ReflectionUtilities;
 
 namespace Mirai.Net.Sessions
 {
@@ -90,7 +91,7 @@ namespace Mirai.Net.Sessions
                             // Console.WriteLine(data);
                             break;
                         case WebsocketAdapterNotifications.Event:
-                            var value = GetEventBase(data);
+                            var value = data.GetEventBase();
                             _eventReceivedSubject.OnNext(value);
                             break;
                         case WebsocketAdapterNotifications.Unknown:
@@ -103,50 +104,6 @@ namespace Mirai.Net.Sessions
 
             await _client.StartOrFail();
         }
-        
-        /// <summary>
-        /// 根据raw json转换成EventBase，十分酷哥的反射
-        /// </summary>
-        /// <param name="json"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
-        private EventBase GetEventBase(string json)
-        {
-            var instances = ReflectionUtilities
-                .GetDefaultEventBaseInstances(out var types)
-                .ToList();
-            
-            var root = JsonConvert.DeserializeObject<EventBase>(json);
-
-            if (instances.Any(x => x.Type == root!.Type))
-            {
-                var instance = instances.First(x => x.Type == root!.Type);
-
-                foreach (var type in types)
-                {
-                    if (instance.GetType() == type)
-                    {
-                        return JsonConvert.DeserializeObject(json, type) as EventBase;
-                    }
-                }
-            }
-
-            throw new Exception($"错误的json: {json}");
-        }
-
-        private MessageBase GetMessageBase(string json)
-        {
-            var instances = ReflectionUtilities
-                .GetDefaultMessageBaseInstances(out var types)
-                .ToList();
-
-            var root = JsonConvert.DeserializeObject<MessageBase>(json);
-            
-            
-
-            return null;
-        }
-        
         
         #endregion
 

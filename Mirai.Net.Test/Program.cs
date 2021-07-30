@@ -38,7 +38,7 @@ namespace Mirai.Net.Test
                 .Cast<GroupMutedAllEvent>()
                 .Subscribe(x =>
                 {
-                    Console.WriteLine(x.Type);
+                    Console.WriteLine(x.ToJsonString());
                 });
             
             exit.WaitOne(TimeSpan.FromMinutes(1));
