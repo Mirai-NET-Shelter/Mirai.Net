@@ -15,6 +15,7 @@ using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Concretes.Group;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
+using Mirai.Net.Data.Shared;
 using Mirai.Net.Sessions;
 using Mirai.Net.Sessions.Http;
 using Mirai.Net.Sessions.Http.Concretes;
@@ -52,12 +53,16 @@ namespace Mirai.Net.Test
             
             var mgr = builder.Build<AccountManager>();
             
-            var arr = await mgr.GetGroupMembers(110838222);
-            
-            foreach (var friend in arr)
+            var arr = await mgr.GetFriends();
+
+            foreach (var item in arr)
             {
-                Console.WriteLine(friend.Name);
+                var i = await mgr.GetFriendProfile(item.Id);
+
+                Console.WriteLine(i.ToJsonString());
             }
+
+            Console.WriteLine((await mgr.GetBotProfile()).ToJsonString());
             
             exit.WaitOne(TimeSpan.FromMinutes(1));
         }

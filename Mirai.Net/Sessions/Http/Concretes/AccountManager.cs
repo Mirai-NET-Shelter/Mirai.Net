@@ -21,7 +21,6 @@ namespace Mirai.Net.Sessions.Http.Concretes
         /// <summary>
         /// 获取bot账号的好友列表
         /// </summary>
-        /// <returns></returns>
         public async Task<IEnumerable<Friend>> GetFriends()
         {
             return await this.GetCollection<Friend>(HttpEndpoints.FriendList);
@@ -30,7 +29,6 @@ namespace Mirai.Net.Sessions.Http.Concretes
         /// <summary>
         /// 获取bot账号的QQ群列表
         /// </summary>
-        /// <returns></returns>
         public async Task<IEnumerable<Group>> GetGroups()
         {
             return await this.GetCollection<Group>(HttpEndpoints.GroupList);
@@ -39,8 +37,6 @@ namespace Mirai.Net.Sessions.Http.Concretes
         /// <summary>
         /// 获取某群的全部群成员
         /// </summary>
-        /// <param name="target"></param>
-        /// <returns></returns>
         public async Task<IEnumerable<Member>> GetGroupMembers(string target)
         {
             return await this.GetCollection<Member>(HttpEndpoints.MemberList, ("target", target));
@@ -49,8 +45,47 @@ namespace Mirai.Net.Sessions.Http.Concretes
         /// <summary>
         /// 获取某群的全部群成员
         /// </summary>
-        /// <param name="target"></param>
-        /// <returns></returns>
         public async Task<IEnumerable<Member>> GetGroupMembers(long target) => await GetGroupMembers(target.ToString());
+
+        /// <summary>
+        /// 获取bot资料
+        /// </summary>
+        public async Task<Profile> GetBotProfile()
+        {
+            return await this.GetProfile(HttpEndpoints.BotProfile);
+        }
+
+        /// <summary>
+        /// 获取好友资料
+        /// </summary>
+        public async Task<Profile> GetFriendProfile(string target)
+        {
+            return await this.GetProfile(HttpEndpoints.FriendProfile, ("target", target));
+        }
+
+        /// <summary>
+        /// 获取好友资料
+        /// </summary>
+        public async Task<Profile> GetFriendProfile(long target) => await GetFriendProfile(target.ToString());
+
+        /// <summary>
+        /// 获取群员资料
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="target">群号</param>
+        public async Task<Profile> GetMemberProfile(string id, string target)
+        {
+            return await this.GetProfile(HttpEndpoints.MemberProfile,
+                ("target", target),
+                ("memberId", id));
+        }
+
+        /// <summary>
+        /// 获取群员资料
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="target">群号</param>
+        public async Task<Profile> GetMemberProfile(long id, long target) =>
+            await GetMemberProfile(id.ToString(), target.ToString());
     }
 }

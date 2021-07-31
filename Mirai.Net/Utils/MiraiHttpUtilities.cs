@@ -16,6 +16,7 @@ namespace Mirai.Net.Utils
         /// <summary>
         /// 发送http get请求到指定的url
         /// </summary>
+        /// <param name="bot"></param>
         /// <param name="url"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
@@ -25,18 +26,24 @@ namespace Mirai.Net.Utils
             var raw = await client.GetAsync(url);
             
             raw.EnsureSuccessStatusCode();
+            var content = await raw.FetchContent();
 
             try
             {
                 await bot.EnsureSuccess(raw);
-
-                var content = await raw.FetchContent();
+                
                 var json = content.Fetch("data");
 
                 return json;
             }
             catch (Exception e)
             {
+                //因为mirai-api-http糟糕的返回值，所以此处用来判断那些没有data键的返回值
+                if (e.Message.Contains("Path") && e.Message.Contains("doesn't exist"))
+                {
+                    return content;
+                }
+
                 throw new Exception($"请求失败: {url}", e);
             }
         }
@@ -83,7 +90,8 @@ namespace Mirai.Net.Utils
                 url += suffix;
             }
 
-            return await bot.GetHttp(url);
+            var re = await bot.GetHttp(url);
+            return re;
         }
     }
 }
