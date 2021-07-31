@@ -43,12 +43,7 @@ namespace Mirai.Net.Sessions.Http.Concretes
         /// <returns></returns>
         public async Task<IEnumerable<Member>> GetGroupMembers(string target)
         {
-            var parameters = new[]
-            {
-                ("target", target)
-            };
-
-            return await this.GetCollection<Member>(HttpEndpoints.MemberList, parameters);
+            return await this.GetCollection<Member>(HttpEndpoints.MemberList, ("target", target));
         }
 
         /// <summary>

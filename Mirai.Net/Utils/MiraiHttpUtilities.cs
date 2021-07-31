@@ -19,7 +19,7 @@ namespace Mirai.Net.Utils
         /// <param name="url"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        private static async Task<string> GetHttp(string url)
+        private static async Task<string> GetHttp(this MiraiBot bot, string url)
         {
             using var client = new HttpClient();
             var raw = await client.GetAsync(url);
@@ -28,7 +28,7 @@ namespace Mirai.Net.Utils
 
             try
             {
-                await raw.EnsureSuccess();
+                await bot.EnsureSuccess(raw);
 
                 var content = await raw.FetchContent();
                 var json = content.Fetch("data");
@@ -51,7 +51,7 @@ namespace Mirai.Net.Utils
         {
             var url = $"{bot.GetUrl(endpoints)}?sessionKey={bot.HttpSessionKey}";
 
-            return await GetHttp(url);
+            return await bot.GetHttp(url);
         }
 
         /// <summary>
@@ -64,10 +64,15 @@ namespace Mirai.Net.Utils
         internal static async Task<string> GetHttp(this MiraiBot bot, HttpEndpoints endpoints, params (string, string)[] parameters)
         {
             var url = bot.GetUrl(endpoints);
+            var ps = parameters.ToList();
 
-            if (parameters.Length != 0)
+            if (ps.All(x => x.Item1 != "sessionKey"))
             {
-                var ps = parameters.ToList();
+                ps.Add(("sessionKey", bot.HttpSessionKey));
+            }
+
+            if (ps.Count != 0)
+            {
                 url += $"?{ps[0].Item1}={ps[0].Item2}";
 
                 ps.Remove(ps.First());
@@ -78,7 +83,7 @@ namespace Mirai.Net.Utils
                 url += suffix;
             }
 
-            return await GetHttp(url);
+            return await bot.GetHttp(url);
         }
     }
 }
