@@ -44,20 +44,6 @@ namespace Mirai.Net.Utils
         }
 
         /// <summary>
-        /// 发送http get请求到指定的端点
-        /// </summary>
-        /// <param name="bot"></param>
-        /// <param name="endpoints"></param>
-        /// <param name="direct">没有data键的数据</param>
-        /// <returns></returns>
-        internal static async Task<string> GetHttp(this MiraiBot bot, HttpEndpoints endpoints, bool direct = false)
-        {
-            var url = $"{bot.GetUrl(endpoints)}?sessionKey={bot.HttpSessionKey}";
-
-            return await bot.GetHttp(url, direct);
-        }
-
-        /// <summary>
         /// 发送http get请求到指定的端点并
         /// </summary>
         /// <param name="bot"></param>
