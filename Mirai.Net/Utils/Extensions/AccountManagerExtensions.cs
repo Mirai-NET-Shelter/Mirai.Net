@@ -15,14 +15,14 @@ namespace Mirai.Net.Utils.Extensions
             HttpEndpoints endpoints, 
             params (string, string)[] extraParameters)
         {
-            var raw = await manager.Bot.GetHttp(endpoints, extraParameters);
+            var raw = await manager.Bot.GetHttp(endpoints, parameters: extraParameters);
 
             return raw.ToJArray().Select(x => x.ToObject<T>());
         }
 
         internal static async Task<Profile> GetProfile(this AccountManager manager, HttpEndpoints endpoints, params (string, string)[] extraParameters)
         {
-            var raw = await manager.Bot.GetHttp(endpoints, extraParameters);
+            var raw = await manager.Bot.GetHttp(endpoints, true, extraParameters);
 
             return JsonConvert.DeserializeObject<Profile>(raw);
         }

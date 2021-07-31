@@ -18,9 +18,10 @@ namespace Mirai.Net.Utils
         /// </summary>
         /// <param name="bot"></param>
         /// <param name="url"></param>
+        /// <param name="direct">没有data键的数据</param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        private static async Task<string> GetHttp(this MiraiBot bot, string url)
+        private static async Task<string> GetHttp(this MiraiBot bot, string url, bool direct = false)
         {
             using var client = new HttpClient();
             var raw = await client.GetAsync(url);
@@ -31,34 +32,29 @@ namespace Mirai.Net.Utils
             try
             {
                 await bot.EnsureSuccess(raw);
-                
-                var json = content.Fetch("data");
+
+                var json = direct ? content : content.Fetch("data");
 
                 return json;
             }
             catch (Exception e)
             {
-                //因为mirai-api-http糟糕的返回值，所以此处用来判断那些没有data键的返回值
-                if (e.Message.Contains("Path") && e.Message.Contains("doesn't exist"))
-                {
-                    return content;
-                }
-
                 throw new Exception($"请求失败: {url}", e);
             }
         }
-        
+
         /// <summary>
         /// 发送http get请求到指定的端点
         /// </summary>
         /// <param name="bot"></param>
         /// <param name="endpoints"></param>
+        /// <param name="direct">没有data键的数据</param>
         /// <returns></returns>
-        internal static async Task<string> GetHttp(this MiraiBot bot, HttpEndpoints endpoints)
+        internal static async Task<string> GetHttp(this MiraiBot bot, HttpEndpoints endpoints, bool direct = false)
         {
             var url = $"{bot.GetUrl(endpoints)}?sessionKey={bot.HttpSessionKey}";
 
-            return await bot.GetHttp(url);
+            return await bot.GetHttp(url, direct);
         }
 
         /// <summary>
@@ -66,9 +62,10 @@ namespace Mirai.Net.Utils
         /// </summary>
         /// <param name="bot"></param>
         /// <param name="endpoints"></param>
+        /// <param name="direct">没有data键的数据</param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        internal static async Task<string> GetHttp(this MiraiBot bot, HttpEndpoints endpoints, params (string, string)[] parameters)
+        internal static async Task<string> GetHttp(this MiraiBot bot, HttpEndpoints endpoints, bool direct = false, params (string, string)[] parameters)
         {
             var url = bot.GetUrl(endpoints);
             var ps = parameters.ToList();
@@ -89,9 +86,8 @@ namespace Mirai.Net.Utils
 
                 url += suffix;
             }
-
-            var re = await bot.GetHttp(url);
-            return re;
+            
+            return await bot.GetHttp(url, direct);
         }
     }
 }
