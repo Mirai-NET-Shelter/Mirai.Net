@@ -52,11 +52,11 @@ namespace Mirai.Net.Test
             
             var mgr = builder.Build<AccountManager>();
             
-            var arr = await mgr.GetFriends();
+            var arr = await mgr.GetGroupMembers(110838222);
             
             foreach (var friend in arr)
             {
-                Console.WriteLine(friend.NickName);
+                Console.WriteLine(friend.Name);
             }
             
             exit.WaitOne(TimeSpan.FromMinutes(1));

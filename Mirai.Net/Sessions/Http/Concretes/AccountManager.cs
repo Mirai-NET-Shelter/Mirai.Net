@@ -5,16 +5,17 @@ using AHpx.Extensions.StringExtensions;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Utils;
+using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Sessions.Http.Concretes
 {
     public class AccountManager
     {
-        private readonly MiraiBot _bot;
+        internal readonly MiraiBot Bot;
 
         public AccountManager(MiraiBot bot)
         {
-            _bot = bot;
+            Bot = bot;
         }
         
         /// <summary>
@@ -23,12 +24,38 @@ namespace Mirai.Net.Sessions.Http.Concretes
         /// <returns></returns>
         public async Task<IEnumerable<Friend>> GetFriends()
         {
-            var raw = await _bot.GetHttp(HttpEndpoints.FriendList);
-            var json = raw.ToJArray();
-
-            return json.Select(x => x.ToObject<Friend>());
+            return await this.GetCollection<Friend>(HttpEndpoints.FriendList);
         }
-        
-        
+
+        /// <summary>
+        /// 获取bot账号的QQ群列表
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IEnumerable<Group>> GetGroups()
+        {
+            return await this.GetCollection<Group>(HttpEndpoints.GroupList);
+        }
+
+        /// <summary>
+        /// 获取某群的全部群成员
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<Member>> GetGroupMembers(string target)
+        {
+            var parameters = new[]
+            {
+                ("target", target)
+            };
+
+            return await this.GetCollection<Member>(HttpEndpoints.MemberList, parameters);
+        }
+
+        /// <summary>
+        /// 获取某群的全部群成员
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<Member>> GetGroupMembers(long target) => await GetGroupMembers(target.ToString());
     }
 }
