@@ -52,19 +52,10 @@ namespace Mirai.Net.Test
             var builder = new ManagerBuilder(bot);
             
             var mgr = builder.Build<AccountManager>();
-            
-            var arr = await mgr.GetFriends();
-
-            foreach (var item in arr)
-            {
-                var i = await mgr.GetFriendProfile(item.Id);
-
-                Console.WriteLine(i.ToJsonString());
-            }
 
             Console.WriteLine((await mgr.GetBotProfile()).ToJsonString());
             
-            exit.WaitOne(TimeSpan.FromMinutes(1));
+            // exit.WaitOne(TimeSpan.FromMinutes(1));
         }
 
         #region MyRegion
