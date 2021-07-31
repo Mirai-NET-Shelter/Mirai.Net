@@ -58,8 +58,8 @@ namespace Mirai.Net.Sessions
         /// </summary>
         private async Task LaunchHttpAdapter()
         {
-            HttpSessionKey = await GetSessionKey();
-            await BindQqToSession();
+            await VerifyHttp();
+            await BindHttp();
         }
 
         private WebsocketClient _client;
@@ -130,7 +130,7 @@ namespace Mirai.Net.Sessions
         /// <summary>
         ///     新建连接 或 singleMode 模式下为空, 通过已有 sessionKey 连接时不可为空
         /// </summary>
-        internal string HttpSessionKey { get; set; }
+        public string HttpSessionKey { get; set; }
 
         private string _address;
 
@@ -166,7 +166,7 @@ namespace Mirai.Net.Sessions
         ///     调用端点: /verify，返回一个新的session key
         /// </summary>
         /// <returns>返回sessionKey</returns>
-        private async Task<string> GetSessionKey()
+        private async Task VerifyHttp()
         {
             var url = this.GetUrl(HttpEndpoints.Verify);
             var response = await HttpUtilities.PostJsonAsync(url, new
@@ -178,13 +178,13 @@ namespace Mirai.Net.Sessions
 
             var content = await response.FetchContent();
 
-            return content.Fetch("session");
+            HttpSessionKey = content.Fetch("session");
         }
 
         /// <summary>
         ///     调用端点：/bind，将当前对象的qq好绑定的指定的sessionKey
         /// </summary>
-        private async Task BindQqToSession()
+        private async Task BindHttp()
         {
             var url = this.GetUrl(HttpEndpoints.Bind);
             var response = await HttpUtilities.PostJsonAsync(url, new
@@ -199,7 +199,7 @@ namespace Mirai.Net.Sessions
         /// <summary>
         ///     调用端口：/release，释放bot的资源占用
         /// </summary>
-        private async Task ReleaseOccupy()
+        private async Task ReleaseHttp()
         {
             var url = this.GetUrl(HttpEndpoints.Release);
             var response = await HttpUtilities.PostJsonAsync(url, new
@@ -228,7 +228,7 @@ namespace Mirai.Net.Sessions
         {
             _client?.Dispose();
             _eventReceivedSubject.OnCompleted();
-            await ReleaseOccupy();
+            await ReleaseHttp();
         }
 
         #endregion
