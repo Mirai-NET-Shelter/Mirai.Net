@@ -58,6 +58,23 @@ namespace Mirai.Net.Utils.Extensions
                 }
         }
 
+        internal static async Task EnsureSuccess(this HttpResponseMessage responseMessage)
+        {
+            responseMessage.EnsureSuccessStatusCode();
+
+            var content = await responseMessage.FetchContent();
+
+            if (content.ToJObject().ContainsKey("code"))
+                if (content.Fetch("code") != "0")
+                {
+                    var message = content.ToJObject().ContainsKey("msg")
+                        ? $"{content.Fetch("msg")}"
+                        : $"请求失败";
+
+                    throw new Exception(message);
+                }
+        }
+
         /// <summary>
         ///     拓展方法，确保MiraiBot类内部建立的websocket连接正常，否则抛出异常
         /// </summary>

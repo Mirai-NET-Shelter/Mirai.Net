@@ -36,7 +36,7 @@ namespace Mirai.Net.Test
                 QQ = 2672886221,
                 VerifyKey = "1145141919810"
             };
-
+            
             await bot.Launch();
             bot.MessageReceived.Subscribe(x =>
             {
@@ -49,9 +49,9 @@ namespace Mirai.Net.Test
             });
             
             var builder = new ManagerBuilder(bot);
-
+            
             var mgr = builder.Build<AccountManager>();
-
+            
             var arr = await mgr.GetFriends();
             
             foreach (var friend in arr)

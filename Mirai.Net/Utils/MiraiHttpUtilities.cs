@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
@@ -12,10 +13,14 @@ namespace Mirai.Net.Utils
 {
     public static class MiraiHttpUtilities
     {
-        internal static async Task<string> GetHttp(this MiraiBot bot, HttpEndpoints endpoints)
+        /// <summary>
+        /// 发送http get请求到指定的url
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        private static async Task<string> GetHttp(string url)
         {
-            var url = $"{bot.GetUrl(endpoints)}?sessionKey={bot.HttpSessionKey}";
-            
             using var client = new HttpClient();
             var raw = await client.GetAsync(url);
             
@@ -23,7 +28,7 @@ namespace Mirai.Net.Utils
 
             try
             {
-                await bot.EnsureSuccess(raw);
+                await raw.EnsureSuccess();
 
                 var content = await raw.FetchContent();
                 var json = content.Fetch("data");
@@ -34,6 +39,46 @@ namespace Mirai.Net.Utils
             {
                 throw new Exception($"请求失败: {url}", e);
             }
+        }
+        
+        /// <summary>
+        /// 发送http get请求到指定的端点
+        /// </summary>
+        /// <param name="bot"></param>
+        /// <param name="endpoints"></param>
+        /// <returns></returns>
+        internal static async Task<string> GetHttp(this MiraiBot bot, HttpEndpoints endpoints)
+        {
+            var url = $"{bot.GetUrl(endpoints)}?sessionKey={bot.HttpSessionKey}";
+
+            return await GetHttp(url);
+        }
+
+        /// <summary>
+        /// 发送http get请求到指定的端点并
+        /// </summary>
+        /// <param name="bot"></param>
+        /// <param name="endpoints"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        internal static async Task<string> GetHttp(this MiraiBot bot, HttpEndpoints endpoints, params (string, string)[] parameters)
+        {
+            var url = bot.GetUrl(endpoints);
+
+            if (parameters.Length != 0)
+            {
+                var ps = parameters.ToList();
+                url += $"?{ps[0].Item1}={ps[0].Item2}";
+
+                ps.Remove(ps.First());
+
+                var result = ps.Select(x => $"&{x.Item1}={x.Item2}").ToArray();
+                var suffix = string.Join(string.Empty, result);
+
+                url += suffix;
+            }
+
+            return await GetHttp(url);
         }
     }
 }
