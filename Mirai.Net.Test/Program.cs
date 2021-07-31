@@ -10,11 +10,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using AHpx.Extensions.IOExtensions;
 using AHpx.Extensions.StringExtensions;
+using Microsoft.VisualBasic;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Concretes.Group;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Sessions;
+using Mirai.Net.Sessions.Http;
+using Mirai.Net.Sessions.Http.Concretes;
 using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions;
 using Newtonsoft.Json;
@@ -33,7 +36,7 @@ namespace Mirai.Net.Test
                 QQ = 2672886221,
                 VerifyKey = "1145141919810"
             };
-            
+
             await bot.Launch();
             bot.MessageReceived.Subscribe(x =>
             {
@@ -44,6 +47,17 @@ namespace Mirai.Net.Test
             {
                 Console.WriteLine(x.Type);
             });
+            
+            var builder = new ManagerBuilder(bot);
+
+            var mgr = builder.Build<AccountManager>();
+
+            var arr = await mgr.GetFriends();
+            
+            foreach (var friend in arr)
+            {
+                Console.WriteLine(friend.NickName);
+            }
             
             exit.WaitOne(TimeSpan.FromMinutes(1));
         }

@@ -10,6 +10,8 @@ namespace Mirai.Net.Data.Sessions
         [Description("verify")] Verify,
         [Description("bind")] Bind,
         [Description("release")] Release,
-        [Description("about")] About
+        [Description("about")] About,
+        
+        [Description("friendList")] FriendList,
     }
 }
