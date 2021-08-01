@@ -40,16 +40,9 @@ namespace Mirai.Net.Test
             
             await bot.Launch();
 
-            var mgr = bot.GetManager<FileManager>();
+            var mgr = bot.GetManager<AccountManager>();
 
-            var file = new FileInfo(@"C:\Users\ahpx\Desktop\silk2mp3 v1.0.2.5\五五开骂人.silk");
-
-            var files = await mgr.UploadVoice(file);
-
-            await bot.GetManager<MessageManager>().SendGroupMessage(110838222, new VoiceMessage
-            {
-                VoiceId = files.Item1
-            });
+            await mgr.DeleteFriend("2933170747");
         }
 
         #region MyRegion

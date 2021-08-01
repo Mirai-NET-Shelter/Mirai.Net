@@ -174,7 +174,7 @@ namespace Mirai.Net.Sessions
                 verifyKey = VerifyKey
             }.ToJsonString());
 
-            await this.EnsureSuccess(response);
+            this.EnsureSuccess(response);
 
             var content = await response.FetchContent();
 
@@ -193,7 +193,7 @@ namespace Mirai.Net.Sessions
                 qq = QQ
             }.ToJsonString());
 
-            await this.EnsureSuccess(response);
+            this.EnsureSuccess(response);
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Mirai.Net.Sessions
                 qq = QQ
             }.ToJsonString());
 
-            await this.EnsureSuccess(response);
+            this.EnsureSuccess(response);
         }
 
         #endregion

@@ -36,8 +36,7 @@ namespace Mirai.Net.Utils
 
             try
             {
-                raw.EnsureSuccessStatusCode();
-                await bot.EnsureSuccess(raw);
+                bot.EnsureSuccess(raw);
 
                 var json = direct ? content : content.Fetch("data");
 
@@ -83,8 +82,7 @@ namespace Mirai.Net.Utils
 
             try
             {
-                response.EnsureSuccessStatusCode();
-                await bot.EnsureSuccess(response);
+                bot.EnsureSuccess(response);
 
                 var re = direct ? content : content.Fetch("data");
 
@@ -125,8 +123,7 @@ namespace Mirai.Net.Utils
             
             try
             {
-                response.EnsureSuccessStatusCode();
-                await bot.EnsureSuccess(response);
+                bot.EnsureSuccess(response);
 
                 var fetch = await response.FetchContent();
                 var re = direct ? fetch : fetch.Fetch("data");

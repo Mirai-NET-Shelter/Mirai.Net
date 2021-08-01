@@ -59,6 +59,8 @@ namespace Mirai.Net.Sessions.Http.Concretes
             Bot.EnsureSuccess(response);
         }
 
+        public async Task DeleteFriend(long target) => await DeleteFriend(target.ToString());
+
         /// <summary>
         /// 获取bot资料
         /// </summary>

@@ -43,7 +43,7 @@ namespace Mirai.Net.Utils.Extensions
         /// <param name="bot"></param>
         /// <param name="responseMessage">HttpClient响应消息</param>
         /// <exception cref="Exception"></exception>
-        internal static async Task EnsureSuccess(this MiraiBot bot, HttpResponseMessage responseMessage)
+        internal static async void EnsureSuccess(this MiraiBot bot, HttpResponseMessage responseMessage)
         {
             responseMessage.EnsureSuccessStatusCode();
 
@@ -63,20 +63,18 @@ namespace Mirai.Net.Utils.Extensions
         /// <summary>
         /// 确保请求http请求返回了正确的状态码
         /// </summary>
+        /// <param name="bot"></param>
+        /// <param name="content"></param>
         /// <param name="responseMessage"></param>
         /// <exception cref="Exception"></exception>
-        internal static async Task EnsureSuccess(this HttpResponseMessage responseMessage)
+        internal static void EnsureSuccess(this MiraiBot bot, string content)
         {
-            responseMessage.EnsureSuccessStatusCode();
-
-            var content = await responseMessage.FetchContent();
-
             if (content.ToJObject().ContainsKey("code"))
                 if (content.Fetch("code") != "0")
                 {
                     var message = content.ToJObject().ContainsKey("msg")
-                        ? $"{content.Fetch("msg")}"
-                        : $"请求失败";
+                        ? $"{content.Fetch("msg")}\n{bot}"
+                        : $"请求失败: {bot}";
 
                     throw new Exception(message);
                 }
@@ -118,7 +116,7 @@ namespace Mirai.Net.Utils.Extensions
             {
                 var response = await HttpUtilities.GetAsync(url);
 
-                await bot.EnsureSuccess(response);
+                bot.EnsureSuccess(response);
 
                 var content = await response.FetchContent();
                 return content.Fetch("data.version");
