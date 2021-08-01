@@ -1,7 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
-using AHpx.Extensions.StringExtensions;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Sessions.Http.Concretes;
 

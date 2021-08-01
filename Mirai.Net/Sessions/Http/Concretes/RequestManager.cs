@@ -16,12 +16,13 @@ namespace Mirai.Net.Sessions.Http.Concretes
         }
 
         /// <summary>
-        /// 处理好友申请
+        ///     处理好友申请
         /// </summary>
         /// <param name="requestedEvent"></param>
         /// <param name="handler"></param>
         /// <param name="message"></param>
-        public async Task HandleNewFriendRequested(NewFriendRequestedEvent requestedEvent, NewFriendRequestHandlers handler, string message = "")
+        public async Task HandleNewFriendRequested(NewFriendRequestedEvent requestedEvent,
+            NewFriendRequestHandlers handler, string message = "")
         {
             var payload = new
             {
@@ -36,12 +37,13 @@ namespace Mirai.Net.Sessions.Http.Concretes
         }
 
         /// <summary>
-        /// 处理新成员入群申请,需要管理员权限
+        ///     处理新成员入群申请,需要管理员权限
         /// </summary>
         /// <param name="requestedEvent"></param>
         /// <param name="handler"></param>
         /// <param name="message"></param>
-        public async Task HandleNewMemberRequested(NewMemberRequestedEvent requestedEvent, NewMemberRequestHandlers handler, string message = "")
+        public async Task HandleNewMemberRequested(NewMemberRequestedEvent requestedEvent,
+            NewMemberRequestHandlers handler, string message = "")
         {
             var payload = new
             {
@@ -56,12 +58,13 @@ namespace Mirai.Net.Sessions.Http.Concretes
         }
 
         /// <summary>
-        /// 处理bot被邀请进群申请
+        ///     处理bot被邀请进群申请
         /// </summary>
         /// <param name="requestedEvent"></param>
         /// <param name="handler"></param>
         /// <param name="message"></param>
-        public async Task HandleNewInvitationRequested(NewInvitationRequestedEvent requestedEvent, NewInvitationRequestHandlers handler, string message)
+        public async Task HandleNewInvitationRequested(NewInvitationRequestedEvent requestedEvent,
+            NewInvitationRequestHandlers handler, string message)
         {
             var payload = new
             {

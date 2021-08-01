@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
@@ -17,7 +15,7 @@ namespace Mirai.Net.Utils
     public static class MiraiHttpUtilities
     {
         /// <summary>
-        /// 发送http get请求到指定的url
+        ///     发送http get请求到指定的url
         /// </summary>
         /// <param name="bot"></param>
         /// <param name="url"></param>
@@ -27,11 +25,11 @@ namespace Mirai.Net.Utils
         public static async Task<string> GetHttp(this MiraiBot bot, string url, bool direct = false)
         {
             using var client = new HttpClient();
-            
+
             client.DefaultRequestHeaders.Add("sessionKey", bot.HttpSessionKey);
-            
+
             var raw = await client.GetAsync(url);
-            
+
             var content = await raw.FetchContent();
 
             try
@@ -49,14 +47,15 @@ namespace Mirai.Net.Utils
         }
 
         /// <summary>
-        /// 发送http get请求到指定的端点并
+        ///     发送http get请求到指定的端点并
         /// </summary>
         /// <param name="bot"></param>
         /// <param name="endpoints"></param>
         /// <param name="direct">没有data键的数据</param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        internal static async Task<string> GetHttp(this MiraiBot bot, HttpEndpoints endpoints, bool direct = false, params (string, string)[] parameters)
+        internal static async Task<string> GetHttp(this MiraiBot bot, HttpEndpoints endpoints, bool direct = false,
+            params (string, string)[] parameters)
         {
             var url = $"{bot.GetUrl(endpoints)}{ParseParameters(parameters)}";
 
@@ -65,10 +64,7 @@ namespace Mirai.Net.Utils
 
         public static async Task<string> PostHttp(this MiraiBot bot, string url, object json, bool direct = false)
         {
-            if (json is not string)
-            {
-                json = json.ToJsonString();
-            }
+            if (json is not string) json = json.ToJsonString();
 
             var payload = json.ToString();
             using var client = new HttpClient();
@@ -94,33 +90,32 @@ namespace Mirai.Net.Utils
             }
         }
 
-        internal static async Task<string> PostHttp(this MiraiBot bot, HttpEndpoints endpoints, object json, bool direct = false, params (string, string)[] parameters)
+        internal static async Task<string> PostHttp(this MiraiBot bot, HttpEndpoints endpoints, object json,
+            bool direct = false, params (string, string)[] parameters)
         {
             var url = $"{bot.GetUrl(endpoints)}{ParseParameters(parameters)}";
 
             return await bot.PostHttp(url, json, direct);
         }
 
-        internal static async Task<string> PostFileHttp(this MiraiBot bot, HttpEndpoints endpoints, FileInfo file, string fileParameterName, bool direct = false, params (string, string)[] extraParams)
+        internal static async Task<string> PostFileHttp(this MiraiBot bot, HttpEndpoints endpoints, FileInfo file,
+            string fileParameterName, bool direct = false, params (string, string)[] extraParams)
         {
             using var client = new HttpClient();
             client.DefaultRequestHeaders.Add("sessionKey", bot.HttpSessionKey);
-            
+
             using var request = new HttpRequestMessage();
             using var content = new MultipartFormDataContent();
 
             using var stream = file.OpenRead();
             content.Add(new StreamContent(stream), fileParameterName, file.Name);
-            
-            foreach (var (key, value) in extraParams)
-            {
-                content.Add(new StringContent(value), key);
-            }
+
+            foreach (var (key, value) in extraParams) content.Add(new StringContent(value), key);
 
             var url = $"{bot.GetUrl(endpoints)}";
 
             var response = await client.PostAsync(url, content);
-            
+
             try
             {
                 bot.EnsureSuccess(response);

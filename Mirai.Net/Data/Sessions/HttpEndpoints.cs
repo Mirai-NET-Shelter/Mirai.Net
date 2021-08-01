@@ -11,20 +11,20 @@ namespace Mirai.Net.Data.Sessions
         [Description("bind")] Bind,
         [Description("release")] Release,
         [Description("about")] About,
-        
+
         [Description("friendList")] FriendList,
         [Description("groupList")] GroupList,
         [Description("memberList")] MemberList,
         [Description("botProfile")] BotProfile,
         [Description("friendProfile")] FriendProfile,
         [Description("memberProfile")] MemberProfile,
-        
+
         [Description("sendFriendMessage")] SendFriendMessage,
         [Description("sendGroupMessage")] SendGroupMessage,
         [Description("sendTempMessage")] SendTempMessage,
         [Description("sendNudge")] SendNudge,
         [Description("recall")] Recall,
-        
+
         [Description("file/list")] FileList,
         [Description("file/info")] FileInfo,
         [Description("file/mkdir")] FileCreate,
@@ -32,12 +32,12 @@ namespace Mirai.Net.Data.Sessions
         [Description("file/move")] FileMove,
         [Description("file/rename")] FileRename,
         [Description("file/upload")] FileUpload,
-        
+
         [Description("uploadImage")] UploadImage,
         [Description("uploadVoice")] UploadVoice,
-        
+
         [Description("deleteFriend")] DeleteFriend,
-        
+
         [Description("mute")] Mute,
         [Description("unmute")] Unmute,
         [Description("kick")] Kick,
@@ -47,9 +47,14 @@ namespace Mirai.Net.Data.Sessions
         [Description("setEssence")] SetEssence,
         [Description("groupConfig")] GroupConfig,
         [Description("memberInfo")] MemberInfo,
-        
-        [Description("resp/newFriendRequestEvent")] NewFriendRequested,
-        [Description("resp/memberJoinRequestEvent")] MemberJoinRequested,
-        [Description("resp/botInvitedJoinGroupRequestEvent")] BotInvited
+
+        [Description("resp/newFriendRequestEvent")]
+        NewFriendRequested,
+
+        [Description("resp/memberJoinRequestEvent")]
+        MemberJoinRequested,
+
+        [Description("resp/botInvitedJoinGroupRequestEvent")]
+        BotInvited
     }
 }

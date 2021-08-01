@@ -8,7 +8,6 @@ using AHpx.Extensions.Utils;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Sessions;
 using Mirai.Net.Sessions.Http;
-using Mirai.Net.Sessions.Http.Concretes;
 using Websocket.Client;
 
 namespace Mirai.Net.Utils.Extensions
@@ -61,7 +60,7 @@ namespace Mirai.Net.Utils.Extensions
         }
 
         /// <summary>
-        /// 确保请求http请求返回了正确的状态码
+        ///     确保请求http请求返回了正确的状态码
         /// </summary>
         /// <param name="bot"></param>
         /// <param name="content"></param>
@@ -128,7 +127,7 @@ namespace Mirai.Net.Utils.Extensions
         }
 
         /// <summary>
-        /// 拓展方法, 获取注入mirai bot的管理器
+        ///     拓展方法, 获取注入mirai bot的管理器
         /// </summary>
         /// <param name="bot"></param>
         /// <typeparam name="T"></typeparam>

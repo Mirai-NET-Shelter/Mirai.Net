@@ -1,10 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using AHpx.Extensions.JsonExtensions;
+﻿using System.Threading.Tasks;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
-using Mirai.Net.Utils;
-using Mirai.Net.Utils.Extensions;
 using Mirai.Net.Utils.Extensions.Managers;
 
 namespace Mirai.Net.Sessions.Http.Concretes
@@ -19,7 +15,7 @@ namespace Mirai.Net.Sessions.Http.Concretes
         }
 
         /// <summary>
-        /// 发送好友消息
+        ///     发送好友消息
         /// </summary>
         /// <param name="target"></param>
         /// <param name="chain"></param>
@@ -36,7 +32,7 @@ namespace Mirai.Net.Sessions.Http.Concretes
         }
 
         /// <summary>
-        /// 发送群消息
+        ///     发送群消息
         /// </summary>
         /// <param name="target"></param>
         /// <param name="chain"></param>
@@ -53,7 +49,7 @@ namespace Mirai.Net.Sessions.Http.Concretes
         }
 
         /// <summary>
-        /// 发送群临时消息
+        ///     发送群临时消息
         /// </summary>
         /// <param name="qq"></param>
         /// <param name="group"></param>
@@ -72,7 +68,7 @@ namespace Mirai.Net.Sessions.Http.Concretes
         }
 
         /// <summary>
-        /// 发送头像戳一戳
+        ///     发送头像戳一戳
         /// </summary>
         /// <param name="target">戳一戳的目标</param>
         /// <param name="subject">在什么地方戳</param>
@@ -90,7 +86,7 @@ namespace Mirai.Net.Sessions.Http.Concretes
         }
 
         /// <summary>
-        /// 撤回消息
+        ///     撤回消息
         /// </summary>
         /// <param name="messageId">消息id</param>
         public async Task Recall(string messageId)
@@ -104,7 +100,7 @@ namespace Mirai.Net.Sessions.Http.Concretes
         }
 
         /// <summary>
-        /// 回复好友消息
+        ///     回复好友消息
         /// </summary>
         /// <param name="target"></param>
         /// <param name="messageId"></param>
@@ -121,9 +117,9 @@ namespace Mirai.Net.Sessions.Http.Concretes
 
             return await this.SendMessage(HttpEndpoints.SendFriendMessage, payload);
         }
-        
+
         /// <summary>
-        /// 回复群消息
+        ///     回复群消息
         /// </summary>
         /// <param name="target"></param>
         /// <param name="messageId"></param>
@@ -140,9 +136,9 @@ namespace Mirai.Net.Sessions.Http.Concretes
 
             return await this.SendMessage(HttpEndpoints.SendGroupMessage, payload);
         }
-        
+
         /// <summary>
-        /// 回复临时消息
+        ///     回复临时消息
         /// </summary>
         /// <param name="target"></param>
         /// <param name="messageId"></param>
@@ -162,36 +158,50 @@ namespace Mirai.Net.Sessions.Http.Concretes
 
         #region Overloads
 
-        /// <see cref="QuoteFriendMessage(string,string,Mirai.Net.Data.Messages.MessageBase[])"/>
-        public async Task<string> QuoteFriendMessage(long target, string messageId, params MessageBase[] chain) =>
-            await QuoteFriendMessage(target.ToString(), messageId, chain);
-        
-        /// <see cref="QuoteGroupMessage(string,string,Mirai.Net.Data.Messages.MessageBase[])"/>
-        public async Task<string> QuoteGroupMessage(long target, string messageId, params MessageBase[] chain) =>
-            await QuoteGroupMessage(target.ToString(), messageId, chain);
-        
-        /// <see cref="QuoteTempMessage(string,string,Mirai.Net.Data.Messages.MessageBase[])"/>
-        public async Task<string> QuoteTempMessage(long target, string messageId, params MessageBase[] chain) =>
-            await QuoteTempMessage(target.ToString(), messageId, chain);
+        /// <see cref="QuoteFriendMessage(string,string,Mirai.Net.Data.Messages.MessageBase[])" />
+        public async Task<string> QuoteFriendMessage(long target, string messageId, params MessageBase[] chain)
+        {
+            return await QuoteFriendMessage(target.ToString(), messageId, chain);
+        }
 
-        /// <see cref="SendNudge(string,string,Mirai.Net.Data.Messages.MessageReceivers)"/>
-        public async Task SendNudge(long target, long subject, MessageReceivers kind) =>
+        /// <see cref="QuoteGroupMessage(string,string,Mirai.Net.Data.Messages.MessageBase[])" />
+        public async Task<string> QuoteGroupMessage(long target, string messageId, params MessageBase[] chain)
+        {
+            return await QuoteGroupMessage(target.ToString(), messageId, chain);
+        }
+
+        /// <see cref="QuoteTempMessage(string,string,Mirai.Net.Data.Messages.MessageBase[])" />
+        public async Task<string> QuoteTempMessage(long target, string messageId, params MessageBase[] chain)
+        {
+            return await QuoteTempMessage(target.ToString(), messageId, chain);
+        }
+
+        /// <see cref="SendNudge(string,string,Mirai.Net.Data.Messages.MessageReceivers)" />
+        public async Task SendNudge(long target, long subject, MessageReceivers kind)
+        {
             await SendNudge(target.ToString(), subject.ToString(), kind);
-        
+        }
 
-        /// <see cref="SendFriendMessage(string,Mirai.Net.Data.Messages.MessageBase[])"/>
-        public async Task<string> SendFriendMessage(long target, params MessageBase[] chain) =>
-            await SendFriendMessage(target.ToString(), chain);
-        
 
-        /// <see cref="SendGroupMessage(string,Mirai.Net.Data.Messages.MessageBase[])"/>
-        public async Task<string> SendGroupMessage(long target, params MessageBase[] chain) =>
-            await SendGroupMessage(target.ToString(), chain);
-        
+        /// <see cref="SendFriendMessage(string,Mirai.Net.Data.Messages.MessageBase[])" />
+        public async Task<string> SendFriendMessage(long target, params MessageBase[] chain)
+        {
+            return await SendFriendMessage(target.ToString(), chain);
+        }
 
-        /// <see cref="SendTempMessage(string,string,Mirai.Net.Data.Messages.MessageBase[])"/>
-        public async Task<string> SendTempMessage(long qq, long group, params MessageBase[] chain) =>
-            await SendTempMessage(qq.ToString(), group.ToString(), chain);
+
+        /// <see cref="SendGroupMessage(string,Mirai.Net.Data.Messages.MessageBase[])" />
+        public async Task<string> SendGroupMessage(long target, params MessageBase[] chain)
+        {
+            return await SendGroupMessage(target.ToString(), chain);
+        }
+
+
+        /// <see cref="SendTempMessage(string,string,Mirai.Net.Data.Messages.MessageBase[])" />
+        public async Task<string> SendTempMessage(long qq, long group, params MessageBase[] chain)
+        {
+            return await SendTempMessage(qq.ToString(), group.ToString(), chain);
+        }
 
         #endregion
     }

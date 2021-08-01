@@ -21,7 +21,7 @@ namespace Mirai.Net.Sessions.Http.Concretes
         #region Mute
 
         /// <summary>
-        /// 禁言某群员
+        ///     禁言某群员
         /// </summary>
         /// <param name="target"></param>
         /// <param name="group"></param>
@@ -38,24 +38,30 @@ namespace Mirai.Net.Sessions.Http.Concretes
             await this.SendOperate(HttpEndpoints.Mute, payload);
         }
 
-        /// <see cref="Mute(string,string,int)"/>
-        public async Task Mute(string target, string group, TimeSpan time) =>
+        /// <see cref="Mute(string,string,int)" />
+        public async Task Mute(string target, string group, TimeSpan time)
+        {
             await Mute(target, group, Convert.ToInt32(time.TotalSeconds));
-        
-        /// <see cref="Mute(string,string,int)"/>
-        public async Task Mute(long target, long group, TimeSpan time) =>
-            await Mute(target.ToString(), group.ToString(), Convert.ToInt32(time.TotalSeconds));
+        }
 
-        /// <see cref="Mute(string,string,int)"/>
-        public async Task Mute(long target, long group, int time) =>
+        /// <see cref="Mute(string,string,int)" />
+        public async Task Mute(long target, long group, TimeSpan time)
+        {
+            await Mute(target.ToString(), group.ToString(), Convert.ToInt32(time.TotalSeconds));
+        }
+
+        /// <see cref="Mute(string,string,int)" />
+        public async Task Mute(long target, long group, int time)
+        {
             await Mute(target.ToString(), group.ToString(), time);
+        }
 
         #endregion
 
         #region UnMute
 
         /// <summary>
-        /// 取消禁言
+        ///     取消禁言
         /// </summary>
         /// <param name="target"></param>
         /// <param name="group"></param>
@@ -69,17 +75,19 @@ namespace Mirai.Net.Sessions.Http.Concretes
 
             await this.SendOperate(HttpEndpoints.Unmute, payload);
         }
-        
-        ///<see cref="UnMute(string,string)"/>
-        public async Task UnMute(long target, long group) =>
+
+        /// <see cref="UnMute(string,string)" />
+        public async Task UnMute(long target, long group)
+        {
             await UnMute(target.ToString(), group.ToString());
+        }
 
         #endregion
 
         #region Kick
 
         /// <summary>
-        /// 踢出某群员
+        ///     踢出某群员
         /// </summary>
         /// <param name="target"></param>
         /// <param name="group"></param>
@@ -96,17 +104,18 @@ namespace Mirai.Net.Sessions.Http.Concretes
             await this.SendOperate(HttpEndpoints.Kick, payload);
         }
 
-        ///<see cref="Kick(string,string,string)"/>
-        public async Task Kick(long target, long group, string message = "") =>
+        /// <see cref="Kick(string,string,string)" />
+        public async Task Kick(long target, long group, string message = "")
+        {
             await Kick(target.ToString(), group.ToString(), message);
-
+        }
 
         #endregion
 
         #region Leave
 
         /// <summary>
-        /// bot退出某群
+        ///     bot退出某群
         /// </summary>
         /// <param name="target"></param>
         public async Task Leave(string target)
@@ -119,15 +128,18 @@ namespace Mirai.Net.Sessions.Http.Concretes
             await this.SendOperate(HttpEndpoints.Leave, payload);
         }
 
-        ///<see cref="Leave(string)"/>
-        public async Task Leave(long target) => await Leave(target.ToString());
+        /// <see cref="Leave(string)" />
+        public async Task Leave(long target)
+        {
+            await Leave(target.ToString());
+        }
 
         #endregion
 
         #region MuteAll
 
         /// <summary>
-        /// 全体禁言
+        ///     全体禁言
         /// </summary>
         /// <param name="target"></param>
         /// <param name="mute">是否禁言</param>
@@ -142,15 +154,18 @@ namespace Mirai.Net.Sessions.Http.Concretes
             await this.SendOperate(endpoint, payload);
         }
 
-        ///<see cref="MuteAll(string,bool)"/>
-        public async Task MuteAll(long target, bool mute = true) => await MuteAll(target.ToString(), mute);
+        /// <see cref="MuteAll(string,bool)" />
+        public async Task MuteAll(long target, bool mute = true)
+        {
+            await MuteAll(target.ToString(), mute);
+        }
 
         #endregion
 
         #region Essence
 
         /// <summary>
-        /// 设置精华消息
+        ///     设置精华消息
         /// </summary>
         /// <param name="target">消息id</param>
         public async Task SetEssenceMessage(string target)
@@ -163,14 +178,17 @@ namespace Mirai.Net.Sessions.Http.Concretes
             await this.SendOperate(HttpEndpoints.SetEssence, payload);
         }
 
-        public async Task SetEssenceMessage(long target) => await SetEssenceMessage(target.ToString());
+        public async Task SetEssenceMessage(long target)
+        {
+            await SetEssenceMessage(target.ToString());
+        }
 
         #endregion
 
         #region GroupSetting
 
         /// <summary>
-        /// 获取群设置
+        ///     获取群设置
         /// </summary>
         /// <param name="target"></param>
         /// <returns></returns>
@@ -181,11 +199,14 @@ namespace Mirai.Net.Sessions.Http.Concretes
             return JsonConvert.DeserializeObject<GroupSetting>(response);
         }
 
-        ///<see cref="GetGroupSetting(string)"/>
-        public async Task<GroupSetting> GetGroupSetting(long target) => await GetGroupSetting(target.ToString());
+        /// <see cref="GetGroupSetting(string)" />
+        public async Task<GroupSetting> GetGroupSetting(long target)
+        {
+            return await GetGroupSetting(target.ToString());
+        }
 
         /// <summary>
-        /// 修改群设置
+        ///     修改群设置
         /// </summary>
         /// <param name="target"></param>
         /// <param name="setting"></param>
@@ -200,16 +221,19 @@ namespace Mirai.Net.Sessions.Http.Concretes
             await this.SendOperate(HttpEndpoints.GroupConfig, payload);
         }
 
-        ///<see cref="SetGroupSetting(string,Mirai.Net.Data.Shared.GroupSetting)"/>)"/>
-        public async Task SetGroupSetting(long target, GroupSetting setting) =>
+        /// <see cref="SetGroupSetting(string,Mirai.Net.Data.Shared.GroupSetting)" />
+        /// )"/>
+        public async Task SetGroupSetting(long target, GroupSetting setting)
+        {
             await SetGroupSetting(target.ToString(), setting);
+        }
 
         #endregion
 
         #region MemberInfo
 
         /// <summary>
-        /// 获取群员
+        ///     获取群员
         /// </summary>
         /// <param name="target"></param>
         /// <param name="group"></param>
@@ -217,18 +241,20 @@ namespace Mirai.Net.Sessions.Http.Concretes
         public async Task<Member> GetMember(string target, string group)
         {
             var response = await Bot.GetHttp(HttpEndpoints.MemberInfo, true, ("target", group), ("memberId", target));
-            
+
             Bot.EnsureSuccess(response);
 
             return JsonConvert.DeserializeObject<Member>(response);
         }
-        
-        /// <see cref="GetMember(string,string)"/>
-        public async Task<Member> GetMember(long target, long group) =>
-            await GetMember(target.ToString(), group.ToString());
+
+        /// <see cref="GetMember(string,string)" />
+        public async Task<Member> GetMember(long target, long group)
+        {
+            return await GetMember(target.ToString(), group.ToString());
+        }
 
         /// <summary>
-        /// 修改群员设置,需要相关的权限
+        ///     修改群员设置,需要相关的权限
         /// </summary>
         /// <param name="target"></param>
         /// <param name="group"></param>
@@ -253,9 +279,11 @@ namespace Mirai.Net.Sessions.Http.Concretes
             return await GetMember(target, group);
         }
 
-        ///<see cref="SetMemberInfo(string,string,string,string)"/>
-        public async Task<Member> SetMemberInfo(long target, long group, string card = null, string title = null) =>
-            await SetMemberInfo(target.ToString(), group.ToString(), card, title);
+        /// <see cref="SetMemberInfo(string,string,string,string)" />
+        public async Task<Member> SetMemberInfo(long target, long group, string card = null, string title = null)
+        {
+            return await SetMemberInfo(target.ToString(), group.ToString(), card, title);
+        }
 
         #endregion
     }

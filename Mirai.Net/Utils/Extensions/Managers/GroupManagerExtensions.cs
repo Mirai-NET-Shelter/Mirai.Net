@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using AHpx.Extensions.StringExtensions;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Sessions.Http.Concretes;
@@ -20,7 +19,7 @@ namespace Mirai.Net.Utils.Extensions.Managers
         {
             return await manager.Bot.GetManager<AccountManager>().GetGroupMembers(group);
         }
-        
+
         public static async Task<IEnumerable<Member>> GetMembers(this GroupManager manager, long group)
         {
             return await manager.Bot.GetManager<AccountManager>().GetGroupMembers(group);
@@ -35,7 +34,7 @@ namespace Mirai.Net.Utils.Extensions.Managers
         {
             return await manager.Bot.GetManager<AccountManager>().GetMemberProfile(id, target);
         }
-        
+
         public static async Task<Profile> GetMemberProfile(this GroupManager manager, long id, long target)
         {
             return await manager.Bot.GetManager<AccountManager>().GetMemberProfile(id, target);

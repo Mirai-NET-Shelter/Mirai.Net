@@ -11,7 +11,6 @@ using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions;
 using Mirai.Net.Utils.Extensions.Managers;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using File = Mirai.Net.Data.Shared.File;
 
 namespace Mirai.Net.Sessions.Http.Concretes
@@ -26,8 +25,8 @@ namespace Mirai.Net.Sessions.Http.Concretes
         }
 
         /// <summary>
-        /// 获取群文件列表, 
-        /// 性能很差, 如果群文件很多的话会卡住
+        ///     获取群文件列表,
+        ///     性能很差, 如果群文件很多的话会卡住
         /// </summary>
         /// <param name="group"></param>
         /// <param name="id">文件id, 默认为空字符串, 空字符串就是根目录</param>
@@ -40,7 +39,7 @@ namespace Mirai.Net.Sessions.Http.Concretes
         }
 
         /// <summary>
-        /// 获取文件信息
+        ///     获取文件信息
         /// </summary>
         /// <param name="group"></param>
         /// <param name="id"></param>
@@ -53,7 +52,7 @@ namespace Mirai.Net.Sessions.Http.Concretes
         }
 
         /// <summary>
-        /// 请关注https://github.com/project-mirai/mirai-api-http/issues/428
+        ///     请关注https://github.com/project-mirai/mirai-api-http/issues/428
         /// </summary>
         /// <param name="name"></param>
         /// <param name="group"></param>
@@ -75,7 +74,7 @@ namespace Mirai.Net.Sessions.Http.Concretes
         }
 
         /// <summary>
-        /// 上传文件
+        ///     上传文件
         /// </summary>
         /// <param name="group"></param>
         /// <param name="file"></param>
@@ -93,15 +92,16 @@ namespace Mirai.Net.Sessions.Http.Concretes
         }
 
         /// <summary>
-        /// 上传图片
+        ///     上传图片
         /// </summary>
         /// <param name="fileInfo"></param>
         /// <param name="targets"></param>
         /// <returns>
-        /// <para>Item1: 图片id</para>
-        /// <para>Item2: 图片的url</para>
+        ///     <para>Item1: 图片id</para>
+        ///     <para>Item2: 图片的url</para>
         /// </returns>
-        public async Task<(string, string)> UploadImage(FileInfo fileInfo, ImageUploadTargets targets = ImageUploadTargets.Group)
+        public async Task<(string, string)> UploadImage(FileInfo fileInfo,
+            ImageUploadTargets targets = ImageUploadTargets.Group)
         {
             var response = await Bot.PostFileHttp(HttpEndpoints.UploadImage, fileInfo, "img", true,
                 ("type", targets.GetDescription()));
@@ -110,15 +110,15 @@ namespace Mirai.Net.Sessions.Http.Concretes
 
             return (json.Fetch("imageId"), json.Fetch("url"));
         }
-        
+
         /// <summary>
-        /// 上传语音
+        ///     上传语音
         /// </summary>
         /// <param name="fileInfo"></param>
         /// <param name="targets"></param>
         /// <returns>
-        /// <para>Item1: 语音id</para>
-        /// <para>Item2: 语音的url</para>
+        ///     <para>Item1: 语音id</para>
+        ///     <para>Item2: 语音的url</para>
         /// </returns>
         public async Task<(string, string)> UploadVoice(FileInfo fileInfo)
         {

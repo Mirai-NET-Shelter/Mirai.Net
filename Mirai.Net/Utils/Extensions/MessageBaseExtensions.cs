@@ -14,14 +14,14 @@ namespace Mirai.Net.Utils.Extensions
 
             return re.ToArray();
         }
-        
+
         public static MessageBase[] Append(this string origin, string append)
         {
             var re = new List<MessageBase> {new PlainMessage(origin), new PlainMessage(append)};
 
             return re.ToArray();
         }
-        
+
         public static MessageBase[] Append(this MessageBase messageBase, params MessageBase[] append)
         {
             var re = new List<MessageBase> {messageBase};
@@ -29,7 +29,7 @@ namespace Mirai.Net.Utils.Extensions
 
             return re.ToArray();
         }
-        
+
         public static MessageBase[] Append(this MessageBase messageBase, string append)
         {
             var re = new List<MessageBase> {messageBase, new PlainMessage(append)};
@@ -44,7 +44,7 @@ namespace Mirai.Net.Utils.Extensions
 
             return re.ToArray();
         }
-        
+
         public static MessageBase[] Append(this IEnumerable<MessageBase> bases, string append)
         {
             var re = bases.ToList();

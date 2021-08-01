@@ -1,29 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
 using System.Reactive.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using AHpx.Extensions.IOExtensions;
-using AHpx.Extensions.StringExtensions;
-using Microsoft.VisualBasic;
 using Mirai.Net.Data.Events;
-using Mirai.Net.Data.Events.Concretes.Group;
-using Mirai.Net.Data.Messages;
-using Mirai.Net.Data.Messages.Concretes;
-using Mirai.Net.Data.Sessions;
+using Mirai.Net.Data.Events.Concretes.Request;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Sessions;
-using Mirai.Net.Sessions.Http;
 using Mirai.Net.Sessions.Http.Concretes;
-using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions;
-using Newtonsoft.Json;
-using Websocket.Client;
 
 namespace Mirai.Net.Test
 {
@@ -31,29 +15,28 @@ namespace Mirai.Net.Test
     {
         private static async Task Main()
         {
-            // using var bot = new MiraiBot
-            // {
-            //     Address = "localhost:8080",
-            //     QQ = 2672886221,
-            //     VerifyKey = "1145141919810"
-            // };
-            //
-            // await bot.Launch();
-            //
-            // var mgr = bot.GetManager<GroupManager>();
-            //
-            // await mgr.Kick(1590454991, 389105053, "GoodBye, have fun!");
+            using var exit = new ManualResetEvent(false);
+            using var bot = new MiraiBot
+            {
+                Address = "localhost:8080",
+                QQ = 2672886221,
+                VerifyKey = "1145141919810"
+            };
 
-            Console.WriteLine(MyEnum.a);
-            Console.WriteLine(MyEnum.b);
-            Console.WriteLine(MyEnum.c.ToJsonString());
-        }
-        
-        public enum MyEnum
-        {
-            a = 0,
-            b = 1,
-            c = 2
+            await bot.Launch();
+
+            var mgr = bot.GetManager<RequestManager>();
+
+            bot.EventReceived
+                .Where(x => x.Type == Events.NewFriendRequested)
+                .Cast<NewFriendRequestedEvent>()
+                .Subscribe(async x =>
+                {
+                    Console.WriteLine($"Requested: {x}");
+                    await mgr.HandleNewFriendRequested(x, NewFriendRequestHandlers.Approve);
+                });
+
+            exit.WaitOne(TimeSpan.FromMinutes(60));
         }
 
         #region MyRegion

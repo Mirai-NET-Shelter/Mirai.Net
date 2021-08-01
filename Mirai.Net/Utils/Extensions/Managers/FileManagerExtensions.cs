@@ -6,7 +6,8 @@ namespace Mirai.Net.Utils.Extensions.Managers
 {
     public static class FileManagerExtensions
     {
-        internal static async Task<string> SendGet(this FileManager manager, HttpEndpoints endpoints, string group, string id = "")
+        internal static async Task<string> SendGet(this FileManager manager, HttpEndpoints endpoints, string group,
+            string id = "")
         {
             var payload = new[]
             {

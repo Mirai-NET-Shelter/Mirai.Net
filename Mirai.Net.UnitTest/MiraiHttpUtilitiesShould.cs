@@ -9,7 +9,7 @@ namespace Mirai.Net.UnitTest
 {
     public class MiraiHttpUtilitiesShould
     {
-        private MiraiBot _bot;
+        private readonly MiraiBot _bot;
 
         public MiraiHttpUtilitiesShould()
         {
@@ -29,7 +29,7 @@ namespace Mirai.Net.UnitTest
             var shoudbe = "?test1=value1&test2=value2";
 
             Assert.Equal(parameters, shoudbe);
-            
+
             var url = $"https://httpbin.org/get{parameters}";
             var response = await _bot.GetHttp(url, true);
 
@@ -49,12 +49,12 @@ namespace Mirai.Net.UnitTest
             var shoudbe = "?test1=value1&test2=value2";
 
             Assert.Equal(parameters, shoudbe);
-            
+
             var url = $"https://httpbin.org/post{parameters}";
             var payload = new
             {
                 TestK1 = "TestV1",
-                TestK2 = "TestV2",
+                TestK2 = "TestV2"
             };
             var response = await _bot.PostHttp(url, payload, true);
 

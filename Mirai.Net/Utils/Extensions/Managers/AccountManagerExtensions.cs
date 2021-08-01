@@ -11,8 +11,8 @@ namespace Mirai.Net.Utils.Extensions.Managers
 {
     public static class AccountManagerExtensions
     {
-        internal static async Task<IEnumerable<T>> GetCollection<T>(this AccountManager manager, 
-            HttpEndpoints endpoints, 
+        internal static async Task<IEnumerable<T>> GetCollection<T>(this AccountManager manager,
+            HttpEndpoints endpoints,
             params (string, string)[] extraParameters)
         {
             var raw = await manager.Bot.GetHttp(endpoints, parameters: extraParameters);
@@ -20,7 +20,8 @@ namespace Mirai.Net.Utils.Extensions.Managers
             return raw.ToJArray().Select(x => x.ToObject<T>());
         }
 
-        internal static async Task<Profile> GetProfile(this AccountManager manager, HttpEndpoints endpoints, params (string, string)[] extraParameters)
+        internal static async Task<Profile> GetProfile(this AccountManager manager, HttpEndpoints endpoints,
+            params (string, string)[] extraParameters)
         {
             var raw = await manager.Bot.GetHttp(endpoints, true, extraParameters);
 

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace Mirai.Net.Data.Shared
+﻿namespace Mirai.Net.Data.Shared
 {
     public enum NewFriendRequestHandlers
     {

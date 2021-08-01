@@ -9,8 +9,8 @@ namespace Mirai.Net.UnitTest
 {
     public class AccountManagerShould
     {
-        private MiraiBot _bot;
-        private AccountManager _manager;
+        private readonly MiraiBot _bot;
+        private readonly AccountManager _manager;
 
         public AccountManagerShould()
         {
@@ -32,7 +32,7 @@ namespace Mirai.Net.UnitTest
 
             Assert.True(list.Count() > 5);
         }
-        
+
         [Fact]
         public async Task HasCorrectGroupList()
         {
@@ -41,7 +41,7 @@ namespace Mirai.Net.UnitTest
 
             Assert.True(list.Count() > 3);
         }
-        
+
         [Fact]
         public async Task HasCorrectMemberList()
         {
@@ -50,7 +50,7 @@ namespace Mirai.Net.UnitTest
 
             Assert.True(list.Count() > 50);
         }
-        
+
         [Fact]
         public async Task HasCorrectProfile()
         {
@@ -60,7 +60,7 @@ namespace Mirai.Net.UnitTest
             Assert.True(item.Age.IsInteger());
             Assert.True(item.Level.IsInteger());
         }
-        
+
         [Fact]
         public async Task HasCorrectFriendProfile()
         {
@@ -70,7 +70,7 @@ namespace Mirai.Net.UnitTest
             Assert.True(item.Age.IsInteger());
             Assert.True(item.Level.IsInteger());
         }
-        
+
         [Fact]
         public async Task HasCorrectMemberProfile()
         {
