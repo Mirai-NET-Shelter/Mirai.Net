@@ -31,11 +31,11 @@ namespace Mirai.Net.Utils
             
             var raw = await client.GetAsync(url);
             
-            raw.EnsureSuccessStatusCode();
             var content = await raw.FetchContent();
 
             try
             {
+                raw.EnsureSuccessStatusCode();
                 await bot.EnsureSuccess(raw);
 
                 var json = direct ? content : content.Fetch("data");
@@ -82,6 +82,7 @@ namespace Mirai.Net.Utils
 
             try
             {
+                response.EnsureSuccessStatusCode();
                 await bot.EnsureSuccess(response);
 
                 var re = direct ? content : content.Fetch("data");
@@ -90,7 +91,7 @@ namespace Mirai.Net.Utils
             }
             catch (Exception e)
             {
-                throw new Exception($"请求失败: {url}", e);
+                throw new Exception($"请求失败: {url}\n{json}", e);
             }
         }
 
@@ -98,7 +99,7 @@ namespace Mirai.Net.Utils
         {
             var url = $"{bot.GetUrl(endpoints)}{ParseParameters(parameters)}";
 
-            return await bot.GetHttp(url, direct);
+            return await bot.PostHttp(url, json, direct);
         }
 
         public static string ParseParameters(params (string, string)[] parameters)

@@ -14,6 +14,7 @@ using Microsoft.VisualBasic;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Concretes.Group;
 using Mirai.Net.Data.Messages;
+using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Sessions;
@@ -39,22 +40,16 @@ namespace Mirai.Net.Test
             };
             
             await bot.Launch();
-            bot.MessageReceived.Subscribe(x =>
-            {
-                Console.WriteLine(x.MessageChain.ToList()[1].ToJsonString());
-            });
-            
-            bot.EventReceived.Subscribe(x =>
-            {
-                Console.WriteLine(x.Type);
-            });
-            
-            var builder = new ManagerBuilder(bot);
-            
-            var mgr = builder.Build<AccountManager>();
 
-            Console.WriteLine((await mgr.GetBotProfile()).ToJsonString());
-            
+            var mgr = bot.GetManager<MessageManager>();
+
+            var id= await mgr.SendGroupMessage(110838222, "Hello".Append());
+            var id1 = await mgr.SendGroupMessage(110838222, "Hello1".Append());
+
+            await mgr.Recall(id);
+
+            await mgr.QuoteGroupMessage(110838222, id1, "Hello2".Append());
+
             // exit.WaitOne(TimeSpan.FromMinutes(1));
         }
 

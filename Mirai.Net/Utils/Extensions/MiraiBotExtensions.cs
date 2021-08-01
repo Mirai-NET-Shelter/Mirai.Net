@@ -7,6 +7,8 @@ using AHpx.Extensions.StringExtensions;
 using AHpx.Extensions.Utils;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Sessions;
+using Mirai.Net.Sessions.Http;
+using Mirai.Net.Sessions.Http.Concretes;
 using Websocket.Client;
 
 namespace Mirai.Net.Utils.Extensions
@@ -58,6 +60,11 @@ namespace Mirai.Net.Utils.Extensions
                 }
         }
 
+        /// <summary>
+        /// 确保请求http请求返回了正确的状态码
+        /// </summary>
+        /// <param name="responseMessage"></param>
+        /// <exception cref="Exception"></exception>
         internal static async Task EnsureSuccess(this HttpResponseMessage responseMessage)
         {
             responseMessage.EnsureSuccessStatusCode();
@@ -120,6 +127,19 @@ namespace Mirai.Net.Utils.Extensions
             {
                 throw new Exception($"获取失败: {e.Message}\n{bot}");
             }
+        }
+
+        /// <summary>
+        /// 拓展方法, 获取注入mirai bot的管理器
+        /// </summary>
+        /// <param name="bot"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T GetManager<T>(this MiraiBot bot)
+        {
+            var builder = new ManagerBuilder(bot);
+
+            return builder.Build<T>();
         }
     }
 }
