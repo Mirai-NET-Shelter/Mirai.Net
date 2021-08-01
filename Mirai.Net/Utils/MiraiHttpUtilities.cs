@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -100,6 +101,42 @@ namespace Mirai.Net.Utils
             var url = $"{bot.GetUrl(endpoints)}{ParseParameters(parameters)}";
 
             return await bot.PostHttp(url, json, direct);
+        }
+
+        internal static async Task<string> PostFileHttp(this MiraiBot bot, HttpEndpoints endpoints, FileInfo file, string fileParameterName, bool direct = false, params (string, string)[] extraParams)
+        {
+            using var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("sessionKey", bot.HttpSessionKey);
+            
+            using var request = new HttpRequestMessage();
+            using var content = new MultipartFormDataContent();
+
+            using var stream = file.OpenRead();
+            content.Add(new StreamContent(stream), fileParameterName, file.Name);
+            
+            foreach (var (key, value) in extraParams)
+            {
+                content.Add(new StringContent(value), key);
+            }
+
+            var url = $"{bot.GetUrl(endpoints)}";
+
+            var response = await client.PostAsync(url, content);
+            
+            try
+            {
+                response.EnsureSuccessStatusCode();
+                await bot.EnsureSuccess(response);
+
+                var fetch = await response.FetchContent();
+                var re = direct ? fetch : fetch.Fetch("data");
+
+                return re;
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"请求失败:{url}\r\n", e);
+            }
         }
 
         public static string ParseParameters(params (string, string)[] parameters)

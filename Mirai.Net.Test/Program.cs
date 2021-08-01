@@ -42,9 +42,14 @@ namespace Mirai.Net.Test
 
             var mgr = bot.GetManager<FileManager>();
 
-            var files = await mgr.GetFile("1042821169", "/d1d15cac-dc76-11ea-8723-5452007b7f04");
+            var file = new FileInfo(@"C:\Users\ahpx\Desktop\silk2mp3 v1.0.2.5\五五开骂人.silk");
 
-            Console.WriteLine(files.ToJsonString());
+            var files = await mgr.UploadVoice(file);
+
+            await bot.GetManager<MessageManager>().SendGroupMessage(110838222, new VoiceMessage
+            {
+                VoiceId = files.Item1
+            });
         }
 
         #region MyRegion
