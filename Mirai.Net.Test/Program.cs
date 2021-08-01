@@ -40,9 +40,9 @@ namespace Mirai.Net.Test
             
             await bot.Launch();
 
-            var mgr = bot.GetManager<AccountManager>();
+            var mgr = bot.GetManager<GroupManager>();
 
-            await mgr.DeleteFriend("2933170747");
+            await mgr.Kick(1590454991, 389105053, "GoodBye, have fun!");
         }
 
         #region MyRegion

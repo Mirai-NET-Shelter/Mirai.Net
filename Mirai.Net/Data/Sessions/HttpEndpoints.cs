@@ -41,7 +41,7 @@ namespace Mirai.Net.Data.Sessions
         [Description("mute")] Mute,
         [Description("unmute")] Unmute,
         [Description("kick")] Kick,
-        [Description("quit")] Quit,
+        [Description("quit")] Leave,
         [Description("muteAll")] MuteAll,
         [Description("unmuteAll")] UnmuteAll,
         [Description("setEssence")] SetEssence,
