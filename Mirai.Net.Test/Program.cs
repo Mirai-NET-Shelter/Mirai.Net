@@ -31,7 +31,6 @@ namespace Mirai.Net.Test
     {
         private static async Task Main()
         {
-            var exit = new ManualResetEvent(false);
             using var bot = new MiraiBot
             {
                 Address = "localhost:8080",
@@ -41,16 +40,13 @@ namespace Mirai.Net.Test
             
             await bot.Launch();
 
-            var mgr = bot.GetManager<MessageManager>();
+            var mgr = bot.GetManager<FileManager>();
 
-            var id= await mgr.SendGroupMessage(110838222, "Hello".Append());
-            var id1 = await mgr.SendGroupMessage(110838222, "Hello1".Append());
-
-            await mgr.Recall(id);
-
-            await mgr.QuoteGroupMessage(110838222, id1, "Hello2".Append());
-
-            // exit.WaitOne(TimeSpan.FromMinutes(1));
+            var files = await mgr.GetFiles("1042821169");
+            foreach (var file in files)
+            {
+                Console.WriteLine(file.Name);
+            }
         }
 
         #region MyRegion

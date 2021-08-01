@@ -6,6 +6,7 @@ using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions;
+using Mirai.Net.Utils.Extensions.Managers;
 
 namespace Mirai.Net.Sessions.Http.Concretes
 {

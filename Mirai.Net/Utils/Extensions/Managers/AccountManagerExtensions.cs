@@ -7,7 +7,7 @@ using Mirai.Net.Data.Shared;
 using Mirai.Net.Sessions.Http.Concretes;
 using Newtonsoft.Json;
 
-namespace Mirai.Net.Utils.Extensions
+namespace Mirai.Net.Utils.Extensions.Managers
 {
     public static class AccountManagerExtensions
     {

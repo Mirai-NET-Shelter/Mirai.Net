@@ -5,6 +5,7 @@ using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions;
+using Mirai.Net.Utils.Extensions.Managers;
 
 namespace Mirai.Net.Sessions.Http.Concretes
 {
