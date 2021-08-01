@@ -48,6 +48,17 @@ namespace Mirai.Net.Sessions.Http.Concretes
         /// </summary>
         public async Task<IEnumerable<Member>> GetGroupMembers(long target) => await GetGroupMembers(target.ToString());
 
+        public async Task DeleteFriend(string target)
+        {
+            var payload = new
+            {
+                target
+            };
+            var response = await Bot.PostHttp(HttpEndpoints.DeleteFriend, payload, true);
+
+            Bot.EnsureSuccess(response);
+        }
+
         /// <summary>
         /// 获取bot资料
         /// </summary>
