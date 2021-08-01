@@ -31,18 +31,29 @@ namespace Mirai.Net.Test
     {
         private static async Task Main()
         {
-            using var bot = new MiraiBot
-            {
-                Address = "localhost:8080",
-                QQ = 2672886221,
-                VerifyKey = "1145141919810"
-            };
-            
-            await bot.Launch();
+            // using var bot = new MiraiBot
+            // {
+            //     Address = "localhost:8080",
+            //     QQ = 2672886221,
+            //     VerifyKey = "1145141919810"
+            // };
+            //
+            // await bot.Launch();
+            //
+            // var mgr = bot.GetManager<GroupManager>();
+            //
+            // await mgr.Kick(1590454991, 389105053, "GoodBye, have fun!");
 
-            var mgr = bot.GetManager<GroupManager>();
-
-            await mgr.Kick(1590454991, 389105053, "GoodBye, have fun!");
+            Console.WriteLine(MyEnum.a);
+            Console.WriteLine(MyEnum.b);
+            Console.WriteLine(MyEnum.c.ToJsonString());
+        }
+        
+        public enum MyEnum
+        {
+            a = 0,
+            b = 1,
+            c = 2
         }
 
         #region MyRegion
