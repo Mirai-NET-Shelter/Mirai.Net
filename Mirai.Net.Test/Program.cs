@@ -42,11 +42,9 @@ namespace Mirai.Net.Test
 
             var mgr = bot.GetManager<FileManager>();
 
-            var files = await mgr.GetFiles("1042821169");
-            foreach (var file in files)
-            {
-                Console.WriteLine(file.Name);
-            }
+            var files = await mgr.GetFile("1042821169", "/d1d15cac-dc76-11ea-8723-5452007b7f04");
+
+            Console.WriteLine(files.ToJsonString());
         }
 
         #region MyRegion
