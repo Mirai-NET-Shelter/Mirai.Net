@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
@@ -12,7 +13,7 @@ using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Utils
 {
-    public static class MiraiHttpUtilities
+    internal static class MiraiHttpUtilities
     {
         /// <summary>
         ///     发送http get请求到指定的url
@@ -22,7 +23,7 @@ namespace Mirai.Net.Utils
         /// <param name="direct">没有data键的数据</param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static async Task<string> GetHttp(this MiraiBot bot, string url, bool direct = false)
+        internal static async Task<string> GetHttp(this MiraiBot bot, string url, bool direct = false)
         {
             using var client = new HttpClient();
 
@@ -62,7 +63,7 @@ namespace Mirai.Net.Utils
             return await bot.GetHttp(url, direct);
         }
 
-        public static async Task<string> PostHttp(this MiraiBot bot, string url, object json, bool direct = false)
+        internal static async Task<string> PostHttp(this MiraiBot bot, string url, object json, bool direct = false)
         {
             if (json is not string) json = json.ToJsonString();
 
@@ -131,7 +132,7 @@ namespace Mirai.Net.Utils
             }
         }
 
-        public static string ParseParameters(params (string, string)[] parameters)
+        internal static string ParseParameters(params (string, string)[] parameters)
         {
             var ps = parameters.ToList();
             var url = string.Empty;

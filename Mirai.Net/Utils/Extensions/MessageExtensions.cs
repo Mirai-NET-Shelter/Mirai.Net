@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Utils.Extensions
 {
-    public static class MessageExtensions
+    internal static class MessageExtensions
     {
         private static List<Type> _eventTypes = new();
         private static List<EventBase> _events = new();
@@ -24,7 +24,7 @@ namespace Mirai.Net.Utils.Extensions
         /// <param name="json"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static EventBase GetEventBase(this string json)
+        internal static EventBase GetEventBase(this string json)
         {
             if (_events.Count == 0)
             {
@@ -49,7 +49,7 @@ namespace Mirai.Net.Utils.Extensions
             throw new Exception($"错误的json: {json}");
         }
 
-        public static MessageReceiverBase GetMessageReceiverBase(this string json)
+        internal static MessageReceiverBase GetMessageReceiverBase(this string json)
         {
             if (_messageReceivers.Count == 0)
             {
@@ -74,7 +74,7 @@ namespace Mirai.Net.Utils.Extensions
             throw new Exception($"错误的json: {json}");
         }
 
-        public static MessageBase GetMessageBase(this string json)
+        internal static MessageBase GetMessageBase(this string json)
         {
             if (_messageBases.Count == 0)
             {

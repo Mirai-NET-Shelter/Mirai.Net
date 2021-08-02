@@ -36,7 +36,7 @@ namespace Mirai.Net.Test
                     await mgr.HandleNewFriendRequested(x, NewFriendRequestHandlers.Approve);
                 });
 
-            exit.WaitOne(TimeSpan.FromMinutes(60));
+            exit.WaitOne(TimeSpan.FromSeconds(60));
         }
 
         #region MyRegion

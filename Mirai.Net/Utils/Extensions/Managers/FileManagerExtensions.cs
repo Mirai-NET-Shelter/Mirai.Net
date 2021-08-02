@@ -4,7 +4,7 @@ using Mirai.Net.Sessions.Http.Concretes;
 
 namespace Mirai.Net.Utils.Extensions.Managers
 {
-    public static class FileManagerExtensions
+    internal static class FileManagerExtensions
     {
         internal static async Task<string> SendGet(this FileManager manager, HttpEndpoints endpoints, string group,
             string id = "")

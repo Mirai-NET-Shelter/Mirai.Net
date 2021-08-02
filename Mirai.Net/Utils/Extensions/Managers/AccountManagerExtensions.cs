@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Utils.Extensions.Managers
 {
-    public static class AccountManagerExtensions
+    internal static class AccountManagerExtensions
     {
         internal static async Task<IEnumerable<T>> GetCollection<T>(this AccountManager manager,
             HttpEndpoints endpoints,

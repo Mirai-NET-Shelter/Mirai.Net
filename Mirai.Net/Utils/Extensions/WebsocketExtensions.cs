@@ -6,14 +6,14 @@ using Websocket.Client;
 
 namespace Mirai.Net.Utils.Extensions
 {
-    public static class WebsocketExtensions
+    internal static class WebsocketExtensions
     {
         /// <summary>
         ///     获取websocket推送的消息是什么类型的
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static WebsocketAdapterNotifications GetNotificationType(this ResponseMessage message)
+        internal static WebsocketAdapterNotifications GetNotificationType(this ResponseMessage message)
         {
             if (message.MessageType != WebSocketMessageType.Text || message.Text.IsNullOrEmpty())
                 return WebsocketAdapterNotifications.Unknown;

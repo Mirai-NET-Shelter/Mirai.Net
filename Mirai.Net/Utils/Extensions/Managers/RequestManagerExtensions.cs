@@ -4,7 +4,7 @@ using Mirai.Net.Sessions.Http.Concretes;
 
 namespace Mirai.Net.Utils.Extensions.Managers
 {
-    public static class RequestManagerExtensions
+    internal static class RequestManagerExtensions
     {
         internal static async Task SendOperate(this RequestManager manager, HttpEndpoints endpoints, object payload)
         {

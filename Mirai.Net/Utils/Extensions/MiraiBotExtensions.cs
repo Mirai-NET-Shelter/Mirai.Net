@@ -64,7 +64,6 @@ namespace Mirai.Net.Utils.Extensions
         /// </summary>
         /// <param name="bot"></param>
         /// <param name="content"></param>
-        /// <param name="responseMessage"></param>
         /// <exception cref="Exception"></exception>
         internal static void EnsureSuccess(this MiraiBot bot, string content)
         {

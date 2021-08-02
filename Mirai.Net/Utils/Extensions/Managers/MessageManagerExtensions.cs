@@ -5,7 +5,7 @@ using Mirai.Net.Sessions.Http.Concretes;
 
 namespace Mirai.Net.Utils.Extensions.Managers
 {
-    public static class MessageManagerExtensions
+    internal static class MessageManagerExtensions
     {
         internal static async Task<string> SendMessage(this MessageManager manager, HttpEndpoints endpoints,
             object payload)
