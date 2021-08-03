@@ -3,6 +3,7 @@
  */
 
 using System;
+using System.Linq;
 using System.Reactive.Linq;
 using System.Reflection;
 using System.Threading;
@@ -41,29 +42,7 @@ namespace Mirai.Net.Helium
                 .WhereAndCast<GroupMessageReceiver>()
                 .Subscribe(x =>
                 {
-                    foreach (var message in x.MessageChain.WhereAndCast<PlainMessage>())
-                    {
-                        foreach (var module in modules)
-                        {
-                            var method = module.GetType().GetMethod(nameof(module.Execute));
-                            var trigger = method!.GetCustomAttribute<CommandTriggerAttribute>();
-
-                            if (trigger == null) continue;
-                            
-                            var command = $"{trigger.Prefix}{trigger.Name}";
-                            var predicate = new Predicate<string>(s => s.Contains(command));
-
-                            if (trigger.EqualName) predicate = s => s == command;
-
-                            foreach (var s in message.Text.Split(" "))
-                            {
-                                if (predicate.Invoke(s))
-                                {
-                                    module.Execute(bot, x, message);
-                                }
-                            }
-                        }
-                    }
+                    x.ExecuteCommands(modules, bot);
                 });
 
             while (true)
