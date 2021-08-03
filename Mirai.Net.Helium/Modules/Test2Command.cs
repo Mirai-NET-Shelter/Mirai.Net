@@ -8,11 +8,11 @@ using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Helium.Modules
 {
-    public class TestModule : ICommandModule
+    public class Test2Command : ICommandModule
     {
         public bool? IsEnable { get; set; }
 
-        [CommandTrigger("test", equalName: true)]
+        [CommandTrigger("github.com", "", EqualName = false)]
         public async void Execute(MiraiBot bot, MessageReceiverBase receiver, MessageBase executeMessage)
         {
             var mgr = bot.GetManager<MessageManager>();

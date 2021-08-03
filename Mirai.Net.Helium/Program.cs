@@ -3,6 +3,7 @@
  */
 
 using System;
+using System.Linq;
 using System.Reactive.Linq;
 using System.Reflection;
 using System.Threading;
@@ -14,6 +15,7 @@ using Mirai.Net.Data.Modules;
 using Mirai.Net.Helium.Modules;
 using Mirai.Net.Modules;
 using Mirai.Net.Sessions;
+using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Helium
@@ -31,39 +33,17 @@ namespace Mirai.Net.Helium
 
             await bot.Launch();
 
-            var modules = new ICommandModule[]
-            {
-                new TestModule()
-            };
+            var modules = CommandUtilities
+                .LoadCommandModules<TestModule>()
+                .ExcludeDisabledModules()
+                .ToList();
             
             //传播订阅到模块
             bot.MessageReceived
                 .WhereAndCast<GroupMessageReceiver>()
                 .Subscribe(x =>
                 {
-                    foreach (var message in x.MessageChain.WhereAndCast<PlainMessage>())
-                    {
-                        foreach (var module in modules)
-                        {
-                            var method = module.GetType().GetMethod(nameof(module.Execute));
-                            var trigger = method!.GetCustomAttribute<CommandTriggerAttribute>();
-
-                            if (trigger == null) continue;
-                            
-                            var command = $"{trigger.Prefix}{trigger.Name}";
-                            var predicate = new Predicate<string>(s => s.Contains(command));
-
-                            if (trigger.EqualName) predicate = s => s == command;
-
-                            foreach (var s in message.Text.Split(" "))
-                            {
-                                if (predicate.Invoke(s))
-                                {
-                                    module.Execute(bot, x, message);
-                                }
-                            }
-                        }
-                    }
+                    x.ExecuteCommands(modules, bot);
                 });
 
             while (true)
