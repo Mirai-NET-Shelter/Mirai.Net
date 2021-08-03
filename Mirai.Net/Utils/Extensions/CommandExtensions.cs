@@ -80,5 +80,46 @@ namespace Mirai.Net.Utils.Extensions
                 }
             }
         }
+
+        /// <summary>
+        /// 解析命令，Dictionary的key为参数名，value为参数值
+        /// </summary>
+        /// <param name="trigger"></param>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static IDictionary<string, string[]> ParseCommand(this CommandTriggerAttribute trigger, string s)
+        {
+            var split = s
+                .Empty($"{trigger.Prefix}{trigger.Name}")
+                .Trim()
+                .Split(' ')
+                .Where(x => x.IsNotNullOrEmpty())
+                .ToList();
+
+            var re = new Dictionary<string, string[]>();
+            var indexes = new List<int>();
+
+            split
+                .Where(x => x.StartsWith(trigger.ArgsSeparator))
+                .ToList()
+                .ForEach(x => indexes.Add(split.IndexOf(x)));
+
+            foreach (var index in indexes)
+            {
+                int next;
+                if (indexes.IndexOf(index) + 1 >= indexes.Count)
+                    next = split.Count - 1;
+                else
+                    next = indexes[indexes.IndexOf(index) + 1];
+
+                var range = next != split.Count - 1
+                    ? split.GetRange(index, next - index)
+                    : split.GetRange(index, split.Count - index);
+
+                re.Add(range.First(), range.GetRange(1, range.Count - 1).ToArray());
+            }
+
+            return re;
+        }
     }
 }
