@@ -202,6 +202,12 @@ namespace Mirai.Net.Data.Events
         ///     Bot被邀请入群申请
         /// </summary>
         [Description("BotInvitedJoinGroupRequestEvent")] [EnumMember(Value = "BotInvitedJoinGroupRequestEvent")]
-        NewInvitationRequested
+        NewInvitationRequested,
+        
+        /// <summary>
+        /// 戳一戳事件
+        /// </summary>
+        [Description("NudgeEvent")] [EnumMember(Value = "NudgeEvent")]
+        Nudged
     }
 }

@@ -14,9 +14,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AHpx.Extensions" Version="1.0.1"/>
-        <PackageReference Include="Autofac" Version="6.2.0"/>
-        <PackageReference Include="Websocket.Client" Version="4.3.35"/>
+        <PackageReference Include="AHpx.Extensions" Version="1.0.1" />
+        <PackageReference Include="Autofac" Version="6.2.0" />
+        <PackageReference Include="Websocket.Client" Version="4.3.35" />
 
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
             <_Parameter1>Mirai.Net.UnitTest</_Parameter1>

@@ -4,8 +4,12 @@ using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AHpx.Extensions.StringExtensions;
+using CommandLine;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Concretes.Request;
+using Mirai.Net.Data.Messages;
+using Mirai.Net.Data.Messages.Concretes;
+using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Sessions;
 using Mirai.Net.Sessions.Http.Concretes;
@@ -27,18 +31,33 @@ namespace Mirai.Net.Test
 
             await bot.Launch();
 
-            var mgr = bot.GetManager<RequestManager>();
-
-            bot.EventReceived
-                .Where(x => x.Type == Events.NewFriendRequested)
-                .Cast<NewFriendRequestedEvent>()
-                .Subscribe(async x =>
+            bot.MessageReceived
+                .Where(x => x.Type == MessageReceivers.Group)
+                .Cast<GroupMessageReceiver>()
+                .Subscribe(receiver =>
                 {
-                    Console.WriteLine($"Requested: {x}");
-                    await mgr.HandleNewFriendRequested(x, NewFriendRequestHandlers.Approve);
+                    foreach (var messageBase in receiver.MessageChain)
+                    {
+                        if (messageBase is PlainMessage plain)
+                        {
+                            Parser.Default
+                                .ParseArguments<TestCommand, GeneralCommand>(plain.Text.Split(" "))
+                                .WithParsed<TestCommand>(x => x.Executed(bot, messageBase, receiver))
+                                .WithParsed<GeneralCommand>(x => x.Executed(bot, messageBase, receiver))
+                                .WithNotParsed(x =>
+                                {
+                                    foreach (var error in x)
+                                    {
+                                        Console.WriteLine(error.Tag);
+                                    }
+                                });
+
+                            break;
+                        }
+                    }
                 });
 
-            exit.WaitOne(TimeSpan.FromSeconds(60));
+            exit.WaitOne(TimeSpan.FromMinutes(3));
         }
 
         #region MyRegion
