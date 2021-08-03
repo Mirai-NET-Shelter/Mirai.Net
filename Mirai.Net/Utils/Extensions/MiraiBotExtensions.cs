@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.WebSockets;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
@@ -136,6 +137,25 @@ namespace Mirai.Net.Utils.Extensions
             var builder = new ManagerBuilder(bot);
 
             return builder.Build<T>();
+        }
+
+        /// <summary>
+        /// 寻找指定类型，并且转换
+        /// </summary>
+        public static IObservable<TSource> WhereAndCast<TSource>(this IObservable<object> observable, Func<object, bool> predicate) where TSource : class
+        {
+            return observable.Where(x => predicate.Invoke(x as TSource)).Cast<TSource>();
+        }
+        
+        /// <summary>
+        /// 寻找指定类型，并且转换
+        /// </summary>
+        /// <param name="observable"></param>
+        /// <typeparam name="TSource"></typeparam>
+        /// <returns></returns>
+        public static IObservable<TSource> WhereAndCast<TSource>(this IObservable<object> observable) where TSource : class
+        {
+            return observable.Where(x => x is TSource).Cast<TSource>();
         }
     }
 }
