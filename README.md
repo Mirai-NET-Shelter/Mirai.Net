@@ -1,4 +1,4 @@
-# Mirai.Net 2.1
+# Mirai.Net 2.2.0-Pre1
 
 Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项目遵循
 [MIT LICENSE](https://github.com/AHpxChina/Mirai.Net/blob/master/LICENSE)
@@ -12,12 +12,18 @@ Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项
   - `Http Adapter`用来进行发送操作。
   - `Websocket Adapter`用来进行接收操作。
 - 基于 [Rx.Net](https://github.com/dotnet/reactive) 的推送系统。
-- 基于 [Autofac](https://autofac.org/) 的依赖注入(虽然不是很有用)。
+- 有一堆好用的脚手架和拓展方法。
+- 源代码结构
+  - Mirai.Net，主项目
+  - Mirai.Net.Test，控制台测试项目
+  - Mirai.Net.Helium，实战测试项目
+  - Mirai.Net.UnitTest，单元测试项目
 
 <details>
   <summary>实现的接口列表</summary>
 
 _斜体的标注的接口是不稳定的_
+
 ~~删除线标注的接口是未实现的~~
 
 - 账号信息
