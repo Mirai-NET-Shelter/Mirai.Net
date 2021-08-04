@@ -9,6 +9,6 @@ namespace Mirai.Net.Modules
         public bool? IsEnable { get; set; }
         
         [CommandTrigger(nameof(ICommandModule))]
-        public void Execute(MiraiBot bot, MessageReceiverBase receiver, MessageBase executeMessage);
+        public void Execute(MessageReceiverBase receiver, MessageBase executeMessage);
     }
 }

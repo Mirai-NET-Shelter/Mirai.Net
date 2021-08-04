@@ -11,7 +11,7 @@ namespace Mirai.Net.Sessions.Http.Concretes
 {
     public class GroupManager
     {
-        public readonly MiraiBot Bot = MiraiBotUtilities.Bot;
+        public readonly MiraiBot Bot = MiraiBotFactory.Bot;
 
         #region Mute
 

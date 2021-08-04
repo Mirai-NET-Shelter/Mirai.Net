@@ -9,7 +9,7 @@ namespace Mirai.Net.Sessions.Http.Concretes
 {
     public class RequestManager
     {
-        public readonly MiraiBot Bot = MiraiBotUtilities.Bot;
+        public readonly MiraiBot Bot = MiraiBotFactory.Bot;
 
         /// <summary>
         ///     处理好友申请

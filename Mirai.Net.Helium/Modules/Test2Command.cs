@@ -4,6 +4,7 @@ using Mirai.Net.Data.Modules;
 using Mirai.Net.Modules;
 using Mirai.Net.Sessions;
 using Mirai.Net.Sessions.Http.Concretes;
+using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Helium.Modules
@@ -13,9 +14,9 @@ namespace Mirai.Net.Helium.Modules
         public bool? IsEnable { get; set; }
 
         [CommandTrigger("github.com", "", EqualName = false)]
-        public async void Execute(MiraiBot bot, MessageReceiverBase receiver, MessageBase executeMessage)
+        public async void Execute(MessageReceiverBase receiver, MessageBase executeMessage)
         {
-            var mgr = bot.GetManager<MessageManager>();
+            var mgr = MiraiBotFactory.Bot.GetManager<MessageManager>();
 
             if (receiver is GroupMessageReceiver groupMessageReceiver)
             {

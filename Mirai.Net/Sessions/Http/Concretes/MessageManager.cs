@@ -8,7 +8,7 @@ namespace Mirai.Net.Sessions.Http.Concretes
 {
     public class MessageManager
     {
-        public readonly MiraiBot Bot = MiraiBotUtilities.Bot;
+        public readonly MiraiBot Bot = MiraiBotFactory.Bot;
 
         /// <summary>
         ///     发送好友消息

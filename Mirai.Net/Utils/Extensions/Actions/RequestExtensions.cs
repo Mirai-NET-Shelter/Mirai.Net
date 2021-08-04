@@ -15,7 +15,7 @@ namespace Mirai.Net.Utils.Extensions.Actions
         /// <param name="message"></param>
         public static async Task HandleNewFriendRequested(this NewFriendRequestedEvent @event, NewFriendRequestHandlers handler, string message = "")
         {
-            await MiraiBotUtilities.Bot.GetManager<RequestManager>().HandleNewFriendRequested(@event, handler, message);
+            await MiraiBotFactory.Bot.GetManager<RequestManager>().HandleNewFriendRequested(@event, handler, message);
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Mirai.Net.Utils.Extensions.Actions
         public static async Task HandleNewMemberRequested(this NewMemberRequestedEvent requestedEvent,
             NewMemberRequestHandlers handler, string message = "")
         {
-            await MiraiBotUtilities.Bot.GetManager<RequestManager>()
+            await MiraiBotFactory.Bot.GetManager<RequestManager>()
                 .HandleNewMemberRequested(@requestedEvent, handler, message);
         }
 
@@ -40,7 +40,7 @@ namespace Mirai.Net.Utils.Extensions.Actions
         public static async Task HandleNewInvitationRequested(NewInvitationRequestedEvent requestedEvent,
             NewInvitationRequestHandlers handler, string message)
         {
-            await MiraiBotUtilities.Bot.GetManager<RequestManager>()
+            await MiraiBotFactory.Bot.GetManager<RequestManager>()
                 .HandleNewInvitationRequested(requestedEvent, handler, message);
         }
     }

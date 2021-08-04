@@ -41,7 +41,7 @@ namespace Mirai.Net.Utils.Extensions
         /// <param name="receiver"></param>
         /// <param name="modules"></param>
         /// <param name="bot"></param>
-        public static void ExecuteCommands(this MessageReceiverBase receiver, IEnumerable<ICommandModule> modules, MiraiBot bot)
+        public static void ExecuteCommands(this MessageReceiverBase receiver, IEnumerable<ICommandModule> modules)
         {
             foreach (var message in receiver.MessageChain)
             {
@@ -51,14 +51,14 @@ namespace Mirai.Net.Utils.Extensions
                     {
                         if (module.CanExecute(plainMessage.Text))
                         {
-                            module.Execute(bot, receiver, message);
+                            module.Execute(receiver, message);
                         }
                     }
                     else
                     {
                         if (module.CanExecute(message.ToJsonString()))
                         {
-                            module.Execute(bot, receiver, message);
+                            module.Execute(receiver, message);
                         }
                     }
                 }

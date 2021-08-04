@@ -43,7 +43,7 @@ namespace Mirai.Net.Helium
                 .WhereAndCast<GroupMessageReceiver>()
                 .Subscribe(x =>
                 {
-                    x.ExecuteCommands(modules, bot);
+                    x.ExecuteCommands(modules);
                 });
 
             while (true)

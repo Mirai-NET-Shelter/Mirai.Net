@@ -17,7 +17,7 @@ namespace Mirai.Net.Utils.Extensions.Actions
         /// <returns></returns>
         public static async Task<string> SendGroupMessage(this GroupMessageReceiver receiver, params MessageBase[] chain)
         {
-            return await MiraiBotUtilities.Bot
+            return await MiraiBotFactory.Bot
                 .GetManager<MessageManager>()
                 .SendGroupMessage(receiver.Sender.Group.Id, chain);
         }
@@ -30,7 +30,7 @@ namespace Mirai.Net.Utils.Extensions.Actions
         /// <returns></returns>
         public static async Task<string> SendFriendMessage(this FriendMessageReceiver receiver, params MessageBase[] chain)
         {
-            return await MiraiBotUtilities.Bot
+            return await MiraiBotFactory.Bot
                 .GetManager<MessageManager>()
                 .SendFriendMessage(receiver.Sender.Id, chain);
         }
@@ -43,7 +43,7 @@ namespace Mirai.Net.Utils.Extensions.Actions
         /// <returns></returns>
         public static async Task<string> SendTempMessage(this TempMessageReceiver receiver, params MessageBase[] chain)
         {
-            return await MiraiBotUtilities.Bot
+            return await MiraiBotFactory.Bot
                 .GetManager<MessageManager>()
                 .SendTempMessage(receiver.Sender.Id, receiver.Sender.Group.Id, chain);
         }
@@ -55,7 +55,7 @@ namespace Mirai.Net.Utils.Extensions.Actions
         public static async Task Recall(this MessageReceiverBase receiver)
         {
             var id = receiver.MessageChain.WhereAndCast<SourceMessage>().First().MessageId;
-            await MiraiBotUtilities.Bot
+            await MiraiBotFactory.Bot
                 .GetManager<MessageManager>()
                 .Recall(id);
         }
@@ -64,7 +64,7 @@ namespace Mirai.Net.Utils.Extensions.Actions
         {
             var id = receiver.MessageChain.WhereAndCast<SourceMessage>().First().MessageId;
 
-            return await MiraiBotUtilities.Bot
+            return await MiraiBotFactory.Bot
                 .GetManager<MessageManager>()
                 .QuoteFriendMessage(receiver.Sender.Id, id, chain);
         }
@@ -73,7 +73,7 @@ namespace Mirai.Net.Utils.Extensions.Actions
         {
             var id = receiver.MessageChain.WhereAndCast<SourceMessage>().First().MessageId;
 
-            return await MiraiBotUtilities.Bot
+            return await MiraiBotFactory.Bot
                 .GetManager<MessageManager>()
                 .QuoteGroupMessage(receiver.Sender.Id, id, chain);
         }
@@ -82,7 +82,7 @@ namespace Mirai.Net.Utils.Extensions.Actions
         {
             var id = receiver.MessageChain.WhereAndCast<SourceMessage>().First().MessageId;
 
-            return await MiraiBotUtilities.Bot
+            return await MiraiBotFactory.Bot
                 .GetManager<MessageManager>()
                 .QuoteTempMessage(receiver.Sender.Id, receiver.Sender.Group.Id, id, chain);
         }

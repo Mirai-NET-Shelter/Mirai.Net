@@ -2,7 +2,7 @@
 
 namespace Mirai.Net.Utils
 {
-    public static class MiraiBotUtilities
+    public static class MiraiBotFactory
     {
         public static MiraiBot Bot { get; set; }
     }

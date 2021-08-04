@@ -44,7 +44,7 @@ namespace Mirai.Net.Sessions
                 await LaunchHttpAdapter();
                 await LaunchWebsocketAdapter();
 
-                MiraiBotUtilities.Bot = this;
+                MiraiBotFactory.Bot = this;
             }
             catch (Exception e)
             {
