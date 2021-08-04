@@ -36,7 +36,7 @@ namespace Mirai.Net.Utils.Extensions
         }
 
         /// <summary>
-        /// 执行集合内的全部命令模块
+        /// 执行集合内的全部命令模块，除非它没开启
         /// </summary>
         /// <param name="receiver"></param>
         /// <param name="modules"></param>
@@ -45,7 +45,7 @@ namespace Mirai.Net.Utils.Extensions
         {
             foreach (var message in receiver.MessageChain)
             {
-                foreach (var module in modules)
+                foreach (var module in modules.Where(x => x.IsEnable is not false))
                 {
                     if (message is PlainMessage plainMessage)
                     {
@@ -120,6 +120,28 @@ namespace Mirai.Net.Utils.Extensions
             }
 
             return re;
+        }
+
+        /// <summary>
+        /// 获取当前的命令激发器(CommandTrigger)
+        /// </summary>
+        /// <param name="module"></param>
+        /// <returns></returns>
+        public static CommandTriggerAttribute GetTrigger(this IModule module)
+        {
+            var method = module.GetType().GetMethod(nameof(module.Execute));
+            return method!.GetCustomAttribute<CommandTriggerAttribute>();
+        }
+
+        /// <summary>
+        /// 解析命令
+        /// </summary>
+        /// <param name="module"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        public static IDictionary<string, string[]> ParseCommand(this IModule module, string command)
+        {
+            return module.GetTrigger().ParseCommand(command);
         }
     }
 }
