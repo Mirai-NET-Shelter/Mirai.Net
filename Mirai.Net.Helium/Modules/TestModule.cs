@@ -9,7 +9,7 @@ using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Helium.Modules
 {
-    public class TestModule : ICommandModule
+    public class TestModule : IModule
     {
         public bool? IsEnable { get; set; }
 

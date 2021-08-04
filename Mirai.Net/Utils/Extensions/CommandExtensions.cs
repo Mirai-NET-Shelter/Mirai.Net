@@ -20,7 +20,7 @@ namespace Mirai.Net.Utils.Extensions
         /// <param name="s"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static bool CanExecute(this ICommandModule module, string s)
+        public static bool CanExecute(this IModule module, string s)
         {
             var method = module.GetType().GetMethod(nameof(module.Execute));
             var trigger = method!.GetCustomAttribute<CommandTriggerAttribute>();
@@ -41,7 +41,7 @@ namespace Mirai.Net.Utils.Extensions
         /// <param name="receiver"></param>
         /// <param name="modules"></param>
         /// <param name="bot"></param>
-        public static void ExecuteCommands(this MessageReceiverBase receiver, IEnumerable<ICommandModule> modules)
+        public static void ExecuteCommands(this MessageReceiverBase receiver, IEnumerable<IModule> modules)
         {
             foreach (var message in receiver.MessageChain)
             {
@@ -70,7 +70,7 @@ namespace Mirai.Net.Utils.Extensions
         /// </summary>
         /// <param name="modules"></param>
         /// <returns></returns>
-        public static IEnumerable<ICommandModule> ExcludeDisabledModules(this IEnumerable<ICommandModule> modules)
+        public static IEnumerable<IModule> ExcludeDisabledModules(this IEnumerable<IModule> modules)
         {
             foreach (var module in modules)
             {
