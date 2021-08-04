@@ -17,13 +17,8 @@ namespace Mirai.Net.Sessions.Http.Concretes
 {
     public class FileManager
     {
-        public readonly MiraiBot Bot;
-
-        public FileManager(MiraiBot bot)
-        {
-            Bot = bot;
-        }
-
+        public readonly MiraiBot Bot = MiraiBotUtilities.Bot;
+        
         /// <summary>
         ///     获取群文件列表,
         ///     性能很差, 如果群文件很多的话会卡住

@@ -2,18 +2,14 @@
 using Mirai.Net.Data.Events.Concretes.Request;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
+using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions.Managers;
 
 namespace Mirai.Net.Sessions.Http.Concretes
 {
     public class RequestManager
     {
-        public readonly MiraiBot Bot;
-
-        public RequestManager(MiraiBot bot)
-        {
-            Bot = bot;
-        }
+        public readonly MiraiBot Bot = MiraiBotUtilities.Bot;
 
         /// <summary>
         ///     处理好友申请

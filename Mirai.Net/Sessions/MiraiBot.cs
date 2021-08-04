@@ -10,6 +10,7 @@ using AHpx.Extensions.Utils;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
+using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions;
 using Newtonsoft.Json;
 using Websocket.Client;
@@ -42,6 +43,8 @@ namespace Mirai.Net.Sessions
             {
                 await LaunchHttpAdapter();
                 await LaunchWebsocketAdapter();
+
+                MiraiBotUtilities.Bot = this;
             }
             catch (Exception e)
             {

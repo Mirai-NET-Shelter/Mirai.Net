@@ -10,12 +10,7 @@ namespace Mirai.Net.Sessions.Http.Concretes
 {
     public class AccountManager
     {
-        internal readonly MiraiBot Bot;
-
-        public AccountManager(MiraiBot bot)
-        {
-            Bot = bot;
-        }
+        public readonly MiraiBot Bot = MiraiBotUtilities.Bot;
 
         /// <summary>
         ///     获取bot账号的好友列表

@@ -132,11 +132,9 @@ namespace Mirai.Net.Utils.Extensions
         /// <param name="bot"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static T GetManager<T>(this MiraiBot bot)
+        public static T GetManager<T>(this MiraiBot bot) where T : new()
         {
-            var builder = new ManagerBuilder(bot);
-
-            return builder.Build<T>();
+            return new();
         }
 
         /// <summary>

@@ -21,7 +21,7 @@ namespace Mirai.Net.UnitTest
                 VerifyKey = "1145141919810"
             };
 
-            _manager = new AccountManager(_bot);
+            _manager = new AccountManager();
         }
 
         [Fact]

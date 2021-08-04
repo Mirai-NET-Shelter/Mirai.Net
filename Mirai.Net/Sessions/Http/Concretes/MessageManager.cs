@@ -1,18 +1,14 @@
 ﻿using System.Threading.Tasks;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
+using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions.Managers;
 
 namespace Mirai.Net.Sessions.Http.Concretes
 {
     public class MessageManager
     {
-        public readonly MiraiBot Bot;
-
-        public MessageManager(MiraiBot bot)
-        {
-            Bot = bot;
-        }
+        public readonly MiraiBot Bot = MiraiBotUtilities.Bot;
 
         /// <summary>
         ///     发送好友消息
@@ -141,14 +137,16 @@ namespace Mirai.Net.Sessions.Http.Concretes
         ///     回复临时消息
         /// </summary>
         /// <param name="target"></param>
+        /// <param name="group"></param>
         /// <param name="messageId"></param>
         /// <param name="chain"></param>
         /// <returns></returns>
-        public async Task<string> QuoteTempMessage(string target, string messageId, params MessageBase[] chain)
+        public async Task<string> QuoteTempMessage(string target, string group, string messageId, params MessageBase[] chain)
         {
             var payload = new
             {
-                target,
+                qq = target,
+                group,
                 quote = messageId,
                 messageChain = chain
             };
@@ -171,9 +169,9 @@ namespace Mirai.Net.Sessions.Http.Concretes
         }
 
         /// <see cref="QuoteTempMessage(string,string,Mirai.Net.Data.Messages.MessageBase[])" />
-        public async Task<string> QuoteTempMessage(long target, string messageId, params MessageBase[] chain)
+        public async Task<string> QuoteTempMessage(long target, long group, string messageId, params MessageBase[] chain)
         {
-            return await QuoteTempMessage(target.ToString(), messageId, chain);
+            return await QuoteTempMessage(target.ToString(), group.ToString(), messageId, chain);
         }
 
         /// <see cref="SendNudge(string,string,Mirai.Net.Data.Messages.MessageReceivers)" />
