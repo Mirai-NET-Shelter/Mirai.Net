@@ -185,9 +185,9 @@ await manager.SendGroupMessage("xx", "Hello, ".Append(new AtMessage("xx")).Appen
 
 ## 贡献
 
-此项目欢迎任何人的[Pull Request](https://github.com/AHpxChina/Mirai.Net/pulls) 和[Issue](https://github.com/AHpxChina/Mirai.Net/issues)，也欢迎 Star 和 Folk。
+此项目欢迎任何人的[Pull Request](https://github.com/AHpxChina/Mirai.Net/pulls) 和[Issue](https://github.com/AHpxChina/Mirai.Net/issues)，也欢迎 Star 和 Fork。
 
-另外，本项目的 QQ 群是: `110838222`，如果需要技术支持或者有什么问题，可以加入群聊探讨。
+另外，本项目的 QQ 群是: `1042821169`，如果需要技术支持或者有什么问题，可以加入群聊探讨。
 
 ## 致谢
 
