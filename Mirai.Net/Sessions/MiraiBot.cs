@@ -133,7 +133,7 @@ namespace Mirai.Net.Sessions
         /// <summary>
         ///     新建连接 或 singleMode 模式下为空, 通过已有 sessionKey 连接时不可为空
         /// </summary>
-        public string HttpSessionKey { get; set; }
+        internal string HttpSessionKey { get; set; }
 
         private string _address;
 

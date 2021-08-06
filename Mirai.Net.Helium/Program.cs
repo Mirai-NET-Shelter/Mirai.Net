@@ -34,7 +34,7 @@ namespace Mirai.Net.Helium
             await bot.Launch();
 
             var modules = CommandUtilities
-                .LoadCommandModules<TestModule>()
+                .LoadCommandModules("Mirai.Net.Helium.Modules")
                 .ExcludeDisabledModules()
                 .ToList();
             
