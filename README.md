@@ -6,12 +6,12 @@ Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项
 
 ## 速览
 
-- 基于 [.Net Standard 2.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) 开发，支持跨平台。
+- 基于 [.NET Standard 2.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) 开发，支持跨平台。
 - 适配最新的[mirai-api-http]插件。
 - 实现了[mirai-api-http]的`Http Adapter`和`Websocket Adapter`
   - `Http Adapter`用来进行发送操作。
   - `Websocket Adapter`用来进行接收操作。
-- 基于 [Rx.Net](https://github.com/dotnet/reactive) 的推送系统。
+- 基于 [Rx.NET](https://github.com/dotnet/reactive) 的推送系统。
 - 有一堆好用的脚手架和拓展方法。
 - 源代码结构
   - Mirai.Net，主项目
@@ -98,7 +98,7 @@ _斜体的标注的接口是不稳定的_
 
 - 使用 Nuget 安装(推荐)
   - Nuget 包管理器: `Install-Package Mirai.Net -Version 2.1.0`
-  - .Net CLI: `dotnet add package Mirai.Net --version 2.1.0`
+  - .NET CLI: `dotnet add package Mirai.Net --version 2.1.0`
   - **或者在 IDE 的可视化界面搜索`Mirai.Net`安装。**
 - 自己克隆这个仓库的默认分支，然后自己编译，然后自己添加 dll 引用。
 
@@ -199,9 +199,9 @@ await manager.SendGroupMessage("xx", "Hello, ".Append(new AtMessage("xx")).Appen
 
 - [mirai]
 - [mirai-api-http]
-- [Json.Net](http://json.net/) ~~这甚至是这个项目名称的灵感来源~~
+- [Json.NET](http://json.net/) ~~这甚至是这个项目名称的灵感来源~~
 - [Websocket.Client](https://github.com/Marfusios/websocket-client)
-- [Rx.Net](https://github.com/dotnet/reactive)
+- [Rx.NET](https://github.com/dotnet/reactive)
 - [AHpx.Extensions](https://github.com/AHpxChina/AHpx.Extensions)
 
 [mirai-api-http]: https://github.com/project-mirai/mirai-api-http
