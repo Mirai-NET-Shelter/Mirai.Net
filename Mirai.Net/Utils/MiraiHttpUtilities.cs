@@ -29,7 +29,7 @@ namespace Mirai.Net.Utils
 
             client.DefaultRequestHeaders.Add("sessionKey", bot.HttpSessionKey);
 
-            var raw = await client.GetAsync(url);
+            using var raw = await client.GetAsync(url);
 
             var content = await raw.FetchContent();
 
@@ -69,11 +69,11 @@ namespace Mirai.Net.Utils
 
             var payload = json.ToString();
             using var client = new HttpClient();
-            var body = new StringContent(payload, Encoding.Default, "application/json");
+            using var body = new StringContent(payload, Encoding.Default, "application/json");
 
             client.DefaultRequestHeaders.Add("sessionKey", bot.HttpSessionKey);
 
-            var response = await client.PostAsync(url, body);
+            using var response = await client.PostAsync(url, body);
 
             var content = await response.FetchContent();
 
@@ -115,7 +115,7 @@ namespace Mirai.Net.Utils
 
             var url = $"{bot.GetUrl(endpoints)}";
 
-            var response = await client.PostAsync(url, content);
+            using var response = await client.PostAsync(url, content);
 
             try
             {

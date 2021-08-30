@@ -18,6 +18,7 @@ using Mirai.Net.Data.Modules;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Sessions;
 using Mirai.Net.Sessions.Http.Concretes;
+using Mirai.Net.Utils;
 using Mirai.Net.Utils.Extensions;
 
 namespace Mirai.Net.Test
@@ -37,13 +38,16 @@ namespace Mirai.Net.Test
 
             await bot.Launch();
 
+            await bot.GetManager<MessageManager>().SendGroupMessage("110838222", "Hello, World!".Append());
+
             //message listener bench mark
 
+            var modules = CommandUtilities.LoadCommandModules("Mirai.Net.Test");
             bot.MessageReceived
                 .WhereAndCast<GroupMessageReceiver>()
                 .Subscribe(x =>
                 {
-                    Console.WriteLine(x.ToJsonString());
+                    x.ExecuteCommands(modules);
                 });
 
             signal.WaitOne(TimeSpan.FromMinutes(1));
