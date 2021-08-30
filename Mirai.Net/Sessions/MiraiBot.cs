@@ -103,7 +103,6 @@ namespace Mirai.Net.Sessions
                             _eventReceivedSubject.OnNext(eventBase);
                             break;
                         case WebsocketAdapterNotifications.Unknown:
-                            Console.WriteLine($"received unknown notification: {data}");
                             break;
                         default:
                             throw new ArgumentOutOfRangeException();

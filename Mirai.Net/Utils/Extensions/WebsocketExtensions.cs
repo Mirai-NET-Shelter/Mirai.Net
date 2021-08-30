@@ -1,4 +1,6 @@
-﻿using System.Net.WebSockets;
+﻿using System;
+using System.Net.WebSockets;
+using System.Runtime.ExceptionServices;
 using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
 using Mirai.Net.Data.Sessions;
@@ -13,6 +15,7 @@ namespace Mirai.Net.Utils.Extensions
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
+        [HandleProcessCorruptedStateExceptions]
         internal static WebsocketAdapterNotifications GetNotificationType(this ResponseMessage message)
         {
             if (message.MessageType != WebSocketMessageType.Text || message.Text.IsNullOrEmpty())
@@ -22,11 +25,14 @@ namespace Mirai.Net.Utils.Extensions
             {
                 var json = message.Text.Fetch("data").ToJObject();
 
-                if (json.Fetch("type").Contains("Message")) return WebsocketAdapterNotifications.Message;
+                if (!json.ContainsKey("type"))
+                    return WebsocketAdapterNotifications.Unknown;
 
-                return WebsocketAdapterNotifications.Event;
+                return json.Fetch("type").Contains("Message") 
+                    ? WebsocketAdapterNotifications.Message
+                    : WebsocketAdapterNotifications.Event;
             }
-            catch
+            catch(Exception e)
             {
                 return WebsocketAdapterNotifications.Unknown;
             }
