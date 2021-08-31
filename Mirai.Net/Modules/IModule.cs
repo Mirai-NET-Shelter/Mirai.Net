@@ -1,6 +1,5 @@
 ﻿using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Modules;
-using Mirai.Net.Sessions;
 
 namespace Mirai.Net.Modules
 {
