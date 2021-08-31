@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
+using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
 using Mirai.Net.Data.Exceptions;
+using Mirai.Net.Data.Sessions;
+using Mirai.Net.Utils;
 
 namespace Mirai.Net.Sessions
 {
     /// <summary>
     /// mirai-api-http机器人描述
     /// </summary>
-    public class MiraiBot
+    public class MiraiBot : IDisposable
     {
         #region Properties
 
@@ -57,14 +61,70 @@ namespace Mirai.Net.Sessions
         public string VerifyKey { get; set; }
         
         #endregion
-
+        
         #region Exposed
 
-        public void Launch()
+        public async Task LaunchAsync()
         {
             Instance = this;
+            
+            await VerifyAsync();
+            await BindAsync();
         }
 
         #endregion
+        
+        #region Http adapter private helpers
+
+        /// <summary>
+        /// 发送验证请求，获得未激活的session key
+        /// </summary>
+        /// <returns></returns>
+        private async Task VerifyAsync()
+        {
+            var result = await HttpEndpoints.Verify.PostJsonAsync(new
+            {
+                verifyKey = VerifyKey
+            }, false);
+
+            result.EnsureSuccess();
+
+            HttpSessionKey = result.Fetch("session");
+        }
+
+        /// <summary>
+        /// 激活session key
+        /// </summary>
+        private async Task BindAsync()
+        {
+            var result = await HttpEndpoints.Bind.PostJsonAsync(new
+            {
+                sessionKey = HttpSessionKey,
+                qq = QQ
+            }, false);
+
+            result.EnsureSuccess();
+        }
+
+        /// <summary>
+        /// 释放已激活的session
+        /// </summary>
+        private async Task ReleaseAsync()
+        {
+            var result = await HttpEndpoints.Release.PostJsonAsync(new
+            {
+                sessionKey = HttpSessionKey,
+                qq = QQ
+            }, false);
+
+            result.EnsureSuccess();
+        }
+
+        #endregion
+
+        public async void Dispose()
+        {
+            await ReleaseAsync();
+        }
     }
 }

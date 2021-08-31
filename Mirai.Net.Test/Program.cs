@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Mirai.Net.Data.Messages.Receivers;
@@ -12,22 +13,21 @@ namespace Mirai.Net.Test
     {
         private static async Task Main()
         {
-            Console.WriteLine(0.1F+0.2F);
-            // var bot = new MiraiBot
-            // {
-            //     Address = "localhost:8080",
-            //     VerifyKey = "1145141919810",
-            //     QQ = "2672886221"
-            // };
-            //
-            // bot.Launch();
-            //
-            // var result = await HttpEndpoints.Verify.PostJsonAsync(new
-            // {
-            //     verifyKey = MiraiBot.Instance.VerifyKey
-            // }, false);
-            //
-            // Console.WriteLine(result);
+            var watch = new Stopwatch();
+            watch.Start();
+            
+            using var bot = new MiraiBot
+            {
+                Address = "localhost:8080",
+                VerifyKey = "1145141919810",
+                QQ = "2672886221"
+            };
+
+            await bot.LaunchAsync();
+            
+            watch.Stop();
+
+            Console.WriteLine($"Time: {watch.ElapsedMilliseconds}");
         }
     }
 }
