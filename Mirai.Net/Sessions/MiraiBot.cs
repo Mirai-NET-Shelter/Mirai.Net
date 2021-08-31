@@ -57,7 +57,14 @@ namespace Mirai.Net.Sessions
         public string VerifyKey { get; set; }
         
         #endregion
-        
-        
+
+        #region Exposed
+
+        public void Launch()
+        {
+            Instance = this;
+        }
+
+        #endregion
     }
 }
