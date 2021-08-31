@@ -103,6 +103,7 @@ namespace Mirai.Net.Sessions
                             _eventReceivedSubject.OnNext(eventBase);
                             break;
                         case WebsocketAdapterNotifications.Unknown:
+                            _unknownMessageReceived.OnNext(data);
                             break;
                         default:
                             throw new ArgumentOutOfRangeException();
@@ -123,6 +124,10 @@ namespace Mirai.Net.Sessions
         [JsonIgnore] public IObservable<MessageReceiverBase> MessageReceived => _messageReceivedSubject.AsObservable();
 
         private readonly Subject<MessageReceiverBase> _messageReceivedSubject = new();
+        
+        [JsonIgnore] public IObservable<string> UnknownMessageReceived => _unknownMessageReceived.AsObservable();
+
+        private readonly Subject<string> _unknownMessageReceived = new();
 
         /// <summary>
         ///     Mirai.Net总是需要一个VerifyKey
