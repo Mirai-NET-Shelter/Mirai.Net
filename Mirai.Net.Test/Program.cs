@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using AHpx.Extensions.StringExtensions;
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Sessions;
@@ -14,6 +15,7 @@ namespace Mirai.Net.Test
         private static async Task Main()
         {
             var watch = new Stopwatch();
+            var exit = new ManualResetEvent(false);
             watch.Start();
             
             using var bot = new MiraiBot
@@ -24,10 +26,22 @@ namespace Mirai.Net.Test
             };
 
             await bot.LaunchAsync();
+
+            bot.MessageReceived.Subscribe(x =>
+            {
+                Console.WriteLine(x.ToJsonString());
+            });
+
+            bot.EventReceived.Subscribe(x =>
+            {
+                Console.WriteLine(x.ToJsonString());
+            });
             
             watch.Stop();
 
             Console.WriteLine($"Time: {watch.ElapsedMilliseconds}");
+
+            exit.WaitOne(TimeSpan.FromMinutes(1));
         }
     }
 }

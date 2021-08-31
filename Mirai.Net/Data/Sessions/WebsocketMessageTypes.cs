@@ -1,6 +1,6 @@
 ﻿namespace Mirai.Net.Data.Sessions
 {
-    internal enum WebsocketAdapterNotifications
+    internal enum WebsocketMessageTypes
     {
         Message,
         Event,
