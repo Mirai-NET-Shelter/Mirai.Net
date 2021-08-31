@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Reactive.Linq;
 using System.Reflection;
 using System.Threading;
@@ -27,30 +29,68 @@ namespace Mirai.Net.Test
     {
         private static async Task Main()
         {
-            var signal = new ManualResetEvent(false);
+            //bench marking
+            var counter = new Stopwatch();
+            counter.Start();
 
+            var url = "https://httpbin.org/post";
+            var json = new
+            {
+                Test = "TestValue",
+                Test2 = false
+            }.ToJsonString();
+            
             var bot = new MiraiBot
             {
                 Address = "localhost:8080",
+                QQ = 2672886221,
                 VerifyKey = "1145141919810",
-                QQ = 2672886221
+                HttpSessionKey = "TEST KEY"
             };
 
-            await bot.Launch();
+            var result1 = await bot.PostHttp(url, json, true);
 
-            await bot.GetManager<MessageManager>().SendGroupMessage("110838222", "Hello, World!".Append());
+            
+            
+            counter.Stop();
 
-            //message listener bench mark
+            Console.WriteLine($"Build-in post: {counter.ElapsedMilliseconds}");
 
-            var modules = CommandUtilities.LoadCommandModules("Mirai.Net.Test");
-            bot.MessageReceived
-                .WhereAndCast<GroupMessageReceiver>()
-                .Subscribe(x =>
-                {
-                    x.ExecuteCommands(modules);
-                });
+            counter.Reset();
+            counter.Start();
+            var client = new HttpClient();
+            var content = new StringContent(json);
 
-            signal.WaitOne(TimeSpan.FromMinutes(1));
+            var result2 = await (await client.PostAsync(url, content)).Content.ReadAsStringAsync();
+
+            
+            counter.Stop();
+
+            Console.WriteLine($"Native HttpClient post: {counter.ElapsedMilliseconds}");
+            // var signal = new ManualResetEvent(false);
+            //
+            // var bot = new MiraiBot
+            // {
+            //     Address = "localhost:8080",
+            //     VerifyKey = "1145141919810",
+            //     QQ = 2672886221
+            // };
+            //
+            // await bot.Launch();
+            //
+            // await bot.GetManager<MessageManager>().SendGroupMessage("110838222", "Hello, World!".Append());
+            //
+            // //message listener bench mark
+            //
+            // var modules = CommandUtilities.LoadCommandModules("Mirai.Net.Test");
+            // bot.MessageReceived
+            //     .WhereAndCast<GroupMessageReceiver>()
+            //     .Subscribe(x =>
+            //     {
+            //         x.ExecuteCommands(modules);
+            //     });
+            //
+            // signal.WaitOne(TimeSpan.FromMinutes(1));
         }
     }
 }
