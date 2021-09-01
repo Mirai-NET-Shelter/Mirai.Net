@@ -11,7 +11,7 @@ namespace Mirai.Net.Sessions.Http.Managers
     {
         #region Private helpers
 
-        private static async Task<string> SendMessage(HttpEndpoints endpoints, object payload)
+        private static async Task<string> SendMessageAsync(HttpEndpoints endpoints, object payload)
         {
             var response = await endpoints.PostJsonAsync(payload);
 
@@ -28,7 +28,7 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <param name="target"></param>
         /// <param name="chain"></param>
         /// <returns></returns>
-        public static async Task<string> SendFriendMessage(string target, params MessageBase[] chain)
+        public static async Task<string> SendFriendMessageAsync(string target, params MessageBase[] chain)
         {
             var payload = new
             {
@@ -36,7 +36,7 @@ namespace Mirai.Net.Sessions.Http.Managers
                 messageChain = chain
             };
 
-            return await SendMessage(HttpEndpoints.SendFriendMessage, payload);
+            return await SendMessageAsync(HttpEndpoints.SendFriendMessage, payload);
         }
         
         /// <summary>
@@ -45,7 +45,7 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <param name="target"></param>
         /// <param name="chain"></param>
         /// <returns></returns>
-        public static async Task<string> SendGroupMessage(string target, params MessageBase[] chain)
+        public static async Task<string> SendGroupMessageAsync(string target, params MessageBase[] chain)
         {
             var payload = new
             {
@@ -53,7 +53,7 @@ namespace Mirai.Net.Sessions.Http.Managers
                 messageChain = chain
             };
 
-            return await SendMessage(HttpEndpoints.SendGroupMessage, payload);
+            return await SendMessageAsync(HttpEndpoints.SendGroupMessage, payload);
         }
         
         /// <summary>
@@ -63,7 +63,7 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <param name="group"></param>
         /// <param name="chain"></param>
         /// <returns></returns>
-        public static async Task<string> SendTempMessage(string qq, string group, params MessageBase[] chain)
+        public static async Task<string> SendTempMessageAsync(string qq, string group, params MessageBase[] chain)
         {
             var payload = new
             {
@@ -72,7 +72,7 @@ namespace Mirai.Net.Sessions.Http.Managers
                 messageChain = chain
             };
 
-            return await SendMessage(HttpEndpoints.SendTempMessage, payload);
+            return await SendMessageAsync(HttpEndpoints.SendTempMessage, payload);
         }
         
         /// <summary>
@@ -81,7 +81,7 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <param name="target">戳一戳的目标</param>
         /// <param name="subject">在什么地方戳</param>
         /// <param name="kind">只可以选Friend, Strange和Group</param>
-        public static async Task SendNudge(string target, string subject, MessageReceivers kind)
+        public static async Task SendNudgeAsync(string target, string subject, MessageReceivers kind)
         {
             var payload = new
             {
@@ -97,7 +97,7 @@ namespace Mirai.Net.Sessions.Http.Managers
         ///     撤回消息
         /// </summary>
         /// <param name="messageId">消息id</param>
-        public static async Task Recall(string messageId)
+        public static async Task RecallAsync(string messageId)
         {
             var payload = new
             {
@@ -114,7 +114,7 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <param name="messageId"></param>
         /// <param name="chain"></param>
         /// <returns></returns>
-        public static async Task<string> QuoteFriendMessage(string target, string messageId, params MessageBase[] chain)
+        public static async Task<string> QuoteFriendMessageAsync(string target, string messageId, params MessageBase[] chain)
         {
             var payload = new
             {
@@ -123,7 +123,7 @@ namespace Mirai.Net.Sessions.Http.Managers
                 messageChain = chain
             };
 
-            return await SendMessage(HttpEndpoints.SendFriendMessage, payload);
+            return await SendMessageAsync(HttpEndpoints.SendFriendMessage, payload);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <param name="messageId"></param>
         /// <param name="chain"></param>
         /// <returns></returns>
-        public static async Task<string> QuoteGroupMessage(string target, string messageId, params MessageBase[] chain)
+        public static async Task<string> QuoteGroupMessageAsync(string target, string messageId, params MessageBase[] chain)
         {
             var payload = new
             {
@@ -142,7 +142,7 @@ namespace Mirai.Net.Sessions.Http.Managers
                 messageChain = chain
             };
 
-            return await SendMessage(HttpEndpoints.SendGroupMessage, payload);
+            return await SendMessageAsync(HttpEndpoints.SendGroupMessage, payload);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <param name="messageId"></param>
         /// <param name="chain"></param>
         /// <returns></returns>
-        public static async Task<string> QuoteTempMessage(string target, string group, string messageId, params MessageBase[] chain)
+        public static async Task<string> QuoteTempMessageAsync(string target, string group, string messageId, params MessageBase[] chain)
         {
             var payload = new
             {
@@ -163,7 +163,7 @@ namespace Mirai.Net.Sessions.Http.Managers
                 messageChain = chain
             };
 
-            return await SendMessage(HttpEndpoints.SendTempMessage, payload);
+            return await SendMessageAsync(HttpEndpoints.SendTempMessage, payload);
         }
         
         #endregion
@@ -176,9 +176,9 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <param name="target"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static async Task<string> SendFriendMessage(string target, string message)
+        public static async Task<string> SendFriendMessageAsync(string target, string message)
         {
-            return await SendFriendMessage(target, message.Append());
+            return await SendFriendMessageAsync(target, message.Append());
         }
 
         /// <summary>
@@ -188,9 +188,9 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <param name="group"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static async Task<string> SendTempMessage(string target, string group, string message)
+        public static async Task<string> SendTempMessageAsync(string target, string group, string message)
         {
-            return await SendTempMessage(target, group, message.Append());
+            return await SendTempMessageAsync(target, group, message.Append());
         }
         
         /// <summary>
@@ -199,9 +199,9 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <param name="target"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static async Task<string> SendGroupMessage(string target, string message)
+        public static async Task<string> SendGroupMessageAsync(string target, string message)
         {
-            return await SendGroupMessage(target, message.Append());
+            return await SendGroupMessageAsync(target, message.Append());
         }
 
         /// <summary>
@@ -211,9 +211,9 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <param name="messageId"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static async Task<string> QuoteFriendMessage(string target, string messageId, string message)
+        public static async Task<string> QuoteFriendMessageAsync(string target, string messageId, string message)
         {
-            return await QuoteFriendMessage(target, messageId, message.Append());
+            return await QuoteFriendMessageAsync(target, messageId, message.Append());
         }
 
         /// <summary>
@@ -223,9 +223,9 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <param name="messageId"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static async Task<string> QuoteGroupMessage(string target, string messageId, string message)
+        public static async Task<string> QuoteGroupMessageAsync(string target, string messageId, string message)
         {
-            return await QuoteGroupMessage(target, messageId, message.Append());
+            return await QuoteGroupMessageAsync(target, messageId, message.Append());
         }
 
         /// <summary>
@@ -236,9 +236,9 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <param name="messageId"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static async Task<string> QuoteTempMessage(string target, string group, string messageId, string message)
+        public static async Task<string> QuoteTempMessageAsync(string target, string group, string messageId, string message)
         {
-            return await QuoteTempMessage(target, group, messageId, message.Append());
+            return await QuoteTempMessageAsync(target, group, messageId, message.Append());
         }
 
         #endregion
