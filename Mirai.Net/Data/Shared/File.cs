@@ -18,6 +18,9 @@ namespace Mirai.Net.Data.Shared
         [JsonProperty("isDirectory")] public bool IsDirectory { get; set; }
 
         [JsonProperty("contact")] public FileUploader Contact { get; set; }
+        
+        [JsonProperty("downloadInfo")]
+        public string DownloadInfo {get; set;}
 
         public class FileUploader
         {
@@ -28,6 +31,18 @@ namespace Mirai.Net.Data.Shared
             [JsonProperty("permission")]
             [JsonConverter(typeof(StringEnumConverter))]
             public Permissions Permission { get; set; }
+        }
+        
+        public class FileDownloadInfo
+        {
+            [JsonProperty("sha1")]
+            public string Sha1 {get; set;}
+            
+            [JsonProperty("md5")]
+            public string Md5 {get; set;}
+            
+            [JsonProperty("url")]
+            public string Url {get; set;}
         }
     }
 }

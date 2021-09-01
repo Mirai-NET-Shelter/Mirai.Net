@@ -32,32 +32,13 @@ namespace Mirai.Net.Test
             
             watch.Stop();
             Console.WriteLine($"Start time: {watch.ElapsedMilliseconds}");
-            
-            watch.Restart();
 
-            await MessageManager.SendGroupMessage("556962429", "Hello, World!");
+            var files = await FileManager.GetFilesAsync("809830266");
             
-            bot.MessageReceived.Subscribe(async x =>
+            foreach (var file in files)
             {
-                if (x is GroupMessageReceiver receiver)
-                {
-                    foreach (var messageBase in receiver.MessageChain)
-                    {
-                        if (messageBase is PlainMessage { Text: "/hello" })
-                        {
-                            var newWatch = new Stopwatch();
-                            newWatch.Start();
-                            await MessageManager.SendGroupMessage("556962429", "Hello, World!");
-                            
-                            newWatch.Stop();
-
-                            Console.WriteLine("Command respond time: " + newWatch.ElapsedMilliseconds);
-                        }
-                    }
-                }
-            });
-            
-            watch.Stop();
+                Console.WriteLine(file.Name);
+            }
 
             Console.WriteLine($"Message time: {watch.ElapsedMilliseconds}");
             exit.WaitOne(TimeSpan.FromMinutes(1));
