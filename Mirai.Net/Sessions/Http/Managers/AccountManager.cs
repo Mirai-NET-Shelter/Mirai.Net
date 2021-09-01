@@ -13,11 +13,11 @@ namespace Mirai.Net.Sessions.Http.Managers
     /// <summary>
     /// 账号管理器
     /// </summary>
-    public class AccountManager
+    public static class AccountManager
     {
         #region Private helpers
 
-        private async Task<IEnumerable<T>> GetCollection<T>(HttpEndpoints endpoints, object extra = null)
+        private static async Task<IEnumerable<T>> GetCollection<T>(HttpEndpoints endpoints, object extra = null)
         {
             var raw = await endpoints.GetAsync(extra);
             raw = raw.Fetch("data");
@@ -25,7 +25,7 @@ namespace Mirai.Net.Sessions.Http.Managers
             return raw.ToJArray().Select(x => x.ToObject<T>());
         }
 
-        private async Task<Profile> GetProfile(HttpEndpoints endpoints, object extra = null)
+        private static async Task<Profile> GetProfile(HttpEndpoints endpoints, object extra = null)
         {
             var raw = await endpoints.GetAsync(extra);
 
@@ -39,25 +39,25 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <summary>
         ///     获取bot账号的好友列表
         /// </summary>
-        public async Task<IEnumerable<Friend>> GetFriends()
+        public static async Task<IEnumerable<Friend>> GetFriends()
         {
-            return await this.GetCollection<Friend>(HttpEndpoints.FriendList);
+            return await GetCollection<Friend>(HttpEndpoints.FriendList);
         }
         
         /// <summary>
         ///     获取bot账号的QQ群列表
         /// </summary>
-        public async Task<IEnumerable<Group>> GetGroups()
+        public static async Task<IEnumerable<Group>> GetGroups()
         {
-            return await this.GetCollection<Group>(HttpEndpoints.GroupList);
+            return await GetCollection<Group>(HttpEndpoints.GroupList);
         }
         
         /// <summary>
         ///     获取某群的全部群成员
         /// </summary>
-        public async Task<IEnumerable<Member>> GetGroupMembers(string target)
+        public static async Task<IEnumerable<Member>> GetGroupMembers(string target)
         {
-            return await this.GetCollection<Member>(HttpEndpoints.MemberList, new
+            return await GetCollection<Member>(HttpEndpoints.MemberList, new
             {
                 target
             });
@@ -67,7 +67,7 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// 删除好友
         /// </summary>
         /// <param name="target"></param>
-        public async Task DeleteFriend(string target)
+        public static async Task DeleteFriend(string target)
         {
             _ = await HttpEndpoints.DeleteFriend.PostJsonAsync(new
             {
@@ -78,17 +78,17 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <summary>
         ///     获取bot资料
         /// </summary>
-        public async Task<Profile> GetBotProfile()
+        public static async Task<Profile> GetBotProfile()
         {
-            return await this.GetProfile(HttpEndpoints.BotProfile);
+            return await GetProfile(HttpEndpoints.BotProfile);
         }
         
         /// <summary>
         ///     获取好友资料
         /// </summary>
-        public async Task<Profile> GetFriendProfile(string target)
+        public static async Task<Profile> GetFriendProfile(string target)
         {
-            return await this.GetProfile(HttpEndpoints.FriendProfile, new
+            return await GetProfile(HttpEndpoints.FriendProfile, new
             {
                 target
             });
@@ -99,9 +99,9 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="target">群号</param>
-        public async Task<Profile> GetMemberProfile(string id, string target)
+        public static async Task<Profile> GetMemberProfile(string id, string target)
         {
-            return await this.GetProfile(HttpEndpoints.MemberProfile, new
+            return await GetProfile(HttpEndpoints.MemberProfile, new
             {
                 target,
                 member = id
