@@ -116,8 +116,6 @@ namespace Mirai.Net.Sessions
                 verifyKey = VerifyKey
             }, false);
 
-            result.EnsureSuccess();
-
             HttpSessionKey = result.Fetch("session");
         }
 
@@ -126,13 +124,11 @@ namespace Mirai.Net.Sessions
         /// </summary>
         private async Task BindAsync()
         {
-            var result = await HttpEndpoints.Bind.PostJsonAsync(new
+            _ = await HttpEndpoints.Bind.PostJsonAsync(new
             {
                 sessionKey = HttpSessionKey,
                 qq = QQ
             }, false);
-
-            result.EnsureSuccess();
         }
 
         /// <summary>
@@ -140,13 +136,11 @@ namespace Mirai.Net.Sessions
         /// </summary>
         private async Task ReleaseAsync()
         {
-            var result = await HttpEndpoints.Release.PostJsonAsync(new
+            _ = await HttpEndpoints.Release.PostJsonAsync(new
             {
                 sessionKey = HttpSessionKey,
                 qq = QQ
             }, false);
-
-            result.EnsureSuccess();
         }
 
         #endregion
