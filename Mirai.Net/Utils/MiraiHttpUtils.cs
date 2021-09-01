@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
@@ -99,7 +100,7 @@ namespace Mirai.Net.Utils
                 var code = obj.Fetch("code");
                 if (code != "0")
                 {
-                    var message = $"原因: {code.OfErrorMessage()}";
+                    var message = $"原因: {json.OfErrorMessage()}";
 
                     if (appendix.IsNotNullOrEmpty())
                         message += $"\r\n备注: {appendix}";

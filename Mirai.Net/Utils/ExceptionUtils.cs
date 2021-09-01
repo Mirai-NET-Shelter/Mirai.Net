@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
 
 namespace Mirai.Net.Utils
@@ -10,15 +11,15 @@ namespace Mirai.Net.Utils
         /// <summary>
         /// 获取状态码对应的原因
         /// </summary>
-        /// <param name="code"></param>
+        /// <param name="json"></param>
         /// <returns></returns>
-        internal static string OfErrorMessage(this string code)
+        internal static string OfErrorMessage(this string json)
         {
-            code = code.IsIntegerOrThrow(new ArgumentException("错误的状态码"));
+            var code = json.Fetch("code").IsIntegerOrThrow(new ArgumentException("错误的状态码"));
 
             var vocabulary = new Dictionary<string, string>
             {
-                { "0", "正常" },
+                { "0", "正确" },
                 { "1", "错误的verify key" },
                 { "2", "指定的Bot不存在" },
                 { "3", "Session失效或不存在" },
@@ -28,10 +29,11 @@ namespace Mirai.Net.Utils
                 { "10", "Bot没有对应操作的限权" },
                 { "20", "Bot被禁言" },
                 { "30", "消息过长" },
-                { "400", "错误的访问" }
+                { "400", "错误的访问" },
+                { "500", "上传文件错误" }
             };
 
-            return vocabulary.First(x => x.Key == code).Value;
+            return vocabulary.FirstOrDefault(x => x.Key == code).Value;
         }
     }
 }

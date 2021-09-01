@@ -33,14 +33,11 @@ namespace Mirai.Net.Test
             watch.Stop();
             Console.WriteLine($"Start time: {watch.ElapsedMilliseconds}");
 
-            var files = await FileManager.GetFilesAsync("809830266");
-            
-            foreach (var file in files)
-            {
-                Console.WriteLine(file.Name);
-            }
+            var re = await FileManager.UploadVoiceAsync(
+                @"C:\Users\ahpx\Documents\Tencent Files\2933170747\Audio\U)$I}EJE)JDXEK7LZETKX(G.amr");
 
-            Console.WriteLine($"Message time: {watch.ElapsedMilliseconds}");
+            Console.WriteLine(re.ToJsonString());
+            
             exit.WaitOne(TimeSpan.FromMinutes(1));
         }
     }
