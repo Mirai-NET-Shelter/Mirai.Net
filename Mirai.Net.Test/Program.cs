@@ -7,6 +7,7 @@ using Flurl;
 using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Data.Sessions;
+using Mirai.Net.Data.Shared;
 using Mirai.Net.Sessions;
 using Mirai.Net.Sessions.Http.Managers;
 using Mirai.Net.Utils;
@@ -36,6 +37,7 @@ namespace Mirai.Net.Test
             var re = await FileManager.UploadVoiceAsync(
                 @"C:\Users\ahpx\Documents\Tencent Files\2933170747\Audio\U)$I}EJE)JDXEK7LZETKX(G.amr");
 
+            
             Console.WriteLine(re.ToJsonString());
             
             exit.WaitOne(TimeSpan.FromMinutes(1));
