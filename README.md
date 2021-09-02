@@ -17,7 +17,7 @@ Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项
 - 源代码结构
   - Mirai.Net，主项目
   - Mirai.Net.Test，控制台测试项目
-  - Mirai.Net.UnitTest，单元测试项目
+  - Mirai.Net.UnitTest，单元测试项目(现在没啥用了)
 
 <details>
   <summary>实现的接口列表</summary>
@@ -138,7 +138,7 @@ using var bot = new MiraiBot
 创建完`MiraiBot`实例之后，就可以启动了:
 
 ```cs
-await bot.Launch();
+await bot.LaunchAsync();
 ```
 
 ### 监听事件和消息
@@ -151,8 +151,7 @@ await bot.Launch();
 
 ```cs
 bot.EventReceived
-    .Where(x => x.Type == Events.NewFriendRequested)
-    .Cast<NewFriendRequestedEvent>()
+    .WhereAndCast<NewFriendRequestedEvent>()
     .Subscribe(x =>
     {
         //do things
@@ -161,32 +160,22 @@ bot.EventReceived
 
 ### Hello, World
 
-`Mirai.Net`通过一系列的`xxManager`来进行主动操作，其中，消息相关的管理器为`MessageManager`。尽管这些管理器都可以直接实例化，但是不推荐这么做(主要是这样做不是很酷)。
-
-#### 获取管理器
-
-`Mirai.Net`将获取管理器的方法定义为`MiraiBot`类的拓展方法:
-
-```cs
-var manager = bot.GetManager<MessageManager>();
-```
+`Mirai.Net`通过一系列的`xxManager`(**这些管理器都是静态类。**)来进行主动操作，其中，消息相关的管理器为`MessageManager`。
 
 #### 发送消息
 
 这里以发送群消息作为演示，实际上还可以发送好友消息，临时消息和戳一戳消息。
 
-发送消息的方法有两个参数: 发送到哪里和发送什么。所以第一个参数就是发消息的群号，第二个参数就是要发送的消息链。
-
-(因为第二个参数接收的是一个`params MessageBase[]`类型的参数，所以需要调用`Append`拓展方法把字符串转换成消息链。)
+发送消息的方法有两个参数: 发送到哪里和发送什么。所以第一个参数就是发消息的群号，第二个参数就是要发送的消息链(或者字符串)。
 
 ```cs
-await manager.SendGroupMessage("xx", "Hello, World".Append());
+await manager.SendGroupMessageAsync("xx", "Hello, World");
 ```
 
 或者:
 
 ```cs
-await manager.SendGroupMessage("xx", "Hello, ".Append(new AtMessage("xx")).Append(" !"));
+await manager.SendGroupMessageAsync("xx", "Hello, ".Append(new AtMessage("xx")).Append(" !"));
 ```
 
 ## 贡献
@@ -199,10 +188,11 @@ await manager.SendGroupMessage("xx", "Hello, ".Append(new AtMessage("xx")).Appen
 
 - [mirai]
 - [mirai-api-http]
+- [Flurl](https://flurl.dev/)
 - [Json.NET](http://json.net/) ~~这甚至是这个项目名称的灵感来源~~
 - [Websocket.Client](https://github.com/Marfusios/websocket-client)
 - [Rx.NET](https://github.com/dotnet/reactive)
-- [AHpx.Extensions](https://github.com/AHpxChina/AHpx.Extensions)
+- [AHpx.Extensions](https://github.com/AHpxChina/AHpx.E*xtensions)
 
 [mirai-api-http]: https://github.com/project-mirai/mirai-api-http
 [mirai]: https://github.com/mamoe/mirai
