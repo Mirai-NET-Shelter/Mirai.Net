@@ -19,6 +19,9 @@ namespace Mirai.Net.Data.Modules
 
         public string ArgsSeparator { get; set; }
 
+        /// <summary>
+        /// 命令中是否只能包含Name
+        /// </summary>
         public bool EqualName { get; set; }
 
         public CommandTriggerAttribute(string name, string prefix = "/", string argsSeparator = "-", bool equalName = false)
