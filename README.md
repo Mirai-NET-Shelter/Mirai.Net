@@ -1,4 +1,4 @@
-# Mirai.Net 2.2.0
+# Mirai.Net 2.3.0
 
 Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项目遵循
 [AGPL-3.0 LICENSE](https://github.com/AHpxChina/Mirai.Net/blob/master/LICENSE)
@@ -13,10 +13,10 @@ Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项
   - `Websocket Adapter`用来进行接收操作。
 - 基于 [Rx.NET](https://github.com/dotnet/reactive) 的推送系统。
 - 有一堆好用的脚手架和拓展方法。
+- 提供了简单的模块化和命令系统实现。
 - 源代码结构
   - Mirai.Net，主项目
   - Mirai.Net.Test，控制台测试项目
-  - Mirai.Net.Helium，实战测试项目
   - Mirai.Net.UnitTest，单元测试项目
 
 <details>
@@ -94,12 +94,14 @@ _斜体的标注的接口是不稳定的_
 
 ## 快速上手
 
+**(以下仅为一些简单示例，如果需要更详细的说明，请移步[文档]。有时候文档根本不上请[进群提问](#贡献))**
+
 ### 安装
 
 - 使用 Nuget 安装(推荐)
-  - Nuget 包管理器: `Install-Package Mirai.Net -Version 2.1.0`
-  - .NET CLI: `dotnet add package Mirai.Net --version 2.1.0`
-  - **或者在 IDE 的可视化界面搜索`Mirai.Net`安装。**
+  - Nuget 包管理器: `Install-Package Mirai.Net -Version 2.3.0`
+  - .NET CLI: `dotnet add package Mirai.Net --version 2.3.0`
+  - **或者在 IDE 的可视化界面搜索`Mirai.Net`安装最新版。**
 - 自己克隆这个仓库的默认分支，然后自己编译，然后自己添加 dll 引用。
 
 ### 创建和启动 Bot
@@ -186,8 +188,6 @@ await manager.SendGroupMessage("xx", "Hello, World".Append());
 ```cs
 await manager.SendGroupMessage("xx", "Hello, ".Append(new AtMessage("xx")).Append(" !"));
 ```
-
-**以上仅为一些简单示例，如果想要知道更多，请移步[文档]。**
 
 ## 贡献
 
