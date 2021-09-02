@@ -103,7 +103,8 @@ namespace Mirai.Net.Utils.Scaffolds
                     ? split.GetRange(index, next - index)
                     : split.GetRange(index, split.Count - index);
 
-                re.Add(range.First(), range.GetRange(1, range.Count - 1).ToArray());
+                re.Add(range.First().TrimStart(trigger.ArgsSeparator.ToCharArray()),
+                    range.GetRange(1, range.Count - 1).ToArray());
             }
 
             return re;
@@ -118,6 +119,17 @@ namespace Mirai.Net.Utils.Scaffolds
         public static IDictionary<string, string[]> ParseCommand(this ICommandModule commandModule, string command)
         {
             return commandModule.GetCommandTrigger().ParseCommand(command);
+        }
+
+        /// <summary>
+        /// 检查某命令是否有参数
+        /// </summary>
+        /// <param name="trigger"></param>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static bool HasParameters(this CommandTriggerAttribute trigger, string s)
+        {
+            return trigger.ParseCommand(s).Count != 0;
         }
 
         /// <summary>
@@ -136,7 +148,7 @@ namespace Mirai.Net.Utils.Scaffolds
         /// <param name="receiver"></param>
         /// <param name="modules"></param>
         /// <param name="bot"></param>
-        public static void ExecuteCommands(this MessageReceiverBase receiver, IEnumerable<ICommandModule> modules)
+        public static void ExecuteCommandModules(this MessageReceiverBase receiver, IEnumerable<ICommandModule> modules)
         {
             foreach (var module in modules.Where(x => x.IsEnable is not false))
             {

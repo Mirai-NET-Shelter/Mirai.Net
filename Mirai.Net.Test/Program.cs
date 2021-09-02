@@ -21,39 +21,27 @@ namespace Mirai.Net.Test
     {
         private static async Task Main()
         {
-            var trigger = new CommandTriggerAttribute("ahpx", equalName: true);
-            var chain = new MessageBase[]
+            var exit = new ManualResetEvent(false);
+
+            using var bot = new MiraiBot
             {
-                new PlainMessage("/ahpax"),
-                new PlainMessage("/ahpzx"),
-                new JsonMessage{Json = "lawdlkawd/ahpxawjduawdj"}
+                Address = "localhost:8080",
+                VerifyKey = "1145141919810",
+                QQ = "2672886221"
             };
+            
+            await bot.LaunchAsync();
 
-            Console.WriteLine(chain.CanExecute(trigger));
+            var modules = CommandScaffold.LoadCommandModules<Module1>();
+            bot.MessageReceived
+                .WhereAndCast<GroupMessageReceiver>()
+                .Subscribe(x =>
+                {
+                    Console.WriteLine("message:" + x.ToJsonString());
+                    x.ExecuteCommandModules(modules);
+                });
 
-            // var watch = new Stopwatch();
-            // var exit = new ManualResetEvent(false);
-            // watch.Start();
-            //
-            // using var bot = new MiraiBot
-            // {
-            //     Address = "localhost:8080",
-            //     VerifyKey = "1145141919810",
-            //     QQ = "2672886221"
-            // };
-            //
-            // await bot.LaunchAsync();
-            //
-            // watch.Stop();
-            // Console.WriteLine($"Start time: {watch.ElapsedMilliseconds}");
-            //
-            // var re = await FileManager.UploadVoiceAsync(
-            //     @"C:\Users\ahpx\Documents\Tencent Files\2933170747\Audio\U)$I}EJE)JDXEK7LZETKX(G.amr");
-            //
-            //
-            // Console.WriteLine(re.ToJsonString());
-            //
-            // exit.WaitOne(TimeSpan.FromMinutes(1));
+            exit.WaitOne();
         }
     }
 }
