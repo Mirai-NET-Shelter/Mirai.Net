@@ -3,6 +3,7 @@ using AHpx.Extensions.JsonExtensions;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Utils;
+using Mirai.Net.Utils.Internal;
 using Mirai.Net.Utils.Scaffolds;
 
 namespace Mirai.Net.Sessions.Http.Managers

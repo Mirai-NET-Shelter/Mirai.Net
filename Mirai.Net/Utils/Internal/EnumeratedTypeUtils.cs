@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 
-namespace Mirai.Net.Utils.Extensions
+namespace Mirai.Net.Utils.Internal
 {
     public static class EnumeratedTypeUtils
     {

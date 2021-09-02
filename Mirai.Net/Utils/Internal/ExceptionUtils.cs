@@ -4,7 +4,7 @@ using System.Linq;
 using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
 
-namespace Mirai.Net.Utils
+namespace Mirai.Net.Utils.Internal
 {
     public static class ExceptionUtils
     {

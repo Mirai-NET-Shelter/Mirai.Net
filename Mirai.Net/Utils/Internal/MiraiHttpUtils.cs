@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
 using Flurl;
@@ -8,9 +6,8 @@ using Flurl.Http;
 using Mirai.Net.Data.Exceptions;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Sessions;
-using Mirai.Net.Utils.Extensions;
 
-namespace Mirai.Net.Utils
+namespace Mirai.Net.Utils.Internal
 {
     internal static class MiraiHttpUtils
     {

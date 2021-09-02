@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Mirai.Net.Utils
+namespace Mirai.Net.Utils.Internal
 {
     public static class ReflectionUtils
     {
