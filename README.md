@@ -196,4 +196,4 @@ await manager.SendGroupMessageAsync("xx", "Hello, ".Append(new AtMessage("xx")).
 
 [mirai-api-http]: https://github.com/project-mirai/mirai-api-http
 [mirai]: https://github.com/mamoe/mirai
-[文档]: https://ahpxchina.github.io/Mirai.Net.Documents/
+[文档]: https://sinoahpx.github.io/Mirai.Net.Documents/
