@@ -12,6 +12,8 @@ namespace Mirai.Net.Data.Events.Concretes.Message
 
         [JsonProperty("suffix")] public string Suffix { get; set; }
 
+        [JsonProperty("subject")] public NudgeSubject Subject { get; set; }
+
         public override Events Type { get; set; } = Events.Nudged;
 
         public class NudgeSubject
