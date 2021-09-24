@@ -180,7 +180,7 @@ namespace Mirai.Net.Sessions.Http.Managers
         {
             var response = await HttpEndpoints.MemberInfo.GetAsync(new
             {
-                target = "group",
+                target = group,
                 memberId = target
             });
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AHpx.Extensions.StringExtensions;
@@ -32,14 +33,26 @@ namespace Mirai.Net.Test
             
             await bot.LaunchAsync();
 
-            var modules = CommandScaffold.LoadCommandModules<Module1>();
             bot.MessageReceived
                 .WhereAndCast<GroupMessageReceiver>()
-                .Subscribe(x =>
+                .Subscribe(async x =>
                 {
-                    Console.WriteLine("message:" + x.ToJsonString());
-                    x.ExecuteCommandModules(modules);
+                    if (x.MessageChain.WhereAndCast<PlainMessage>().Any(p => p.Text.Contains("/rmember")))
+                    {
+                        var members = (await AccountManager.GetGroupMembersAsync(x.Sender.Group.Id))
+                            .Where(member => member.Permission == Permissions.Member)
+                            .ToList();
+                        var random = new Random();
+
+                        var luckyDog = members[random.Next(members.Count)];
+
+                        var randomMember = await GroupManager.GetMemberAsync(luckyDog.Id, luckyDog.Group.Id);
+
+                        await x.SendGroupMessageAsync(randomMember.ToJsonString());
+                    }
                 });
+
+            await GroupManager.MuteAsync("1472398496", "110838222", TimeSpan.FromHours(1));
 
             exit.WaitOne();
         }
