@@ -35,24 +35,11 @@ namespace Mirai.Net.Test
 
             bot.MessageReceived
                 .WhereAndCast<GroupMessageReceiver>()
+                .WithCommandModules<Module1>()
                 .Subscribe(async x =>
                 {
-                    if (x.MessageChain.WhereAndCast<PlainMessage>().Any(p => p.Text.Contains("/rmember")))
-                    {
-                        var members = (await AccountManager.GetGroupMembersAsync(x.Sender.Group.Id))
-                            .Where(member => member.Permission == Permissions.Member)
-                            .ToList();
-                        var random = new Random();
 
-                        var luckyDog = members[random.Next(members.Count)];
-
-                        var randomMember = await GroupManager.GetMemberAsync(luckyDog.Id, luckyDog.Group.Id);
-
-                        await x.SendGroupMessageAsync(randomMember.ToJsonString());
-                    }
-                });
-
-            await GroupManager.MuteAsync("1472398496", "110838222", TimeSpan.FromHours(1));
+                }); 
 
             exit.WaitOne();
         }

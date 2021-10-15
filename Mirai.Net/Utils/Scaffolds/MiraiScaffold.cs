@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
 using Mirai.Net.Data.Events.Concretes.Request;
@@ -9,6 +10,7 @@ using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
+using Mirai.Net.Modules;
 using Mirai.Net.Sessions;
 using Mirai.Net.Sessions.Http.Managers;
 using Mirai.Net.Utils.Internal;
@@ -55,7 +57,56 @@ namespace Mirai.Net.Utils.Scaffolds
         {
             return observable.Where(x => x is TSource).Cast<TSource>();
         }
+
+        /// <summary>
+        /// 执行命令模块
+        /// </summary>
+        /// <param name="observable"></param>
+        /// <param name="modules"></param>
+        /// <returns></returns>
+        public static IObservable<MessageReceiverBase> WithCommandModules(this IObservable<MessageReceiverBase> observable, params ICommandModule[] modules)
+        {
+            observable.Subscribe(x =>
+            {
+                x.ExecuteCommandModules(modules);
+            });
+
+            return observable;
+        }
+
+        /// <summary>
+        /// 执行指定类型同命名空间下所有命令模块（除非它没开启）
+        /// </summary>
+        /// <param name="observable"></param>
+        /// <returns></returns>
+        public static IObservable<MessageReceiverBase> WithCommandModules<T>(this IObservable<MessageReceiverBase> observable) where T : ICommandModule
+        {
+            var particular = CommandScaffold.LoadCommandModules<T>();
+            observable.Subscribe(x =>
+            {
+                x.ExecuteCommandModules(particular);
+            });
+
+            return observable;
+        }
         
+        /// <summary>
+        /// 执行指定命名空间下所有命令模块（除非它没开启）
+        /// </summary>
+        /// <param name="observable"></param>
+        /// <param name="namespace"></param>
+        /// <returns></returns>
+        public static IObservable<MessageReceiverBase> WithCommandModules(this IObservable<MessageReceiverBase> observable, string @namespace)
+        {
+            var particular = CommandScaffold.LoadCommandModules(@namespace);
+            observable.Subscribe(x =>
+            {
+                x.ExecuteCommandModules(particular);
+            });
+
+            return observable;
+        }
+
         /// <summary>
         /// 发送群消息
         /// </summary>
