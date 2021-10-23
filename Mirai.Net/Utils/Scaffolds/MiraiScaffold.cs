@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Threading;
@@ -19,6 +20,8 @@ namespace Mirai.Net.Utils.Scaffolds
 {
     public static class MiraiScaffold
     {
+        #region MiraiBot extensions
+
         /// <summary>
         ///     拓展方法，获取mirai-api-http插件的版本，此方法不需要经过任何认证
         /// </summary>
@@ -57,6 +60,10 @@ namespace Mirai.Net.Utils.Scaffolds
         {
             return observable.Where(x => x is TSource).Cast<TSource>();
         }
+
+        #endregion
+
+        #region Command module extensions
 
         /// <summary>
         /// 执行命令模块
@@ -106,6 +113,10 @@ namespace Mirai.Net.Utils.Scaffolds
 
             return observable;
         }
+
+        #endregion
+
+        #region Message extension
 
         /// <summary>
         /// 发送群消息
@@ -238,6 +249,10 @@ namespace Mirai.Net.Utils.Scaffolds
                 .QuoteTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, id, message);
         }
         
+        #endregion
+
+        #region Request extensions
+
         /// <summary>
         /// 处理好友请求
         /// </summary>
@@ -248,7 +263,7 @@ namespace Mirai.Net.Utils.Scaffolds
         {
             await RequestManager.HandleNewFriendRequestedAsync(@event, handler, message);
         }
-
+        
         /// <summary>
         /// 处理新成员加群请求
         /// </summary>
@@ -274,5 +289,44 @@ namespace Mirai.Net.Utils.Scaffolds
             await RequestManager
                 .HandleNewInvitationRequestedAsync(requestedEvent, handler, message);
         }
+
+        #endregion
+
+        #region Account manager
+
+        /// <summary>
+        ///     获取某群的全部群成员
+        /// </summary>
+        public static async Task<IEnumerable<Member>> GetGroupMembersAsync(this Group target)
+        {
+            return await AccountManager.GetGroupMembersAsync(target);
+        }
+        
+        /// <summary>
+        /// 删除好友
+        /// </summary>
+        /// <param name="friend"></param>
+        public static async Task DeleteFriendAsync(this Friend friend)
+        {
+            await AccountManager.DeleteFriendAsync(friend);
+        }
+        
+        /// <summary>
+        ///     获取好友资料
+        /// </summary>
+        public static async Task<Profile> GetFriendProfileAsync(this Friend target)
+        {
+            return await AccountManager.GetFriendProfileAsync(target);
+        }
+        
+        /// <summary>
+        ///     获取群员资料
+        /// </summary>
+        public static async Task<Profile> GetMemberProfileAsync(this Member member)
+        {
+            return await AccountManager.GetMemberProfileAsync(member);
+        }
+
+        #endregion
     }
 }
