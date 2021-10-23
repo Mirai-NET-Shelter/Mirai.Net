@@ -291,42 +291,5 @@ namespace Mirai.Net.Utils.Scaffolds
         }
 
         #endregion
-
-        #region Account manager
-
-        /// <summary>
-        ///     获取某群的全部群成员
-        /// </summary>
-        public static async Task<IEnumerable<Member>> GetGroupMembersAsync(this Group target)
-        {
-            return await AccountManager.GetGroupMembersAsync(target);
-        }
-        
-        /// <summary>
-        /// 删除好友
-        /// </summary>
-        /// <param name="friend"></param>
-        public static async Task DeleteFriendAsync(this Friend friend)
-        {
-            await AccountManager.DeleteFriendAsync(friend);
-        }
-        
-        /// <summary>
-        ///     获取好友资料
-        /// </summary>
-        public static async Task<Profile> GetFriendProfileAsync(this Friend target)
-        {
-            return await AccountManager.GetFriendProfileAsync(target);
-        }
-        
-        /// <summary>
-        ///     获取群员资料
-        /// </summary>
-        public static async Task<Profile> GetMemberProfileAsync(this Member member)
-        {
-            return await AccountManager.GetMemberProfileAsync(member);
-        }
-
-        #endregion
     }
 }

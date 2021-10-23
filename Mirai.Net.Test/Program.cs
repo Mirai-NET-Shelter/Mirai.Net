@@ -33,13 +33,17 @@ namespace Mirai.Net.Test
             
             await bot.LaunchAsync();
 
-            bot.MessageReceived
-                .WhereAndCast<GroupMessageReceiver>()
-                .WithCommandModules<Module1>()
-                .Subscribe(async x =>
-                {
-
-                }); 
+            var files = await FileManager.GetFilesAsync("809830266");
+            
+            foreach (var file in files)
+            {
+                Console.WriteLine(file.Name);
+            }
+            
+            bot.MessageReceived.WhereAndCast<GroupMessageReceiver>().Subscribe(x =>
+            {
+                
+            })
 
             exit.WaitOne();
         }

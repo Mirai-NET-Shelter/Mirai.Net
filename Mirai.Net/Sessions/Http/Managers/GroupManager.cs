@@ -36,6 +36,22 @@ namespace Mirai.Net.Sessions.Http.Managers
             await MuteAsync(target, group, Convert.ToInt32(time.TotalSeconds));
         }
 
+        /// <summary>
+        ///     禁言某群员
+        /// </summary>
+        /// <param name="member"></param>
+        /// <param name="time"></param>
+        public static async Task MuteAsync(this Member member, int time)
+        {
+            await GroupManager.MuteAsync(member.Id, member.Group.Id, time);
+        }
+
+        /// <see cref="MuteAsync(Member,int)" />
+        public static async Task MuteAsync(this Member member, TimeSpan time)
+        {
+            await GroupManager.MuteAsync(member.Id, member.Group.Id, time);
+        }
+        
         #endregion
 
         #region UnMute
@@ -54,6 +70,15 @@ namespace Mirai.Net.Sessions.Http.Managers
             };
 
             await HttpEndpoints.Unmute.PostJsonAsync(payload);
+        }
+        
+        /// <summary>
+        ///     取消禁言
+        /// </summary>
+        /// <param name="member"></param>
+        public static async Task UnMuteAsync(this Member member)
+        {
+            await GroupManager.UnMuteAsync(member.Id, member.Group.Id);
         }
 
         #endregion
