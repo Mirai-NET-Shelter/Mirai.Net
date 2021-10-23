@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
+using Mirai.Net.Data.Messages;
+using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Utils;
@@ -103,6 +106,16 @@ namespace Mirai.Net.Sessions.Http.Managers
             await HttpEndpoints.Kick.PostJsonAsync(payload);
         }
 
+        /// <summary>
+        ///     踢出某群员
+        /// </summary>
+        /// <param name="member"></param>
+        /// <param name="message"></param>
+        public static async Task KickAsync(this Member member, string message = "")
+        {
+            await KickAsync(member.Id, member.Group.Id);
+        }
+
         #endregion
 
         #region Leave
@@ -119,6 +132,15 @@ namespace Mirai.Net.Sessions.Http.Managers
             };
 
             await HttpEndpoints.Leave.PostJsonAsync(payload);
+        }
+
+        /// <summary>
+        /// bot退出某群
+        /// </summary>
+        /// <param name="group"></param>
+        public static async Task LeaveAsync(this Group group)
+        {
+            await LeaveAsync(group.Id);
         }
 
         #endregion
@@ -141,6 +163,17 @@ namespace Mirai.Net.Sessions.Http.Managers
             await endpoint.PostJsonAsync(payload);
         }
 
+        /// <summary>
+        ///     全体禁言
+        /// </summary>
+        /// <param name="group"></param>
+        /// <param name="mute">是否禁言</param>
+        public static async Task MuteAllAsync(this Group group, bool mute = true)
+        {
+            await MuteAllAsync(group.Id, mute);
+        }
+
+
         #endregion
 
         #region Essence
@@ -148,12 +181,26 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <summary>
         ///     设置精华消息
         /// </summary>
-        /// <param name="target">消息id</param>
-        public static async Task SetEssenceMessageAsync(string target)
+        /// <param name="messageId">消息id</param>
+        public static async Task SetEssenceMessageAsync(string messageId)
         {
             var payload = new
             {
-                target
+                target = messageId
+            };
+
+            await HttpEndpoints.SetEssence.PostJsonAsync(payload);
+        }
+
+        /// <summary>
+        ///     设置精华消息
+        /// </summary>
+        /// <param name="receiver"></param>
+        public static async Task SetEssenceMessageAsync(this MessageReceiverBase receiver)
+        {
+            var payload = new
+            {
+                target = receiver.MessageChain.OfType<SourceMessage>().First().MessageId
             };
 
             await HttpEndpoints.SetEssence.PostJsonAsync(payload);
@@ -174,6 +221,17 @@ namespace Mirai.Net.Sessions.Http.Managers
 
             return JsonConvert.DeserializeObject<GroupSetting>(response);
         }
+        
+        /// <summary>
+        /// 获取群设置
+        /// </summary>
+        /// <param name="group"></param>
+        /// <returns></returns>
+        public static async Task<GroupSetting> GetGroupSettingAsync(this Group group)
+        {
+            return await GetGroupSettingAsync(group.Id);
+        }
+
 
         /// <summary>
         ///     修改群设置
@@ -191,6 +249,16 @@ namespace Mirai.Net.Sessions.Http.Managers
             await HttpEndpoints.GroupConfig.PostJsonAsync(payload);
         }
 
+        /// <summary>
+        ///     修改群设置
+        /// </summary>
+        /// <param name="group"></param>
+        /// <param name="setting"></param>
+        public static async Task SetGroupSettingAsync(this Group group, GroupSetting setting)
+        {
+            await SetGroupSettingAsync(group.Id, setting);
+        }
+
         #endregion
 
         #region MemberInfo
@@ -198,15 +266,15 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <summary>
         ///     获取群员
         /// </summary>
-        /// <param name="target"></param>
+        /// <param name="memberQQ"></param>
         /// <param name="group"></param>
         /// <returns></returns>
-        public static async Task<Member> GetMemberAsync(string target, string group)
+        public static async Task<Member> GetMemberAsync(string memberQQ, string group)
         {
             var response = await HttpEndpoints.MemberInfo.GetAsync(new
             {
                 target = group,
-                memberId = target
+                memberId = memberQQ
             });
 
             return JsonConvert.DeserializeObject<Member>(response);
@@ -215,17 +283,17 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <summary>
         ///     修改群员设置,需要相关的权限
         /// </summary>
-        /// <param name="target"></param>
+        /// <param name="memberQQ"></param>
         /// <param name="group"></param>
         /// <param name="card">群名片, 需要管理员权限</param>
         /// <param name="title">群头衔, 需要群主权限</param>
         /// <returns></returns>
-        public static async Task<Member> SetMemberInfoAsync(string target, string group, string card = null, string title = null)
+        public static async Task<Member> SetMemberInfoAsync(string memberQQ, string group, string card = null, string title = null)
         {
             var payload = new
             {
                 target = group,
-                memberId = target,
+                memberId = memberQQ,
                 info = new
                 {
                     name = card,
@@ -235,7 +303,7 @@ namespace Mirai.Net.Sessions.Http.Managers
 
             await HttpEndpoints.MemberInfo.PostJsonAsync(payload);
 
-            return await GetMemberAsync(target, group);
+            return await GetMemberAsync(memberQQ, group);
         }
 
         #endregion
