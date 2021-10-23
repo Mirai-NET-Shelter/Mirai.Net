@@ -1,7 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System.Globalization;
+using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
+using Mirai.Net.Data.Shared;
 using Mirai.Net.Utils;
 using Mirai.Net.Utils.Internal;
 using Mirai.Net.Utils.Scaffolds;
@@ -39,6 +41,17 @@ namespace Mirai.Net.Sessions.Http.Managers
 
             return await SendMessageAsync(HttpEndpoints.SendFriendMessage, payload);
         }
+
+        /// <summary>
+        ///     发送好友消息
+        /// </summary>
+        /// <param name="friend"></param>
+        /// <param name="chain"></param>
+        /// <returns></returns>
+        public static async Task<string> SendFriendMessageAsync(this Friend friend, params MessageBase[] chain)
+        {
+            return await SendFriendMessageAsync(friend.Id, chain);
+        }
         
         /// <summary>
         ///     发送群消息
@@ -58,6 +71,17 @@ namespace Mirai.Net.Sessions.Http.Managers
         }
         
         /// <summary>
+        /// 发送群消息
+        /// </summary>
+        /// <param name="group"></param>
+        /// <param name="chain"></param>
+        /// <returns></returns>
+        public static async Task<string> SendGroupMessageAsync(this Group @group, params MessageBase[] chain)
+        {
+            return await SendGroupMessageAsync(group.Id, chain);
+        }
+
+        /// <summary>
         ///     发送群临时消息
         /// </summary>
         /// <param name="qq"></param>
@@ -76,6 +100,17 @@ namespace Mirai.Net.Sessions.Http.Managers
             return await SendMessageAsync(HttpEndpoints.SendTempMessage, payload);
         }
         
+        /// <summary>
+        /// 发送群临时消息
+        /// </summary>
+        /// <param name="member"></param>
+        /// <param name="chain"></param>
+        /// <returns></returns>
+        public static async Task<string> SendTempMessageAsync(this Member member, params MessageBase[] chain)
+        {
+            return await SendTempMessageAsync(member.Id, member.Group.Id, chain);
+        }
+
         /// <summary>
         ///     发送头像戳一戳
         /// </summary>
@@ -126,6 +161,18 @@ namespace Mirai.Net.Sessions.Http.Managers
 
             return await SendMessageAsync(HttpEndpoints.SendFriendMessage, payload);
         }
+        
+        /// <summary>
+        /// 回复好友消息
+        /// </summary>
+        /// <param name="friend"></param>
+        /// <param name="messageId"></param>
+        /// <param name="chain"></param>
+        /// <returns></returns>
+        public static async Task<string> QuoteFriendMessageAsync(this Friend friend, string messageId, params MessageBase[] chain)
+        {
+            return await QuoteFriendMessageAsync(friend.Id, messageId, chain);
+        }
 
         /// <summary>
         ///     回复群消息
@@ -147,24 +194,48 @@ namespace Mirai.Net.Sessions.Http.Managers
         }
 
         /// <summary>
-        ///     回复临时消息
+        /// 回复群消息
         /// </summary>
-        /// <param name="target"></param>
         /// <param name="group"></param>
         /// <param name="messageId"></param>
         /// <param name="chain"></param>
         /// <returns></returns>
-        public static async Task<string> QuoteTempMessageAsync(string target, string group, string messageId, params MessageBase[] chain)
+        public static async Task<string> QuoteGroupMessageAsync(this Group @group, string messageId, params MessageBase[] chain)
+        {
+            return await QuoteGroupMessageAsync(group.Id, messageId, chain);
+        }
+
+        /// <summary>
+        ///     回复临时消息
+        /// </summary>
+        /// <param name="memberId"></param>
+        /// <param name="group"></param>
+        /// <param name="messageId"></param>
+        /// <param name="chain"></param>
+        /// <returns></returns>
+        public static async Task<string> QuoteTempMessageAsync(string memberId, string group, string messageId, params MessageBase[] chain)
         {
             var payload = new
             {
-                qq = target,
+                qq = memberId,
                 group,
                 quote = messageId,
                 messageChain = chain
             };
 
             return await SendMessageAsync(HttpEndpoints.SendTempMessage, payload);
+        }
+
+        /// <summary>
+        ///     回复临时消息
+        /// </summary>
+        /// <param name="member"></param>
+        /// <param name="messageId"></param>
+        /// <param name="chain"></param>
+        /// <returns></returns>
+        public static async Task<string> QuoteTempMessageAsync(this Member member, string messageId, params MessageBase[] chain)
+        {
+            return await QuoteTempMessageAsync(member.Group.Id, member.Group.Id, messageId);
         }
         
         #endregion
@@ -181,6 +252,18 @@ namespace Mirai.Net.Sessions.Http.Managers
         {
             return await SendFriendMessageAsync(target, message.Append());
         }
+        
+        /// <summary>
+        /// 发送好友消息
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public static async Task<string> SendFriendMessageAsync(this Friend target, string message)
+        {
+            return await SendFriendMessageAsync(target, message.Append());
+        }
+
 
         /// <summary>
         /// 发送临时消息
@@ -193,6 +276,17 @@ namespace Mirai.Net.Sessions.Http.Managers
         {
             return await SendTempMessageAsync(target, group, message.Append());
         }
+
+        /// <summary>
+        /// 发送临时消息
+        /// </summary>
+        /// <param name="member"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public static async Task<string> SendTempMessageAsync(this Member member, string message)
+        {
+            return await SendTempMessageAsync(member, message.Append());
+        }
         
         /// <summary>
         ///     发送群消息
@@ -204,6 +298,17 @@ namespace Mirai.Net.Sessions.Http.Managers
         {
             return await SendGroupMessageAsync(target, message.Append());
         }
+        
+        /// <summary>
+        ///     发送群消息
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public static async Task<string> SendGroupMessageAsync(this Group @group, string message)
+        {
+            return await SendGroupMessageAsync(group, message.Append());
+        }
 
         /// <summary>
         /// 引用好友消息
@@ -213,6 +318,18 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <param name="message"></param>
         /// <returns></returns>
         public static async Task<string> QuoteFriendMessageAsync(string target, string messageId, string message)
+        {
+            return await QuoteFriendMessageAsync(target, messageId, message.Append());
+        }
+        
+        /// <summary>
+        /// 引用好友消息
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="messageId"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public static async Task<string> QuoteFriendMessageAsync(this Friend target, string messageId, string message)
         {
             return await QuoteFriendMessageAsync(target, messageId, message.Append());
         }
@@ -228,18 +345,42 @@ namespace Mirai.Net.Sessions.Http.Managers
         {
             return await QuoteGroupMessageAsync(target, messageId, message.Append());
         }
+        
+        /// <summary>
+        /// 引用群消息
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="messageId"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public static async Task<string> QuoteGroupMessageAsync(this Group target, string messageId, string message)
+        {
+            return await QuoteGroupMessageAsync(target, messageId, message.Append());
+        }
 
         /// <summary>
         /// 引用临时消息
         /// </summary>
-        /// <param name="target"></param>
+        /// <param name="memberId"></param>
         /// <param name="group"></param>
         /// <param name="messageId"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static async Task<string> QuoteTempMessageAsync(string target, string group, string messageId, string message)
+        public static async Task<string> QuoteTempMessageAsync(string memberId, string group, string messageId, string message)
         {
-            return await QuoteTempMessageAsync(target, group, messageId, message.Append());
+            return await QuoteTempMessageAsync(memberId, group, messageId, message.Append());
+        }
+
+        /// <summary>
+        /// 引用临时消息
+        /// </summary>
+        /// <param name="member"></param>
+        /// <param name="messageId"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public static async Task<string> QuoteTempMessageAsync(this Member member, string messageId, string message)
+        {
+            return await QuoteTempMessageAsync(member, messageId, message.Append());
         }
 
         #endregion
