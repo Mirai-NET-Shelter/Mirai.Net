@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AHpx.Extensions.StringExtensions;
@@ -33,17 +34,15 @@ namespace Mirai.Net.Test
             
             await bot.LaunchAsync();
 
-            var files = await FileManager.GetFilesAsync("809830266");
-            
-            foreach (var file in files)
+            bot.MessageReceived
+                .OfType<GroupMessageReceiver>()
+                .Subscribe(x =>
             {
-                Console.WriteLine(file.Name);
-            }
-            
-            bot.MessageReceived.WhereAndCast<GroupMessageReceiver>().Subscribe(x =>
-            {
-                
-            })
+                if (x.MessageChain.OfType<PlainMessage>().First().Text.Contains("/mua"))
+                {
+                    x.Sender.Group.MuteAllAsync();
+                }
+            });
 
             exit.WaitOne();
         }

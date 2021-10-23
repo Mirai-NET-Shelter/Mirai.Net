@@ -1,8 +1,10 @@
-# Mirai.Net 2.3.2
+# Mirai.Net 2.3.3
 
 Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项目遵循
 [AGPL-3.0 LICENSE](https://github.com/AHpxChina/Mirai.Net/blob/master/LICENSE)
 开源。
+
+本项目的 QQ 群: `1042821169`，需要技术支持或者有什么问题（甚至水群聊天），欢迎加入群聊探讨。
 
 ## 速览
 
@@ -94,13 +96,13 @@ _斜体的标注的接口是不稳定的_
 
 ## 快速上手
 
-**(以下仅为一些简单示例，如果需要更详细的说明，请移步[文档]。有时候文档根本不上请[进群提问](#贡献))**
+**(以下仅为一些简单示例，如果需要更详细的说明，请移步[文档]。有时候文档跟不上版本请[进群提问](#Mirai.Net 2.3.3))**
 
 ### 安装
 
 - 使用 Nuget 安装(推荐)
-  - Nuget 包管理器: `Install-Package Mirai.Net -Version 2.3.0`
-  - .NET CLI: `dotnet add package Mirai.Net --version 2.3.0`
+  - Nuget 包管理器: `Install-Package Mirai.Net -Version 2.3.3`
+  - .NET CLI: `dotnet add package Mirai.Net --version 2.3.3`
   - **或者在 IDE 的可视化界面搜索`Mirai.Net`安装最新版。**
 - 自己克隆这个仓库的默认分支，然后自己编译，然后自己添加 dll 引用。
 
@@ -151,7 +153,7 @@ await bot.LaunchAsync();
 
 ```cs
 bot.EventReceived
-    .WhereAndCast<NewFriendRequestedEvent>()
+    .OfType<NewFriendRequestedEvent>()
     .Subscribe(x =>
     {
         //do things
@@ -182,12 +184,11 @@ await manager.SendGroupMessageAsync("xx", "Hello, ".Append(new AtMessage("xx")).
 
 此项目欢迎任何人的[Pull Request](https://github.com/AHpxChina/Mirai.Net/pulls) 和[Issue](https://github.com/AHpxChina/Mirai.Net/issues)，也欢迎 Star 和 Fork。
 
-另外，本项目的 QQ 群是: `1042821169`，如果需要技术支持或者有什么问题，可以加入群聊探讨。
-
 ## 致谢
 
 - [mirai]
 - [mirai-api-http]
+- [Jetbrains](https://www.jetbrains.com/)
 - [Flurl](https://flurl.dev/)
 - [Json.NET](http://json.net/) ~~这甚至是这个项目名称的灵感来源~~
 - [Websocket.Client](https://github.com/Marfusios/websocket-client)

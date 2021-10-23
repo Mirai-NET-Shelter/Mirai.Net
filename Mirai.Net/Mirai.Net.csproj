@@ -4,7 +4,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>2.3.2</PackageVersion>
+        <PackageVersion>2.3.3</PackageVersion>
         <Title>Mirai.Net</Title>
         <Description>基于mirai-api-http的轻量级mirai社区sdk</Description>
         <Copyright>Copyright 2021 AHpx reserve all rights.</Copyright>
