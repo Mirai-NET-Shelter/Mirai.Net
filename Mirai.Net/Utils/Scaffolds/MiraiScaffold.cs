@@ -41,25 +41,6 @@ namespace Mirai.Net.Utils.Scaffolds
                 throw new Exception($"获取失败: {e.Message}\n{bot}");
             }
         }
-        
-        /// <summary>
-        /// 寻找指定类型，并且转换
-        /// </summary>
-        public static IObservable<TSource> WhereAndCast<TSource>(this IObservable<object> observable, Func<object, bool> predicate) where TSource : class
-        {
-            return observable.Where(x => predicate.Invoke(x as TSource)).Cast<TSource>();
-        }
-        
-        /// <summary>
-        /// 寻找指定类型，并且转换
-        /// </summary>
-        /// <param name="observable"></param>
-        /// <typeparam name="TSource"></typeparam>
-        /// <returns></returns>
-        public static IObservable<TSource> WhereAndCast<TSource>(this IObservable<object> observable) where TSource : class
-        {
-            return observable.Where(x => x is TSource).Cast<TSource>();
-        }
 
         #endregion
 
@@ -196,14 +177,14 @@ namespace Mirai.Net.Utils.Scaffolds
         /// <param name="receiver"></param>
         public static async Task RecallAsync(this MessageReceiverBase receiver)
         {
-            var id = receiver.MessageChain.WhereAndCast<SourceMessage>().First().MessageId;
+            var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
             await MessageManager
                 .RecallAsync(id);
         }
 
         public static async Task<string> QuoteFriendMessageAsync(this FriendMessageReceiver receiver, params MessageBase[] chain)
         {
-            var id = receiver.MessageChain.WhereAndCast<SourceMessage>().First().MessageId;
+            var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
 
             return await MessageManager
                 .QuoteFriendMessageAsync(receiver.Sender.Id, id, chain);
@@ -211,7 +192,7 @@ namespace Mirai.Net.Utils.Scaffolds
         
         public static async Task<string> QuoteGroupMessageAsync(this GroupMessageReceiver receiver, params MessageBase[] chain)
         {
-            var id = receiver.MessageChain.WhereAndCast<SourceMessage>().First().MessageId;
+            var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
 
             return await MessageManager
                 .QuoteGroupMessageAsync(receiver.Sender.Id, id, chain);
@@ -219,7 +200,7 @@ namespace Mirai.Net.Utils.Scaffolds
         
         public static async Task<string> QuoteTempMessageAsync(this TempMessageReceiver receiver, params MessageBase[] chain)
         {
-            var id = receiver.MessageChain.WhereAndCast<SourceMessage>().First().MessageId;
+            var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
 
             return await MessageManager
                 .QuoteTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, id, chain);
@@ -227,7 +208,7 @@ namespace Mirai.Net.Utils.Scaffolds
         
         public static async Task<string> QuoteFriendMessageAsync(this FriendMessageReceiver receiver, string message)
         {
-            var id = receiver.MessageChain.WhereAndCast<SourceMessage>().First().MessageId;
+            var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
 
             return await MessageManager
                 .QuoteFriendMessageAsync(receiver.Sender.Id, id, message);
@@ -235,7 +216,7 @@ namespace Mirai.Net.Utils.Scaffolds
         
         public static async Task<string> QuoteGroupMessageAsync(this GroupMessageReceiver receiver, string message)
         {
-            var id = receiver.MessageChain.WhereAndCast<SourceMessage>().First().MessageId;
+            var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
 
             return await MessageManager
                 .QuoteGroupMessageAsync(receiver.Sender.Id, id, message);
@@ -243,7 +224,7 @@ namespace Mirai.Net.Utils.Scaffolds
         
         public static async Task<string> QuoteTempMessageAsync(this TempMessageReceiver receiver, string message)
         {
-            var id = receiver.MessageChain.WhereAndCast<SourceMessage>().First().MessageId;
+            var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
 
             return await MessageManager
                 .QuoteTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, id, message);

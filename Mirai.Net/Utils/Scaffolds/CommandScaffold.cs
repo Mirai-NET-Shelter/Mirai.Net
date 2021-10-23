@@ -35,7 +35,7 @@ namespace Mirai.Net.Utils.Scaffolds
             var chain = originalChain.ToList();
             if (chain.Any(x => x.Type == Messages.Plain))
             {
-                foreach (var message in chain.WhereAndCast<PlainMessage>())
+                foreach (var message in chain.OfType<PlainMessage>())
                 {
                     if (trigger.IsCommand(message.Text))
                     {

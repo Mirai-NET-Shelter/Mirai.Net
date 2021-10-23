@@ -55,10 +55,5 @@ namespace Mirai.Net.Utils.Scaffolds
 
             return re.ToArray();
         }
-
-        public static TResult[] WhereAndCast<TResult>(this IEnumerable<MessageBase> bases)
-        {
-            return bases.Where(x => x is TResult).Cast<TResult>().ToArray();
-        }
     }
 }
