@@ -52,7 +52,7 @@ namespace Mirai.Net.Sessions.Http.Managers
         {
             return await GetCollectionAsync<Group>(HttpEndpoints.GroupList);
         }
-        
+
         /// <summary>
         ///     获取某群的全部群成员
         /// </summary>
@@ -62,6 +62,14 @@ namespace Mirai.Net.Sessions.Http.Managers
             {
                 target
             });
+        }
+
+        /// <summary>
+        ///     获取某群的全部群成员
+        /// </summary>
+        public static async Task<IEnumerable<Member>> GetGroupMembersAsync(Group target)
+        {
+            return await GetGroupMembersAsync(target.Id);
         }
         
         /// <summary>
@@ -74,6 +82,15 @@ namespace Mirai.Net.Sessions.Http.Managers
             {
                 target
             });
+        }
+
+        /// <summary>
+        /// 删除好友
+        /// </summary>
+        /// <param name="friend"></param>
+        public static async Task DeleteFriendAsync(Friend friend)
+        {
+            await DeleteFriendAsync(friend.Id);
         }
 
         /// <summary>
@@ -96,6 +113,14 @@ namespace Mirai.Net.Sessions.Http.Managers
         }
         
         /// <summary>
+        ///     获取好友资料
+        /// </summary>
+        public static async Task<Profile> GetFriendProfileAsync(Friend target)
+        {
+            return await GetFriendProfileAsync(target.Id);
+        }
+        
+        /// <summary>
         ///     获取群员资料
         /// </summary>
         /// <param name="id"></param>
@@ -107,6 +132,14 @@ namespace Mirai.Net.Sessions.Http.Managers
                 target,
                 member = id
             });
+        }
+
+        /// <summary>
+        ///     获取群员资料
+        /// </summary>
+        public static async Task<Profile> GetMemberProfileAsync(Member member)
+        {
+            return await GetMemberProfileAsync(member.Id, member.Group.Id);
         }
 
         #endregion
