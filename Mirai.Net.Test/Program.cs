@@ -36,13 +36,13 @@ namespace Mirai.Net.Test
 
             bot.MessageReceived
                 .OfType<GroupMessageReceiver>()
-                .Subscribe(x =>
-            {
-                if (x.MessageChain.OfType<PlainMessage>().First().Text.Contains("/mua"))
+                .Subscribe(async receiver =>
                 {
-                    x.Sender.Group.MuteAllAsync();
-                }
-            });
+                    if (receiver.Sender.Group.Id == "1042821169")
+                    {
+                        Console.WriteLine(receiver.MessageChain.ToJsonString());
+                    }
+                });
 
             exit.WaitOne();
         }

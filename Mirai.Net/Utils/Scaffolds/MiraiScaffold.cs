@@ -195,7 +195,7 @@ namespace Mirai.Net.Utils.Scaffolds
             var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
 
             return await MessageManager
-                .QuoteGroupMessageAsync(receiver.Sender.Id, id, chain);
+                .QuoteGroupMessageAsync(receiver.Sender.Group.Id, id, chain);
         }
         
         public static async Task<string> QuoteTempMessageAsync(this TempMessageReceiver receiver, params MessageBase[] chain)
@@ -216,10 +216,10 @@ namespace Mirai.Net.Utils.Scaffolds
         
         public static async Task<string> QuoteGroupMessageAsync(this GroupMessageReceiver receiver, string message)
         {
-            var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
+            var id = receiver.MessageChain.ToList().OfType<SourceMessage>().First().MessageId;
 
             return await MessageManager
-                .QuoteGroupMessageAsync(receiver.Sender.Id, id, message);
+                .QuoteGroupMessageAsync(receiver.Sender.Group.Id, id, message);
         }
         
         public static async Task<string> QuoteTempMessageAsync(this TempMessageReceiver receiver, string message)
