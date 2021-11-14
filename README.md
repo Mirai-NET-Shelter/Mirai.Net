@@ -6,6 +6,8 @@ Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项
 
 本项目的 QQ 群: `1042821169`，需要技术支持或者有什么问题（甚至水群聊天），欢迎加入群聊探讨。
 
+如果你觉得这是个很酷的项目的话，不妨考虑给它点一个Star，如果你还觉得挺酷但还不够好的话，也欢迎提交Pull Request和Issue。
+
 ## 速览
 
 - 基于 [.NET Standard 2.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) 开发，支持跨平台。
