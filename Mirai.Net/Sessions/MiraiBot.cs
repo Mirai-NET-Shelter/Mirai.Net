@@ -30,7 +30,7 @@ namespace Mirai.Net.Sessions
         /// 最后一个启动的MiraiBot实例
         /// </summary>
         internal static MiraiBot Instance { get; set; }
-        
+
         internal string HttpSessionKey { get; set; }
 
         private string _address;
@@ -70,20 +70,19 @@ namespace Mirai.Net.Sessions
         /// Mirai.Net总是需要一个VerifyKey
         /// </summary>
         public string VerifyKey { get; set; }
-        
+
         #endregion
-        
+
         #region Exposed
 
         public async Task LaunchAsync()
         {
             Instance = this;
 
-            await Task.WhenAll(Task.Run(async () =>
-            {
-                await VerifyAsync();
-                await BindAsync();
-            }), StartWebsocketListenerAsync());
+
+            await VerifyAsync();
+            await BindAsync();
+            await StartWebsocketListenerAsync();
         }
 
         #endregion
@@ -97,13 +96,17 @@ namespace Mirai.Net.Sessions
         [JsonIgnore] public IObservable<MessageReceiverBase> MessageReceived => _messageReceivedSubject.AsObservable();
 
         private readonly Subject<MessageReceiverBase> _messageReceivedSubject = new();
-        
+
         [JsonIgnore] public IObservable<string> UnknownMessageReceived => _unknownMessageReceived.AsObservable();
 
         private readonly Subject<string> _unknownMessageReceived = new();
 
+        [JsonIgnore] public IObservable<WebSocketCloseStatus> DisconnectionHappened => _disconnectionHappened.AsObservable();
+
+        private readonly Subject<WebSocketCloseStatus> _disconnectionHappened = new();
+
         #endregion
-        
+
         #region Http adapter private helpers
 
         /// <summary>
@@ -158,7 +161,18 @@ namespace Mirai.Net.Sessions
                 .SetQueryParam("qq", QQ)
                 .ToUri();
 
-            _client = new WebsocketClient(url);
+            _client = new WebsocketClient(url)
+            {
+                IsReconnectionEnabled = false
+            };
+
+            await _client.StartOrFail();
+
+            _client.DisconnectionHappened
+                .Subscribe(x =>
+                {
+                    _disconnectionHappened.OnNext(x.CloseStatus ?? WebSocketCloseStatus.Empty);
+                });
 
             _client.MessageReceived
                 .Where(message => message.MessageType == WebSocketMessageType.Text)
@@ -166,7 +180,7 @@ namespace Mirai.Net.Sessions
                 {
                     var type = GetRespondMessageType(message);
                     var data = message.Text.Fetch("data");
-                    
+
                     switch (type)
                     {
                         case WebsocketMessageTypes.Message:
@@ -192,8 +206,6 @@ namespace Mirai.Net.Sessions
                             throw new ArgumentOutOfRangeException();
                     }
                 });
-
-            await _client.StartOrFail();
         }
 
         /// <summary>
@@ -213,7 +225,7 @@ namespace Mirai.Net.Sessions
                 if (!json.ContainsKey("type"))
                     return WebsocketMessageTypes.Unknown;
 
-                return json.Fetch("type").Contains("Message") 
+                return json.Fetch("type").Contains("Message")
                     ? WebsocketMessageTypes.Message
                     : WebsocketMessageTypes.Event;
             }
@@ -228,13 +240,13 @@ namespace Mirai.Net.Sessions
         /// </summary>
         private static readonly IEnumerable<MessageReceiverBase> MessageReceiverBases = ReflectionUtils.GetDefaultInstances<MessageReceiverBase>(
             "Mirai.Net.Data.Messages.Receivers");
-        
+
         /// <summary>
         /// 默认消息实例
         /// </summary>
         private static readonly IEnumerable<MessageBase> MessageBases =
             ReflectionUtils.GetDefaultInstances<MessageBase>("Mirai.Net.Data.Messages.Concretes");
-        
+
         /// <summary>
         /// 默认事件实例
         /// </summary>
@@ -254,7 +266,7 @@ namespace Mirai.Net.Sessions
                 MessageReceiverBases.First(receiver => receiver.Type == root!.Type)
                     .GetType()) as MessageReceiverBase;
         }
-        
+
         /// <summary>
         /// 根据json动态解析对应的消息子类
         /// </summary>
