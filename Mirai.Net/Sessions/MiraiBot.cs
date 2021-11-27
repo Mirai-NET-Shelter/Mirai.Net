@@ -187,12 +187,12 @@ public class MiraiBot : IDisposable
                 switch (type)
                 {
                     case WebsocketMessageTypes.Message:
-                        var receiver = GetMessageReceiverBase(data);
+                        var receiver = ReflectionUtils.GetMessageReceiverBase(data);
 
                         var messageChain = data
                             .Fetch("messageChain")
                             .ToJArray()
-                            .Select(token => GetMessageBase(token.ToString()))
+                            .Select(token => ReflectionUtils.GetMessageBase(token.ToString()))
                             .ToList();
 
                         receiver.MessageChain = messageChain;
@@ -200,7 +200,7 @@ public class MiraiBot : IDisposable
                         _messageReceivedSubject.OnNext(receiver);
                         break;
                     case WebsocketMessageTypes.Event:
-                        _eventReceivedSubject.OnNext(GetEventBase(data));
+                        _eventReceivedSubject.OnNext(ReflectionUtils.GetEventBase(data));
                         break;
                     case WebsocketMessageTypes.Unknown:
                         _unknownMessageReceived.OnNext(data);
@@ -236,67 +236,6 @@ public class MiraiBot : IDisposable
         {
             return WebsocketMessageTypes.Unknown;
         }
-    }
-
-    /// <summary>
-    ///     默认消息接收器实例
-    /// </summary>
-    private static readonly IEnumerable<MessageReceiverBase> MessageReceiverBases =
-        ReflectionUtils.GetDefaultInstances<MessageReceiverBase>(
-            "Mirai.Net.Data.Messages.Receivers");
-
-    /// <summary>
-    ///     默认消息实例
-    /// </summary>
-    private static readonly IEnumerable<MessageBase> MessageBases =
-        ReflectionUtils.GetDefaultInstances<MessageBase>("Mirai.Net.Data.Messages.Concretes");
-
-    /// <summary>
-    ///     默认事件实例
-    /// </summary>
-    private static readonly IEnumerable<EventBase> EventBases =
-        ReflectionUtils.GetDefaultInstances<EventBase>("Mirai.Net.Data.Events.Concretes");
-
-    /// <summary>
-    ///     根据json动态解析正确的消息接收器子类
-    /// </summary>
-    /// <param name="data"></param>
-    /// <returns></returns>
-    private static MessageReceiverBase GetMessageReceiverBase(string data)
-    {
-        var root = JsonConvert.DeserializeObject<MessageReceiverBase>(data);
-
-        return JsonConvert.DeserializeObject(data,
-            MessageReceiverBases.First(receiver => receiver.Type == root!.Type)
-                .GetType()) as MessageReceiverBase;
-    }
-
-    /// <summary>
-    ///     根据json动态解析对应的消息子类
-    /// </summary>
-    /// <param name="data"></param>
-    /// <returns></returns>
-    private static MessageBase GetMessageBase(string data)
-    {
-        var root = JsonConvert.DeserializeObject<MessageBase>(data);
-
-        return JsonConvert.DeserializeObject(data,
-            MessageBases.First(message => message.Type == root!.Type)
-                .GetType()) as MessageBase;
-    }
-
-    /// <summary>
-    ///     根据json动态解析对应的事件子类
-    /// </summary>
-    /// <param name="data"></param>
-    /// <returns></returns>
-    private static EventBase GetEventBase(string data)
-    {
-        var root = JsonConvert.DeserializeObject<EventBase>(data);
-
-        return JsonConvert.DeserializeObject(data,
-            EventBases.First(message => message.Type == root!.Type)
-                .GetType()) as EventBase;
     }
 
     #endregion
