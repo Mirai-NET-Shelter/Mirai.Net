@@ -67,6 +67,24 @@ public static class ReflectionUtils
             return quote;
         }
 
+        if (root!.Type == Messages.Forward)
+        {
+            var forward = JsonConvert.DeserializeObject<ForwardMessage>(data);
+
+            forward!.NodeList = data.FetchJToken("nodeList")
+                .Select(x =>
+                {
+                    var node = x.ToObject<ForwardMessage.ForwardNode>();
+                    node!.MessageChain = x.FetchJToken("messageChain").Select(z => GetMessageBase(z.ToString()))
+                        .ToArray();
+
+                    return node;
+                })
+                .ToArray();
+
+            return forward;
+        }
+
         return JsonConvert.DeserializeObject(data,
             MessageBases.First(message => message.Type == root!.Type)
                 .GetType()) as MessageBase;
