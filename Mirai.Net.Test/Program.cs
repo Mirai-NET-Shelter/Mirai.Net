@@ -35,13 +35,10 @@ namespace Mirai.Net.Test
             await bot.LaunchAsync();
 
             bot.MessageReceived
-                .OfType<GroupMessageReceiver>()
-                .Subscribe(async receiver =>
+                .OfType<FriendMessageReceiver>()
+                .Subscribe(receiver =>
                 {
-                    if (receiver.Sender.Group.Id == "1042821169")
-                    {
-                        Console.WriteLine(receiver.MessageChain.ToJsonString());
-                    }
+                    Console.WriteLine(receiver.MessageChain.ToJsonString());
                 });
 
             exit.WaitOne();

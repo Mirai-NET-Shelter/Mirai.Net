@@ -5,6 +5,7 @@ using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Utils.Internal;
 using Mirai.Net.Utils.Scaffolds;
+using Newtonsoft.Json;
 
 namespace Mirai.Net.Sessions.Http.Managers;
 
@@ -23,6 +24,21 @@ public static class MessageManager
 
     #region Exposed
 
+    /// <summary>
+    /// 由消息id获取一条消息
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public static async Task<T> GetMessageReceiverByIdAsync<T>(string messageId) where T : MessageReceiverBase
+    {
+        var response = await HttpEndpoints.MessageFromId.GetAsync(new
+        {
+            id = messageId
+        });
+
+        return JsonConvert.DeserializeObject<T>(response);
+    }
+    
     /// <summary>
     ///     发送好友消息
     /// </summary>
@@ -305,7 +321,7 @@ public static class MessageManager
     /// <summary>
     ///     发送群消息
     /// </summary>
-    /// <param name="target"></param>
+    /// <param name="group"></param>
     /// <param name="message"></param>
     /// <returns></returns>
     public static async Task<string> SendGroupMessageAsync(this Group group, string message)

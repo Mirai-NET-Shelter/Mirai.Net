@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using AHpx.Extensions.JsonExtensions;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Messages;
+using Mirai.Net.Data.Messages.Concretes;
 using Newtonsoft.Json;
 
 namespace Mirai.Net.Utils.Internal;
@@ -53,6 +55,17 @@ public static class ReflectionUtils
     internal static MessageBase GetMessageBase(string data)
     {
         var root = JsonConvert.DeserializeObject<MessageBase>(data);
+
+        if (root!.Type == Messages.Quote)
+        {
+            var quote = JsonConvert.DeserializeObject<QuoteMessage>(data);
+
+            quote!.Origin = data.FetchJToken("origin")
+                .Select(x => GetMessageBase(x.ToString()))
+                .ToArray();
+            
+            return quote;
+        }
 
         return JsonConvert.DeserializeObject(data,
             MessageBases.First(message => message.Type == root!.Type)
