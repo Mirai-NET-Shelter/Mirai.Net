@@ -207,5 +207,14 @@ public enum Events
     ///     戳一戳事件
     /// </summary>
     [Description("NudgeEvent")] [EnumMember(Value = "NudgeEvent")]
-    Nudged
+    Nudged,
+    
+    [Description("OtherClientOnlineEvent")]
+    [EnumMember(Value = "OtherClientOnlineEvent")]
+    OtherClientOnline,
+    
+    [Description("OtherClientOfflineEvent")]
+    [EnumMember(Value = "OtherClientOfflineEvent")]
+    OtherClientOffline,
+    
 }
