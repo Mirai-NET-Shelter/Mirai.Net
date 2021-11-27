@@ -12,7 +12,6 @@ using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Exceptions;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
-using Mirai.Net.Utils;
 using Mirai.Net.Utils.Internal;
 using Newtonsoft.Json;
 using Websocket.Client;
