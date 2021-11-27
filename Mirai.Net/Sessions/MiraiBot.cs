@@ -29,7 +29,7 @@ namespace Mirai.Net.Sessions
         /// <summary>
         /// 最后一个启动的MiraiBot实例
         /// </summary>
-        internal static MiraiBot Instance { get; set; }
+        public static MiraiBot Instance { get; set; }
 
         internal string HttpSessionKey { get; set; }
 
