@@ -1,9 +1,8 @@
-﻿namespace Mirai.Net.Data.Sessions
+﻿namespace Mirai.Net.Data.Sessions;
+
+internal enum WebsocketMessageTypes
 {
-    internal enum WebsocketMessageTypes
-    {
-        Message,
-        Event,
-        Unknown
-    }
+    Message,
+    Event,
+    Unknown
 }

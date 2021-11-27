@@ -1,12 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Mirai.Net.Data.Messages
+namespace Mirai.Net.Data.Messages;
+
+public class MessageBase
 {
-    public class MessageBase
-    {
-        [JsonProperty("type")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public virtual Messages Type { get; set; }
-    }
+    [JsonProperty("type")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public virtual Messages Type { get; set; }
 }

@@ -2,21 +2,20 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Mirai.Net.Data.Events
+namespace Mirai.Net.Data.Events;
+
+public class EventBase
 {
-    public class EventBase
+    protected EventBase()
     {
-        protected EventBase()
-        {
-        }
+    }
 
-        [JsonProperty("type")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public virtual Events Type { get; set; }
+    [JsonProperty("type")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public virtual Events Type { get; set; }
 
-        public override string ToString()
-        {
-            return this.ToJsonString();
-        }
+    public override string ToString()
+    {
+        return this.ToJsonString();
     }
 }

@@ -1,9 +1,8 @@
-﻿namespace Mirai.Net.Data.Shared
+﻿namespace Mirai.Net.Data.Shared;
+
+public enum NewFriendRequestHandlers
 {
-    public enum NewFriendRequestHandlers
-    {
-        Approve = 0,
-        Reject = 1,
-        RejectAndBlock = 2
-    }
+    Approve = 0,
+    Reject = 1,
+    RejectAndBlock = 2
 }

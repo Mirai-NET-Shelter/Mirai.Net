@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace Mirai.Net.Data.Events.Concretes.Bot
-{
-    public class OfflineForceEvent : EventBase
-    {
-        [JsonProperty("qq")] public string QQ { get; private set; }
+namespace Mirai.Net.Data.Events.Concretes.Bot;
 
-        public override Events Type { get; set; } = Events.OfflineForce;
-    }
+public class OfflineForceEvent : EventBase
+{
+    [JsonProperty("qq")] public string QQ { get; private set; }
+
+    public override Events Type { get; set; } = Events.OfflineForce;
 }

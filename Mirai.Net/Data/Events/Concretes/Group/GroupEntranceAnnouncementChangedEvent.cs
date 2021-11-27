@@ -1,7 +1,6 @@
-﻿namespace Mirai.Net.Data.Events.Concretes.Group
+﻿namespace Mirai.Net.Data.Events.Concretes.Group;
+
+public class GroupEntranceAnnouncementChangedEvent : GroupSettingChangedEventBase<string>
 {
-    public class GroupEntranceAnnouncementChangedEvent : GroupSettingChangedEventBase<string>
-    {
-        public override Events Type { get; set; } = Events.GroupEntranceAnnouncementChanged;
-    }
+    public override Events Type { get; set; } = Events.GroupEntranceAnnouncementChanged;
 }

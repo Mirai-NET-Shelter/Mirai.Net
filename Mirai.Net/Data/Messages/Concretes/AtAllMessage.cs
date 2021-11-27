@@ -1,7 +1,6 @@
-﻿namespace Mirai.Net.Data.Messages.Concretes
+﻿namespace Mirai.Net.Data.Messages.Concretes;
+
+public class AtAllMessage : MessageBase
 {
-    public class AtAllMessage : MessageBase
-    {
-        public override Messages Type { get; set; } = Messages.AtAll;
-    }
+    public override Messages Type { get; set; } = Messages.AtAll;
 }

@@ -1,10 +1,9 @@
-﻿namespace Mirai.Net.Data.Events
+﻿namespace Mirai.Net.Data.Events;
+
+public enum EventTargets
 {
-    public enum EventTargets
-    {
-        Bot,
-        Friend,
-        Group,
-        Request
-    }
+    Bot,
+    Friend,
+    Group,
+    Request
 }

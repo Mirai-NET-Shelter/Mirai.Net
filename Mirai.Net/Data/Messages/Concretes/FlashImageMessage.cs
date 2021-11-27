@@ -1,7 +1,6 @@
-﻿namespace Mirai.Net.Data.Messages.Concretes
+﻿namespace Mirai.Net.Data.Messages.Concretes;
+
+public class FlashImageMessage : ImageMessage
 {
-    public class FlashImageMessage : ImageMessage
-    {
-        public override Messages Type { get; set; } = Messages.FlashImage;
-    }
+    public override Messages Type { get; set; } = Messages.FlashImage;
 }

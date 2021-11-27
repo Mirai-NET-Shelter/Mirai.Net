@@ -1,17 +1,16 @@
 ﻿using System.ComponentModel;
 using System.Runtime.Serialization;
 
-namespace Mirai.Net.Data.Shared
+namespace Mirai.Net.Data.Shared;
+
+public enum ImageUploadTargets
 {
-    public enum ImageUploadTargets
-    {
-        [Description("friend")] [EnumMember(Value = "friend")]
-        Friend,
+    [Description("friend")] [EnumMember(Value = "friend")]
+    Friend,
 
-        [Description("group")] [EnumMember(Value = "group")]
-        Group,
+    [Description("group")] [EnumMember(Value = "group")]
+    Group,
 
-        [Description("temp")] [EnumMember(Value = "temp")]
-        Temp
-    }
+    [Description("temp")] [EnumMember(Value = "temp")]
+    Temp
 }

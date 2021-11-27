@@ -1,8 +1,7 @@
-﻿namespace Mirai.Net.Data.Shared
+﻿namespace Mirai.Net.Data.Shared;
+
+public enum NewInvitationRequestHandlers
 {
-    public enum NewInvitationRequestHandlers
-    {
-        Approve,
-        Reject
-    }
+    Approve,
+    Reject
 }
