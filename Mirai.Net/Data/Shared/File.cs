@@ -19,7 +19,7 @@ public class File
 
     [JsonProperty("contact")] public FileUploader Contact { get; set; }
 
-    [JsonProperty("downloadInfo")] public string DownloadInfo { get; set; }
+    [JsonProperty("downloadInfo")] public FileDownloadInfo DownloadInfo { get; set; }
 
     public class FileUploader
     {
