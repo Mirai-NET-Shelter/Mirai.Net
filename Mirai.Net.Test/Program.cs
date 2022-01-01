@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
 using Flurl;
 using Mirai.Net.Data.Messages;
@@ -29,16 +30,30 @@ namespace Mirai.Net.Test
             {
                 Address = "localhost:8080",
                 VerifyKey = "1145141919810",
-                QQ = "2672886221"
+                QQ = "1590454991"
             };
+            var json = new
+            {
+                test = 1,
+                test2 = 3
+            }.ToJsonString();
+
+            var v2 = json.Fetch("test2");
+            
             
             await bot.LaunchAsync();
 
             bot.MessageReceived
-                .OfType<FriendMessageReceiver>()
-                .Subscribe(receiver =>
+                .OfType<GroupMessageReceiver>()
+                .Subscribe(async receiver =>
                 {
-                    Console.WriteLine(receiver.MessageChain.ToJsonString());
+                    if (receiver.MessageChain.OfType<PlainMessage>().Any(x => x.Text == "/temp"))
+                    {
+                        await receiver.SendGroupMessageAsync(new VoiceMessage
+                        {
+                            Path = @"D:\Softwares\silk2mp3-full\b3.silk"
+                        });
+                    }
                 });
 
             exit.WaitOne();

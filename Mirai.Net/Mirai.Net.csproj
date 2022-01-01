@@ -4,12 +4,12 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>2.3.5</PackageVersion>
+        <PackageVersion>2.3.6</PackageVersion>
         <Title>Mirai.Net</Title>
         <Description>基于mirai-api-http的轻量级mirai社区sdk</Description>
-        <Copyright>Copyright 2021 AHpx reserve all rights.</Copyright>
+        <Copyright>Copyright 2022 AHpx reserve all rights.</Copyright>
         <PackageProjectUrl>https://github.com/SinoAHpx/Mirai.Net</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/SinoAHpx/Mirai.Net/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageLicenseExpression>AGPL-3.0</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/SinoAHpx/Mirai.Net</RepositoryUrl>
     </PropertyGroup>
 
@@ -17,7 +17,7 @@
         <PackageReference Include="AHpx.Extensions" Version="1.0.1" />
         <PackageReference Include="Flurl" Version="3.0.2" />
         <PackageReference Include="Flurl.Http" Version="3.2.0" />
-        <PackageReference Include="Websocket.Client" Version="4.3.35" />
+        <PackageReference Include="Websocket.Client" Version="4.4.43" />
 
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
             <_Parameter1>Mirai.Net.UnitTest</_Parameter1>
