@@ -1,4 +1,4 @@
-# Mirai.Net 2.3.5
+# Mirai.Net 2.3.6
 
 Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项目遵循
 [AGPL-3.0 LICENSE](https://github.com/AHpxChina/Mirai.Net/blob/master/LICENSE)
@@ -100,13 +100,13 @@ _斜体的标注的接口是不稳定的_
 
 ## 快速上手
 
-**(以下仅为一些简单示例，如果需要更详细的说明，请移步[文档]。有时候文档跟不上版本请[进群提问](#Mirai.Net 2.3.5))**
+**(以下仅为一些简单示例，如果需要更详细的说明，请移步[文档]。有时候文档跟不上版本请[进群提问](#Mirai.Net 2.3.6))**
 
 ### 安装
 
 - 使用 Nuget 安装(推荐)
-  - Nuget 包管理器: `Install-Package Mirai.Net -Version 2.3.5`
-  - .NET CLI: `dotnet add package Mirai.Net --version 2.3.5`
+  - Nuget 包管理器: `Install-Package Mirai.Net -Version 2.3.6`
+  - .NET CLI: `dotnet add package Mirai.Net --version 2.3.6`
   - **或者在 IDE 的可视化界面搜索`Mirai.Net`安装最新版。**
 - 自己克隆这个仓库的默认分支，然后自己编译，然后自己添加 dll 引用。
 
