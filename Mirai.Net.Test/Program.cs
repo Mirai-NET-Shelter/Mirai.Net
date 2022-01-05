@@ -50,7 +50,7 @@ namespace Mirai.Net.Test
                 {
                     if (receiver.MessageChain.Contains("/test", out IEnumerable<MessageBase> messageE))
                     {
-                        await receiver.SendGroupMessageAsync(
+                        await receiver.SendMessageAsync(
                             $"Message of ".Append(messageE).Append($"has been received"));
                     }
                 });

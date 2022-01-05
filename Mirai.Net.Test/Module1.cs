@@ -25,12 +25,12 @@ namespace Mirai.Net.Test
 
                         if (result.First().Key == "value")
                         {
-                            await gReceiver.SendGroupMessageAsync(string.Join(" ", result.First().Value));
+                            await gReceiver.SendMessageAsync(string.Join(" ", result.First().Value));
                         }
                     }
                     else
                     {
-                        await gReceiver.SendGroupMessageAsync("bruh what the fuck do you want me to say?");
+                        await gReceiver.SendMessageAsync("bruh what the fuck do you want me to say?");
                     }
                 }
             }

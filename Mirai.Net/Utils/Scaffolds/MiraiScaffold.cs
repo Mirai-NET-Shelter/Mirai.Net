@@ -129,7 +129,7 @@ public static class MiraiScaffold
     /// <param name="receiver"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
-    public static async Task<string> SendGroupMessageAsync(this GroupMessageReceiver receiver,
+    public static async Task<string> SendMessageAsync(this GroupMessageReceiver receiver,
         params MessageBase[] chain)
     {
         return await MessageManager
@@ -142,7 +142,7 @@ public static class MiraiScaffold
     /// <param name="receiver"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
-    public static async Task<string> SendFriendMessageAsync(this FriendMessageReceiver receiver,
+    public static async Task<string> SendMessageAsync(this FriendMessageReceiver receiver,
         params MessageBase[] chain)
     {
         return await MessageManager
@@ -155,7 +155,7 @@ public static class MiraiScaffold
     /// <param name="receiver"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
-    public static async Task<string> SendTempMessageAsync(this TempMessageReceiver receiver, params MessageBase[] chain)
+    public static async Task<string> SendMessageAsync(this TempMessageReceiver receiver, params MessageBase[] chain)
     {
         return await MessageManager
             .SendTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, chain);
@@ -167,7 +167,7 @@ public static class MiraiScaffold
     /// <param name="receiver"></param>
     /// <param name="message"></param>
     /// <returns></returns>
-    public static async Task<string> SendGroupMessageAsync(this GroupMessageReceiver receiver, string message)
+    public static async Task<string> SendMessageAsync(this GroupMessageReceiver receiver, string message)
     {
         return await MessageManager
             .SendGroupMessageAsync(receiver.Sender.Group.Id, message);
@@ -179,7 +179,7 @@ public static class MiraiScaffold
     /// <param name="receiver"></param>
     /// <param name="message"></param>
     /// <returns></returns>
-    public static async Task<string> SendFriendMessageAsync(this FriendMessageReceiver receiver, string message)
+    public static async Task<string> SendMessageAsync(this FriendMessageReceiver receiver, string message)
     {
         return await MessageManager
             .SendFriendMessageAsync(receiver.Sender.Id, message);
@@ -191,7 +191,7 @@ public static class MiraiScaffold
     /// <param name="receiver"></param>
     /// <param name="message"></param>
     /// <returns></returns>
-    public static async Task<string> SendTempMessageAsync(this TempMessageReceiver receiver, string message)
+    public static async Task<string> SendMessageAsync(this TempMessageReceiver receiver, string message)
     {
         return await MessageManager
             .SendTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, message);
@@ -208,7 +208,7 @@ public static class MiraiScaffold
             .RecallAsync(id);
     }
 
-    public static async Task<string> QuoteFriendMessageAsync(this FriendMessageReceiver receiver,
+    public static async Task<string> QuoteMessageAsync(this FriendMessageReceiver receiver,
         params MessageBase[] chain)
     {
         var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
@@ -217,7 +217,7 @@ public static class MiraiScaffold
             .QuoteFriendMessageAsync(receiver.Sender.Id, id, chain);
     }
 
-    public static async Task<string> QuoteGroupMessageAsync(this GroupMessageReceiver receiver,
+    public static async Task<string> QuoteMessageAsync(this GroupMessageReceiver receiver,
         params MessageBase[] chain)
     {
         var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
@@ -226,7 +226,7 @@ public static class MiraiScaffold
             .QuoteGroupMessageAsync(receiver.Sender.Group.Id, id, chain);
     }
 
-    public static async Task<string> QuoteTempMessageAsync(this TempMessageReceiver receiver,
+    public static async Task<string> QuoteMessageAsync(this TempMessageReceiver receiver,
         params MessageBase[] chain)
     {
         var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
@@ -235,7 +235,7 @@ public static class MiraiScaffold
             .QuoteTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, id, chain);
     }
 
-    public static async Task<string> QuoteFriendMessageAsync(this FriendMessageReceiver receiver, string message)
+    public static async Task<string> QuoteMessageAsync(this FriendMessageReceiver receiver, string message)
     {
         var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
 
@@ -243,7 +243,7 @@ public static class MiraiScaffold
             .QuoteFriendMessageAsync(receiver.Sender.Id, id, message);
     }
 
-    public static async Task<string> QuoteGroupMessageAsync(this GroupMessageReceiver receiver, string message)
+    public static async Task<string> QuoteMessageAsync(this GroupMessageReceiver receiver, string message)
     {
         var id = receiver.MessageChain.ToList().OfType<SourceMessage>().First().MessageId;
 
@@ -251,7 +251,7 @@ public static class MiraiScaffold
             .QuoteGroupMessageAsync(receiver.Sender.Group.Id, id, message);
     }
 
-    public static async Task<string> QuoteTempMessageAsync(this TempMessageReceiver receiver, string message)
+    public static async Task<string> QuoteMessageAsync(this TempMessageReceiver receiver, string message)
     {
         var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
 
@@ -269,7 +269,7 @@ public static class MiraiScaffold
     /// <param name="event"></param>
     /// <param name="handler"></param>
     /// <param name="message"></param>
-    public static async Task HandleNewFriendRequestedAsync(this NewFriendRequestedEvent @event,
+    public static async Task Handle(this NewFriendRequestedEvent @event,
         NewFriendRequestHandlers handler, string message = "")
     {
         await RequestManager.HandleNewFriendRequestedAsync(@event, handler, message);
@@ -281,7 +281,7 @@ public static class MiraiScaffold
     /// <param name="requestedEvent"></param>
     /// <param name="handler"></param>
     /// <param name="message"></param>
-    public static async Task HandleNewMemberRequestedAsync(this NewMemberRequestedEvent requestedEvent,
+    public static async Task Handle(this NewMemberRequestedEvent requestedEvent,
         NewMemberRequestHandlers handler, string message = "")
     {
         await RequestManager
@@ -294,7 +294,7 @@ public static class MiraiScaffold
     /// <param name="requestedEvent"></param>
     /// <param name="handler"></param>
     /// <param name="message"></param>
-    public static async Task HandleNewInvitationRequestedAsync(NewInvitationRequestedEvent requestedEvent,
+    public static async Task Handle(NewInvitationRequestedEvent requestedEvent,
         NewInvitationRequestHandlers handler, string message)
     {
         await RequestManager
