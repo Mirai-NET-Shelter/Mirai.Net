@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
 using Flurl;
+using Mirai.Net.Data.Events.Concretes.Message;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
@@ -41,6 +42,13 @@ namespace Mirai.Net.Test
                 .ToList()
                 .ForEach(Console.WriteLine);
 
+            bot.EventReceived
+                .OfType<AtEvent>()
+                .Subscribe(at =>
+                {
+                    Console.WriteLine(at.Receiver.ToJsonString());
+                });
+            
             bot.MessageReceived
                 .OfType<GroupMessageReceiver>()
                 .Subscribe(async receiver =>

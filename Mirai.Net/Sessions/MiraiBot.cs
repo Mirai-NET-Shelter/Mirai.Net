@@ -9,8 +9,11 @@ using AHpx.Extensions.JsonExtensions;
 using AHpx.Extensions.StringExtensions;
 using Flurl;
 using Mirai.Net.Data.Events;
+using Mirai.Net.Data.Events.Concretes.Message;
 using Mirai.Net.Data.Exceptions;
 using Mirai.Net.Data.Messages;
+using Mirai.Net.Data.Messages.Concretes;
+using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Sessions.Http.Managers;
@@ -204,6 +207,14 @@ public class MiraiBot : IDisposable
                             .ToList();
 
                         receiver.MessageChain = messageChain;
+
+                        if (receiver.MessageChain.OfType<AtMessage>().Any(x => x.Target == Instance.QQ))
+                        {
+                            _eventReceivedSubject.OnNext(new AtEvent
+                            {
+                                Receiver = (receiver as GroupMessageReceiver)!
+                            });
+                        }
 
                         _messageReceivedSubject.OnNext(receiver);
                         break;

@@ -217,4 +217,7 @@ public enum Events
     [EnumMember(Value = "OtherClientOfflineEvent")]
     OtherClientOffline,
     
+    [Description("At")]
+    [EnumMember(Value = "At")]
+    At
 }
