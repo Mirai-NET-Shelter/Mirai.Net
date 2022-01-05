@@ -43,8 +43,6 @@ namespace Mirai.Net.Test
                 .OfType<GroupMessageReceiver>()
                 .Subscribe(async receiver =>
                 {
-                    
-                    
                     if (receiver.MessageChain.Contains("/test", out IEnumerable<MessageBase> messageE))
                     {
                         await receiver.SendMessageAsync(
