@@ -39,5 +39,17 @@ public class File
         [JsonProperty("md5")] public string Md5 { get; set; }
 
         [JsonProperty("url")] public string Url { get; set; }
+        
+        [JsonProperty("downloadTimes")]
+        public string DownloadTimes {get; set;}
+        
+        [JsonProperty("uploaderId")]
+        public string UploaderId {get; set;}
+        
+        [JsonProperty("uploadTime")]
+        public string UploadTime {get; set;}
+        
+        [JsonProperty("lastModifyTime")]
+        public string LastModifyTime {get; set;}
     }
 }
