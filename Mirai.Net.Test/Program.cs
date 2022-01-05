@@ -30,30 +30,22 @@ namespace Mirai.Net.Test
             {
                 Address = "localhost:8080",
                 VerifyKey = "1145141919810",
-                QQ = "1590454991"
+                QQ = "2672886221"
             };
-            var json = new
-            {
-                test = 1,
-                test2 = 3
-            }.ToJsonString();
 
-            var v2 = json.Fetch("test2");
-            
-            
+
             await bot.LaunchAsync();
+
+            bot.Friends.Value
+                .Select(x => x.NickName)
+                .ToList()
+                .ForEach(Console.WriteLine);
 
             bot.MessageReceived
                 .OfType<GroupMessageReceiver>()
                 .Subscribe(async receiver =>
                 {
-                    if (receiver.MessageChain.OfType<PlainMessage>().Any(x => x.Text == "/temp"))
-                    {
-                        await receiver.SendGroupMessageAsync(new VoiceMessage
-                        {
-                            Path = @"D:\Softwares\silk2mp3-full\b3.silk"
-                        });
-                    }
+                    
                 });
 
             exit.WaitOne();

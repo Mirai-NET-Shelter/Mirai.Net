@@ -12,6 +12,8 @@ using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Exceptions;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
+using Mirai.Net.Data.Shared;
+using Mirai.Net.Sessions.Http.Managers;
 using Mirai.Net.Utils.Internal;
 using Newtonsoft.Json;
 using Websocket.Client;
@@ -89,6 +91,12 @@ public class MiraiBot : IDisposable
     ///     Mirai.Net总是需要一个VerifyKey
     /// </summary>
     public string VerifyKey { get; set; }
+
+    public Lazy<IEnumerable<Group>> Groups => 
+        new(() => AccountManager.GetGroupsAsync().GetAwaiter().GetResult());
+    
+    public Lazy<IEnumerable<Friend>> Friends => 
+        new(() => AccountManager.GetFriendsAsync().GetAwaiter().GetResult());
 
     #endregion
 

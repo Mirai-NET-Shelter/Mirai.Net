@@ -39,6 +39,39 @@ public static class MiraiScaffold
         }
     }
 
+    /// <summary>
+    /// 判断某QQ号是否为bot账号的好友
+    /// </summary>
+    /// <param name="bot"></param>
+    /// <param name="qq"></param>
+    /// <returns></returns>
+    public static bool IsFriend(this MiraiBot bot, string qq)
+    {
+        return bot.Friends.Value.Any(x => x.Id == qq);
+    }
+
+    /// <summary>
+    /// 判断某群成员是否是bot账号的好友
+    /// </summary>
+    /// <param name="bot"></param>
+    /// <param name="member"></param>
+    /// <returns></returns>
+    public static bool IsFriend(this MiraiBot bot, Member member)
+    {
+        return bot.Friends.Value.Any(x => x.Id == member.Id);
+    }
+
+    /// <summary>
+    /// 判断某人是否是bot账号的好友
+    /// </summary>
+    /// <param name="bot"></param>
+    /// <param name="friend"></param>
+    /// <returns></returns>
+    public static bool IsFriend(this MiraiBot bot, Friend friend)
+    {
+        return bot.Friends.Value.Any(x => x.Id == friend.Id);
+    }
+
     #endregion
 
     #region Command module extensions
