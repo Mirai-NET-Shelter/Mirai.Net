@@ -43,11 +43,17 @@ namespace Mirai.Net.Test
                 .OfType<GroupMessageReceiver>()
                 .Subscribe(async receiver =>
                 {
-                    if (receiver.MessageChain.Contains("/test", out IEnumerable<MessageBase> messageE))
+                    Console.WriteLine(receiver.MessageChain.Contains("/test"));
+                    if (receiver.MessageChain.Contains("/test"))
                     {
-                        await receiver.SendMessageAsync(
-                            $"Message of ".Append(messageE).Append($"has been received"));
+                        Console.WriteLine(receiver.MessageChain.GetPlainMessage());
+                        await FileManager.UploadFileAsync(receiver.Id, @"C:\Users\ahpx\Desktop\RandomChoiceGenerator.exe");
                     }
+                    // if (receiver.MessageChain.Contains("/test", out IEnumerable<MessageBase> messageE))
+                    // {
+                    //     await receiver.SendMessageAsync(
+                    //         $"Message of ".Append(messageE).Append($"has been received"));
+                    // }
                 });
             bot.EventReceived
                 .OfType<AtEvent>()

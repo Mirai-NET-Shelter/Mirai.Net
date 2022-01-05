@@ -83,7 +83,7 @@ public static class MessageScaffold
 
     public static bool Contains(this IEnumerable<MessageBase> bases, string message)
     {
-        return bases.Select(x => x.ToJsonString()).Any(x => x == message);
+        return bases.Select(x => x.ToJsonString()).Any(x => x.Contains(message));
     }
     
     public static bool Contains(this IEnumerable<MessageBase> bases, string message, out MessageBase messageBase)
