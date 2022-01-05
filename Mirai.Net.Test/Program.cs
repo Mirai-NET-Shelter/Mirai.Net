@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Linq;
@@ -47,11 +48,10 @@ namespace Mirai.Net.Test
                 .OfType<GroupMessageReceiver>()
                 .Subscribe(async receiver =>
                 {
-                    if (receiver.MessageChain.OfType<FileMessage>().Any())
+                    if (receiver.MessageChain.Contains("/test", out IEnumerable<MessageBase> messageE))
                     {
-                        var file = receiver.MessageChain.OfType<FileMessage>().First();
-
-                        await receiver.SendGroupMessageAsync($"File received: {file.Name}");
+                        await receiver.SendGroupMessageAsync(
+                            $"Message of ".Append(messageE).Append($"has been received"));
                     }
                 });
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AHpx.Extensions.StringExtensions;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
 
@@ -17,6 +18,14 @@ public static class MessageScaffold
 
         return re.ToArray();
     }
+    
+    public static MessageBase[] Append(this string origin, IEnumerable<MessageBase> append)
+    {
+        var re = new List<MessageBase> { new PlainMessage(origin) };
+        re.AddRange(append);
+
+        return re.ToArray();
+    }
 
     public static MessageBase[] Append(this string origin, string append)
     {
@@ -26,6 +35,14 @@ public static class MessageScaffold
     }
 
     public static MessageBase[] Append(this MessageBase messageBase, params MessageBase[] append)
+    {
+        var re = new List<MessageBase> { messageBase };
+        re.AddRange(append);
+
+        return re.ToArray();
+    }
+    
+    public static MessageBase[] Append(this MessageBase messageBase, IEnumerable<MessageBase> append)
     {
         var re = new List<MessageBase> { messageBase };
         re.AddRange(append);
@@ -54,5 +71,51 @@ public static class MessageScaffold
         re.Add(new PlainMessage(append));
 
         return re.ToArray();
+    }
+    
+    public static MessageBase[] Append(this IEnumerable<MessageBase> bases, IEnumerable<MessageBase> append)
+    {
+        var re = bases.ToList();
+        re.AddRange(append);
+
+        return re.ToArray();
+    }
+
+    public static bool Contains(this IEnumerable<MessageBase> bases, string message)
+    {
+        return bases.Select(x => x.ToJsonString()).Any(x => x == message);
+    }
+    
+    public static bool Contains(this IEnumerable<MessageBase> bases, string message, out MessageBase messageBase)
+    {
+        foreach (var @base in bases)
+        {
+            var json = @base.ToJsonString();
+            if (json.Contains(message))
+            {
+                messageBase = @base;
+                return true;
+            }
+        }
+
+        messageBase = null;
+        return false;
+    }
+    
+    public static bool Contains(this IEnumerable<MessageBase> bases, string message, out IEnumerable<MessageBase> origin)
+    {
+        var messageBases = bases.ToList();
+        foreach (var @base in messageBases)
+        {
+            var json = @base.ToJsonString();
+            if (json.Contains(message))
+            {
+                origin = messageBases;
+                return true;
+            }
+        }
+
+        origin = null;
+        return false;
     }
 }
