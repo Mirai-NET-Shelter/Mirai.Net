@@ -34,13 +34,7 @@ namespace Mirai.Net.Test
                 QQ = "2672886221"
             };
 
-
             await bot.LaunchAsync();
-
-            bot.Friends.Value
-                .Select(x => x.NickName)
-                .ToList()
-                .ForEach(Console.WriteLine);
 
             bot.EventReceived
                 .OfType<AtEvent>()
@@ -53,7 +47,12 @@ namespace Mirai.Net.Test
                 .OfType<GroupMessageReceiver>()
                 .Subscribe(async receiver =>
                 {
-                    
+                    if (receiver.MessageChain.OfType<FileMessage>().Any())
+                    {
+                        var file = receiver.MessageChain.OfType<FileMessage>().First();
+
+                        await receiver.SendGroupMessageAsync($"File received: {file.Name}");
+                    }
                 });
 
             exit.WaitOne();

@@ -124,9 +124,9 @@ public static class FileManager
     /// </summary>
     /// <param name="target">上传到哪个群</param>
     /// <param name="filePath">文件的路径</param>
-    /// <param name="uploadPath">上传路径，默认为上传到根目录</param>
+    /// <param name="uploadPath">上传路径，例如/xx（不可以指定文件名，默认为上传到根目录）</param>
     /// <returns>有几率返回null，这是个mirai-api-http的玄学问题</returns>
-    public static async Task<File> UploadFileAsync(string target, string filePath, string uploadPath = null)
+    public static async Task<File> UploadFileAsync(string target, string filePath, string uploadPath = "/")
     {
         uploadPath ??= $"/{filePath.FetchFileName()}";
 
