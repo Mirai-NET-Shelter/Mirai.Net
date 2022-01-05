@@ -37,23 +37,27 @@ namespace Mirai.Net.Test
 
             await bot.LaunchAsync();
 
-            bot.EventReceived
-                .OfType<AtEvent>()
-                .Subscribe(at =>
-                {
-                    Console.WriteLine(at.Receiver.ToJsonString());
-                });
-            
             bot.MessageReceived
+                //suppose to add all the modules in same namespace which implement ICommandModule 
+                .WithCommandModules<Module1>()
                 .OfType<GroupMessageReceiver>()
                 .Subscribe(async receiver =>
                 {
+                    
+                    
                     if (receiver.MessageChain.Contains("/test", out IEnumerable<MessageBase> messageE))
                     {
                         await receiver.SendMessageAsync(
                             $"Message of ".Append(messageE).Append($"has been received"));
                     }
                 });
+            bot.EventReceived
+                .OfType<AtEvent>()
+                .Subscribe(at =>
+                {
+                    Console.WriteLine(at.Receiver.ToJsonString());
+                });
+
 
             exit.WaitOne();
         }
