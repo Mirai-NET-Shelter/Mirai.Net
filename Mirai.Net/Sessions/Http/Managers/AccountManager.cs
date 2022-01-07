@@ -129,7 +129,7 @@ public static class AccountManager
         return await GetProfileAsync(HttpEndpoints.MemberProfile, new
         {
             target,
-            member = id
+            memberId = id
         });
     }
 

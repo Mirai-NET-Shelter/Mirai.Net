@@ -38,30 +38,16 @@ namespace Mirai.Net.Test
             await bot.LaunchAsync();
 
             bot.MessageReceived
-                //suppose to add all the modules in same namespace which implement ICommandModule 
-                .WithCommandModules<Module1>()
                 .OfType<GroupMessageReceiver>()
-                .Subscribe(async receiver =>
+                .Subscribe(async r =>
                 {
-                    Console.WriteLine(receiver.MessageChain.Contains("/test"));
-                    if (receiver.MessageChain.Contains("/test"))
+                    if (r.MessageChain.Contains("/me", out MessageBase _))
                     {
-                        Console.WriteLine(receiver.MessageChain.GetPlainMessage());
-                        await FileManager.UploadFileAsync(receiver.Id, @"C:\Users\ahpx\Desktop\RandomChoiceGenerator.exe");
+                        var profile = await r.Sender.GetMemberProfileAsync();
+                        
+                        await r.SendMessageAsync($"Nick of acc: {profile.NickName}\r\nNick of group: {r.Sender.Name}");
                     }
-                    // if (receiver.MessageChain.Contains("/test", out IEnumerable<MessageBase> messageE))
-                    // {
-                    //     await receiver.SendMessageAsync(
-                    //         $"Message of ".Append(messageE).Append($"has been received"));
-                    // }
                 });
-            bot.EventReceived
-                .OfType<AtEvent>()
-                .Subscribe(at =>
-                {
-                    Console.WriteLine(at.Receiver.ToJsonString());
-                });
-
 
             exit.WaitOne();
         }
