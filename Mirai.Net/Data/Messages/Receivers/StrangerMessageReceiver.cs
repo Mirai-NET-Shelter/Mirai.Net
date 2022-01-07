@@ -12,15 +12,18 @@ public class StrangerMessageReceiver : MessageReceiverBase
     /// <summary>
     /// 昵称
     /// </summary>
+    [JsonIgnore]
     public string Name => Sender.NickName;
 
     /// <summary>
     /// 备注
     /// </summary>
+    [JsonIgnore]
     public string Remark => Sender.Remark;
 
     /// <summary>
     /// QQ号
     /// </summary>
+    [JsonIgnore]
     public string Id => Sender.Id;
 }

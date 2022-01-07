@@ -12,15 +12,18 @@ public class TempMessageReceiver : MessageReceiverBase
     /// <summary>
     /// 群号
     /// </summary>
+    [JsonIgnore]
     public string Id => Sender.Group.Id;
 
     /// <summary>
     /// 群名称
     /// </summary>
+    [JsonIgnore]
     public string Name => Sender.Group.Name;
 
     /// <summary>
     /// bot在群内的权限
     /// </summary>
+    [JsonIgnore]
     public Permissions Permission => Sender.Group.Permission;
 }
