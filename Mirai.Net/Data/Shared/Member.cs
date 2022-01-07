@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Mirai.Net.Sessions.Http.Managers;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace Mirai.Net.Data.Shared;
@@ -8,6 +9,8 @@ namespace Mirai.Net.Data.Shared;
 /// </summary>
 public class Member
 {
+    [JsonIgnore] public Profile Profile => this.GetMemberProfileAsync().GetAwaiter().GetResult();
+    
     /// <summary>
     ///     群员的QQ号
     /// </summary>

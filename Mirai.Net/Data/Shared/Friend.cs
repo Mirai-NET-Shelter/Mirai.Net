@@ -1,9 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using Mirai.Net.Sessions.Http.Managers;
+using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Shared;
 
 public class Friend
 {
+    [JsonIgnore] public Profile Profile => this.GetFriendProfileAsync().GetAwaiter().GetResult();
+
     /// <summary>
     ///     好友的QQ号
     /// </summary>
