@@ -10,6 +10,7 @@ using Mirai.Net.Modules;
 
 namespace Mirai.Net.Utils.Scaffolds;
 
+[Obsolete]
 public static class CommandScaffold
 {
     /// <summary>
