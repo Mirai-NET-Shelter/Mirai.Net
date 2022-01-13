@@ -74,7 +74,7 @@ public static class MiraiScaffold
 
     #endregion
 
-    #region Command module extensions
+    #region Legacy command module extensions
 
     /// <summary>
     ///     执行命令模块
@@ -120,6 +120,21 @@ public static class MiraiScaffold
         observable.Subscribe(x => { x.ExecuteCommandModules(particular); });
 
         return observable;
+    }
+
+    #endregion
+
+    #region Modularization extensions
+
+    /// <summary>
+    /// 把MessageReceiverBase转换为具体的MessageReceiver
+    /// </summary>
+    /// <param name="base"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public static T Concretize<T>(this MessageReceiverBase @base) where T : MessageReceiverBase
+    {
+        return (T)@base;
     }
 
     #endregion

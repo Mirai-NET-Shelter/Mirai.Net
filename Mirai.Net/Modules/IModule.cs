@@ -1,7 +1,9 @@
-﻿namespace Mirai.Net.Modules;
+﻿using Mirai.Net.Data.Messages;
+
+namespace Mirai.Net.Modules;
 
 public interface IModule
 {
-    void Execute();
+    void Execute(MessageReceiverBase @base);
     bool? IsEnable { get; set; }
 }

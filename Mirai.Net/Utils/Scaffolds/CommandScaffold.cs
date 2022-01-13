@@ -191,7 +191,7 @@ public static class CommandScaffold
 
         return syntax.Any(s =>
         {
-            var index = origin.IndexOf(commandInfo.Separator, StringComparison.Ordinal);
+            var index = origin.IndexOf(commandInfo.Separator, 1, StringComparison.Ordinal);
 
             if (index == -1)
                 return origin.Trim() == s;

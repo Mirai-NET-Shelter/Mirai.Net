@@ -37,17 +37,16 @@ namespace Mirai.Net.Test
             };
             
             await bot.LaunchAsync();
+
+            var modules = new Module1().GetModules();
             
             bot.MessageReceived
                 .OfType<GroupMessageReceiver>()
                 .Subscribe(async r =>
                 {
-                    if (r.MessageChain.Contains("/me", out MessageBase _))
-                    {
-                        var profile = await r.Sender.GetMemberProfileAsync();
-                        
-                        await r.SendMessageAsync($"Nick of acc: {profile.NickName}\r\nNick of group: {r.Sender.Name}");
-                    }
+                    modules.SubscribeModule(r);
+
+                    // await r.SendMessageAsync(r.MessageChain.Append());
                 });
             
             exit.WaitOne();

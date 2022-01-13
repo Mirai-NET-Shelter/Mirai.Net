@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Mirai.Net.Data.Commands;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
@@ -8,32 +10,28 @@ using Mirai.Net.Utils.Scaffolds;
 
 namespace Mirai.Net.Test
 {
-    public class Module1 : ICommandModule
+    public class Module1 : IModule
     {
-        public bool? IsEnable { get; set; }
-        
-        [CommandTrigger("say")]
-        public async void Execute(MessageReceiverBase receiver, MessageBase executeMessage)
+        public async void Execute(MessageReceiverBase @base)
         {
-            if (receiver is GroupMessageReceiver gReceiver)
-            {
-                if (executeMessage is PlainMessage message)
-                {
-                    if (this.GetCommandTrigger().HasParameters(message.Text))
-                    {
-                        var result = this.GetCommandTrigger().ParseCommand(message.Text);
+            var receiver = @base.Concretize<GroupMessageReceiver>();
+            var plain = receiver.MessageChain.GetPlainMessage();
 
-                        if (result.First().Key == "value")
-                        {
-                            await gReceiver.SendMessageAsync(string.Join(" ", result.First().Value));
-                        }
-                    }
-                    else
-                    {
-                        await gReceiver.SendMessageAsync("bruh what the fuck do you want me to say?");
-                    }
-                }
+            if (plain.CanExecute<SayCommand>())
+            {
+                var command = receiver.MessageChain.GetPlainMessage().ParseCommand<SayCommand>();
+                await receiver.SendMessageAsync(command.Value);
             }
+            
+        }
+
+        public bool? IsEnable { get; set; }
+
+        [CommandEntity(Name = "say", Identifier = "/")]
+        class SayCommand
+        {
+            [CommandArgument(Name = "v")]
+            public string Value { get; set; }
         }
     }
 }
