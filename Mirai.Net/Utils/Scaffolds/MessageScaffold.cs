@@ -124,7 +124,8 @@ public static class MessageScaffold
         return messageChain
             .OfType<PlainMessage>()
             .Select(x => x.Text)
-            .Aggregate((s, s1) => s + s1);
+            .Aggregate((s, s1) => s + s1)
+            .Trim();
     }
     
     public static IEnumerable<string> GetSeparatedPlainMessage(this IEnumerable<MessageBase> messageChain)
