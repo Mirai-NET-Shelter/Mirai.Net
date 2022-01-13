@@ -82,6 +82,7 @@ public static class MiraiScaffold
     /// <param name="observable"></param>
     /// <param name="modules"></param>
     /// <returns></returns>
+    [Obsolete]
     public static IObservable<MessageReceiverBase> WithCommandModules(this IObservable<MessageReceiverBase> observable,
         params ICommandModule[] modules)
     {
@@ -95,6 +96,7 @@ public static class MiraiScaffold
     /// </summary>
     /// <param name="observable"></param>
     /// <returns></returns>
+    [Obsolete]
     public static IObservable<MessageReceiverBase> WithCommandModules<T>(
         this IObservable<MessageReceiverBase> observable) where T : ICommandModule
     {
@@ -110,6 +112,7 @@ public static class MiraiScaffold
     /// <param name="observable"></param>
     /// <param name="namespace"></param>
     /// <returns></returns>
+    [Obsolete]
     public static IObservable<MessageReceiverBase> WithCommandModules(this IObservable<MessageReceiverBase> observable,
         string @namespace)
     {

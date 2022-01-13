@@ -27,34 +27,30 @@ namespace Mirai.Net.Test
     {
         private static async Task Main()
         {
-            // var exit = new ManualResetEvent(false);
-            //
-            // using var bot = new MiraiBot
-            // {
-            //     Address = "localhost:8080",
-            //     VerifyKey = "1145141919810",
-            //     QQ = "2672886221"
-            // };
-            //
-            // await bot.LaunchAsync();
-            //
-            // bot.MessageReceived
-            //     .OfType<GroupMessageReceiver>()
-            //     .Subscribe(async r =>
-            //     {
-            //         if (r.MessageChain.Contains("/me", out MessageBase _))
-            //         {
-            //             var profile = await r.Sender.GetMemberProfileAsync();
-            //             
-            //             await r.SendMessageAsync($"Nick of acc: {profile.NickName}\r\nNick of group: {r.Sender.Name}");
-            //         }
-            //     });
-            //
-            // exit.WaitOne();
-
-            var my = "/test -arg1 awkdj awd awd awd -arg2 1 -arg3 akwjdh kjawhd akjwhd akjwh -arg4".CanExecute<TestCommand>();
-
-            Console.WriteLine(my);
+            var exit = new ManualResetEvent(false);
+            
+            using var bot = new MiraiBot
+            {
+                Address = "localhost:8080",
+                VerifyKey = "1145141919810",
+                QQ = "2672886221"
+            };
+            
+            await bot.LaunchAsync();
+            
+            bot.MessageReceived
+                .OfType<GroupMessageReceiver>()
+                .Subscribe(async r =>
+                {
+                    if (r.MessageChain.Contains("/me", out MessageBase _))
+                    {
+                        var profile = await r.Sender.GetMemberProfileAsync();
+                        
+                        await r.SendMessageAsync($"Nick of acc: {profile.NickName}\r\nNick of group: {r.Sender.Name}");
+                    }
+                });
+            
+            exit.WaitOne();
         }
     }
 
