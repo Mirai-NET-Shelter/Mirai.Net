@@ -11,6 +11,7 @@ namespace Mirai.Net.Data.Modules;
 ///     </example>
 /// </summary>
 [AttributeUsage(AttributeTargets.Method)]
+[Obsolete]
 public class CommandTriggerAttribute : Attribute
 {
     public CommandTriggerAttribute(string name, string prefix = "/", string argsSeparator = "-", bool equalName = false)
