@@ -30,19 +30,22 @@ public static class CommandScaffold
         var re = new T();
         var type = re.GetType();
         var commandInfo = type.GetCustomAttribute<CommandEntityAttribute>();
-
-        #region Pre check
-
-        if (!HasValidIdentifier(commandInfo, origin))
-            throw new InvalidCommandException($"此字符串无法解析为命令:\r\n{origin}");
-
-        #endregion
         
         var properties = type.GetProperties();
         var args = properties
             .Select(x => (x, x.GetCustomAttribute<CommandArgumentAttribute>()))
             .Where(x => x.Item2 != null)
             .ToList();
+        
+        #region Pre check
+
+        if (!HasValidIdentifier(commandInfo, origin))
+            throw new InvalidCommandException($"此字符串无法解析为命令:\r\n{origin}");
+
+        // if (args.Count(x => x.Item2.IsDefault) > 1)
+        //     throw new InvalidCommandEntityException($"只能有一个默认参数");
+
+        #endregion
         
         foreach (var (propertyInfo, argumentInfo) in args)
         {
@@ -54,6 +57,20 @@ public static class CommandScaffold
             if (origin.Split(' ').Count(x => x == argumentSyntax) > 1)
                 throw new InvalidCommandException($"命令参数{argumentInfo.Name}重复");
 
+            // if (argumentInfo.IsDefault && !origin.Contains(argumentSyntax))
+            // {
+            //     var commandSyntax = $"{commandInfo.Identifier}{commandInfo.Name}";
+            //
+            //     var left = commandSyntax.Length;
+            //     var right = origin.Contains(commandInfo.Separator)
+            //         ? origin.IndexOf(commandInfo.Separator, left, StringComparison.Ordinal) - left
+            //         : origin.Length - left;
+            //
+            //     propertyInfo.SetValue(re, origin.Substring(left, right));
+            //     
+            //     continue;
+            // }
+            
             switch (argumentInfo.IsRequired)
             {
                 case true when argumentInfo.Default is not null:
@@ -62,7 +79,9 @@ public static class CommandScaffold
                 case true when !origin.Contains(argumentSyntax):
                     throw new InvalidCommandException($"缺失必要参数: {argumentMeta}");
                 case true when propertyInfo.PropertyType == typeof(bool):
-                    throw new InvalidCommandException($"选项参数{argumentMeta}不可以是必须参数");
+                //     throw new InvalidCommandException($"选项参数{argumentMeta}不可以是必须参数");
+                // case true when argumentInfo.IsDefault:
+                    throw new InvalidCommandException($"必须参数{argumentMeta}不可以是默认参数");
                 case false when argumentInfo.Default is not null:
                     propertyInfo.SetValue(re, argumentInfo.Default);
                     break;
@@ -107,7 +126,6 @@ public static class CommandScaffold
                     
                     if (long.TryParse(intArg, out var outLong))
                         propertyInfo.SetValue(re, outLong);
-                    
                     break;
                 case true when propertyType == typeof(double):
                     var doubleArg = GetMiddleContent(commandInfo, origin, argumentSyntax);
@@ -129,14 +147,16 @@ public static class CommandScaffold
         var type = entity.GetType();
         var properties = type.GetProperties();
         var commandInfo = type.GetCustomAttribute<CommandEntityAttribute>();
-
-        if (!HasValidIdentifier(commandInfo, origin))
-            return false;
-        
         var args = properties
             .Select(x => (x, x.GetCustomAttribute<CommandArgumentAttribute>()))
             .Where(x => x.Item2 != null)
             .ToList();
+
+        if (!HasValidIdentifier(commandInfo, origin))
+            return false;
+
+        // if (args.Count(x => x.Item2.IsDefault) > 1)
+        //     return false;
         
         foreach (var (propertyInfo, argumentInfo) in args)
         {
@@ -146,7 +166,7 @@ public static class CommandScaffold
 
             if (origin.Split(' ').Count(x => x == argumentSyntax) > 1)
                 return false;
-            
+
             switch (argumentInfo.IsRequired)
             {
                 case true when argumentInfo.Default is not null:
@@ -155,6 +175,8 @@ public static class CommandScaffold
                     return false;
                 case true when propertyInfo.PropertyType == typeof(bool):
                     return false;
+                // case true when argumentInfo.IsDefault:
+                //     return false;
             }
             
             switch (origin.Contains(argumentSyntax))
@@ -191,7 +213,7 @@ public static class CommandScaffold
 
         return syntax.Any(s =>
         {
-            var index = origin.IndexOf(commandInfo.Separator, StringComparison.Ordinal);
+            var index = origin.IndexOf(commandInfo.Separator, 1, StringComparison.Ordinal);
 
             if (index == -1)
                 return origin.Trim() == s;
@@ -372,7 +394,7 @@ public static class CommandScaffold
     public static IEnumerable<ICommandModule> LoadCommandModules(string space)
     {
         var assembly = Assembly.GetEntryAssembly();
-        var types = assembly.GetTypes()
+        var types =assembly.GetTypes()
             .Where(x => x.IsClass && !x.IsAbstract && !x.IsInterface)
             .Where(x => x.GetInterfaces().Any(x => x == typeof(ICommandModule)))
             .Where(x => x!.FullName!.Contains(space))
