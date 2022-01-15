@@ -30,7 +30,7 @@ namespace Mirai.Net.Test
         [CommandEntity(Name = "say", Identifier = "/")]
         class SayCommand
         {
-            [CommandArgument(Name = "v")]
+            [CommandArgument(Name = "v", IsRequired = true)]
             public string Value { get; set; }
         }
     }
