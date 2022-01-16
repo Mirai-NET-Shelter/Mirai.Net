@@ -53,12 +53,17 @@ public class MiraiBot : IDisposable
     /// <summary>
     ///     最后一个启动的MiraiBot实例
     /// </summary>
+    [JsonIgnore]
     public static MiraiBot Instance { get; set; }
 
+    [JsonIgnore]
     internal string HttpSessionKey { get; set; }
 
+    [JsonIgnore]
     private string _address;
+    [JsonIgnore]
     private string _qq;
+    [JsonIgnore]
     private WebsocketClient _client;
 
     /// <summary>
@@ -94,10 +99,12 @@ public class MiraiBot : IDisposable
     ///     Mirai.Net总是需要一个VerifyKey
     /// </summary>
     public string VerifyKey { get; set; }
-
+    
+    [JsonIgnore]
     public Lazy<IEnumerable<Group>> Groups => 
         new(() => AccountManager.GetGroupsAsync().GetAwaiter().GetResult());
     
+    [JsonIgnore]
     public Lazy<IEnumerable<Friend>> Friends => 
         new(() => AccountManager.GetFriendsAsync().GetAwaiter().GetResult());
 
