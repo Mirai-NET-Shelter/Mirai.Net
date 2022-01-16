@@ -10,6 +10,8 @@ Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项
 
 如果你觉得这是个很酷的项目的话，不妨考虑给它点一个Star，如果你还觉得挺酷但还不够好的话，也欢迎提交Pull Request和Issue。
 
+可以[到此](https://github.com/SinoAHpx/Mirai.Net/issues/28)提交任何你关于让Mirai.NET的变得更好建议。
+
 ## 速览
 
 - 基于 [.NET Standard 2.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) 开发，支持跨平台。
