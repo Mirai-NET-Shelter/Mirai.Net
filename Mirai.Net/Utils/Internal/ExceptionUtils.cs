@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using AHpx.Extensions.JsonExtensions;
-using AHpx.Extensions.StringExtensions;
+using Manganese.Text;
 
 namespace Mirai.Net.Utils.Internal;
 
@@ -15,7 +13,8 @@ public static class ExceptionUtils
     /// <returns></returns>
     internal static string OfErrorMessage(this string json)
     {
-        var code = json.Fetch("code").IsIntegerOrThrow(new ArgumentException("错误的状态码"));
+        //todo: use is integer
+        var code = json.Fetch("code")?.ThrowIfNotInt64("错误的状态码").ToString();
 
         var vocabulary = new Dictionary<string, string>
         {

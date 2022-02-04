@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using AHpx.Extensions.JsonExtensions;
+using Manganese.Text;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;

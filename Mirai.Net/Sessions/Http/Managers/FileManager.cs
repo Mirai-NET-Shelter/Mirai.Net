@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using AHpx.Extensions.JsonExtensions;
-using AHpx.Extensions.StringExtensions;
 using Flurl.Http;
+using Manganese.Text;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Utils.Internal;
+using File = Mirai.Net.Data.Shared.File;
 
 namespace Mirai.Net.Sessions.Http.Managers;
 
@@ -128,7 +129,7 @@ public static class FileManager
     /// <returns>有几率返回null，这是个mirai-api-http的玄学问题</returns>
     public static async Task<File> UploadFileAsync(string target, string filePath, string uploadPath = "/")
     {
-        uploadPath ??= $"/{filePath.FetchFileName()}";
+        uploadPath ??= $"/{Path.GetFileName(filePath)}";
 
         var url = $"http://{MiraiBot.Instance.Address}/{HttpEndpoints.FileUpload.GetDescription()}";
 

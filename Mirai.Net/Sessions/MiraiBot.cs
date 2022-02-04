@@ -5,9 +5,8 @@ using System.Net.WebSockets;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Threading.Tasks;
-using AHpx.Extensions.JsonExtensions;
-using AHpx.Extensions.StringExtensions;
 using Flurl;
+using Manganese.Text;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Concretes.Message;
 using Mirai.Net.Data.Exceptions;
@@ -72,15 +71,17 @@ public class MiraiBot : IDisposable
     /// </summary>
     public string Address
     {
-        get => _address.TrimEnd('/').Empty("http://").Empty("https://");
+        //Todo: use .Empty
+        get => _address.TrimEnd('/').Replace("http://", "").Replace("https://", "");
         set
         {
             if (!value.Contains(":")) throw new InvalidAddressException($"错误的地址: {value}");
 
             var split = value.Split(':');
 
+            //todo: use is integer
             if (split.Length != 2) throw new InvalidAddressException($"错误的地址: {value}");
-            if (!split.Last().IsInteger()) throw new InvalidAddressException($"错误的地址: {value}");
+            if (!split.Last().IsInt64()) throw new InvalidAddressException($"错误的地址: {value}");
 
             _address = value;
         }
@@ -92,7 +93,7 @@ public class MiraiBot : IDisposable
     public string QQ
     {
         get => _qq;
-        set => _qq = value.IsIntegerOrThrow(new InvalidQQException("错误的QQ号"));
+        set => _qq = value.ThrowIfNotInt64("错误的QQ号").ToString();
     }
 
     /// <summary>

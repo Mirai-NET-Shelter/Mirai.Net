@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using AHpx.Extensions.JsonExtensions;
+using Manganese.Text;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;

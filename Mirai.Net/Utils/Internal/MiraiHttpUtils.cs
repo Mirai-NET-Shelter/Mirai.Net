@@ -1,8 +1,7 @@
 ﻿using System.Threading.Tasks;
-using AHpx.Extensions.JsonExtensions;
-using AHpx.Extensions.StringExtensions;
 using Flurl;
 using Flurl.Http;
+using Manganese.Text;
 using Mirai.Net.Data.Exceptions;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Sessions;
@@ -29,7 +28,7 @@ internal static class MiraiHttpUtils
             {
                 var message = $"原因: {json.OfErrorMessage()}";
 
-                if (appendix.IsNotNullOrEmpty())
+                if (!appendix.IsNullOrEmpty())
                     message += $"\r\n备注: {appendix}";
                 else
                     message += $"\r\n备注: {MiraiBot.Instance.ToJsonString()}";

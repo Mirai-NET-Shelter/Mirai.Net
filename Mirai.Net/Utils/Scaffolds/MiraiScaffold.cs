@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using AHpx.Extensions.JsonExtensions;
+using Manganese.Text;
 using Mirai.Net.Data.Events.Concretes.Request;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
@@ -70,56 +70,6 @@ public static class MiraiScaffold
     public static bool IsFriend(this MiraiBot bot, Friend friend)
     {
         return bot.Friends.Value.Any(x => x.Id == friend.Id);
-    }
-
-    #endregion
-
-    #region Legacy command module extensions
-
-    /// <summary>
-    ///     执行命令模块
-    /// </summary>
-    /// <param name="observable"></param>
-    /// <param name="modules"></param>
-    /// <returns></returns>
-    [Obsolete]
-    public static IObservable<MessageReceiverBase> WithCommandModules(this IObservable<MessageReceiverBase> observable,
-        params ICommandModule[] modules)
-    {
-        observable.Subscribe(x => { x.ExecuteCommandModules(modules); });
-
-        return observable;
-    }
-
-    /// <summary>
-    ///     执行指定类型同命名空间下所有命令模块（除非它没开启）
-    /// </summary>
-    /// <param name="observable"></param>
-    /// <returns></returns>
-    [Obsolete]
-    public static IObservable<MessageReceiverBase> WithCommandModules<T>(
-        this IObservable<MessageReceiverBase> observable) where T : ICommandModule
-    {
-        var particular = CommandScaffold.LoadCommandModules<T>();
-        observable.Subscribe(x => { x.ExecuteCommandModules(particular); });
-
-        return observable;
-    }
-
-    /// <summary>
-    ///     执行指定命名空间下所有命令模块（除非它没开启）
-    /// </summary>
-    /// <param name="observable"></param>
-    /// <param name="namespace"></param>
-    /// <returns></returns>
-    [Obsolete]
-    public static IObservable<MessageReceiverBase> WithCommandModules(this IObservable<MessageReceiverBase> observable,
-        string @namespace)
-    {
-        var particular = CommandScaffold.LoadCommandModules(@namespace);
-        observable.Subscribe(x => { x.ExecuteCommandModules(particular); });
-
-        return observable;
     }
 
     #endregion

@@ -1,4 +1,4 @@
-﻿using AHpx.Extensions.StringExtensions;
+﻿using Manganese.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
