@@ -6,6 +6,8 @@ Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项
 
 本项目的 QQ 群: `1042821169`，需要技术支持或者有什么问题（甚至水群聊天），欢迎加入群聊探讨。
 
+如果申请QQ群迟迟没有得到通过，可能是你的账号被腾讯风控，请发邮件给我: AHpx@yandex.com 。
+
 项目文档: https://sinoahpx.github.io/Mirai.Net.Documents
 
 如果你觉得这是个很酷的项目的话，不妨考虑给它点一个Star，如果你还觉得挺酷但还不够好的话，也欢迎提交Pull Request和Issue。
