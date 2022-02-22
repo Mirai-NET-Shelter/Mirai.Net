@@ -143,7 +143,7 @@ public static class AccountManager
     /// <summary>
     ///     获取任意QQ的资料（需要mirai-api-http 2.4.0及以上）
     /// </summary>
-    public static async Task<Profile> GetFriendProfileAsync(string target)
+    public static async Task<Profile> GetProfileAsync(string target)
     {
         return await GetProfileAsync(HttpEndpoints.UserProfile, new
         {
