@@ -18,5 +18,6 @@ public enum Messages
     Dice,
     MusicShare,
     Forward,
-    File
+    File,
+    MarketFace
 }
