@@ -17,6 +17,17 @@ public class MessageChainBuilder
         _chain.Clear();
         return this;
     }
+
+    /// <summary>
+    /// 追加自定义的消息
+    /// </summary>
+    /// <param name="messageBase"></param>
+    /// <returns></returns>
+    public MessageChainBuilder Append(MessageBase messageBase)
+    {
+        _chain.Add(messageBase);
+        return this;
+    }
     
     /// <summary>
     /// 追加一条文本消息
