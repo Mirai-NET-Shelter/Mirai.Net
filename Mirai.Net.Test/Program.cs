@@ -11,18 +11,11 @@ using Mirai.Net.Utils.Scaffolds;
 
 namespace Mirai.Net.Test
 {
-    class MessageChain : List<MessageBase>
-    {
-        public void Marshal()
-        {
-            
-        }
-    }
-    
     internal static class Program
     {
         private static async Task Main()
         {
+
             var exit = new ManualResetEvent(false);
             
             using var bot = new MiraiBot
@@ -38,10 +31,7 @@ namespace Mirai.Net.Test
             {
                 if (x.MessageChain.GetPlainMessage() == "/send")
                 {
-                    await x.SendMessageAsync(new ImageMessage
-                    {
-                        Path = @"C:\Users\ahpx\Downloads\waifu.png"
-                    });
+                    await x.SendMessageAsync();
                 }
             });
             
