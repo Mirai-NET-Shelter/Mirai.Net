@@ -21,7 +21,6 @@ public static class FileManager
     /// <param name="withDownloadInfo">附带下载信息，默认不附带</param>
     /// <param name="folderId">文件夹id，空字符串即为根目录</param>
     /// <returns></returns>
-    [Obsolete("此方法因为mirai-api-http的缺陷，存在严重性能问题（只能获取少量群文件）。")]
     public static async Task<IEnumerable<File>> GetFilesAsync(string target, bool? withDownloadInfo = null,
         string folderId = "")
     {
