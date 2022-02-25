@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Sessions;
@@ -9,6 +11,14 @@ using Mirai.Net.Utils.Scaffolds;
 
 namespace Mirai.Net.Test
 {
+    class MessageChain : List<MessageBase>
+    {
+        public void Marshal()
+        {
+            
+        }
+    }
+    
     internal static class Program
     {
         private static async Task Main()

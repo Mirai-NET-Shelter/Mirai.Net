@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageVersion>2.4.0-Pre2</PackageVersion>
@@ -11,6 +10,15 @@
         <PackageProjectUrl>https://github.com/SinoAHpx/Mirai.Net</PackageProjectUrl>
         <PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/SinoAHpx/Mirai.Net</RepositoryUrl>
+        <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\Mirai.Net.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DocumentationFile>bin\Release\Mirai.Net.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
