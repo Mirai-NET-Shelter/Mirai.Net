@@ -47,6 +47,7 @@ internal enum HttpEndpoints
     [Description("setEssence")] SetEssence,
     [Description("groupConfig")] GroupConfig,
     [Description("memberInfo")] MemberInfo,
+    [Description("userProfile")] UserProfile,
 
     [Description("resp/newFriendRequestEvent")]
     NewFriendRequested,
