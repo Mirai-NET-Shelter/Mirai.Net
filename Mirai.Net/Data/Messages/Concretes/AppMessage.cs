@@ -6,5 +6,5 @@ public class AppMessage : MessageBase
 {
     public override Messages Type { get; set; } = Messages.App;
 
-    [JsonProperty("app")] public string App { get; set; }
+    [JsonProperty("content")] public string Content { get; set; }
 }
