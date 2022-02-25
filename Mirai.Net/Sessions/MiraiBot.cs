@@ -17,6 +17,7 @@ using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Sessions.Http.Managers;
 using Mirai.Net.Utils.Internal;
+using Mirai.Net.Utils.Scaffolds;
 using Newtonsoft.Json;
 using Websocket.Client;
 
@@ -207,14 +208,13 @@ public class MiraiBot : IDisposable
                 {
                     case WebsocketMessageTypes.Message:
                         var receiver = ReflectionUtils.GetMessageReceiverBase(data);
+                        // receiver.MessageChain = new MessageChain();
 
-                        var messageChain = data
+                        receiver.MessageChain = data
                             .Fetch("messageChain")
                             .ToJArray()
                             .Select(token => ReflectionUtils.GetMessageBase(token.ToString()))
-                            .ToList();
-
-                        receiver.MessageChain = new MessageChain(messageChain);
+                            .ToMessageChain();
 
                         if (receiver.MessageChain.OfType<AtMessage>().Any(x => x.Target == Instance.QQ))
                         {

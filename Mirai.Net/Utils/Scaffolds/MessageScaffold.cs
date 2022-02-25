@@ -11,6 +11,11 @@ namespace Mirai.Net.Utils.Scaffolds;
 /// </summary>
 public static class MessageScaffold
 {
+    public static MessageChain ToMessageChain<TSource>(this IEnumerable<TSource> source) where TSource : MessageBase
+    {
+        return new MessageChain(source);
+    }
+    
     public static MessageBase[] Append(this string origin, params MessageBase[] append)
     {
         var re = new List<MessageBase> { new PlainMessage(origin) };

@@ -34,7 +34,7 @@ namespace Mirai.Net.Test
                     await x.SendMessageAsync(new MessageChainBuilder()
                         .At(x.Sender)
                         .Plain("这是一个测试")
-                        .ImageFromUrl("https://opengraph.githubassets.com/485c0a760f65a1ffbe1bdb1ce2eb25734feba1bce3e6ee3b679881df443ed8f9/SinoAHpx/Mirai.Net")
+                        .ImageFromId("{AB9BA7E2-DAF6-F959-AD74-CD9BFA794729}.jpg")
                         .Build());
                 }
             });
