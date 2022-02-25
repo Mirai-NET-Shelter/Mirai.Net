@@ -214,7 +214,7 @@ public class MiraiBot : IDisposable
                             .Select(token => ReflectionUtils.GetMessageBase(token.ToString()))
                             .ToList();
 
-                        receiver.MessageChain = messageChain;
+                        receiver.MessageChain = new MessageChain(messageChain);
 
                         if (receiver.MessageChain.OfType<AtMessage>().Any(x => x.Target == Instance.QQ))
                         {

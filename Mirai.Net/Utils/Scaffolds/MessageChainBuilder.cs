@@ -1,5 +1,6 @@
 ﻿using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
+using Mirai.Net.Data.Shared;
 
 namespace Mirai.Net.Utils.Scaffolds;
 
@@ -11,10 +12,10 @@ public class MessageChainBuilder
     /// 清除已追加的消息
     /// </summary>
     /// <returns></returns>
-    public MessageChain Clear()
+    public MessageChainBuilder Clear()
     {
         _chain.Clear();
-        return _chain;
+        return this;
     }
     
     /// <summary>
@@ -22,10 +23,10 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="text"></param>
     /// <returns></returns>
-    public MessageChain Plain(string text)
+    public MessageChainBuilder Plain(string text)
     {
         _chain.Add(new PlainMessage(text));
-        return _chain;
+        return this;
     }
     
     /// <summary>
@@ -33,10 +34,20 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="qq"></param>
     /// <returns></returns>
-    public MessageChain At(string qq)
+    public MessageChainBuilder At(string qq)
     {
         _chain.Add(new AtMessage(qq));
-        return _chain;
+        return this;
+    }
+
+    /// <summary>
+    /// 追加一条at消息
+    /// </summary>
+    /// <param name="member"></param>
+    /// <returns></returns>
+    public MessageChainBuilder At(Member member)
+    {
+        return At(member.Id);
     }
 
     /// <summary>
@@ -44,21 +55,24 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="content"></param>
     /// <returns></returns>
-    public MessageChain App(string content)
+    public MessageChainBuilder App(string content)
     {
-        _chain.Add(new AppMessage(content));
-        return _chain;
+        _chain.Add(new AppMessage
+        {
+            Content = content
+        });
+        return this;
     }
 
     /// <summary>
     /// 追加一套at全体成员消息
     /// </summary>
     /// <returns></returns>
-    public MessageChain AtAll()
+    public MessageChainBuilder AtAll()
     {
         _chain.Add(new AtAllMessage());
 
-        return _chain;
+        return this;
     }
 
     /// <summary>
@@ -66,14 +80,14 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>
-    public MessageChain Dice(string value)
+    public MessageChainBuilder Dice(string value)
     {
         _chain.Add(new DiceMessage
         {
             Value = value
         });
 
-        return _chain;
+        return this;
     }
     
     /// <summary>
@@ -81,14 +95,14 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="url"></param>
     /// <returns></returns>
-    public MessageChain ImageFromUrl(string url)
+    public MessageChainBuilder ImageFromUrl(string url)
     {
         _chain.Add(new ImageMessage
         {
             Url = url
         });
 
-        return _chain;
+        return this;
     }
     
     /// <summary>
@@ -96,14 +110,14 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="base64"></param>
     /// <returns></returns>
-    public MessageChain ImageFromBase64(string base64)
+    public MessageChainBuilder ImageFromBase64(string base64)
     {
         _chain.Add(new ImageMessage
         {
             Base64 = base64
         });
 
-        return _chain;
+        return this;
     }
     
     /// <summary>
@@ -111,14 +125,14 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="file"></param>
     /// <returns></returns>
-    public MessageChain ImageFromPath(string file)
+    public MessageChainBuilder ImageFromPath(string file)
     {
         _chain.Add(new ImageMessage
         {
             Path = file
         });
 
-        return _chain;
+        return this;
     }
     
     /// <summary>
@@ -126,14 +140,14 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public MessageChain ImageFromId(string id)
+    public MessageChainBuilder ImageFromId(string id)
     {
         _chain.Add(new ImageMessage
         {
             ImageId = id
         });
 
-        return _chain;
+        return this;
     }
     
     /// <summary>
@@ -141,14 +155,14 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="url"></param>
     /// <returns></returns>
-    public MessageChain FlashImageFromUrl(string url)
+    public MessageChainBuilder FlashImageFromUrl(string url)
     {
         _chain.Add(new FlashImageMessage
         {
             Url = url
         });
 
-        return _chain;
+        return this;
     }
     
     /// <summary>
@@ -156,14 +170,14 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="base64"></param>
     /// <returns></returns>
-    public MessageChain FlashImageFromBase64(string base64)
+    public MessageChainBuilder FlashImageFromBase64(string base64)
     {
         _chain.Add(new FlashImageMessage
         {
             Base64 = base64
         });
 
-        return _chain;
+        return this;
     }
     
     /// <summary>
@@ -171,14 +185,14 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="file"></param>
     /// <returns></returns>
-    public MessageChain FlashImageFromPath(string file)
+    public MessageChainBuilder FlashImageFromPath(string file)
     {
         _chain.Add(new FlashImageMessage
         {
             Path = file
         });
 
-        return _chain;
+        return this;
     }
     
     /// <summary>
@@ -186,14 +200,14 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public MessageChain FlashImageFromId(string id)
+    public MessageChainBuilder FlashImageFromId(string id)
     {
         _chain.Add(new FlashImageMessage
         {
             ImageId = id
         });
 
-        return _chain;
+        return this;
     }
 
     /// <summary>
@@ -201,14 +215,14 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="json"></param>
     /// <returns></returns>
-    public MessageChain Json(string json)
+    public MessageChainBuilder Json(string json)
     {
         _chain.Add(new JsonMessage
         {
             Json = json
         });
 
-        return _chain;
+        return this;
     }
 
     /// <summary>
@@ -216,14 +230,14 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="xml"></param>
     /// <returns></returns>
-    public MessageChain Xml(string xml)
+    public MessageChainBuilder Xml(string xml)
     {
         _chain.Add(new XmlMessage
         {
             Xml = xml
         });
 
-        return _chain;
+        return this;
     }
 
     /// <summary>
@@ -231,14 +245,14 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="path"></param>
     /// <returns></returns>
-    public MessageChain VoiceFromPath(string path)
+    public MessageChainBuilder VoiceFromPath(string path)
     {
         _chain.Add(new VoiceMessage
         {
             Path = path
         });
 
-        return _chain;
+        return this;
     }
     
     /// <summary>
@@ -246,14 +260,14 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="base64"></param>
     /// <returns></returns>
-    public MessageChain VoiceFromBase64(string base64)
+    public MessageChainBuilder VoiceFromBase64(string base64)
     {
         _chain.Add(new VoiceMessage
         {
             Base64 = base64
         });
 
-        return _chain;
+        return this;
     }
     
     /// <summary>
@@ -261,14 +275,14 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public MessageChain VoiceFromId(string id)
+    public MessageChainBuilder VoiceFromId(string id)
     {
         _chain.Add(new VoiceMessage
         {
             VoiceId = id
         });
 
-        return _chain;
+        return this;
     }
     
     /// <summary>
@@ -276,14 +290,18 @@ public class MessageChainBuilder
     /// </summary>
     /// <param name="url"></param>
     /// <returns></returns>
-    public MessageChain VoiceFromUrl(string url)
+    public MessageChainBuilder VoiceFromUrl(string url)
     {
         _chain.Add(new VoiceMessage
         {
             Url = url
         });
 
+        return this;
+    }
+
+    public MessageChain Build()
+    {
         return _chain;
     }
-    
 }

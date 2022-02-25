@@ -98,7 +98,7 @@ public static class MiraiScaffold
     /// <param name="chain"></param>
     /// <returns></returns>
     public static async Task<string> SendMessageAsync(this GroupMessageReceiver receiver,
-        params MessageBase[] chain)
+        MessageChain chain)
     {
         return await MessageManager
             .SendGroupMessageAsync(receiver.Sender.Group.Id, chain);
@@ -111,7 +111,7 @@ public static class MiraiScaffold
     /// <param name="chain"></param>
     /// <returns></returns>
     public static async Task<string> SendMessageAsync(this FriendMessageReceiver receiver,
-        params MessageBase[] chain)
+        MessageChain chain)
     {
         return await MessageManager
             .SendFriendMessageAsync(receiver.Sender.Id, chain);
@@ -123,7 +123,7 @@ public static class MiraiScaffold
     /// <param name="receiver"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
-    public static async Task<string> SendMessageAsync(this TempMessageReceiver receiver, params MessageBase[] chain)
+    public static async Task<string> SendMessageAsync(this TempMessageReceiver receiver, MessageChain chain)
     {
         return await MessageManager
             .SendTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, chain);
@@ -177,7 +177,7 @@ public static class MiraiScaffold
     }
 
     public static async Task<string> QuoteMessageAsync(this FriendMessageReceiver receiver,
-        params MessageBase[] chain)
+        MessageChain chain)
     {
         var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
 
@@ -186,7 +186,7 @@ public static class MiraiScaffold
     }
 
     public static async Task<string> QuoteMessageAsync(this GroupMessageReceiver receiver,
-        params MessageBase[] chain)
+        MessageChain chain)
     {
         var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
 
@@ -195,7 +195,7 @@ public static class MiraiScaffold
     }
 
     public static async Task<string> QuoteMessageAsync(this TempMessageReceiver receiver,
-        params MessageBase[] chain)
+        MessageChain chain)
     {
         var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
 

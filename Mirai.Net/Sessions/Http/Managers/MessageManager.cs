@@ -45,7 +45,7 @@ public static class MessageManager
     /// <param name="target"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
-    public static async Task<string> SendFriendMessageAsync(string target, params MessageBase[] chain)
+    public static async Task<string> SendFriendMessageAsync(string target, MessageChain chain)
     {
         var payload = new
         {
@@ -62,7 +62,7 @@ public static class MessageManager
     /// <param name="friend"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
-    public static async Task<string> SendFriendMessageAsync(this Friend friend, params MessageBase[] chain)
+    public static async Task<string> SendFriendMessageAsync(this Friend friend, MessageChain chain)
     {
         return await SendFriendMessageAsync(friend.Id, chain);
     }
@@ -73,7 +73,7 @@ public static class MessageManager
     /// <param name="target"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
-    public static async Task<string> SendGroupMessageAsync(string target, params MessageBase[] chain)
+    public static async Task<string> SendGroupMessageAsync(string target, MessageChain chain)
     {
         var payload = new
         {
@@ -90,7 +90,7 @@ public static class MessageManager
     /// <param name="group"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
-    public static async Task<string> SendGroupMessageAsync(this Group group, params MessageBase[] chain)
+    public static async Task<string> SendGroupMessageAsync(this Group group, MessageChain chain)
     {
         return await SendGroupMessageAsync(group.Id, chain);
     }
@@ -102,7 +102,7 @@ public static class MessageManager
     /// <param name="group"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
-    public static async Task<string> SendTempMessageAsync(string qq, string group, params MessageBase[] chain)
+    public static async Task<string> SendTempMessageAsync(string qq, string group, MessageChain chain)
     {
         var payload = new
         {
@@ -120,7 +120,7 @@ public static class MessageManager
     /// <param name="member"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
-    public static async Task<string> SendTempMessageAsync(this Member member, params MessageBase[] chain)
+    public static async Task<string> SendTempMessageAsync(this Member member, MessageChain chain)
     {
         return await SendTempMessageAsync(member.Id, member.Group.Id, chain);
     }
@@ -165,7 +165,7 @@ public static class MessageManager
     /// <param name="chain"></param>
     /// <returns></returns>
     public static async Task<string> QuoteFriendMessageAsync(string target, string messageId,
-        params MessageBase[] chain)
+        MessageChain chain)
     {
         var payload = new
         {
@@ -185,7 +185,7 @@ public static class MessageManager
     /// <param name="chain"></param>
     /// <returns></returns>
     public static async Task<string> QuoteFriendMessageAsync(this Friend friend, string messageId,
-        params MessageBase[] chain)
+        MessageChain chain)
     {
         return await QuoteFriendMessageAsync(friend.Id, messageId, chain);
     }
@@ -197,7 +197,7 @@ public static class MessageManager
     /// <param name="messageId"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
-    public static async Task<string> QuoteGroupMessageAsync(string target, string messageId, params MessageBase[] chain)
+    public static async Task<string> QuoteGroupMessageAsync(string target, string messageId, MessageChain chain)
     {
         var payload = new
         {
@@ -217,7 +217,7 @@ public static class MessageManager
     /// <param name="chain"></param>
     /// <returns></returns>
     public static async Task<string> QuoteGroupMessageAsync(this Group group, string messageId,
-        params MessageBase[] chain)
+        MessageChain chain)
     {
         return await QuoteGroupMessageAsync(group.Id, messageId, chain);
     }
@@ -231,7 +231,7 @@ public static class MessageManager
     /// <param name="chain"></param>
     /// <returns></returns>
     public static async Task<string> QuoteTempMessageAsync(string memberId, string group, string messageId,
-        params MessageBase[] chain)
+        MessageChain chain)
     {
         var payload = new
         {
@@ -252,9 +252,9 @@ public static class MessageManager
     /// <param name="chain"></param>
     /// <returns></returns>
     public static async Task<string> QuoteTempMessageAsync(this Member member, string messageId,
-        params MessageBase[] chain)
+        MessageChain chain)
     {
-        return await QuoteTempMessageAsync(member.Group.Id, member.Group.Id, messageId);
+        return await QuoteTempMessageAsync(member.Group.Id, member.Group.Id, messageId, chain);
     }
 
     #endregion
@@ -269,7 +269,7 @@ public static class MessageManager
     /// <returns></returns>
     public static async Task<string> SendFriendMessageAsync(string target, string message)
     {
-        return await SendFriendMessageAsync(target, message.Append());
+        return await SendFriendMessageAsync(target, new MessageChainBuilder().Plain(message).Build());
     }
 
     /// <summary>
@@ -280,7 +280,7 @@ public static class MessageManager
     /// <returns></returns>
     public static async Task<string> SendFriendMessageAsync(this Friend target, string message)
     {
-        return await SendFriendMessageAsync(target, message.Append());
+        return await SendFriendMessageAsync(target, new MessageChainBuilder().Plain(message).Build());
     }
 
 
@@ -293,7 +293,7 @@ public static class MessageManager
     /// <returns></returns>
     public static async Task<string> SendTempMessageAsync(string target, string group, string message)
     {
-        return await SendTempMessageAsync(target, group, message.Append());
+        return await SendTempMessageAsync(target, group, new MessageChainBuilder().Plain(message).Build());
     }
 
     /// <summary>
@@ -304,7 +304,7 @@ public static class MessageManager
     /// <returns></returns>
     public static async Task<string> SendTempMessageAsync(this Member member, string message)
     {
-        return await SendTempMessageAsync(member, message.Append());
+        return await SendTempMessageAsync(member, new MessageChainBuilder().Plain(message).Build());
     }
 
     /// <summary>
@@ -315,7 +315,7 @@ public static class MessageManager
     /// <returns></returns>
     public static async Task<string> SendGroupMessageAsync(string target, string message)
     {
-        return await SendGroupMessageAsync(target, message.Append());
+        return await SendGroupMessageAsync(target, new MessageChainBuilder().Plain(message).Build());
     }
 
     /// <summary>
@@ -326,7 +326,7 @@ public static class MessageManager
     /// <returns></returns>
     public static async Task<string> SendGroupMessageAsync(this Group group, string message)
     {
-        return await SendGroupMessageAsync(group, message.Append());
+        return await SendGroupMessageAsync(group, new MessageChainBuilder().Plain(message).Build());
     }
 
     /// <summary>
@@ -338,7 +338,7 @@ public static class MessageManager
     /// <returns></returns>
     public static async Task<string> QuoteFriendMessageAsync(string target, string messageId, string message)
     {
-        return await QuoteFriendMessageAsync(target, messageId, message.Append());
+        return await QuoteFriendMessageAsync(target, messageId, new MessageChainBuilder().Plain(message).Build());
     }
 
     /// <summary>
@@ -350,7 +350,7 @@ public static class MessageManager
     /// <returns></returns>
     public static async Task<string> QuoteFriendMessageAsync(this Friend target, string messageId, string message)
     {
-        return await QuoteFriendMessageAsync(target, messageId, message.Append());
+        return await QuoteFriendMessageAsync(target, messageId, new MessageChainBuilder().Plain(message).Build());
     }
 
     /// <summary>
@@ -362,7 +362,7 @@ public static class MessageManager
     /// <returns></returns>
     public static async Task<string> QuoteGroupMessageAsync(string target, string messageId, string message)
     {
-        return await QuoteGroupMessageAsync(target, messageId, message.Append());
+        return await QuoteGroupMessageAsync(target, messageId, new MessageChainBuilder().Plain(message).Build());
     }
 
     /// <summary>
@@ -374,7 +374,7 @@ public static class MessageManager
     /// <returns></returns>
     public static async Task<string> QuoteGroupMessageAsync(this Group target, string messageId, string message)
     {
-        return await QuoteGroupMessageAsync(target, messageId, message.Append());
+        return await QuoteGroupMessageAsync(target, messageId, new MessageChainBuilder().Plain(message).Build());
     }
 
     /// <summary>
@@ -388,7 +388,7 @@ public static class MessageManager
     public static async Task<string> QuoteTempMessageAsync(string memberId, string group, string messageId,
         string message)
     {
-        return await QuoteTempMessageAsync(memberId, group, messageId, message.Append());
+        return await QuoteTempMessageAsync(memberId, group, messageId, new MessageChainBuilder().Plain(message).Build());
     }
 
     /// <summary>
@@ -400,7 +400,7 @@ public static class MessageManager
     /// <returns></returns>
     public static async Task<string> QuoteTempMessageAsync(this Member member, string messageId, string message)
     {
-        return await QuoteTempMessageAsync(member, messageId, message.Append());
+        return await QuoteTempMessageAsync(member, messageId, new MessageChainBuilder().Plain(message).Build());
     }
 
     #endregion

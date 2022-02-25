@@ -10,5 +10,5 @@ public class MessageReceiverBase
     [JsonConverter(typeof(StringEnumConverter))]
     public virtual MessageReceivers Type { get; set; }
 
-    [JsonProperty("messageChain")] public IEnumerable<MessageBase> MessageChain { get; set; }
+    [JsonProperty("messageChain")] public MessageChain MessageChain { get; set; }
 }
