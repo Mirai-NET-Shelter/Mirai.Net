@@ -23,22 +23,19 @@ public static class MessageScaffold
     }
 
     /// <summary>
-    /// 转义成合法的mirai码
+    /// 转义成兼容mirai码的文本
     /// </summary>
     /// <returns></returns>
     public static string EscapeMiraiCode(this string origin)
     {
-        var rawArgs = origin
-            .GetMiraiCodeArguments();
-
-        var result = rawArgs
+        var result = origin
             .Replace("[", @"\[")
             .Replace("]", @"\]")
             .Replace(":", @"\:")
             .Replace(",", @"\,")
             .Replace("\\", @"\\");
         
-        return origin.Replace(rawArgs, result);
+        return result;
     }
 
     private static string GetMiraiCodeArguments(this string origin)
