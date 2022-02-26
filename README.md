@@ -1,4 +1,4 @@
-# Mirai.Net 2.4.0-Pre2
+# Mirai.Net 2.3.9
 
 Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项目遵循
 [AGPL-3.0 LICENSE](https://github.com/AHpxChina/Mirai.Net/blob/master/LICENSE)
@@ -6,7 +6,7 @@ Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项
 
 本项目的 QQ 群: `1042821169`，需要技术支持或者有什么问题（甚至水群聊天），欢迎加入群聊探讨。
 
-如果申请QQ群迟迟没有得到通过，可能是你的账号被腾讯风控，请发邮件给我: AHpx@yandex.com 。
+如果申请QQ群迟迟没有得到通过，可能是你的账号被腾讯风控，可以发邮件给我: AHpx@yandex.com 。
 
 项目文档: https://sinoahpx.github.io/Mirai.Net.Documents
 
@@ -43,19 +43,21 @@ _斜体的标注的接口是不稳定的_
   - 获取 Bot 资料
   - 获取好友资料
   - 获取群成员资料
+  - 获取陌生人资料
 - 消息发送和撤回
   - 发送好友消息
   - 发送群消息
   - 发送临时会话消息
   - 发送头像戳一戳消息
   - 撤回消息
+  - 根据消息id获取消息链
 - 文件操作
-  - _查看文件列表_
-  - _获取文件信息_
-  - _创建文件夹_
-  - ~~删除文件~~
-  - ~~移动文件~~
-  - ~~重命名文件~~
+  - 查看文件列表
+  - 获取文件信息
+  - 创建文件夹
+  - 删除文件
+  - 移动文件
+  - 重命名文件
 - 多媒体内容上传
   - 图片文件上传
   - 语音文件上传
@@ -100,17 +102,20 @@ _斜体的标注的接口是不稳定的_
 - MusicShare - 音乐分享
 - ForwardMessage - 转发消息
 - File - 文件
+- MarketFace - 商城表情
+- MiraiCode - Mirai码
+
 </details>
 
 ## 快速上手
 
-**(以下仅为一些简单示例，如果需要更详细的说明，请移步[文档]。有时候文档跟不上版本请[进群提问](#Mirai.Net 2.4.0-Pre2))**
+**(以下仅为一些简单示例，如果需要更详细的说明，请移步[文档]。有时候文档跟不上版本请[进群提问](#mirainet-239)**
 
 ### 安装
 
 - 使用 Nuget 安装(推荐)
-  - Nuget 包管理器: `Install-Package Mirai.Net -Version 2.4.0-Pre2`
-  - .NET CLI: `dotnet add package Mirai.Net --version 2.4.0-Pre2`
+  - Nuget 包管理器: `Install-Package Mirai.Net`
+  - .NET CLI: `dotnet add package Mirai.Net`
   - **或者在 IDE 的可视化界面搜索`Mirai.Net`安装最新版。**
 - 自己克隆这个仓库的默认分支，然后自己编译，然后自己添加 dll 引用。
 
@@ -185,7 +190,7 @@ await manager.SendGroupMessageAsync("xx", "Hello, World");
 或者:
 
 ```cs
-await manager.SendGroupMessageAsync("xx", "Hello, ".Append(new AtMessage("xx")).Append(" !"));
+await manager.SendGroupMessageAsync("xx", new MessageChainBuilder().Plain("Hello, ").At("xx").Build());
 ```
 
 ## 贡献
@@ -203,7 +208,7 @@ await manager.SendGroupMessageAsync("xx", "Hello, ".Append(new AtMessage("xx")).
 - [Json.NET](http://json.net/) ~~这甚至是这个项目名称的灵感来源~~
 - [Websocket.Client](https://github.com/Marfusios/websocket-client)
 - [Rx.NET](https://github.com/dotnet/reactive)
-- [AHpx.Extensions](https://github.com/AHpxChina/AHpx.E*xtensions)
+- [Manganese](https://github.com/SinoAHpx/Manganese)
 
 [mirai-api-http]: https://github.com/project-mirai/mirai-api-http
 [mirai]: https://github.com/mamoe/mirai

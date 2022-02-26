@@ -38,8 +38,7 @@ namespace Mirai.Net.Test
                     //     .ImageFromId("{AB9BA7E2-DAF6-F959-AD74-CD9BFA794729}.jpg")
                     //     .Build());
 
-                    await x.SendMessageAsync(new MiraiCodeMessage($"[mirai:at:{x.Sender.Id}]这是一个测试[mirai:image:" +
-                                                                  "{AB9BA7E2-DAF6-F959-AD74-CD9BFA794729}.jpg]"));
+                    await x.SendMessageAsync("");
                 }
             });
             
