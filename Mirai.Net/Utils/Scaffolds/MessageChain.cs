@@ -2,6 +2,8 @@
 using System.Linq;
 using Manganese.Text;
 using Mirai.Net.Data.Messages.Concretes;
+using Mirai.Net.Utils.Scaffolds;
+
 // ReSharper disable once CheckNamespace
 namespace Mirai.Net.Data.Messages;
 
@@ -39,5 +41,15 @@ public partial class MessageChain : List<MessageBase>
             return new List<string>();
 
         return plain.Select(x => x.Text).ToList();
+    }
+
+    /// <summary>
+    /// 自动转换单个消息为消息链
+    /// </summary>
+    /// <param name="messageBase"></param>
+    /// <returns></returns>
+    public static implicit operator MessageChain(MessageBase messageBase)
+    {
+        return messageBase.ToMessageChain();
     }
 }

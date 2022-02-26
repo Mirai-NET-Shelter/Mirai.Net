@@ -39,8 +39,7 @@ namespace Mirai.Net.Test
                     //     .Build());
 
                     await x.SendMessageAsync(new MiraiCodeMessage($"[mirai:at:{x.Sender.Id}]这是一个测试[mirai:image:" +
-                                                                  "{AB9BA7E2-DAF6-F959-AD74-CD9BFA794729}.jpg]")
-                        .ToMessageChain());
+                                                                  "{AB9BA7E2-DAF6-F959-AD74-CD9BFA794729}.jpg]"));
                 }
             });
             
