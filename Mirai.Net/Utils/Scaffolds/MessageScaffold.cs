@@ -11,6 +11,80 @@ namespace Mirai.Net.Utils.Scaffolds;
 /// </summary>
 public static class MessageScaffold
 {
+    #region Legacy
+
+    public static MessageChain Append(this string origin, params MessageBase[] append)
+    {
+        var re = new MessageChain { new PlainMessage(origin) };
+        re.AddRange(append);
+
+        return re;
+    }
+    
+    public static MessageChain Append(this string origin, IEnumerable<MessageBase> append)
+    {
+        var re = new MessageChain { new PlainMessage(origin) };
+        re.AddRange(append);
+
+        return re;
+    }
+
+    public static MessageChain Append(this string origin, string append)
+    {
+        var re = new MessageChain { new PlainMessage(origin), new PlainMessage(append) };
+
+        return re;
+    }
+
+    public static MessageChain Append(this MessageBase messageBase, params MessageBase[] append)
+    {
+        var re = new MessageChain { messageBase };
+        re.AddRange(append);
+
+        return re;
+    }
+    
+    public static MessageChain Append(this MessageBase messageBase, IEnumerable<MessageBase> append)
+    {
+        var re = new MessageChain { messageBase };
+        re.AddRange(append);
+
+        return re;
+    }
+
+    public static MessageChain Append(this MessageBase messageBase, string append)
+    {
+        var re = new MessageChain { messageBase, new PlainMessage(append) };
+
+        return re;
+    }
+
+    public static MessageChain Append(this IEnumerable<MessageBase> bases, params MessageBase[] append)
+    {
+        var re = bases.ToList();
+        re.AddRange(append);
+
+        return re.ToMessageChain();
+    }
+
+    public static MessageChain Append(this IEnumerable<MessageBase> bases, string append)
+    {
+        var re = bases.ToList();
+        re.Add(new PlainMessage(append));
+
+        return re.ToMessageChain();
+    }
+    
+    public static MessageChain Append(this IEnumerable<MessageBase> bases, IEnumerable<MessageBase> append)
+    {
+        var re = bases.ToList();
+        re.AddRange(append);
+
+        return re.ToMessageChain();
+    }
+
+    #endregion
+    
     /// <summary>
     /// 把枚举接口转换为高层MessageChain对象
     /// </summary>

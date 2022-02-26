@@ -1,19 +1,17 @@
-﻿// ReSharper disable once CheckNamespace
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Manganese.Text;
 using Mirai.Net.Data.Messages.Concretes;
-
+// ReSharper disable once CheckNamespace
 namespace Mirai.Net.Data.Messages;
 
-public partial class MessageChain
+public partial class MessageChain : List<MessageBase>
 {
     public MessageChain(IEnumerable<MessageBase> collection) : base(collection)
     {
     }
 
-    public MessageChain()
+    public MessageChain() : base()
     {
     }
 
