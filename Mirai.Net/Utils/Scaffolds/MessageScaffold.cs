@@ -112,19 +112,4 @@ public static class MessageScaffold
         
         return result;
     }
-
-    public static MessageChain ToMessageChain(this MiraiCodeMessage miraiCodeMessage)
-    {
-        var chain = new MessageChain();
-        var temp = new List<string>();
-        
-        var miraiCodeSuffixes = new[]
-            { "image", "at", "atall", "flash", "face", "poke", "vipface", "app", "dice", "musicshare", "file" };
-        var code = miraiCodeMessage.Code;
-
-        var temkp = code.Split(miraiCodeSuffixes, StringSplitOptions.None);
-        Console.WriteLine(temkp);
-        //todo accomplish this
-        return chain;
-    }
 }
