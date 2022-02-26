@@ -32,11 +32,15 @@ namespace Mirai.Net.Test
             {
                 if (x.MessageChain.GetPlainMessage() == "/send")
                 {
-                    await x.SendMessageAsync(new MessageChainBuilder()
-                        .At(x.Sender)
-                        .Plain("这是一个测试")
-                        .ImageFromId("{AB9BA7E2-DAF6-F959-AD74-CD9BFA794729}.jpg")
-                        .Build());
+                    // await x.SendMessageAsync(new MessageChainBuilder()
+                    //     .At(x.Sender)
+                    //     .Plain("这是一个测试")
+                    //     .ImageFromId("{AB9BA7E2-DAF6-F959-AD74-CD9BFA794729}.jpg")
+                    //     .Build());
+
+                    await x.SendMessageAsync(new MiraiCodeMessage($"[mirai:at:{x.Sender.Id}]这是一个测试[mirai:image:" +
+                                                                  "{AB9BA7E2-DAF6-F959-AD74-CD9BFA794729}.jpg]")
+                        .ToMessageChain());
                 }
             });
             

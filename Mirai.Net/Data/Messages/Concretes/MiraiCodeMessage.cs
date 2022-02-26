@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Mirai.Net.Utils.Scaffolds;
+using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Messages.Concretes;
 
@@ -6,12 +7,18 @@ public class MiraiCodeMessage : MessageBase
 {
     public override Messages Type { get; set; } = Messages.MiraiCode;
 
-    private string _code;
-
+    /// <summary>
+    /// MiraiCode码，请确保已经转义
+    /// </summary>
     [JsonProperty("code")]
-    public string Code
+    public string Code { get; set; }
+
+    public MiraiCodeMessage(string code)
     {
-        get => _code;
-        set => _code = value;
+        Code = code;
+    }
+
+    public MiraiCodeMessage()
+    {
     }
 }

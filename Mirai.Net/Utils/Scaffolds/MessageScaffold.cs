@@ -98,6 +98,17 @@ public static class MessageScaffold
     }
 
     /// <summary>
+    /// 把单个消息对象转换成MessageChain对象
+    /// </summary>
+    /// <param name="origin"></param>
+    /// <typeparam name="TSource"></typeparam>
+    /// <returns></returns>
+    public static MessageChain ToMessageChain<TSource>(this TSource origin) where TSource : MessageBase
+    {
+        return new MessageChain { origin };
+    }
+    
+    /// <summary>
     /// 转义成兼容mirai码的文本
     /// </summary>
     /// <returns></returns>
