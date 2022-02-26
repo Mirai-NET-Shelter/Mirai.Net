@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Manganese.Text;
 using Mirai.Net.Data.Messages;
@@ -112,23 +113,18 @@ public static class MessageScaffold
         return result;
     }
 
-    private static string GetMiraiCodeArguments(this string origin)
+    public static MessageChain ToMessageChain(this MiraiCodeMessage miraiCodeMessage)
     {
+        var chain = new MessageChain();
+        var temp = new List<string>();
+        
         var miraiCodeSuffixes = new[]
             { "image", "at", "atall", "flash", "face", "poke", "vipface", "app", "dice", "musicshare", "file" };
+        var code = miraiCodeMessage.Code;
 
-        var miraiCodes = miraiCodeSuffixes.Select(m => $"mirai:{m}").ToList();
-        //todo: accomplish this
-        return miraiCodes.First();
-    }
-
-    /// <summary>
-    /// 判断一个mirai码有没有参数
-    /// </summary>
-    /// <param name="miraiCode"></param>
-    /// <returns></returns>
-    public static bool HasArguments(this MiraiCodeMessage miraiCode)
-    {
-        return miraiCode.Code.Count(c => c == ':') > 1;
+        var temkp = code.Split(miraiCodeSuffixes, StringSplitOptions.None);
+        Console.WriteLine(temkp);
+        //todo accomplish this
+        return chain;
     }
 }
