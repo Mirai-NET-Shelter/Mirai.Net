@@ -1,5 +1,8 @@
 ﻿namespace Mirai.Net.Data.Events.Concretes.Group;
 
+/// <summary>
+/// 某群的改了群名
+/// </summary>
 public class GroupNameChangedEvent : GroupSettingChangedEventBase<string>
 {
     /// <summary>

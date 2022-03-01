@@ -2,6 +2,9 @@
 
 namespace Mirai.Net.Data.Events.Concretes.Group;
 
+/// <summary>
+/// 某群员权限改变，操作者一定是群主
+/// </summary>
 public class MemberPermissionChangedEvent : GroupMemberSettingChangedEventBase<Permissions>
 {
     /// <summary>

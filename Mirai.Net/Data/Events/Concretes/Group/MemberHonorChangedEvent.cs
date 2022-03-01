@@ -6,13 +6,25 @@ using Newtonsoft.Json.Converters;
 
 namespace Mirai.Net.Data.Events.Concretes.Group;
 
+/// <summary>
+/// 群员称号改变
+/// </summary>
 public class MemberHonorChangedEvent : EventBase
 {
+    /// <summary>
+    /// 改变类型
+    /// </summary>
     public enum MemberHonorAction
     {
+        /// <summary>
+        /// 得到称号
+        /// </summary>
         [EnumMember(Value = "achieve")] [Description("achieve")]
         Achieve,
 
+        /// <summary>
+        /// 失去称号
+        /// </summary>
         [EnumMember(Value = "lose")] [Description("lose")]
         Lose
     }
@@ -22,6 +34,9 @@ public class MemberHonorChangedEvent : EventBase
     /// </summary>
     public override Events Type { get; set; } = Events.MemberHonorChanged;
 
+    /// <summary>
+    /// 当事人
+    /// </summary>
     [JsonProperty("member")] public Member Member { get; set; }
 
     /// <summary>

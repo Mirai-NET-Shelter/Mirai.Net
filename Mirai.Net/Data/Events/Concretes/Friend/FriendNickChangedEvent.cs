@@ -2,6 +2,9 @@
 
 namespace Mirai.Net.Data.Events.Concretes.Friend;
 
+/// <summary>
+/// 好友昵称改变
+/// </summary>
 public class FriendNickChangedEvent : EventBase
 {
     /// <summary>

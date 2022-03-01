@@ -2,6 +2,9 @@
 
 namespace Mirai.Net.Data.Events.Concretes.Group;
 
+/// <summary>
+/// Bot加入了一个新群
+/// </summary>
 public class JoinedEvent : EventBase
 {
     /// <summary>

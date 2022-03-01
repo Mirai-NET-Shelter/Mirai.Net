@@ -2,6 +2,10 @@
 
 namespace Mirai.Net.Data.Events.Concretes.Friend;
 
+
+/// <summary>
+/// 好友撤回了某条消息
+/// </summary>
 public class FriendRecalledEvent : EventBase
 {
     /// <summary>

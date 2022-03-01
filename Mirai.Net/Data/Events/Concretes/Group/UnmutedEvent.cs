@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Events.Concretes.Group;
 
+/// <summary>
+/// Bot被解除禁言
+/// </summary>
 public class UnmutedEvent : EventBase
 {
     /// <summary>
