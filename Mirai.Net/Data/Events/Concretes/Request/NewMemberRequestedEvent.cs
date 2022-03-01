@@ -1,5 +1,8 @@
 ﻿namespace Mirai.Net.Data.Events.Concretes.Request;
 
+/// <summary>
+/// 新成员申请
+/// </summary>
 public class NewMemberRequestedEvent : RequestedEventBase
 {
     /// <summary>
