@@ -7,6 +7,9 @@ namespace Mirai.Net.Data.Events.Concretes.Bot;
 /// </summary>
 public class OnlineEvent : EventBase
 {
+    /// <summary>
+    /// Bot的QQ号
+    /// </summary>
     [JsonProperty("qq")] public string QQ { get; private set; }
 
     /// <summary>
