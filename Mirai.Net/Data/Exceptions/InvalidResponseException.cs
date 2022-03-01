@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Mirai.Net.Data.Exceptions;
 
+/// <summary>
+/// 错误的响应
+/// </summary>
 [Serializable]
 public class InvalidResponseException : Exception
 {
