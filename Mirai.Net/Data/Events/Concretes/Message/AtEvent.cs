@@ -3,6 +3,9 @@ using Mirai.Net.Data.Shared;
 
 namespace Mirai.Net.Data.Events.Concretes.Message;
 
+/// <summary>
+/// Bot被人at
+/// </summary>
 public class AtEvent : EventBase
 {
     /// <summary>
@@ -10,5 +13,8 @@ public class AtEvent : EventBase
     /// </summary>
     public override Events Type { get; set; } = Events.At;
 
+    /// <summary>
+    /// 被at的那条消息容器
+    /// </summary>
     public GroupMessageReceiver Receiver { get; set; }
 }
