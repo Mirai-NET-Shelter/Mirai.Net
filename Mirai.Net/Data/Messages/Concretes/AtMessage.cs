@@ -23,7 +23,7 @@ public class AtMessage : MessageBase
     ///     At时显示的文字，发送消息时无效，自动使用群名片，默认为空
     /// </summary>
     [JsonProperty("display")]
-    public string Display { get; set; } = "";
+    internal string Display { get; set; } = "";
 
     public override Messages Type { get; set; } = Messages.At;
 }
