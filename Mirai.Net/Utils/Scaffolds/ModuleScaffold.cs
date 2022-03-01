@@ -13,7 +13,7 @@ public static class ModuleScaffold
     /// 获取泛型参数同一个命名空间下的所有模块
     /// </summary>
     /// <returns></returns>
-    public static IEnumerable<IModule> GetModules<T>(this T module)
+    public static IEnumerable<IModule> GetModules<T>(this T module) where T : IModule
     {
         var basic = typeof(T);
         
