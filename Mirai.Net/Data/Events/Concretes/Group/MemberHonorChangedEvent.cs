@@ -17,6 +17,9 @@ public class MemberHonorChangedEvent : EventBase
         Lose
     }
 
+    /// <summary>
+    /// 事件类型
+    /// </summary>
     public override Events Type { get; set; } = Events.MemberHonorChanged;
 
     [JsonProperty("member")] public Member Member { get; set; }

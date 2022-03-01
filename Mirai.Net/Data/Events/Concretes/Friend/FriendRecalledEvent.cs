@@ -4,6 +4,9 @@ namespace Mirai.Net.Data.Events.Concretes.Friend;
 
 public class FriendRecalledEvent : EventBase
 {
+    /// <summary>
+    /// 事件类型
+    /// </summary>
     public override Events Type { get; set; } = Events.FriendRecalled;
 
     /// <summary>

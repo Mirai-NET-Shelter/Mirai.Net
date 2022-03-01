@@ -14,6 +14,9 @@ public class NudgeEvent : EventBase
 
     [JsonProperty("subject")] public NudgeSubject Subject { get; set; }
 
+    /// <summary>
+    /// 事件类型
+    /// </summary>
     public override Events Type { get; set; } = Events.Nudged;
 
     public class NudgeSubject
