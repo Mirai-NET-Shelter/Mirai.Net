@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Manganese.Array;
 using Manganese.Text;
 using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
@@ -83,5 +84,31 @@ public partial class MessageChain : List<MessageBase>
     public static implicit operator MessageChain(MessageBase messageBase)
     {
         return messageBase.ToMessageChain();
+    }
+    
+    /// <summary>
+    /// 拼接两个消息链
+    /// </summary>
+    /// <param name="chain1"></param>
+    /// <param name="chain2"></param>
+    /// <returns></returns>
+    public static MessageChain operator +(MessageChain chain1, MessageChain chain2)
+    {
+        var chain = new MessageChain();
+        chain.AddRange(chain1);
+        chain.AddRange(chain2);
+        return chain;
+    }
+
+    /// <summary>
+    /// 拼接消息链和消息
+    /// </summary>
+    /// <param name="chain"></param>
+    /// <param name="msg"></param>
+    /// <returns></returns>
+    public static MessageChain operator +(MessageChain chain, MessageBase msg)
+    {
+        chain.Add(msg);
+        return chain;
     }
 }

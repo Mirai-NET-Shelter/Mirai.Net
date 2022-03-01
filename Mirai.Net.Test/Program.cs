@@ -5,6 +5,8 @@ using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Flurl.Http;
+using Mirai.Net.Data.Messages;
+using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Sessions;
 using Mirai.Net.Utils.Scaffolds;
@@ -28,31 +30,14 @@ namespace Mirai.Net.Test
             
             await bot.LaunchAsync();
 
-            var schedule = new Dictionary<string, Timer>();
-            
-            bot.MessageReceived
-                .OfType<GroupMessageReceiver>()
-                .Subscribe(async x =>
+            bot.MessageReceived.OfType<GroupMessageReceiver>()
+                .Subscribe(async receiver =>
                 {
-                    if (x.MessageChain.GetPlainMessage() != "/test")
-                        return;
-                    var senderKey = x.Sender.Id;
-                    if (!schedule.ContainsKey(senderKey))
-                    {
-                        var timer = new Timer(10000);
-                        timer.Elapsed += (_, _) =>
-                        {
-                            timer.Stop();
-                        };
-                        schedule.Add(senderKey, timer);
-                    }
-                    if (schedule[senderKey].Enabled)
-                        await x.SendMessageAsync($"Cooling down...");
-                    else
-                    {
-                        await x.SendMessageAsync("Executed!");
-                        schedule[senderKey].Start();
-                    }
+                    MessageChain messageChain = new PlainMessage("Test") + new AtMessage("114514");
+                    messageChain += new PlainMessage("12");
+                    messageChain += new MessageChainBuilder().At("awd").Build();
+
+                    await messageChain.SendToAsync(receiver);
                 });
             
             // bot.MessageReceived
