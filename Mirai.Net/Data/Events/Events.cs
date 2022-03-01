@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Mirai.Net.Data.Events;
 
+/// <summary>
+/// 事件类型
+/// </summary>
 public enum Events
 {
     /// <summary>
