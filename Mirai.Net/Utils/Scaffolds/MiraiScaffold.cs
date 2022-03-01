@@ -237,10 +237,40 @@ public static class MiraiScaffold
     /// <param name="event"></param>
     /// <param name="handler"></param>
     /// <param name="message"></param>
+    [Obsolete("请使用直接Approve/RejectAndBlock/RejectAsync 等方法")]
     public static async Task Handle(this NewFriendRequestedEvent @event,
         NewFriendRequestHandlers handler, string message = "")
     {
         await RequestManager.HandleNewFriendRequestedAsync(@event, handler, message);
+    }
+
+    /// <summary>
+    /// 同意好友请求
+    /// </summary>
+    /// <param name="event"></param>
+    public static async Task ApproveAsync(this NewFriendRequestedEvent @event)
+    {
+        await RequestManager.HandleNewFriendRequestedAsync(@event, NewFriendRequestHandlers.Approve);
+    }
+
+    /// <summary>
+    /// 拒绝好友请求
+    /// </summary>
+    /// <param name="event">事件</param>
+    /// <param name="message">回复的消息</param>
+    public static async Task RejectAsync(this NewFriendRequestedEvent @event, string message = "")
+    {
+        await RequestManager.HandleNewFriendRequestedAsync(@event, NewFriendRequestHandlers.Reject, message);
+    }
+    
+    /// <summary>
+    /// 拒绝好友请求且屏蔽对方
+    /// </summary>
+    /// <param name="event">事件</param>
+    /// <param name="message">回复的消息</param>
+    public static async Task RejectAndBlockAsync(this NewFriendRequestedEvent @event, string message = "")
+    {
+        await RequestManager.HandleNewFriendRequestedAsync(@event, NewFriendRequestHandlers.RejectAndBlock, message);
     }
 
     /// <summary>
@@ -249,11 +279,59 @@ public static class MiraiScaffold
     /// <param name="requestedEvent"></param>
     /// <param name="handler"></param>
     /// <param name="message"></param>
+    [Obsolete("请使用直接Approve/RejectAndBlock/RejectAsync 等方法")]
     public static async Task Handle(this NewMemberRequestedEvent requestedEvent,
         NewMemberRequestHandlers handler, string message = "")
     {
         await RequestManager
             .HandleNewMemberRequestedAsync(requestedEvent, handler, message);
+    }
+    
+    /// <summary>
+    /// 同意加群请求
+    /// </summary>
+    /// <param name="requestedEvent"></param>
+    public static async Task ApproveAsync(this NewMemberRequestedEvent requestedEvent)
+    {
+        await RequestManager.HandleNewMemberRequestedAsync(requestedEvent, NewMemberRequestHandlers.Approve);
+    }
+
+    /// <summary>
+    /// 拒绝加群请求
+    /// </summary>
+    /// <param name="requestedEvent">事件源</param>
+    /// <param name="message">回复消息</param>
+    public static async Task RejectAsync(this NewMemberRequestedEvent requestedEvent, string message = "")
+    {
+        await RequestManager.HandleNewMemberRequestedAsync(requestedEvent, NewMemberRequestHandlers.Reject, message);
+    }
+
+    /// <summary>
+    /// 忽略加群请求
+    /// </summary>
+    /// <param name="requestedEvent"></param>
+    public static async Task DismissAsync(this NewMemberRequestedEvent requestedEvent)
+    {
+        await RequestManager.HandleNewMemberRequestedAsync(requestedEvent, NewMemberRequestHandlers.Dismiss);
+    }
+    
+    /// <summary>
+    /// 拒绝加群请求并屏蔽
+    /// </summary>
+    /// <param name="requestedEvent"></param>
+    /// <param name="message">回复消息</param>
+    public static async Task RejectAndBlockAsync(this NewMemberRequestedEvent requestedEvent, string message = "")
+    {
+        await RequestManager.HandleNewMemberRequestedAsync(requestedEvent, NewMemberRequestHandlers.RejectAndBlock, message);
+    }
+    
+    /// <summary>
+    /// 忽略加群请求并屏蔽
+    /// </summary>
+    /// <param name="requestedEvent"></param>
+    public static async Task DismissAndBlockAsync(this NewMemberRequestedEvent requestedEvent)
+    {
+        await RequestManager.HandleNewMemberRequestedAsync(requestedEvent, NewMemberRequestHandlers.DismissAndBlock);
     }
 
     /// <summary>
@@ -262,11 +340,32 @@ public static class MiraiScaffold
     /// <param name="requestedEvent"></param>
     /// <param name="handler"></param>
     /// <param name="message"></param>
-    public static async Task Handle(NewInvitationRequestedEvent requestedEvent,
+    [Obsolete("请使用直接Approve/RejectAndBlock/RejectAsync 等方法")]
+    public static async Task Handle(this NewInvitationRequestedEvent requestedEvent,
         NewInvitationRequestHandlers handler, string message)
     {
         await RequestManager
             .HandleNewInvitationRequestedAsync(requestedEvent, handler, message);
+    }
+    
+    /// <summary>
+    /// 同意邀请
+    /// </summary>
+    /// <param name="requestedEvent"></param>
+    public static async Task ApproveAsync(this NewInvitationRequestedEvent requestedEvent)
+    {
+        await RequestManager.HandleNewInvitationRequestedAsync(requestedEvent, NewInvitationRequestHandlers.Approve,
+            "");
+    }
+
+    /// <summary>
+    /// 拒绝邀请
+    /// </summary>
+    /// <param name="requestedEvent"></param>
+    public static async Task RejectAsync(this NewInvitationRequestedEvent requestedEvent)
+    {
+        await RequestManager.HandleNewInvitationRequestedAsync(requestedEvent, NewInvitationRequestHandlers.Reject,
+            "");
     }
 
     #endregion
