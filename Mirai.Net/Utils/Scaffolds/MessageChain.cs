@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Manganese.Text;
 using Mirai.Net.Data.Messages.Concretes;
+using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Utils.Scaffolds;
 
 // ReSharper disable once CheckNamespace
@@ -41,6 +43,36 @@ public partial class MessageChain : List<MessageBase>
             return new List<string>();
 
         return plain.Select(x => x.Text).ToList();
+    }
+
+    /// <summary>
+    /// 将本消息链发送到指定接收器
+    /// </summary>
+    /// <param name="receiver"></param>
+    /// <returns></returns>
+    public async Task<string> SendToAsync(GroupMessageReceiver receiver)
+    {
+        return await receiver.SendMessageAsync(this);
+    }
+    
+    /// <summary>
+    /// 将本消息链发送到指定接收器
+    /// </summary>
+    /// <param name="receiver"></param>
+    /// <returns></returns>
+    public async Task<string> SendToAsync(FriendMessageReceiver receiver)
+    {
+        return await receiver.SendMessageAsync(this);
+    }
+    
+    /// <summary>
+    /// 将本消息链发送到指定接收器
+    /// </summary>
+    /// <param name="receiver"></param>
+    /// <returns></returns>
+    public async Task<string> SendToAsync(TempMessageReceiver receiver)
+    {
+        return await receiver.SendMessageAsync(this);
     }
 
     /// <summary>
