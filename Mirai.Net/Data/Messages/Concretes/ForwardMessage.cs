@@ -3,8 +3,14 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Messages.Concretes;
 
+/// <summary>
+/// 转发的消息
+/// </summary>
 public class ForwardMessage : MessageBase
 {
+    /// <summary>
+    /// 消息类型
+    /// </summary>
     public override Messages Type { get; set; } = Messages.Forward;
 
     /// <summary>
@@ -13,6 +19,9 @@ public class ForwardMessage : MessageBase
     [JsonProperty("nodeList")]
     public IEnumerable<ForwardNode> NodeList { get; set; }
 
+    /// <summary>
+    /// 转发的消息节点
+    /// </summary>
     public class ForwardNode
     {
         /// <summary>

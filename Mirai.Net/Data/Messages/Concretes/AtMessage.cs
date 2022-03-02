@@ -2,13 +2,23 @@
 
 namespace Mirai.Net.Data.Messages.Concretes;
 
+/// <summary>
+/// @某人
+/// </summary>
 public class AtMessage : MessageBase
 {
+    /// <summary>
+    /// 带参数的构造器
+    /// </summary>
+    /// <param name="target">要@的人的qq</param>
     public AtMessage(string target)
     {
         Target = target;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public AtMessage()
     {
     }
@@ -25,5 +35,8 @@ public class AtMessage : MessageBase
     [JsonProperty("display")]
     internal string Display { get; set; } = "";
 
+    /// <summary>
+    /// 消息类型
+    /// </summary>
     public override Messages Type { get; set; } = Messages.At;
 }

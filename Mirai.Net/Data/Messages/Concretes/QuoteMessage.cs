@@ -3,8 +3,14 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Messages.Concretes;
 
+/// <summary>
+/// 引用消息
+/// </summary>
 public class QuoteMessage : MessageBase
 {
+    /// <summary>
+    /// 消息类型
+    /// </summary>
     public override Messages Type { get; set; } = Messages.Quote;
 
     /// <summary>
