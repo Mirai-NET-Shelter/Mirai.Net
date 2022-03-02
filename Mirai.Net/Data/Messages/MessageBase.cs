@@ -4,12 +4,22 @@ using Newtonsoft.Json.Converters;
 
 namespace Mirai.Net.Data.Messages;
 
+/// <summary>
+/// 所有消息的基类
+/// </summary>
 public class MessageBase
 {
+    /// <summary>
+    /// 消息类型
+    /// </summary>
     [JsonProperty("type")]
     [JsonConverter(typeof(StringEnumConverter))]
     public virtual Messages Type { get; set; }
 
+    /// <summary>
+    /// 实际上是转换成json文本
+    /// </summary>
+    /// <returns></returns>
     public override string ToString()
     {
         return this.ToJsonString();

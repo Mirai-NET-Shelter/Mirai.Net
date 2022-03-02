@@ -2,6 +2,9 @@
 
 namespace Mirai.Net.Data.Shared;
 
+/// <summary>
+/// 群设置
+/// </summary>
 public class GroupSetting
 {
     /// <summary>

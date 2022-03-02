@@ -7,6 +7,9 @@ using Mirai.Net.Modules;
 
 namespace Mirai.Net.Utils.Scaffolds;
 
+/// <summary>
+/// 模块化拓展方法
+/// </summary>
 public static class ModuleScaffold
 {
     /// <summary>
@@ -32,7 +35,7 @@ public static class ModuleScaffold
     /// </summary>
     /// <param name="modules"></param>
     /// <param name="base"></param>
-    public static void SubscribeModule(this IEnumerable<IModule> modules, MessageReceiverBase @base)
+    public static void Raise(this IEnumerable<IModule> modules, MessageReceiverBase @base)
     {
         foreach (var module in modules)
         {

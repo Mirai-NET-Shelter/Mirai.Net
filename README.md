@@ -11,6 +11,8 @@ Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项
 项目文档: https://sinoahpx.github.io/Mirai.Net.Documents
 
 如果你觉得这是个很酷的项目的话，不妨考虑给它点一个Star，如果你还觉得挺酷但还不够好的话，也欢迎提交Pull Request和Issue。
+
+
 ## 速览
 
 - 基于 [.NET Standard 2.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) 开发，支持跨平台。
@@ -138,7 +140,7 @@ using Mirai.Net.Sessions;
 using var bot = new MiraiBot
 {
     Address = "localhost:8080",
-    QQ = xx,
+    QQ = "xx",
     VerifyKey = "xx"
 };
 ```
@@ -181,13 +183,13 @@ bot.EventReceived
 发送消息的方法有两个参数: 发送到哪里和发送什么。所以第一个参数就是发消息的群号，第二个参数就是要发送的消息链(或者字符串)。
 
 ```cs
-await manager.SendGroupMessageAsync("xx", "Hello, World");
+await MessageManager.SendGroupMessageAsync("xx", "Hello, World");
 ```
 
 或者:
 
 ```cs
-await manager.SendGroupMessageAsync("xx", new MessageChainBuilder().Plain("Hello, ").At("xx").Build());
+await MessageManager.SendGroupMessageAsync("xx", new MessageChainBuilder().Plain("Hello, ").At("xx").Build());
 ```
 
 ## 贡献

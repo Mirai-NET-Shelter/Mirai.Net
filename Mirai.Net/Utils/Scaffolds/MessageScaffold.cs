@@ -14,6 +14,12 @@ public static class MessageScaffold
 {
     #region Legacy
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="origin"></param>
+    /// <param name="append"></param>
+    /// <returns></returns>
     public static MessageChain Append(this string origin, params MessageBase[] append)
     {
         var re = new MessageChain { new PlainMessage(origin) };
@@ -22,6 +28,12 @@ public static class MessageScaffold
         return re;
     }
     
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="origin"></param>
+    /// <param name="append"></param>
+    /// <returns></returns>
     public static MessageChain Append(this string origin, IEnumerable<MessageBase> append)
     {
         var re = new MessageChain { new PlainMessage(origin) };
@@ -30,6 +42,12 @@ public static class MessageScaffold
         return re;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="origin"></param>
+    /// <param name="append"></param>
+    /// <returns></returns>
     public static MessageChain Append(this string origin, string append)
     {
         var re = new MessageChain { new PlainMessage(origin), new PlainMessage(append) };
@@ -37,6 +55,12 @@ public static class MessageScaffold
         return re;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="messageBase"></param>
+    /// <param name="append"></param>
+    /// <returns></returns>
     public static MessageChain Append(this MessageBase messageBase, params MessageBase[] append)
     {
         var re = new MessageChain { messageBase };
@@ -45,6 +69,12 @@ public static class MessageScaffold
         return re;
     }
     
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="messageBase"></param>
+    /// <param name="append"></param>
+    /// <returns></returns>
     public static MessageChain Append(this MessageBase messageBase, IEnumerable<MessageBase> append)
     {
         var re = new MessageChain { messageBase };
@@ -53,6 +83,12 @@ public static class MessageScaffold
         return re;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="messageBase"></param>
+    /// <param name="append"></param>
+    /// <returns></returns>
     public static MessageChain Append(this MessageBase messageBase, string append)
     {
         var re = new MessageChain { messageBase, new PlainMessage(append) };
@@ -60,6 +96,12 @@ public static class MessageScaffold
         return re;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="bases"></param>
+    /// <param name="append"></param>
+    /// <returns></returns>
     public static MessageChain Append(this IEnumerable<MessageBase> bases, params MessageBase[] append)
     {
         var re = bases.ToList();
@@ -68,6 +110,12 @@ public static class MessageScaffold
         return re.ToMessageChain();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="bases"></param>
+    /// <param name="append"></param>
+    /// <returns></returns>
     public static MessageChain Append(this IEnumerable<MessageBase> bases, string append)
     {
         var re = bases.ToList();
@@ -76,6 +124,12 @@ public static class MessageScaffold
         return re.ToMessageChain();
     }
     
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="bases"></param>
+    /// <param name="append"></param>
+    /// <returns></returns>
     public static MessageChain Append(this IEnumerable<MessageBase> bases, IEnumerable<MessageBase> append)
     {
         var re = bases.ToList();

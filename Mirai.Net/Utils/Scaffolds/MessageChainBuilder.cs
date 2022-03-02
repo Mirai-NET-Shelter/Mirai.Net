@@ -4,6 +4,9 @@ using Mirai.Net.Data.Shared;
 
 namespace Mirai.Net.Utils.Scaffolds;
 
+/// <summary>
+/// 消息链建造者
+/// </summary>
 public class MessageChainBuilder
 {
     private readonly MessageChain _chain = new();
@@ -311,6 +314,10 @@ public class MessageChainBuilder
         return this;
     }
 
+    /// <summary>
+    /// 建造消息链
+    /// </summary>
+    /// <returns></returns>
     public MessageChain Build()
     {
         return _chain;

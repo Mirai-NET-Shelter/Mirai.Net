@@ -10,12 +10,22 @@ using Mirai.Net.Utils.Scaffolds;
 // ReSharper disable once CheckNamespace
 namespace Mirai.Net.Data.Messages;
 
+/// <summary>
+/// 消息链
+/// </summary>
 public partial class MessageChain : List<MessageBase>
 {
+    /// <summary>
+    /// AddRange
+    /// </summary>
+    /// <param name="collection"></param>
     public MessageChain(IEnumerable<MessageBase> collection) : base(collection)
     {
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public MessageChain() : base()
     {
     }

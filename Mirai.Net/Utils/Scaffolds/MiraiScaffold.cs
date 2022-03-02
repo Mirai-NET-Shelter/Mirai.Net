@@ -15,6 +15,9 @@ using Mirai.Net.Utils.Internal;
 
 namespace Mirai.Net.Utils.Scaffolds;
 
+/// <summary>
+/// mirai相关拓展方法
+/// </summary>
 public static class MiraiScaffold
 {
     #region MiraiBot extensions
@@ -176,6 +179,12 @@ public static class MiraiScaffold
             .RecallAsync(id);
     }
 
+    /// <summary>
+    /// 回复消息
+    /// </summary>
+    /// <param name="receiver"></param>
+    /// <param name="chain"></param>
+    /// <returns></returns>
     public static async Task<string> QuoteMessageAsync(this FriendMessageReceiver receiver,
         MessageChain chain)
     {
@@ -185,6 +194,12 @@ public static class MiraiScaffold
             .QuoteFriendMessageAsync(receiver.Sender.Id, id, chain);
     }
 
+    /// <summary>
+    /// 回复消息
+    /// </summary>
+    /// <param name="receiver"></param>
+    /// <param name="chain"></param>
+    /// <returns></returns>
     public static async Task<string> QuoteMessageAsync(this GroupMessageReceiver receiver,
         MessageChain chain)
     {
@@ -194,6 +209,12 @@ public static class MiraiScaffold
             .QuoteGroupMessageAsync(receiver.Sender.Group.Id, id, chain);
     }
 
+    /// <summary>
+    /// 回复消息
+    /// </summary>
+    /// <param name="receiver"></param>
+    /// <param name="chain"></param>
+    /// <returns></returns>
     public static async Task<string> QuoteMessageAsync(this TempMessageReceiver receiver,
         MessageChain chain)
     {
@@ -203,6 +224,12 @@ public static class MiraiScaffold
             .QuoteTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, id, chain);
     }
 
+    /// <summary>
+    /// 回复消息
+    /// </summary>
+    /// <param name="receiver"></param>
+    /// <param name="message"></param>
+    /// <returns></returns>
     public static async Task<string> QuoteMessageAsync(this FriendMessageReceiver receiver, string message)
     {
         var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
@@ -211,6 +238,12 @@ public static class MiraiScaffold
             .QuoteFriendMessageAsync(receiver.Sender.Id, id, message);
     }
 
+    /// <summary>
+    /// 回复消息
+    /// </summary>
+    /// <param name="receiver"></param>
+    /// <param name="message"></param>
+    /// <returns></returns>
     public static async Task<string> QuoteMessageAsync(this GroupMessageReceiver receiver, string message)
     {
         var id = receiver.MessageChain.ToList().OfType<SourceMessage>().First().MessageId;
@@ -219,6 +252,12 @@ public static class MiraiScaffold
             .QuoteGroupMessageAsync(receiver.Sender.Group.Id, id, message);
     }
 
+    /// <summary>
+    /// 回复消息
+    /// </summary>
+    /// <param name="receiver"></param>
+    /// <param name="message"></param>
+    /// <returns></returns>
     public static async Task<string> QuoteMessageAsync(this TempMessageReceiver receiver, string message)
     {
         var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
