@@ -6,10 +6,12 @@ using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Flurl.Http;
+using Manganese.Text;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Sessions;
+using Mirai.Net.Sessions.Http.Managers;
 using Mirai.Net.Utils.Scaffolds;
 using Newtonsoft.Json.Linq;
 using Timer = System.Timers.Timer;
@@ -30,36 +32,20 @@ namespace Mirai.Net.Test
             };
             
             await bot.LaunchAsync();
-
-            bot.MessageReceived.OfType<GroupMessageReceiver>()
-                .Subscribe(async receiver =>
+            
+            bot.MessageReceived
+                .OfType<GroupMessageReceiver>()
+                .Subscribe(async r =>
                 {
-                    MessageChain messageChain = new PlainMessage("Test") + new AtMessage("114514");
-                    messageChain += new PlainMessage("12");
-                    messageChain += new MessageChainBuilder().At("awd").Build();
+                    if (r.MessageChain.GetPlainMessage() == "/send")
+                    {
+                        var localPath = @"C:\Users\ahpx\Desktop\6S__`V)7J7E8(1S[R(ZD`VT.jpg";
+                        var file = await FileManager.UploadFileAsync(r.GroupId, localPath);
 
-                    await messageChain.SendToAsync(receiver);
+                        await r.SendMessageAsync($"The file has been uploaded. \r\n{file.ToJsonString()}");
+                    }
                 });
-            
-            // bot.MessageReceived
-            //     .OfType<GroupMessageReceiver>()
-            //     .Subscribe(async x =>
-            //     {
-            //         var msg = x.MessageChain.GetPlainMessage();
-            //         if (msg.Contains("什么服")
-            //             && new[]{1,2,5,7,8,9}.Any(i => msg.StartsWith(i.ToString())))
-            //         {
-            //             await x.SendMessageAsync(new MessageChainBuilder().At(x.Sender)
-            //                 .Plain(" 9开头是港澳台服\r\n")
-            //                 .Plain("8开头是亚服(日服也算亚服)\r\n")
-            //                 .Plain("7开头是欧服\r\n")
-            //                 .Plain("6开头是美服\r\n")
-            //                 .Plain("5开头是渠道服服(b服，小米服等)\r\n")
-            //                 .Plain("1和2开头是官服")
-            //                 .Build());
-            //         }
-            //     });
-            
+
             exit.WaitOne();
         }
 

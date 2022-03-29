@@ -140,7 +140,10 @@ public static class FileManager
                 .AddString("target", target)
                 .AddFile("file", filePath));
 
-        var re = (await result.GetStringAsync()).ToJObject();
+        var response = await result.GetStringAsync();
+        response.EnsureSuccess("这大抵是个玄学问题罢。");
+        
+        var re = response.ToJObject();
 
         return !re.ContainsKey("name") ? null : re.ToObject<File>();
     }
@@ -163,6 +166,7 @@ public static class FileManager
                 .AddFile("img", imagePath));
 
         var re = await result.GetStringAsync();
+        re.EnsureSuccess("这大抵是个玄学问题罢。");
 
         return (re.Fetch("imageId"), re.Fetch("url"));
     }
@@ -183,6 +187,7 @@ public static class FileManager
                 .AddFile("voice", voicePath));
 
         var re = await result.GetStringAsync();
+        re.EnsureSuccess("这大抵是个玄学问题罢。");
 
         return (re.Fetch("voiceId"), re.Fetch("url"));
     }
