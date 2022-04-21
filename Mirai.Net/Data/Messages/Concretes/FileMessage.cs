@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// <summary>
 /// 文件
 /// </summary>
-public class FileMessage : MessageBase
+public record FileMessage : MessageBase
 {
     /// <summary>
     /// 消息类型

@@ -28,6 +28,9 @@ namespace Mirai.Net.Sessions;
 /// </summary>
 public class MiraiBot : IDisposable
 {
+    /// <summary>
+    /// 销毁当前对象
+    /// </summary>
     public async void Dispose()
     {
         await ReleaseAsync();
@@ -36,6 +39,9 @@ public class MiraiBot : IDisposable
 
     #region Exposed
 
+    /// <summary>
+    /// 启动bot
+    /// </summary>
     public async Task LaunchAsync()
     {
         Instance = this;
@@ -114,6 +120,9 @@ public class MiraiBot : IDisposable
 
     #region Handlers
 
+    /// <summary>
+    /// 接收到
+    /// </summary>
     [JsonIgnore] public IObservable<EventBase> EventReceived => _eventReceivedSubject.AsObservable();
 
     private readonly Subject<EventBase> _eventReceivedSubject = new();

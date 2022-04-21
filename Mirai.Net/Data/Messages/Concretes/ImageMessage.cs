@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// <summary>
 /// 图片
 /// </summary>
-public class ImageMessage : MessageBase
+public record ImageMessage : MessageBase
 {
     /// <summary>
     /// 消息类型

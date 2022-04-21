@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// <summary>
 /// 语音消息
 /// </summary>
-public class VoiceMessage : MessageBase
+public record VoiceMessage : MessageBase
 {
     /// <summary>
     ///     语音的voiceId，不为空时将忽略url属性

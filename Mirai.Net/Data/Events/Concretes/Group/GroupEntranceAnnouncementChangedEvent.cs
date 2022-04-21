@@ -3,7 +3,7 @@
 /// <summary>
 /// 入群公告发生改变
 /// </summary>
-public class GroupEntranceAnnouncementChangedEvent : GroupSettingChangedEventBase<string>
+public record GroupEntranceAnnouncementChangedEvent : GroupSettingChangedEventBase<string>
 {
     /// <summary>
     /// 事件类型

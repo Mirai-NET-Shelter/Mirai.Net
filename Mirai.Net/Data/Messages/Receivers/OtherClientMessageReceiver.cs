@@ -6,7 +6,7 @@ namespace Mirai.Net.Data.Messages.Receivers;
 /// <summary>
 /// 其他客户端消息接收器
 /// </summary>
-public class OtherClientMessageReceiver : MessageReceiverBase
+public record OtherClientMessageReceiver : MessageReceiverBase
 {
     /// <summary>
     /// 消息接收器类型

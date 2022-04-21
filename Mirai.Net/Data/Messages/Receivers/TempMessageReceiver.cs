@@ -6,7 +6,7 @@ namespace Mirai.Net.Data.Messages.Receivers;
 /// <summary>
 /// 临时消息接收器
 /// </summary>
-public class TempMessageReceiver : MessageReceiverBase
+public record TempMessageReceiver : MessageReceiverBase
 {
     /// <summary>
     /// 消息接收器类型

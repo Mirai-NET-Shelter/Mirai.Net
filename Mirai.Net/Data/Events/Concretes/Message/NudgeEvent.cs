@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Events.Concretes.Message;
 /// <summary>
 /// 某人被戳了一戳
 /// </summary>
-public class NudgeEvent : EventBase
+public record NudgeEvent : EventBase
 {
     /// <summary>
     /// 是谁戳的

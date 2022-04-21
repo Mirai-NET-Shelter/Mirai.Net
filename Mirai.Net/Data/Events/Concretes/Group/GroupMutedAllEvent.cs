@@ -3,7 +3,7 @@
 /// <summary>
 /// 某群开启/关闭了全员禁言
 /// </summary>
-public class GroupMutedAllEvent : GroupSettingChangedEventBase<bool>
+public record GroupMutedAllEvent : GroupSettingChangedEventBase<bool>
 {
     /// <summary>
     /// 事件类型

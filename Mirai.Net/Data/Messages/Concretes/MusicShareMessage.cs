@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// <summary>
 /// 音乐分享
 /// </summary>
-public class MusicShareMessage : MessageBase
+public record MusicShareMessage : MessageBase
 {
     /// <summary>
     /// 消息类型

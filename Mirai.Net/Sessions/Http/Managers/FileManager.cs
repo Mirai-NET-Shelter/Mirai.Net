@@ -12,6 +12,9 @@ using File = Mirai.Net.Data.Shared.File;
 
 namespace Mirai.Net.Sessions.Http.Managers;
 
+/// <summary>
+/// 文件管理器
+/// </summary>
 public static class FileManager
 {
     /// <summary>

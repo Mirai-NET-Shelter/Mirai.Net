@@ -6,7 +6,7 @@ namespace Mirai.Net.Data.Events.Concretes.Group;
 /// <summary>
 /// 某群员被禁言
 /// </summary>
-public class MemberMutedEvent : EventBase
+public record MemberMutedEvent : EventBase
 {
     /// <summary>
     /// 事件类型

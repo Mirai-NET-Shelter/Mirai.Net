@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// <summary>
 /// xml消息
 /// </summary>
-public class XmlMessage : MessageBase
+public record XmlMessage : MessageBase
 {
     /// <summary>
     /// 消息类型

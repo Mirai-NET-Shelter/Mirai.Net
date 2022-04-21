@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Events.Concretes.Group;
 /// <summary>
 /// Bot被某群踢了
 /// </summary>
-public class KickedEvent : EventBase
+public record KickedEvent : EventBase
 {
     /// <summary>
     /// 事件类型

@@ -39,10 +39,7 @@ namespace Mirai.Net.Test
                 {
                     if (r.MessageChain.GetPlainMessage() == "/send")
                     {
-                        var localPath = @"C:\Users\ahpx\Desktop\6S__`V)7J7E8(1S[R(ZD`VT.jpg";
-                        var file = await FileManager.UploadFileAsync(r.GroupId, localPath);
-
-                        await r.SendMessageAsync($"The file has been uploaded. \r\n{file.ToJsonString()}");
+                        await r.SendMessageAsync("hi");
                     }
                 });
 

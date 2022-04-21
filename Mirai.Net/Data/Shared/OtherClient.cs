@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Shared;
 /// <summary>
 /// 其它客户端
 /// </summary>
-public class OtherClient
+public record OtherClient
 {
     /// <summary>
     /// 客户端id

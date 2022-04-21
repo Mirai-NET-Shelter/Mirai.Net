@@ -3,7 +3,7 @@
 /// <summary>
 /// 新的邀请（邀请bot加入某群）
 /// </summary>
-public class NewInvitationRequestedEvent : RequestedEventBase
+public record NewInvitationRequestedEvent : RequestedEventBase
 {
     /// <summary>
     /// 事件类型

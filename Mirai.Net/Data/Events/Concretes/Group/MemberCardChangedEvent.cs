@@ -3,7 +3,7 @@
 /// <summary>
 /// 某人的群名片改变
 /// </summary>
-public class MemberCardChangedEvent : GroupMemberSettingChangedEventBase<string>
+public record MemberCardChangedEvent : GroupMemberSettingChangedEventBase<string>
 {
     /// <summary>
     /// 事件类型

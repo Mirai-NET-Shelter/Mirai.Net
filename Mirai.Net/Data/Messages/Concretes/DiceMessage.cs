@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// <summary>
 /// 骰子消息
 /// </summary>
-public class DiceMessage : MessageBase
+public record DiceMessage : MessageBase
 {
     /// <summary>
     /// 消息类型

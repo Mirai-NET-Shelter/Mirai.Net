@@ -3,7 +3,7 @@
 /// <summary>
 /// 新成员申请
 /// </summary>
-public class NewMemberRequestedEvent : RequestedEventBase
+public record NewMemberRequestedEvent : RequestedEventBase
 {
     /// <summary>
     /// 事件类型

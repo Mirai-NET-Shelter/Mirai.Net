@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Events.Concretes.Bot;
 /// <summary>
 ///     Bot主动离线
 /// </summary>
-public class OfflineEvent : EventBase
+public record OfflineEvent : EventBase
 {
     /// <summary>
     /// Bot的QQ号

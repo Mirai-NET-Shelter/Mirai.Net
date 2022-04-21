@@ -6,7 +6,7 @@ namespace Mirai.Net.Data.Events.Concretes.Group;
 /// <summary>
 /// 群成员离开群
 /// </summary>
-public class MemberLeftEvent : EventBase
+public record MemberLeftEvent : EventBase
 {
     /// <summary>
     /// 事件类型

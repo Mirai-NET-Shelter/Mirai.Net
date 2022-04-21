@@ -7,7 +7,7 @@ namespace Mirai.Net.Data.Events.Concretes.Group;
 /// 群设置改变基类
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class GroupSettingChangedEventBase<T> : EventBase
+public abstract record GroupSettingChangedEventBase<T> : EventBase
 {
     /// <summary>
     ///     原来的

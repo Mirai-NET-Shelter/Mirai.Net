@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// <summary>
 /// json消息
 /// </summary>
-public class JsonMessage : MessageBase
+public record JsonMessage : MessageBase
 {
     ///json文本   
     [JsonProperty("json")] public string Json { get; set; }

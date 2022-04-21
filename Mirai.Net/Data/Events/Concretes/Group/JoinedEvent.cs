@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Events.Concretes.Group;
 /// <summary>
 /// Bot加入了一个新群
 /// </summary>
-public class JoinedEvent : EventBase
+public record JoinedEvent : EventBase
 {
     /// <summary>
     /// 事件类型

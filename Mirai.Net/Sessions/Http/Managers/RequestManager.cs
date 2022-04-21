@@ -6,6 +6,9 @@ using Mirai.Net.Utils.Internal;
 
 namespace Mirai.Net.Sessions.Http.Managers;
 
+/// <summary>
+/// 请求管理器
+/// </summary>
 public static class RequestManager
 {
     /// <summary>

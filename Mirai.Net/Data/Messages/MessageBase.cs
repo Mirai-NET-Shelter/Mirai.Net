@@ -7,7 +7,7 @@ namespace Mirai.Net.Data.Messages;
 /// <summary>
 /// 所有消息的基类
 /// </summary>
-public class MessageBase
+public record MessageBase
 {
     /// <summary>
     /// 消息类型

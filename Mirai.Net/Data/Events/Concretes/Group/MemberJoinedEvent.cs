@@ -6,7 +6,7 @@ namespace Mirai.Net.Data.Events.Concretes.Group;
 /// <summary>
 /// 新成员入群
 /// </summary>
-public class MemberJoinedEvent : EventBase
+public record MemberJoinedEvent : EventBase
 {
     /// <summary>
     /// 事件类型

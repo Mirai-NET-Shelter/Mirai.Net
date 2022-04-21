@@ -6,7 +6,7 @@ namespace Mirai.Net.Data.Shared;
 /// <summary>
 /// 好友
 /// </summary>
-public class Friend
+public record Friend
 {
     /// <summary>
     /// 好友的资料

@@ -7,7 +7,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// Mirai码，
 /// <a href="https://docs.mirai.mamoe.net/mirai-api-http/api/MessageType.html#miraicode">看这里</a>
 /// </summary>
-public class MiraiCodeMessage : MessageBase
+public record MiraiCodeMessage : MessageBase
 {
     /// <summary>
     /// 消息类型

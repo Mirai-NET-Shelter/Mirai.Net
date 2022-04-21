@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Events.Concretes.Request;
 /// <summary>
 /// 请求事件基类
 /// </summary>
-public abstract class RequestedEventBase : EventBase
+public record class RequestedEventBase : EventBase
 {
     /// <summary>
     /// 事件id

@@ -212,14 +212,23 @@ public enum Events
     [Description("NudgeEvent")] [EnumMember(Value = "NudgeEvent")]
     Nudged,
     
+    /// <summary>
+    /// 其他客户端登录
+    /// </summary>
     [Description("OtherClientOnlineEvent")]
     [EnumMember(Value = "OtherClientOnlineEvent")]
     OtherClientOnline,
     
+    /// <summary>
+    /// 其他客户端离线
+    /// </summary>
     [Description("OtherClientOfflineEvent")]
     [EnumMember(Value = "OtherClientOfflineEvent")]
     OtherClientOffline,
     
+    /// <summary>
+    /// bot被at
+    /// </summary>
     [Description("At")]
     [EnumMember(Value = "At")]
     At

@@ -3,7 +3,7 @@
 /// <summary>
 /// @全体成员
 /// </summary>
-public class AtAllMessage : MessageBase
+public record AtAllMessage : MessageBase
 {
     /// <summary>
     /// 消息类型

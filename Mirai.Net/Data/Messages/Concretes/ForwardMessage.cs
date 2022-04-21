@@ -6,7 +6,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// <summary>
 /// 转发的消息
 /// </summary>
-public class ForwardMessage : MessageBase
+public record ForwardMessage : MessageBase
 {
     /// <summary>
     /// 消息类型
@@ -22,7 +22,7 @@ public class ForwardMessage : MessageBase
     /// <summary>
     /// 转发的消息节点
     /// </summary>
-    public class ForwardNode
+    public record ForwardNode
     {
         /// <summary>
         ///     发送人QQ号

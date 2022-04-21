@@ -6,7 +6,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// 源消息
 /// <remarks>仅在接收消息时有效，且总是消息链的第一个元素</remarks>
 /// </summary>
-public class SourceMessage : MessageBase
+public record SourceMessage : MessageBase
 {
     /// <summary>
     ///     消息id

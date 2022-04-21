@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Events.Concretes.OtherClient;
 /// <summary>
 /// 其它客户端离线
 /// </summary>
-public class OtherClientOfflineEvent : EventBase
+public record OtherClientOfflineEvent : EventBase
 {
     /// <summary>
     /// 事件类型

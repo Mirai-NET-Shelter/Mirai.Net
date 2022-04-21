@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// <summary>
 /// 小程序消息
 /// </summary>
-public class AppMessage : MessageBase
+public record AppMessage : MessageBase
 {
     /// <summary>
     /// 消息类型

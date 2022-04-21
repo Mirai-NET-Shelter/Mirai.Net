@@ -3,7 +3,7 @@
 /// <summary>
 /// 闪照，构造方式与<see cref="ImageMessage"/>相同
 /// </summary>
-public class FlashImageMessage : ImageMessage
+public record FlashImageMessage : ImageMessage
 {
     /// <summary>
     /// 消息类型

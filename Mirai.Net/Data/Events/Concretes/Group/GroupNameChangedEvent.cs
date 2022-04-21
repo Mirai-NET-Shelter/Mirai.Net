@@ -3,7 +3,7 @@
 /// <summary>
 /// 某群的改了群名
 /// </summary>
-public class GroupNameChangedEvent : GroupSettingChangedEventBase<string>
+public record GroupNameChangedEvent : GroupSettingChangedEventBase<string>
 {
     /// <summary>
     /// 事件类型

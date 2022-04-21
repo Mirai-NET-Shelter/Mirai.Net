@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// <summary>
 /// 纯文本消息
 /// </summary>
-public class PlainMessage : MessageBase
+public record PlainMessage : MessageBase
 {
     /// <summary>
     /// 带参数的构造器

@@ -3,7 +3,7 @@
 /// <summary>
 /// 新的好友请求
 /// </summary>
-public class NewFriendRequestedEvent : RequestedEventBase
+public record NewFriendRequestedEvent : RequestedEventBase
 {
     /// <summary>
     /// 事件类型

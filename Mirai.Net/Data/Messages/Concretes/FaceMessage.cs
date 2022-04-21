@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// <summary>
 /// qq表情
 /// </summary>
-public class FaceMessage : MessageBase
+public record FaceMessage : MessageBase
 {
     /// <summary>
     ///     QQ表情编号，可选，优先高于<see cref="Name"/>

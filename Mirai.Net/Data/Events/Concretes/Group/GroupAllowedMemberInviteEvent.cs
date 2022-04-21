@@ -3,7 +3,7 @@
 /// <summary>
 /// 群内是否允许群员邀请新成员的状态发生改变
 /// </summary>
-public class GroupAllowedMemberInviteEvent : GroupSettingChangedEventBase<bool>
+public record GroupAllowedMemberInviteEvent : GroupSettingChangedEventBase<bool>
 {
     /// <summary>
     /// 事件类型

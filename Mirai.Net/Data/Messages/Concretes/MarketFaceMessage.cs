@@ -6,7 +6,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// 商城表情
 /// <remarks>目前商城表情仅支持接收和转发，不支持构造发送</remarks>
 /// </summary>
-public class MarketFaceMessage : MessageBase
+public record MarketFaceMessage : MessageBase
 {
     /// <summary>
     /// 消息类型

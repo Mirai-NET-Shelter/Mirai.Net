@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// <summary>
 /// 我也不知道是啥玩意
 /// </summary>
-public class PokeMessage : MessageBase
+public record PokeMessage : MessageBase
 {
     /// <summary>
     ///     "Poke": 戳一戳

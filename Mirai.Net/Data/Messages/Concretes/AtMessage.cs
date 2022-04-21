@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Messages.Concretes;
 /// <summary>
 /// @某人
 /// </summary>
-public class AtMessage : MessageBase
+public record AtMessage : MessageBase
 {
     /// <summary>
     /// 带参数的构造器

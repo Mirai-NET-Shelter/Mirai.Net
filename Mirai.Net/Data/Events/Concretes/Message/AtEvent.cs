@@ -6,7 +6,7 @@ namespace Mirai.Net.Data.Events.Concretes.Message;
 /// <summary>
 /// Bot被人at
 /// </summary>
-public class AtEvent : EventBase
+public record AtEvent : EventBase
 {
     /// <summary>
     /// 事件类型

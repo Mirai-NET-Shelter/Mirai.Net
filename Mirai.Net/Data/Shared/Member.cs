@@ -7,7 +7,7 @@ namespace Mirai.Net.Data.Shared;
 /// <summary>
 ///     群成员
 /// </summary>
-public class Member
+public record Member
 {
     /// <summary>
     /// 群员资料

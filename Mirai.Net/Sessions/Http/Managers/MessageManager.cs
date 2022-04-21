@@ -9,6 +9,9 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Sessions.Http.Managers;
 
+/// <summary>
+/// 消息管理器
+/// </summary>
 public static class MessageManager
 {
     #region Private helpers

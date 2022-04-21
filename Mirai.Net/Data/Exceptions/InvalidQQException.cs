@@ -16,19 +16,19 @@ public class InvalidQQException : Exception
     //    http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dncscol/html/csharp07192001.asp
     //
 
-    public InvalidQQException()
+    internal InvalidQQException()
     {
     }
 
-    public InvalidQQException(string message) : base(message)
+    internal InvalidQQException(string message) : base(message)
     {
     }
 
-    public InvalidQQException(string message, Exception inner) : base(message, inner)
+    internal InvalidQQException(string message, Exception inner) : base(message, inner)
     {
     }
 
-    protected InvalidQQException(
+    internal InvalidQQException(
         SerializationInfo info,
         StreamingContext context) : base(info, context)
     {

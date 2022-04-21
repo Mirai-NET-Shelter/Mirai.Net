@@ -6,7 +6,7 @@ namespace Mirai.Net.Data.Shared;
 /// <summary>
 /// 群
 /// </summary>
-public class Group
+public record Group
 {
     /// <summary>
     ///     群号

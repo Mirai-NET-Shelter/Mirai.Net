@@ -3,7 +3,7 @@
 /// <summary>
 /// 群内是否允许坦白说的状态发生改变
 /// </summary>
-public class GroupAllowedConfessTalkChanged : GroupSettingChangedEventBase<bool>
+public record GroupAllowedConfessTalkChanged : GroupSettingChangedEventBase<bool>
 {
     /// <summary>
     /// 事件类型

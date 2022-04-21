@@ -6,7 +6,7 @@ namespace Mirai.Net.Data.Shared;
 /// <summary>
 /// 文件
 /// </summary>
-public class File
+public record File
 {
     /// <summary>
     /// 文件名
@@ -51,7 +51,7 @@ public class File
     /// <summary>
     /// 文件上传者
     /// </summary>
-    public class FileUploader
+    public record FileUploader
     {
         /// <summary>
         /// 上传者qq
@@ -74,7 +74,7 @@ public class File
     /// <summary>
     /// 文件下载信息
     /// </summary>
-    public class FileDownloadInfo
+    public record FileDownloadInfo
     {
         /// <summary>
         /// sha1

@@ -6,7 +6,7 @@ namespace Mirai.Net.Data.Events.Concretes.Group;
 /// <summary>
 /// Bot被禁言
 /// </summary>
-public class MutedEvent : EventBase
+public record MutedEvent : EventBase
 {
     /// <summary>
     /// 事件类型

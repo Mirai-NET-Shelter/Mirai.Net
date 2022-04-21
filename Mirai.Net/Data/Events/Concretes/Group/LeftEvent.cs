@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Events.Concretes.Group;
 /// <summary>
 /// Bot主动离开了某群
 /// </summary>
-public class LeftEvent : EventBase
+public record LeftEvent : EventBase
 {
     /// <summary>
     /// 事件类型

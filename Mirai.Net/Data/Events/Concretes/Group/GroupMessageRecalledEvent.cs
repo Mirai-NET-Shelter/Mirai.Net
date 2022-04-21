@@ -6,7 +6,7 @@ namespace Mirai.Net.Data.Events.Concretes.Group;
 /// <summary>
 /// 某条群消息被撤回
 /// </summary>
-public class GroupMessageRecalledEvent : EventBase
+public record GroupMessageRecalledEvent : EventBase
 {
     /// <summary>
     /// 事件类型

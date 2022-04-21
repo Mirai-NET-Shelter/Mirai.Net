@@ -16,19 +16,19 @@ public class InvalidResponseException : Exception
     //    http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dncscol/html/csharp07192001.asp
     //
 
-    public InvalidResponseException()
+    internal InvalidResponseException()
     {
     }
 
-    public InvalidResponseException(string message) : base(message)
+    internal InvalidResponseException(string message) : base(message)
     {
     }
 
-    public InvalidResponseException(string message, Exception inner) : base(message, inner)
+    internal InvalidResponseException(string message, Exception inner) : base(message, inner)
     {
     }
 
-    protected InvalidResponseException(
+    internal InvalidResponseException(
         SerializationInfo info,
         StreamingContext context) : base(info, context)
     {

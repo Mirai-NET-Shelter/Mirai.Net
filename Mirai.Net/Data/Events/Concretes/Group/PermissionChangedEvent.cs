@@ -7,7 +7,7 @@ namespace Mirai.Net.Data.Events.Concretes.Group;
 /// <summary>
 /// Bot在群内的权限改变，操作者一定是群主
 /// </summary>
-public class PermissionChangedEvent : EventBase
+public record PermissionChangedEvent : EventBase
 {
     /// <summary>
     /// 事件类型

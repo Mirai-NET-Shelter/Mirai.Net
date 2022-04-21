@@ -10,6 +10,9 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Sessions.Http.Managers;
 
+/// <summary>
+/// 群管理器
+/// </summary>
 public static class GroupManager
 {
     #region Mute

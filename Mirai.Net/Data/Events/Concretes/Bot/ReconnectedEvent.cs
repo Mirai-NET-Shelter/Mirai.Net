@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Events.Concretes.Bot;
 /// <summary>
 /// Bot主动重新登录
 /// </summary>
-public class ReconnectedEvent : EventBase
+public record ReconnectedEvent : EventBase
 {
     /// <summary>
     /// Bot的QQ号

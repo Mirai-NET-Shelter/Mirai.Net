@@ -6,7 +6,7 @@ namespace Mirai.Net.Data.Shared;
 /// <summary>
 /// 资料卡
 /// </summary>
-public class Profile
+public record Profile
 {
     /// <summary>
     /// 昵称

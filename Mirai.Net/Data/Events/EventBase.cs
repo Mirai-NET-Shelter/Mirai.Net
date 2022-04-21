@@ -7,7 +7,7 @@ namespace Mirai.Net.Data.Events;
 /// <summary>
 /// 事件基类
 /// </summary>
-public class EventBase
+public record EventBase
 {
     /// <summary>
     /// 你又看不到这个

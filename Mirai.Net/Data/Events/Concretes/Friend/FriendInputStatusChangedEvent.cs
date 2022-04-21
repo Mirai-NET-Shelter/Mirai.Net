@@ -5,7 +5,7 @@ namespace Mirai.Net.Data.Events.Concretes.Friend;
 /// <summary>
 /// 好友输入状态改变
 /// </summary>
-public class FriendInputStatusChangedEvent : EventBase
+public record FriendInputStatusChangedEvent : EventBase
 {
     /// <summary>
     /// 事件类型
