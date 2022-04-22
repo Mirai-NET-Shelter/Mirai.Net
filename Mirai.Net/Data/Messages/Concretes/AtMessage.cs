@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Mirai.Net.Data.Shared;
+using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Messages.Concretes;
 
@@ -14,6 +15,15 @@ public record AtMessage : MessageBase
     public AtMessage(string target)
     {
         Target = target;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="target"></param>
+    public AtMessage(Member target)
+    {
+        Target = target.Id;
     }
 
     /// <summary>
