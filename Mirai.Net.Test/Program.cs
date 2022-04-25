@@ -12,6 +12,7 @@ using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Sessions;
 using Mirai.Net.Sessions.Http.Managers;
+using Mirai.Net.Utils.Internal;
 using Mirai.Net.Utils.Scaffolds;
 using Newtonsoft.Json.Linq;
 using Timer = System.Timers.Timer;
@@ -39,10 +40,15 @@ namespace Mirai.Net.Test
                 {
                     if (r.MessageChain.GetPlainMessage() == "/send")
                     {
-                        await r.SendMessageAsync("hi");
+                        await r.SendMessageAsync("the true message will be revealed in 5 seconds");
+                        DispatchUtils.ExecuteScheduledActionAsync(5000, async () =>
+                        {
+                            await r.SendMessageAsync("my key is: 1145141919810");
+                        });
                     }
                 });
 
+            Console.WriteLine("launched");
             exit.WaitOne();
         }
 

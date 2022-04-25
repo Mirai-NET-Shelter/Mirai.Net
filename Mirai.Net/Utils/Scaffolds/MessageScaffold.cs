@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Manganese.Text;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
+using Mirai.Net.Sessions.Http.Managers;
+using Mirai.Net.Utils.Internal;
 
 namespace Mirai.Net.Utils.Scaffolds;
 
@@ -176,5 +179,52 @@ public static class MessageScaffold
             .Replace("\\", @"\\");
         
         return result;
+    }
+
+    /// <summary>
+    /// 在指定的时间之后撤回消息
+    /// </summary>
+    /// <param name="messageIdTask"></param>
+    /// <param name="duration"></param>
+    public static async Task RecallAfter(this Task<string> messageIdTask, TimeSpan duration)
+    {
+        var messageId = await messageIdTask;
+        DispatchUtils.ExecuteScheduledActionAsync(duration, async () =>
+        {
+            await MessageManager.RecallAsync(messageId);
+        });
+    }
+
+    /// <summary>
+    /// 在指定的时间之后撤回消息
+    /// </summary>
+    /// <param name="messageIdTask"></param>
+    /// <param name="milliseconds"></param>
+    public static async Task RecallAfter(this Task<string> messageIdTask, int milliseconds)
+    {
+        await messageIdTask.RecallAfter(TimeSpan.FromMilliseconds(milliseconds));
+    }
+
+    /// <summary>
+    /// 在指定时间之后发送消息，这是个同步方法
+    /// </summary>
+    /// <param name="messageTask"></param>
+    /// <param name="duration"></param>
+    public static void SendAfter(this Task<string> messageTask, TimeSpan duration)
+    {
+        DispatchUtils.ExecuteScheduledActionAsync(duration, async () =>
+        {
+            await messageTask;
+        });
+    }
+
+    /// <summary>
+    /// 在指定时间之后发送消息，这是个同步方法
+    /// </summary>
+    /// <param name="messageTask"></param>
+    /// <param name="milliseconds"></param>
+    public static void SendAfter(this Task<string> messageTask, int milliseconds)
+    {
+        messageTask.SendAfter(TimeSpan.FromMilliseconds(milliseconds));
     }
 }
