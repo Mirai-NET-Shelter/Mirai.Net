@@ -3,7 +3,7 @@
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>2.4.0-RC1</PackageVersion>
+        <PackageVersion>2.4.0</PackageVersion>
         <Title>Mirai.Net</Title>
         <Description>基于mirai-api-http的轻量级mirai社区sdk</Description>
         <Copyright>Copyright 2022 AHpx reserve all rights.</Copyright>
@@ -11,6 +11,7 @@
         <PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/SinoAHpx/Mirai.Net</RepositoryUrl>
         <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
+        <PackageTags>Mirai, QQBot, mirai-api-http</PackageTags>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -22,9 +23,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Flurl" Version="3.0.2" />
-        <PackageReference Include="Flurl.Http" Version="3.2.0" />
-        <PackageReference Include="Manganese" Version="1.2.0" />
+        <PackageReference Include="Flurl" Version="3.0.4" />
+        <PackageReference Include="Flurl.Http" Version="3.2.2" />
+        <PackageReference Include="Manganese" Version="1.2.1" />
         <PackageReference Include="Websocket.Client" Version="4.4.43" />
 
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
