@@ -4,7 +4,7 @@ using Manganese.Text;
 
 namespace Mirai.Net.Utils.Internal;
 
-public static class ExceptionUtils
+internal static class ExceptionUtils
 {
     /// <summary>
     ///     获取状态码对应的原因

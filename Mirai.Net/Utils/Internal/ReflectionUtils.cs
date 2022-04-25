@@ -10,14 +10,14 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Utils.Internal;
 
-public static class ReflectionUtils
+internal static class ReflectionUtils
 {
     /// <summary>
     ///     获取某个命名空间下所有类的默认实例
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static IEnumerable<T> GetDefaultInstances<T>(string @namespace) where T : class
+    internal static IEnumerable<T> GetDefaultInstances<T>(string @namespace) where T : class
     {
         return Assembly
             .GetExecutingAssembly()
@@ -60,7 +60,7 @@ public static class ReflectionUtils
         {
             var quote = JsonConvert.DeserializeObject<QuoteMessage>(data);
 
-            quote!.Origin = data.FetchJToken("origin")
+            quote!.Origin = data.FetchJToken("origin")!
                 .Select(x => GetMessageBase(x.ToString()))
                 .ToArray();
             
@@ -71,11 +71,11 @@ public static class ReflectionUtils
         {
             var forward = JsonConvert.DeserializeObject<ForwardMessage>(data);
 
-            forward!.NodeList = data.FetchJToken("nodeList")
+            forward!.NodeList = data.FetchJToken("nodeList")!
                 .Select(x =>
                 {
                     var node = x.ToObject<ForwardMessage.ForwardNode>();
-                    node!.MessageChain = x.FetchJToken("messageChain").Select(z => GetMessageBase(z.ToString()))
+                    node!.MessageChain = x.FetchJToken("messageChain")!.Select(z => GetMessageBase(z.ToString()))
                         .ToArray();
 
                     return node;

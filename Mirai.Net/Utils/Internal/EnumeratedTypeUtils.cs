@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Mirai.Net.Utils.Internal;
 
-public static class EnumeratedTypeUtils
+internal static class EnumeratedTypeUtils
 {
     /// <summary>
     ///     获取某枚举值的Description attribute值，如果没有这个特性则直接返回该值的ToString
