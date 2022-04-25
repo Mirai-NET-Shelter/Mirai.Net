@@ -108,10 +108,16 @@ public class MiraiBot : IDisposable
     /// </summary>
     public string VerifyKey { get; set; }
     
+    /// <summary>
+    /// 群列表
+    /// </summary>
     [JsonIgnore]
     public Lazy<IEnumerable<Group>> Groups => 
         new(() => AccountManager.GetGroupsAsync().GetAwaiter().GetResult());
     
+    /// <summary>
+    /// 好友列表
+    /// </summary>
     [JsonIgnore]
     public Lazy<IEnumerable<Friend>> Friends => 
         new(() => AccountManager.GetFriendsAsync().GetAwaiter().GetResult());
@@ -121,20 +127,29 @@ public class MiraiBot : IDisposable
     #region Handlers
 
     /// <summary>
-    /// 接收到
+    /// 接收到事件
     /// </summary>
     [JsonIgnore] public IObservable<EventBase> EventReceived => _eventReceivedSubject.AsObservable();
 
     private readonly Subject<EventBase> _eventReceivedSubject = new();
 
+    /// <summary>
+    /// 收到消息
+    /// </summary>
     [JsonIgnore] public IObservable<MessageReceiverBase> MessageReceived => _messageReceivedSubject.AsObservable();
 
     private readonly Subject<MessageReceiverBase> _messageReceivedSubject = new();
 
+    /// <summary>
+    /// 接收到未知类型的Websocket消息
+    /// </summary>
     [JsonIgnore] public IObservable<string> UnknownMessageReceived => _unknownMessageReceived.AsObservable();
 
     private readonly Subject<string> _unknownMessageReceived = new();
 
+    /// <summary>
+    /// Websocket断开连接
+    /// </summary>
     [JsonIgnore]
     public IObservable<WebSocketCloseStatus> DisconnectionHappened => _disconnectionHappened.AsObservable();
 
@@ -210,67 +225,56 @@ public class MiraiBot : IDisposable
             .Where(message => message.MessageType == WebSocketMessageType.Text)
             .Subscribe(message =>
             {
-                var type = GetRespondMessageType(message);
                 var data = message.Text.Fetch("data");
-
-                switch (type)
+                if (data == null || data.IsNullOrEmpty())
                 {
-                    case WebsocketMessageTypes.Message:
-                        var receiver = ReflectionUtils.GetMessageReceiverBase(data);
-                        // receiver.MessageChain = new MessageChain();
-
-                        receiver.MessageChain = data
-                            .Fetch("messageChain")
-                            .ToJArray()
-                            .Select(token => ReflectionUtils.GetMessageBase(token.ToString()))
-                            .ToMessageChain();
-
-                        if (receiver.MessageChain.OfType<AtMessage>().Any(x => x.Target == Instance.QQ))
-                        {
-                            _eventReceivedSubject.OnNext(new AtEvent
-                            {
-                                Receiver = (receiver as GroupMessageReceiver)!
-                            });
-                        }
-
-                        _messageReceivedSubject.OnNext(receiver);
-                        break;
-                    case WebsocketMessageTypes.Event:
-                        _eventReceivedSubject.OnNext(ReflectionUtils.GetEventBase(data));
-                        break;
-                    case WebsocketMessageTypes.Unknown:
-                        _unknownMessageReceived.OnNext(data);
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                    throw new InvalidWebsocketReponseException("Websocket传回错误响应");
                 }
+
+                RedirectWebSocketData(data);
             });
     }
-
-    /// <summary>
-    ///     获取websocket收到的消息是什么类型的
-    /// </summary>
-    /// <param name="message"></param>
-    /// <returns>消息，事件，未知</returns>
-    private static WebsocketMessageTypes GetRespondMessageType(ResponseMessage message)
+    
+    private void RedirectWebSocketData(string data)
     {
-        if (message.MessageType != WebSocketMessageType.Text || message.Text.IsNullOrEmpty())
-            return WebsocketMessageTypes.Unknown;
-
-        try
+        var dataType = data.Fetch("type");
+        if (dataType == null || dataType.IsNullOrEmpty())
         {
-            var json = message.Text.Fetch("data").ToJObject();
-
-            if (!json.ContainsKey("type"))
-                return WebsocketMessageTypes.Unknown;
-
-            return json.Fetch("type").Contains("Message")
-                ? WebsocketMessageTypes.Message
-                : WebsocketMessageTypes.Event;
+            throw new InvalidWebsocketReponseException("Websocket传回错误响应");
         }
-        catch
+
+        if (dataType.EndsWith("Message"))
         {
-            return WebsocketMessageTypes.Unknown;
+            var receiver = ReflectionUtils.GetMessageReceiverBase(data);
+
+            var rawChain = data.Fetch("messageChain");
+            if (rawChain == null || rawChain.IsNullOrEmpty())
+            {
+                throw new InvalidResponseException("Websocket传回错误响应");
+            }
+            
+            receiver.MessageChain = rawChain
+                .ToJArray()
+                .Select(token => ReflectionUtils.GetMessageBase(token.ToString()))
+                .ToMessageChain();
+            
+            if (receiver.MessageChain.OfType<AtMessage>().Any(x => x.Target == Instance.QQ))
+            {
+                _eventReceivedSubject.OnNext(new AtEvent
+                {
+                    Receiver = (receiver as GroupMessageReceiver)!
+                });
+            }
+            
+            _messageReceivedSubject.OnNext(receiver);
+        }
+        else if (dataType.EndsWith("Event"))
+        {
+            _eventReceivedSubject.OnNext(ReflectionUtils.GetEventBase(data));
+        }
+        else
+        {
+            _unknownMessageReceived.OnNext(data);
         }
     }
 
