@@ -64,35 +64,17 @@ public class MiraiBot : IDisposable
 
     [JsonIgnore]
     internal string HttpSessionKey { get; set; }
-
-    [JsonIgnore]
-    private string _address;
+    
     [JsonIgnore]
     private string _qq;
     [JsonIgnore]
     private WebsocketClient _client;
 
     /// <summary>
-    ///     mirai-api-http本地服务器地址，比如：localhost:114514
+    ///     mirai-api-http本地服务器地址，比如：localhost:114514，或者构造一个ConnectConfig对象
     ///     <exception cref="InvalidAddressException">传入错误的地址将会抛出异常</exception>
     /// </summary>
-    public string Address
-    {
-        //Todo: use .Empty
-        get => _address.TrimEnd('/').Replace("http://", "").Replace("https://", "");
-        set
-        {
-            if (!value.Contains(":")) throw new InvalidAddressException($"错误的地址: {value}");
-
-            var split = value.Split(':');
-
-            //todo: use is integer
-            if (split.Length != 2) throw new InvalidAddressException($"错误的地址: {value}");
-            if (!split.Last().IsInt64()) throw new InvalidAddressException($"错误的地址: {value}");
-
-            _address = value;
-        }
-    }
+    public ConnectConfig Address { get; set; }
 
     /// <summary>
     ///     建立连接的QQ账号
@@ -206,7 +188,7 @@ public class MiraiBot : IDisposable
     /// </summary>
     private async Task StartWebsocketListenerAsync()
     {
-        var url = $"ws://{Address}/all"
+        var url = $"ws://{Address.WebsocketAddress}/all"
             .SetQueryParam("verifyKey", VerifyKey)
             .SetQueryParam("qq", QQ)
             .ToUri();

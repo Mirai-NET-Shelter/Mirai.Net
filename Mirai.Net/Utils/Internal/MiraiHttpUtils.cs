@@ -64,7 +64,7 @@ internal static class MiraiHttpUtils
     internal static async Task<string> GetAsync(this HttpEndpoints endpoints, object extra = null,
         bool withSessionKey = true)
     {
-        var url = $"http://{MiraiBot.Instance.Address}/{endpoints.GetDescription()}";
+        var url = $"http://{MiraiBot.Instance.Address.HttpAddress}/{endpoints.GetDescription()}";
 
         if (extra != null)
             url = url.SetQueryParams(extra);
@@ -101,7 +101,7 @@ internal static class MiraiHttpUtils
     internal static async Task<string> PostJsonAsync(this HttpEndpoints endpoint, object json,
         bool withSessionKey = true)
     {
-        var url = $"http://{MiraiBot.Instance.Address}/{endpoint.GetDescription()}";
+        var url = $"http://{MiraiBot.Instance.Address.HttpAddress}/{endpoint.GetDescription()}";
         var result = await PostJsonAsync(url, json, withSessionKey);
 
         return result;

@@ -133,7 +133,7 @@ public static class FileManager
     {
         uploadPath ??= $"/{Path.GetFileName(filePath)}";
 
-        var url = $"http://{MiraiBot.Instance.Address}/{HttpEndpoints.FileUpload.GetDescription()}";
+        var url = $"http://{MiraiBot.Instance.Address.HttpAddress}/{HttpEndpoints.FileUpload.GetDescription()}";
 
         var result = await url
             .WithHeader("Authorization", $"session {MiraiBot.Instance.HttpSessionKey}")
@@ -160,7 +160,7 @@ public static class FileManager
     public static async Task<(string, string)> UploadImageAsync(string imagePath,
         ImageUploadTargets imageUploadTargets = ImageUploadTargets.Group)
     {
-        var url = $"http://{MiraiBot.Instance.Address}/{HttpEndpoints.UploadImage.GetDescription()}";
+        var url = $"http://{MiraiBot.Instance.Address.HttpAddress}/{HttpEndpoints.UploadImage.GetDescription()}";
 
         var result = await url
             .WithHeader("Authorization", $"session {MiraiBot.Instance.HttpSessionKey}")
@@ -181,7 +181,7 @@ public static class FileManager
     /// <returns>item1: 语音id，item2：语音url</returns>
     public static async Task<(string, string)> UploadVoiceAsync(string voicePath)
     {
-        var url = $"http://{MiraiBot.Instance.Address}/{HttpEndpoints.UploadVoice.GetDescription()}";
+        var url = $"http://{MiraiBot.Instance.Address.HttpAddress}/{HttpEndpoints.UploadVoice.GetDescription()}";
 
         var result = await url
             .WithHeader("Authorization", $"session {MiraiBot.Instance.HttpSessionKey}")
