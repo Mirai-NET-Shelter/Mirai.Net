@@ -3,7 +3,7 @@
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>2.4.1</PackageVersion>
+        <PackageVersion>2.4.2</PackageVersion>
         <Title>Mirai.Net</Title>
         <Description>基于mirai-api-http的轻量级mirai社区sdk</Description>
         <Copyright>Copyright 2022 AHpx reserve all rights.</Copyright>
@@ -23,8 +23,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Flurl" Version="3.0.4" />
-        <PackageReference Include="Flurl.Http" Version="3.2.2" />
+        <PackageReference Include="Flurl" Version="3.0.6" />
+        <PackageReference Include="Flurl.Http" Version="3.2.4" />
         <PackageReference Include="Manganese" Version="1.2.1" />
         <PackageReference Include="Websocket.Client" Version="4.4.43" />
 
