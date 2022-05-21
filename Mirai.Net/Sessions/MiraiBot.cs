@@ -225,7 +225,7 @@ public class MiraiBot : IDisposable
             throw new InvalidWebsocketReponseException("Websocket传回错误响应");
         }
 
-        if (dataType.EndsWith("Message"))
+        if (dataType.Contains("Message"))
         {
             var receiver = ReflectionUtils.GetMessageReceiverBase(data);
 
@@ -250,7 +250,7 @@ public class MiraiBot : IDisposable
             
             _messageReceivedSubject.OnNext(receiver);
         }
-        else if (dataType.EndsWith("Event"))
+        else if (dataType.Contains("Event"))
         {
             _eventReceivedSubject.OnNext(ReflectionUtils.GetEventBase(data));
         }

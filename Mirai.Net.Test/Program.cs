@@ -17,17 +17,15 @@ namespace Mirai.Net.Test
     {
         private static async Task Main()
         {
-            var con = new ConnectConfig
-            {
-                HttpAddress = "",
-                WebsocketAddress = ""
-            };
-            return;
             var exit = new ManualResetEvent(false);
             
-            using var bot = new MiraiBot
+            var bot = new MiraiBot
             {
-                Address = "localhost:8080",
+                Address = new ConnectConfig
+                {
+                    HttpAddress = new ConnectConfig.AdapterConfig("localhost", "8080"),
+                    WebsocketAddress = new ConnectConfig.AdapterConfig("localhost", "1234")
+                },
                 VerifyKey = "1145141919810",
                 QQ = "1590454991"
             };
