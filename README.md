@@ -1,4 +1,4 @@
-# Mirai.Net 2.4.3
+# Mirai.Net 2.4.4
 
 Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项目遵循
 [AGPL-3.0 LICENSE](https://github.com/AHpxChina/Mirai.Net/blob/master/LICENSE)
