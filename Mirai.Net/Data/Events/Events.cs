@@ -231,5 +231,10 @@ public enum Events
     /// </summary>
     [Description("At")]
     [EnumMember(Value = "At")]
-    At
+    At,
+    
+    /// <summary>
+    /// 未知类型的事件
+    /// </summary>
+    Unknown
 }

@@ -8,6 +8,11 @@ namespace Mirai.Net.Data.Events.Concretes;
 public record UnknownEvent : EventBase
 {
     /// <summary>
+    /// 
+    /// </summary>
+    [JsonIgnore] public override Events Type { get; set; } = Events.Unknown;
+
+    /// <summary>
     /// 原json
     /// </summary>
     [JsonIgnore]

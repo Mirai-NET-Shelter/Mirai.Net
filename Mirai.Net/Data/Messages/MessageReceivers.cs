@@ -36,5 +36,9 @@ public enum MessageReceivers
     /// 其它客户端消息
     /// </summary>
     [Description("OtherClientMessage")] [EnumMember(Value = "OtherClientMessage")]
-    OtherClient
+    OtherClient,
+    /// <summary>
+    /// 未知类型的接收器
+    /// </summary>
+    Unknown
 }

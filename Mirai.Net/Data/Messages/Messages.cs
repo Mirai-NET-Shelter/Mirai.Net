@@ -80,5 +80,9 @@ public enum Messages
     /// <summary>
     /// mirai码消息
     /// </summary>
-    MiraiCode
+    MiraiCode,
+    /// <summary>
+    /// 未知类型的消息
+    /// </summary>
+    Unknown
 }

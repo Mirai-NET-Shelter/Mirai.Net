@@ -8,6 +8,12 @@ namespace Mirai.Net.Data.Messages.Receivers;
 public record UnknownReceiver : MessageReceiverBase
 {
     /// <summary>
+    /// 
+    /// </summary>
+    [JsonIgnore]
+    public override MessageReceivers Type { get; set; } = MessageReceivers.Unknown;
+
+    /// <summary>
     /// 收到的json
     /// </summary>
     [JsonIgnore]

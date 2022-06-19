@@ -8,6 +8,11 @@ namespace Mirai.Net.Data.Messages.Concretes;
 public record UnknownMessage : MessageBase
 {
     /// <summary>
+    /// 
+    /// </summary>
+    [JsonIgnore] public override Messages Type { get; set; } = Messages.Unknown;
+
+    /// <summary>
     /// 收到的json
     /// </summary>
     [JsonIgnore]
