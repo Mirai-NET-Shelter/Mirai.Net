@@ -213,16 +213,16 @@ public class MiraiBot : IDisposable
                     throw new InvalidWebsocketReponseException("Websocket传回错误响应");
                 }
 
-                RedirectWebSocketData(data);
+                ProcessWebSocketData(data);
             });
     }
     
-    private void RedirectWebSocketData(string data)
+    private void ProcessWebSocketData(string data)
     {
         var dataType = data.Fetch("type");
         if (dataType == null || dataType.IsNullOrEmpty())
         {
-            throw new InvalidWebsocketReponseException("Websocket传回错误响应");
+            throw new InvalidWebsocketReponseException("Websocket传回错误的响应");
         }
 
         if (dataType.Contains("Message"))
@@ -232,7 +232,7 @@ public class MiraiBot : IDisposable
             var rawChain = data.Fetch("messageChain");
             if (rawChain == null || rawChain.IsNullOrEmpty())
             {
-                throw new InvalidResponseException("Websocket传回错误响应");
+                throw new InvalidResponseException("Websocket传回错误的响应");
             }
             
             receiver.MessageChain = rawChain

@@ -77,7 +77,7 @@ public class MessageChainBuilder
         });
         return this;
     }
-
+    
     /// <summary>
     /// 追加一套at全体成员消息
     /// </summary>
@@ -85,7 +85,7 @@ public class MessageChainBuilder
     public MessageChainBuilder AtAll()
     {
         _chain.Add(new AtAllMessage());
-
+    
         return this;
     }
 

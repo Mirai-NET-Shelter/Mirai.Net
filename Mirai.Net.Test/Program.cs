@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Manganese.Array;
+using Manganese.Text;
 using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Data.Sessions;
@@ -24,7 +27,7 @@ namespace Mirai.Net.Test
                 Address = new ConnectConfig
                 {
                     HttpAddress = new ConnectConfig.AdapterConfig("localhost", "8080"),
-                    WebsocketAddress = new ConnectConfig.AdapterConfig("localhost", "1234")
+                    WebsocketAddress = new ConnectConfig.AdapterConfig("localhost", "8080")
                 },
                 VerifyKey = "1145141919810",
                 QQ = "1590454991"
@@ -36,17 +39,10 @@ namespace Mirai.Net.Test
                 .OfType<GroupMessageReceiver>()
                 .Subscribe(async r =>
                 {
-                    if (r.MessageChain.GetPlainMessage() == "/send")
+                    var ums = r.MessageChain.OfType<UnknownMessage>();
+                    if (ums.Any())
                     {
-                        var voice = new VoiceMessage
-                        {
-                            Path = "",
-                            Url = "",
-                            VoiceId = "",
-                            Base64 = ""
-                        };
-
-                        await r.SendMessageAsync(voice);
+                        ums.Output(x => x.ToJsonString());
                     }
                 });
 

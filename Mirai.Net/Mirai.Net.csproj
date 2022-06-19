@@ -10,8 +10,8 @@
         <PackageProjectUrl>https://github.com/SinoAHpx/Mirai.Net</PackageProjectUrl>
         <PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/SinoAHpx/Mirai.Net</RepositoryUrl>
-        <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
         <PackageTags>Mirai, QQBot, mirai-api-http</PackageTags>
+        <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

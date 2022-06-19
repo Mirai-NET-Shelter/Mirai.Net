@@ -4,8 +4,10 @@ using System.Linq;
 using System.Reflection;
 using Manganese.Text;
 using Mirai.Net.Data.Events;
+using Mirai.Net.Data.Events.Concretes;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
+using Mirai.Net.Data.Messages.Receivers;
 using Newtonsoft.Json;
 
 namespace Mirai.Net.Utils.Internal;
@@ -25,7 +27,16 @@ internal static class ReflectionUtils
             .Where(type => type.FullName != null)
             .Where(type => type.FullName.Contains(@namespace))
             .Where(type => !type.IsAbstract)
-            .Select(type => Activator.CreateInstance(type) as T);
+            .Select(type =>
+            {
+                if (Activator.CreateInstance(type) is T instance)
+                {
+                    return instance;
+                }
+
+                return null;
+            })
+            .Where(i => i != null);
     }
     
     /// <summary>
@@ -54,40 +65,50 @@ internal static class ReflectionUtils
     /// <returns></returns>
     internal static MessageBase GetMessageBase(string data)
     {
-        var root = JsonConvert.DeserializeObject<MessageBase>(data);
-
-        if (root!.Type == Messages.Quote)
+        try
         {
-            var quote = JsonConvert.DeserializeObject<QuoteMessage>(data);
+            var raw = JsonConvert.DeserializeObject<MessageBase>(data);
 
-            quote!.Origin = data.FetchJToken("origin")!
-                .Select(x => GetMessageBase(x.ToString()))
-                .ToArray();
+            if (raw!.Type == Messages.Quote)
+            {
+                var quote = JsonConvert.DeserializeObject<QuoteMessage>(data);
+
+                quote!.Origin = data.FetchJToken("origin")!
+                    .Select(x => GetMessageBase(x.ToString()))
+                    .ToArray();
             
-            return quote;
-        }
+                return quote;
+            }
 
-        if (root!.Type == Messages.Forward)
+            if (raw!.Type == Messages.Forward)
+            {
+                var forward = JsonConvert.DeserializeObject<ForwardMessage>(data);
+
+                forward!.NodeList = data.FetchJToken("nodeList")!
+                    .Select(x =>
+                    {
+                        var node = x.ToObject<ForwardMessage.ForwardNode>();
+                        node!.MessageChain = x.FetchJToken("messageChain")!.Select(z => GetMessageBase(z.ToString()))
+                            .ToArray();
+
+                        return node;
+                    })
+                    .ToArray();
+
+                return forward;
+            }
+
+            return JsonConvert.DeserializeObject(data,
+                MessageBases.First(message => message.Type == raw!.Type)
+                    .GetType()) as MessageBase;
+        }
+        catch
         {
-            var forward = JsonConvert.DeserializeObject<ForwardMessage>(data);
-
-            forward!.NodeList = data.FetchJToken("nodeList")!
-                .Select(x =>
-                {
-                    var node = x.ToObject<ForwardMessage.ForwardNode>();
-                    node!.MessageChain = x.FetchJToken("messageChain")!.Select(z => GetMessageBase(z.ToString()))
-                        .ToArray();
-
-                    return node;
-                })
-                .ToArray();
-
-            return forward;
+            var re = JsonConvert.DeserializeObject<UnknownMessage>(data);
+            re!.RawJson = data;
+            return re;
         }
-
-        return JsonConvert.DeserializeObject(data,
-            MessageBases.First(message => message.Type == root!.Type)
-                .GetType()) as MessageBase;
+        
     }
     
     /// <summary>
@@ -97,11 +118,21 @@ internal static class ReflectionUtils
     /// <returns></returns>
     internal static MessageReceiverBase GetMessageReceiverBase(string data)
     {
-        var root = JsonConvert.DeserializeObject<MessageReceiverBase>(data);
+        try
+        {
+            var raw = JsonConvert.DeserializeObject<MessageReceiverBase>(data);
 
-        return JsonConvert.DeserializeObject(data,
-            MessageReceiverBases.First(receiver => receiver.Type == root!.Type)
-                .GetType()) as MessageReceiverBase;
+            var type = MessageReceiverBases.First(receiver => receiver.Type == raw!.Type)
+                .GetType();
+
+            return JsonConvert.DeserializeObject(data, type) as MessageReceiverBase;
+        }
+        catch
+        {
+            var re = JsonConvert.DeserializeObject<UnknownReceiver>(data);
+            re!.RawJson = data;
+            return re;
+        }
     }
 
     /// <summary>
@@ -111,10 +142,19 @@ internal static class ReflectionUtils
     /// <returns></returns>
     internal static EventBase GetEventBase(string data)
     {
-        var root = JsonConvert.DeserializeObject<EventBase>(data);
+        try
+        {
+            var raw = JsonConvert.DeserializeObject<EventBase>(data);
 
-        return JsonConvert.DeserializeObject(data,
-            EventBases.First(message => message.Type == root!.Type)
-                .GetType()) as EventBase;
+            return JsonConvert.DeserializeObject(data,
+                EventBases.First(message => message.Type == raw!.Type)
+                    .GetType()) as EventBase;
+        }
+        catch
+        {
+            var re = JsonConvert.DeserializeObject<UnknownEvent>(data);
+            re!.RawJson = data;
+            return re;
+        }
     }
 }
