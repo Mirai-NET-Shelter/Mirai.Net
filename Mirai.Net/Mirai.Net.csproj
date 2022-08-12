@@ -25,7 +25,7 @@
     <ItemGroup>
         <PackageReference Include="Flurl" Version="3.0.6" />
         <PackageReference Include="Flurl.Http" Version="3.2.4" />
-        <PackageReference Include="Manganese" Version="1.2.1" />
+        <PackageReference Include="Manganese" Version="1.2.2" />
         <PackageReference Include="Websocket.Client" Version="4.4.43" />
 
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
