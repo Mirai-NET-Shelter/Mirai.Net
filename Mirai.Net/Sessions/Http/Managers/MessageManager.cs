@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Manganese.Text;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
@@ -32,6 +34,7 @@ public static class MessageManager
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
+    [Obsolete("此方法在mirai-api-http 2.6.0及以上版本会导致异常")]
     public static async Task<T> GetMessageReceiverByIdAsync<T>(string messageId) where T : MessageReceiverBase
     {
         var response = await HttpEndpoints.MessageFromId.GetAsync(new
@@ -41,7 +44,44 @@ public static class MessageManager
 
         return JsonConvert.DeserializeObject<T>(response);
     }
-    
+
+    /// <summary>
+    /// 获取一条消息
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="messageId">消息id</param>
+    /// <param name="target">好友id或群id</param>
+    /// <returns></returns>
+    public static async Task<T> GetMessageReceiverAsync<T>(string messageId, string target) where T : MessageReceiverBase
+    {
+        var response = await HttpEndpoints.MessageFromId.GetAsync(new
+        {
+            id = messageId,
+            target
+        });
+
+        return JsonConvert.DeserializeObject<T>(response);
+    }
+
+    /// <summary>
+    /// 获取漫游消息（目前仅支持好友）
+    /// </summary>
+    /// <param name="target">好友id或群id</param>
+    /// <param name="timeStart">起始时间, UTC+8 时间戳, 单位为秒. 可以为 0, 即表示从可以获取的最早的消息起. 负数将会被看是 0.</param>
+    /// <param name="timeEnd">结束时间, UTC+8 时间戳, 单位为秒. 可以为 <c>long.MaxValue</c>, 即表示到可以获取的最晚的消息为止. 低于 timeStart 的值将会被看作是 timeStart 的值.</param>
+    /// <returns></returns>
+    public static async Task<IEnumerable<MessageReceiverBase>> GetRoamingMessagesAsync(string target, string timeStart, string timeEnd)
+    {
+        var response = await HttpEndpoints.RoamingMessages.GetAsync(new
+        {
+            timeStart,
+            timeEnd,
+            target
+        });
+
+        return JsonConvert.DeserializeObject<IEnumerable<MessageReceiverBase>>(response);
+    }
+
     /// <summary>
     ///     发送好友消息
     /// </summary>
@@ -150,11 +190,28 @@ public static class MessageManager
     ///     撤回消息
     /// </summary>
     /// <param name="messageId">消息id</param>
+    [Obsolete("此方法在mirai-api-http 2.6.0及以上版本会导致异常")]
     public static async Task RecallAsync(string messageId)
     {
         var payload = new
         {
             target = messageId
+        };
+
+        await HttpEndpoints.Recall.PostJsonAsync(payload);
+    }
+
+    /// <summary>
+    ///     撤回消息
+    /// </summary>
+    /// <param name="messageId">消息id</param>
+    /// <param name="target">好友id或群id</param>
+    public static async Task RecallAsync(string messageId, string target)
+    {
+        var payload = new
+        {
+            target,
+            messageId
         };
 
         await HttpEndpoints.Recall.PostJsonAsync(payload);

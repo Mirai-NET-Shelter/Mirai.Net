@@ -24,6 +24,7 @@ internal enum HttpEndpoints
     [Description("sendTempMessage")] SendTempMessage,
     [Description("sendNudge")] SendNudge,
     [Description("recall")] Recall,
+    [Description("roamingMessages")] RoamingMessages,
 
     [Description("file/list")] FileList,
     [Description("file/info")] FileInfo,
