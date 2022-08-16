@@ -1,30 +1,31 @@
 # Mirai.Net 2.4.4
 
-Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项目遵循
-[AGPL-3.0 LICENSE](https://github.com/AHpxChina/Mirai.Net/blob/master/LICENSE)
-开源。
+Mirai.Net 是基于 [mirai-api-http] 实现的 C# 版轻量级 [mirai] 社区 SDK。
 
-本项目的 QQ 群: [752379554](https://jq.qq.com/?_wv=1027&k=gdWqppEO)，需要技术支持或者有什么问题（甚至水群聊天），欢迎加入群聊探讨。
+此项目遵循 [AGPL-3.0](https://github.com/AHpxChina/Mirai.Net/blob/master/LICENSE) 协议开源。
 
-项目文档: https://sinoahpx.github.io/Mirai.Net.Documents
+本项目**新建立的** QQ 群: [752379554](https://jq.qq.com/?_wv=1027&k=gdWqppEO)（原来的已被停封）欢迎加入群聊探讨 ~~甚至水群聊天~~
 
-如果你觉得这是个很酷的项目的话，不妨考虑给它点一个Star，如果你还觉得挺酷但还不够好的话，也欢迎提交Pull Request和Issue。
+项目文档：[Mirai.Net Documents](https://sinoahpx.github.io/Mirai.Net.Documents)
 
+如果你觉得这是个很酷的项目的话，不妨考虑给它点一个 Star。
+
+如果你还觉得挺酷但还不够好的话，也欢迎提交 Pull Request 和 Issue。
 
 ## 速览
 
 - 基于 [.NET Standard 2.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) 开发，支持跨平台。
-- 适配最新的[mirai-api-http]插件。
-- 实现了[mirai-api-http]的`Http Adapter`和`Websocket Adapter`
-  - `Http Adapter`用来进行发送操作。
-  - `Websocket Adapter`用来进行接收操作。
+- 适配最新的 [mirai-api-http] 插件。
+- 实现了 [mirai-api-http] 的 `Http Adapter` 和 `Websocket Adapter`
+  - `Http Adapter` 用来进行发送操作。
+  - `Websocket Adapter` 用来进行接收操作。
 - 基于 [Rx.NET](https://github.com/dotnet/reactive) 的推送系统。
 - 有一堆好用的脚手架和拓展方法。
 - 提供了简单的模块化和命令系统实现。
 - 源代码结构
   - Mirai.Net，主项目
   - Mirai.Net.Test，控制台测试项目
-  - Mirai.Net.UnitTest，单元测试项目(现在没啥用了)
+  - Mirai.Net.UnitTest，单元测试项目（现在没啥用了）
 
 <details>
   <summary>实现的接口列表</summary>
@@ -192,9 +193,9 @@ await MessageManager.SendGroupMessageAsync("xx", new MessageChainBuilder().Plain
 
 ## 贡献
 
-此项目欢迎任何人的[Pull Request](https://github.com/AHpxChina/Mirai.Net/pulls) 和[Issue](https://github.com/AHpxChina/Mirai.Net/issues)，也欢迎 Star 和 Fork。
+此项目欢迎任何人的 [Pull Request](https://github.com/AHpxChina/Mirai.Net/pulls) 和 [Issue](https://github.com/AHpxChina/Mirai.Net/issues) 也欢迎 Star 和 Fork。
 
-如果你认为文档不够好，也欢迎对[文档仓库](https://github.com/SinoAHpx/Mirai.Net.Documents)提交[Pull Request](https://github.com/AHpxChina/Mirai.Net.Documents/pulls)和[Issue](https://github.com/AHpxChina/Mirai.Net.Documents/issues)
+如果你认为文档不够好，也欢迎对 [文档仓库](https://github.com/SinoAHpx/Mirai.Net.Documents) 提交 [Pull Request](https://github.com/AHpxChina/Mirai.Net.Documents/pulls) 和 [Issue](https://github.com/AHpxChina/Mirai.Net.Documents/issues)。
 
 ## 致谢
 
