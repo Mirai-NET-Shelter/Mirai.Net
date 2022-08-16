@@ -4,7 +4,7 @@ Mirai.Net 是基于[mirai-api-http]实现的轻量级[mirai]社区 sdk。 此项
 [AGPL-3.0 LICENSE](https://github.com/AHpxChina/Mirai.Net/blob/master/LICENSE)
 开源。
 
-本项目的 QQ 群: [1042821169](https://jq.qq.com/?_wv=1027&k=gdWqppEO)，需要技术支持或者有什么问题（甚至水群聊天），欢迎加入群聊探讨。
+本项目的 QQ 群: [752379554](https://jq.qq.com/?_wv=1027&k=gdWqppEO)，需要技术支持或者有什么问题（甚至水群聊天），欢迎加入群聊探讨。
 
 项目文档: https://sinoahpx.github.io/Mirai.Net.Documents
 
