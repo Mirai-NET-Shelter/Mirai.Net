@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
+using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Utils.Internal;
@@ -183,6 +184,7 @@ public static class GroupManager
     ///     设置精华消息
     /// </summary>
     /// <param name="messageId">消息id</param>
+    [Obsolete("此方法在mirai-api-http 2.6.0及以上版本会导致异常")]
     public static async Task SetEssenceMessageAsync(string messageId)
     {
         var payload = new
@@ -197,14 +199,35 @@ public static class GroupManager
     ///     设置精华消息
     /// </summary>
     /// <param name="receiver"></param>
+    [Obsolete("此方法在mirai-api-http 2.6.0及以上版本会导致异常")]
     public static async Task SetEssenceMessageAsync(this MessageReceiverBase receiver)
+    {
+        await HttpEndpoints.SetEssence.PostJsonAsync(receiver.MessageChain.OfType<SourceMessage>().First().MessageId);
+    }
+
+    /// <summary>
+    ///     设置精华消息
+    /// </summary>
+    /// <param name="messageId">消息id</param>
+    /// <param name="target">群id</param>
+    public static async Task SetEssenceMessageAsync(string messageId, string target)
     {
         var payload = new
         {
-            target = receiver.MessageChain.OfType<SourceMessage>().First().MessageId
+            messageId,
+            target
         };
 
         await HttpEndpoints.SetEssence.PostJsonAsync(payload);
+    }
+
+    /// <summary>
+    ///     设置精华消息
+    /// </summary>
+    /// <param name="receiver"></param>
+    public static async Task SetEssenceMessageAsync(this GroupMessageReceiver receiver)
+    {
+        await SetEssenceMessageAsync(receiver.MessageChain.OfType<SourceMessage>().First().MessageId, receiver.GroupId);
     }
 
     #endregion

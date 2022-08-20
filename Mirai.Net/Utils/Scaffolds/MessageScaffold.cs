@@ -186,6 +186,7 @@ public static class MessageScaffold
     /// </summary>
     /// <param name="messageIdTask"></param>
     /// <param name="duration"></param>
+    [Obsolete("此方法在mirai-api-http 2.6.0及以上版本会导致异常")]
     public static async Task RecallAfter(this Task<string> messageIdTask, TimeSpan duration)
     {
         var messageId = await messageIdTask;
@@ -200,9 +201,36 @@ public static class MessageScaffold
     /// </summary>
     /// <param name="messageIdTask"></param>
     /// <param name="milliseconds"></param>
+    [Obsolete("此方法在mirai-api-http 2.6.0及以上版本会导致异常")]
     public static async Task RecallAfter(this Task<string> messageIdTask, int milliseconds)
     {
         await messageIdTask.RecallAfter(TimeSpan.FromMilliseconds(milliseconds));
+    }
+
+    /// <summary>
+    /// 在指定的时间之后撤回消息
+    /// </summary>
+    /// <param name="messageIdAndTargetTask">返回消息id,好友id或群id的Task</param>
+    /// <param name="duration"></param>
+    public static async Task RecallAfter(this Task<KeyValuePair<string, string>> messageIdAndTargetTask, TimeSpan duration)
+    {
+        var result = await messageIdAndTargetTask;
+        var messageId = result.Key;
+        var target = result.Value;
+        DispatchUtils.ExecuteScheduledActionAsync(duration, async () =>
+        {
+            await MessageManager.RecallAsync(messageId, target);
+        });
+    }
+
+    /// <summary>
+    /// 在指定的时间之后撤回消息
+    /// </summary>
+    /// <param name="messageIdAndTargetTask">返回消息id,好友id或群id的Task</param>
+    /// <param name="milliseconds"></param>
+    public static async Task RecallAfter(this Task<KeyValuePair<string, string>> messageIdAndTargetTask, int milliseconds)
+    {
+        await messageIdAndTargetTask.RecallAfter(TimeSpan.FromMilliseconds(milliseconds));
     }
 
     /// <summary>

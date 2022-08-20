@@ -172,11 +172,45 @@ public static class MiraiScaffold
     ///     撤回收到的消息
     /// </summary>
     /// <param name="receiver"></param>
+    [Obsolete("此方法在mirai-api-http 2.6.0及以上版本会导致异常")]
     public static async Task RecallAsync(this MessageReceiverBase receiver)
     {
         var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
         await MessageManager
             .RecallAsync(id);
+    }
+
+    /// <summary>
+    ///     撤回收到的消息
+    /// </summary>
+    /// <param name="receiver"></param>
+    public static async Task RecallAsync(this GroupMessageReceiver receiver)
+    {
+        var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
+        await MessageManager
+            .RecallAsync(id, receiver.GroupId);
+    }
+
+    /// <summary>
+    ///     撤回收到的消息
+    /// </summary>
+    /// <param name="receiver"></param>
+    public static async Task RecallAsync(this FriendMessageReceiver receiver)
+    {
+        var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
+        await MessageManager
+            .RecallAsync(id, receiver.FriendId);
+    }
+
+    /// <summary>
+    ///     撤回收到的消息
+    /// </summary>
+    /// <param name="receiver"></param>
+    public static async Task RecallAsync(this TempMessageReceiver receiver)
+    {
+        var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
+        await MessageManager
+            .RecallAsync(id, receiver.Sender.Id);
     }
 
     /// <summary>
