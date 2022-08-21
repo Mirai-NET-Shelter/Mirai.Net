@@ -8,6 +8,7 @@ using Mirai.Net.Data.Shared;
 using Mirai.Net.Utils.Internal;
 using Mirai.Net.Utils.Scaffolds;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Mirai.Net.Sessions.Http.Managers;
 
@@ -78,8 +79,8 @@ public static class MessageManager
             timeEnd,
             target
         });
-        dynamic result = JsonConvert.DeserializeObject(response);
-        return (IEnumerable<MessageChain>)result.data;
+
+        return ((JArray)response.ToJObject()["data"]).Values<MessageChain>();
     }
 
     /// <summary>
