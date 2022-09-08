@@ -315,7 +315,7 @@ public static class MessageManager
     public static async Task<string> QuoteTempMessageAsync(this Member member, string messageId,
         MessageChain chain)
     {
-        return await QuoteTempMessageAsync(member.Group.Id, member.Group.Id, messageId, chain);
+        return await QuoteTempMessageAsync(member.Id, member.Group.Id, messageId, chain);
     }
 
     #endregion
