@@ -51,4 +51,4 @@ jobs:
         done
         
         # Push it to source "nuget"
-        dotnet nuget push $file --api-key ${{ secrets.NUGET_KEY  }} --source "nuget"
+        dotnet nuget push $file --api-key ${{ secrets.NUGET_KEY  }} --source "nuget" --skip-duplicate
