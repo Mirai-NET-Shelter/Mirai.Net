@@ -9,7 +9,6 @@ using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
-using Mirai.Net.Modules;
 using Mirai.Net.Sessions;
 using Mirai.Net.Sessions.Http.Managers;
 using Mirai.Net.Utils.Internal;
@@ -217,18 +216,6 @@ public static class MiraiScaffold
     {
         return await MessageManager
             .SendTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, message);
-    }
-
-    /// <summary>
-    ///     撤回收到的消息
-    /// </summary>
-    /// <param name="receiver"></param>
-    [Obsolete("此方法在mirai-api-http 2.6.0及以上版本会导致异常")]
-    public static async Task RecallAsync(this MessageReceiverBase receiver)
-    {
-        var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
-        await MessageManager
-            .RecallAsync(id);
     }
 
     /// <summary>

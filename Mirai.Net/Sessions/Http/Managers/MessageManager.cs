@@ -179,21 +179,6 @@ public static class MessageManager
     ///     撤回消息
     /// </summary>
     /// <param name="messageId">消息id</param>
-    [Obsolete("此方法在mirai-api-http 2.6.0及以上版本会导致异常")]
-    public static async Task RecallAsync(string messageId)
-    {
-        var payload = new
-        {
-            target = messageId
-        };
-
-        await HttpEndpoints.Recall.PostJsonAsync(payload);
-    }
-
-    /// <summary>
-    ///     撤回消息
-    /// </summary>
-    /// <param name="messageId">消息id</param>
     /// <param name="target">好友id或群id</param>
     public static async Task RecallAsync(string messageId, string target)
     {
