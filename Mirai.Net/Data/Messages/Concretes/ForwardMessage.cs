@@ -25,9 +25,9 @@ public record ForwardMessage : MessageBase
     /// <summary>
     /// 从单个人的消息中构建转发消息
     /// </summary>
-    /// <param name="id"></param>
-    /// <param name="name"></param>
-    /// <param name="chains"></param>
+    /// <param name="id">某人的id</param>
+    /// <param name="name">某人的昵称</param>
+    /// <param name="chains">消息链的集合，每个消息链就是一条消息</param>
     /// <returns></returns>
     public static ForwardMessage FromChains(string id, string name, IEnumerable<MessageChain> chains)
     {

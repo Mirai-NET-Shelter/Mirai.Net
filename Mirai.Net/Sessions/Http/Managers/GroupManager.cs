@@ -24,12 +24,12 @@ public static class GroupManager
     /// <param name="target"></param>
     /// <param name="group"></param>
     /// <param name="time"></param>
-    public static async Task MuteAsync(string target, string group, int time)
+    public static async Task MuteAsync(string memberId, string group, int time)
     {
         var payload = new
         {
             target = group,
-            memberId = target,
+            memberId = memberId,
             time
         };
 
@@ -37,9 +37,9 @@ public static class GroupManager
     }
 
     /// <see cref="MuteAsync(string,string,int)" />
-    public static async Task MuteAsync(string target, string group, TimeSpan time)
+    public static async Task MuteAsync(string memberId, string group, TimeSpan time)
     {
-        await MuteAsync(target, group, Convert.ToInt32(time.TotalSeconds));
+        await MuteAsync(memberId, group, Convert.ToInt32(time.TotalSeconds));
     }
 
     /// <summary>
@@ -67,12 +67,12 @@ public static class GroupManager
     /// </summary>
     /// <param name="target"></param>
     /// <param name="group"></param>
-    public static async Task UnMuteAsync(string target, string group)
+    public static async Task UnMuteAsync(string memberId, string group)
     {
         var payload = new
         {
             target = group,
-            memberId = target
+            memberId
         };
 
         await HttpEndpoints.Unmute.PostJsonAsync(payload);
@@ -97,12 +97,12 @@ public static class GroupManager
     /// <param name="target"></param>
     /// <param name="group"></param>
     /// <param name="message"></param>
-    public static async Task KickAsync(string target, string group, string message = "")
+    public static async Task KickAsync(string memberId, string group, string message = "")
     {
         var payload = new
         {
             target = group,
-            memberId = target,
+            memberId = memberId,
             msg = message
         };
 
@@ -127,11 +127,11 @@ public static class GroupManager
     ///     bot退出某群
     /// </summary>
     /// <param name="target"></param>
-    public static async Task LeaveAsync(string target)
+    public static async Task LeaveAsync(string groupId)
     {
         var payload = new
         {
-            target
+            groupId
         };
 
         await HttpEndpoints.Leave.PostJsonAsync(payload);
@@ -155,12 +155,12 @@ public static class GroupManager
     /// </summary>
     /// <param name="target"></param>
     /// <param name="mute">是否禁言</param>
-    public static async Task MuteAllAsync(string target, bool mute = true)
+    public static async Task MuteAllAsync(string groupId, bool mute = true)
     {
         var endpoint = mute ? HttpEndpoints.MuteAll : HttpEndpoints.UnmuteAll;
         var payload = new
         {
-            target
+            groupId
         };
 
         await endpoint.PostJsonAsync(payload);
@@ -217,9 +217,9 @@ public static class GroupManager
     /// </summary>
     /// <param name="target"></param>
     /// <returns></returns>
-    public static async Task<GroupSetting> GetGroupSettingAsync(string target)
+    public static async Task<GroupSetting> GetGroupSettingAsync(string groupId)
     {
-        var response = await HttpEndpoints.GroupConfig.GetAsync(new { target });
+        var response = await HttpEndpoints.GroupConfig.GetAsync(new { target = groupId });
 
         return JsonConvert.DeserializeObject<GroupSetting>(response);
     }
@@ -240,11 +240,11 @@ public static class GroupManager
     /// </summary>
     /// <param name="target"></param>
     /// <param name="setting"></param>
-    public static async Task SetGroupSettingAsync(string target, GroupSetting setting)
+    public static async Task SetGroupSettingAsync(string groupId, GroupSetting setting)
     {
         var payload = new
         {
-            target,
+            target = groupId,
             config = setting
         };
 

@@ -77,11 +77,11 @@ public static class MessageManager
     /// <param name="target"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
-    public static async Task<string> SendFriendMessageAsync(string target, MessageChain chain)
+    public static async Task<string> SendFriendMessageAsync(string friendId, MessageChain chain)
     {
         var payload = new
         {
-            target,
+            target = friendId,
             messageChain = chain
         };
 
@@ -105,11 +105,11 @@ public static class MessageManager
     /// <param name="target"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
-    public static async Task<string> SendGroupMessageAsync(string target, MessageChain chain)
+    public static async Task<string> SendGroupMessageAsync(string groupId, MessageChain chain)
     {
         var payload = new
         {
-            target,
+            target = groupId,
             messageChain = chain
         };
 
@@ -225,7 +225,7 @@ public static class MessageManager
     }
 
     /// <summary>
-    ///     回复群消息
+    ///     回复消息
     /// </summary>
     /// <param name="target"></param>
     /// <param name="messageId"></param>

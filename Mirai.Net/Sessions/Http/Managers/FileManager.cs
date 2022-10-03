@@ -24,12 +24,12 @@ public static class FileManager
     /// <param name="withDownloadInfo">附带下载信息，默认不附带</param>
     /// <param name="folderId">文件夹id，空字符串即为根目录</param>
     /// <returns></returns>
-    public static async Task<IEnumerable<File>> GetFilesAsync(string target, bool? withDownloadInfo = null,
+    public static async Task<IEnumerable<File>> GetFilesAsync(string groupId, bool? withDownloadInfo = null,
         string folderId = "")
     {
         var result = await HttpEndpoints.FileList.GetAsync(new
         {
-            target,
+            target = groupId,
             withDownloadInfo,
             id = folderId
         });
@@ -46,11 +46,11 @@ public static class FileManager
     /// <param name="fileId">文件id</param>
     /// <param name="withDownloadInfo"></param>
     /// <returns></returns>
-    public static async Task<File> GetFileAsync(string target, string fileId, bool? withDownloadInfo = null)
+    public static async Task<File> GetFileAsync(string groupId, string fileId, bool? withDownloadInfo = null)
     {
         var result = await HttpEndpoints.FileInfo.GetAsync(new
         {
-            target,
+            target = groupId,
             id = fileId,
             withDownloadInfo
         });
@@ -64,12 +64,12 @@ public static class FileManager
     /// <param name="target"></param>
     /// <param name="name"></param>
     /// <returns></returns>
-    public static async Task<File> CreateFolderAsync(string target, string name)
+    public static async Task<File> CreateFolderAsync(string groupId, string name)
     {
         var result = await HttpEndpoints.FileCreate.PostJsonAsync(new
         {
             id = "",
-            target,
+            target = groupId,
             directoryName = name
         });
 
@@ -81,11 +81,11 @@ public static class FileManager
     /// </summary>
     /// <param name="target"></param>
     /// <param name="fileId"></param>
-    public static async Task DeleteFileAsync(string target, string fileId)
+    public static async Task DeleteFileAsync(string groupId, string fileId)
     {
         _ = await HttpEndpoints.FileDelete.PostJsonAsync(new
         {
-            target,
+            target = groupId,
             id = fileId
         });
     }
@@ -96,11 +96,11 @@ public static class FileManager
     /// <param name="target"></param>
     /// <param name="fileId">移动文件id</param>
     /// <param name="destination">移动目标文件夹id</param>
-    public static async Task MoveFileAsync(string target, string fileId, string destination)
+    public static async Task MoveFileAsync(string groupId, string fileId, string destination)
     {
         _ = await HttpEndpoints.FileMove.PostJsonAsync(new
         {
-            target,
+            target = groupId,
             id = fileId,
             movoTo = destination
         });
@@ -112,11 +112,11 @@ public static class FileManager
     /// <param name="target"></param>
     /// <param name="fileId">重命名文件id</param>
     /// <param name="newName">新文件名</param>
-    public static async Task RenameFileAsync(string target, string fileId, string newName)
+    public static async Task RenameFileAsync(string groupId, string fileId, string newName)
     {
         _ = await HttpEndpoints.FileRename.PostJsonAsync(new
         {
-            target,
+            target = groupId,
             id = fileId,
             renameTo = newName
         });
@@ -129,7 +129,7 @@ public static class FileManager
     /// <param name="filePath">文件的路径</param>
     /// <param name="uploadPath">上传路径，例如/xx（不可以指定文件名，默认为上传到根目录）</param>
     /// <returns>有几率返回null，这是个mirai-api-http的玄学问题</returns>
-    public static async Task<File> UploadFileAsync(string target, string filePath, string uploadPath = "/")
+    public static async Task<File> UploadFileAsync(string groupId, string filePath, string uploadPath = "/")
     {
         uploadPath ??= $"/{Path.GetFileName(filePath)}";
 
@@ -140,7 +140,7 @@ public static class FileManager
             .PostMultipartAsync(x => x
                 .AddString("type", "group")
                 .AddString("path", uploadPath)
-                .AddString("target", target)
+                .AddString("target", groupId)
                 .AddFile("file", filePath));
 
         var response = await result.GetStringAsync();

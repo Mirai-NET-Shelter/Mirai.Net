@@ -54,11 +54,11 @@ public static class AccountManager
     /// <summary>
     ///     获取某群的全部群成员
     /// </summary>
-    public static async Task<IEnumerable<Member>> GetGroupMembersAsync(string target)
+    public static async Task<IEnumerable<Member>> GetGroupMembersAsync(string groupId)
     {
         return await GetCollectionAsync<Member>(HttpEndpoints.MemberList, new
         {
-            target
+            target = groupId
         });
     }
 
@@ -74,11 +74,11 @@ public static class AccountManager
     ///     删除好友
     /// </summary>
     /// <param name="target"></param>
-    public static async Task DeleteFriendAsync(string target)
+    public static async Task DeleteFriendAsync(string friendId)
     {
         _ = await HttpEndpoints.DeleteFriend.PostJsonAsync(new
         {
-            target
+            target = friendId
         });
     }
 
@@ -102,11 +102,11 @@ public static class AccountManager
     /// <summary>
     ///     获取好友资料
     /// </summary>
-    public static async Task<Profile> GetFriendProfileAsync(string target)
+    public static async Task<Profile> GetFriendProfileAsync(string friendId)
     {
         return await GetProfileAsync(HttpEndpoints.FriendProfile, new
         {
-            target
+            target = friendId
         });
     }
 
@@ -123,11 +123,11 @@ public static class AccountManager
     /// </summary>
     /// <param name="id"></param>
     /// <param name="target">群号</param>
-    public static async Task<Profile> GetMemberProfileAsync(string id, string target)
+    public static async Task<Profile> GetMemberProfileAsync(string id, string memberId)
     {
         return await GetProfileAsync(HttpEndpoints.MemberProfile, new
         {
-            target,
+            target = memberId,
             memberId = id
         });
     }
