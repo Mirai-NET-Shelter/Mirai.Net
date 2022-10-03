@@ -33,35 +33,23 @@ public static class MessageManager
     /// <summary>
     /// 由消息id获取一条消息
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    [Obsolete("此方法在mirai-api-http 2.6.0及以上版本会导致异常")]
-    public static async Task<T> GetMessageReceiverByIdAsync<T>(string messageId) where T : MessageReceiverBase
-    {
-        var response = await HttpEndpoints.MessageFromId.GetAsync(new
-        {
-            id = messageId
-        });
-
-        return JsonConvert.DeserializeObject<T>(response);
-    }
-
-    /// <summary>
-    /// 获取一条消息
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
     /// <param name="messageId">消息id</param>
     /// <param name="target">好友id或群id</param>
+    /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static async Task<T> GetMessageReceiverAsync<T>(string messageId, string target) where T : MessageReceiverBase
+    public static async Task<T> GetMessageReceiverByIdAsync<T>(string messageId, string target) where T : MessageReceiverBase
     {
         var response = await HttpEndpoints.MessageFromId.GetAsync(new
         {
-            id = messageId,
+            messageId,
             target
         });
 
-        return JsonConvert.DeserializeObject<T>(response);
+        var data = response.Fetch("data")!;
+        var receiver = JsonConvert.DeserializeObject<T>(data)!;
+        receiver.MessageChain = data.Fetch("messageChain").DeserializeMessageChain();
+
+        return receiver;
     }
 
     /// <summary>

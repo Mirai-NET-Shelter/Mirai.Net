@@ -40,7 +40,11 @@ namespace Mirai.Net.Test
                 {
                     if (r.MessageChain.GetPlainMessage() == "/t")
                     {
-                        await r.SendMessageAsync("Echo");
+                        var id = await r.SendMessageAsync("Echo");
+                        var msg = await MessageManager
+                            .GetMessageReceiverByIdAsync<GroupMessageReceiver>(id, r.GroupId);
+
+                        Console.WriteLine(msg.ToJsonString());
                     }
                 });
 

@@ -234,12 +234,9 @@ public class MiraiBot : IDisposable
             {
                 throw new InvalidResponseException("Websocket传回错误的响应");
             }
-            
-            receiver.MessageChain = rawChain
-                .ToJArray()
-                .Select(token => ReflectionUtils.GetMessageBase(token.ToString()))
-                .ToMessageChain();
-            
+
+            receiver.MessageChain = rawChain.DeserializeMessageChain();
+
             if (receiver.MessageChain.OfType<AtMessage>().Any(x => x.Target == Instance.QQ))
             {
                 _eventReceivedSubject.OnNext(new AtEvent

@@ -8,6 +8,7 @@ using Mirai.Net.Data.Events.Concretes;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
+using Mirai.Net.Utils.Scaffolds;
 using Newtonsoft.Json;
 
 namespace Mirai.Net.Utils.Internal;
@@ -156,5 +157,17 @@ internal static class ReflectionUtils
             re!.RawJson = data;
             return re;
         }
+    }
+
+    /// <summary>
+    /// 反序列化消息链
+    /// </summary>
+    /// <param name="data"></param>
+    /// <returns></returns>
+    internal static MessageChain DeserializeMessageChain(this string data)
+    {
+        return data.ToJArray()
+            .Select(token => ReflectionUtils.GetMessageBase(token.ToString()))
+            .ToMessageChain();
     }
 }
