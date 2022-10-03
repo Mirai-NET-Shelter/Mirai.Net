@@ -13,8 +13,19 @@ namespace Mirai.Net.Test
         public async void Execute(MessageReceiverBase @base)
         {
             var receiver = @base.Concretize<GroupMessageReceiver>();
+            if (receiver.Sender.Id != "2933170747")
+            {
+                return;
+            }
             var plain = receiver.MessageChain.GetPlainMessage();
-
+            if (plain == "/off")
+            {
+                IsEnable = false;
+                await receiver.SendMessageAsync("Current module will be turned off");
+                return;
+            }
+            
+            await receiver.SendMessageAsync(plain);
         }
 
         public bool? IsEnable { get; set; }

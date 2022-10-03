@@ -38,31 +38,8 @@ namespace Mirai.Net.Test
             
             await bot.LaunchAsync();
 
-            bot.EventReceived.OfType<NewInvitationRequestedEvent>().Subscribe(async e =>
-            {
-                if (e.FromId == "2933170747")
-                {
-                    await e.ApproveAsync();
-                }
-            });
-
-            bot.MessageReceived
-                .SubscribeGroupMessageAsync(async r =>
-                {
-                    if (r.MessageChain.GetPlainMessage() == "/t")
-                    {
-                        await r.SendMessageAsync(ForwardMessage.FromChains("2933170747", "破小", new MessageChain[]
-                        {
-                            "Hello, World!",
-                            new PlainMessage("This is actually a message chain") + new ImageMessage
-                            {
-                                Url = "https://picsum.photos/200/300"
-                            },
-                            "Today is a beautiful day!",
-                            "My name is Li Hua"
-                        }));
-                    }
-                });
+            var modules = new Module1().GetModules();
+            bot.MessageReceived.WithModules(modules);
 
             Console.WriteLine("launched");
             exit.WaitOne();

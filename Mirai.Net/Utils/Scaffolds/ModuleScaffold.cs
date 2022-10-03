@@ -16,7 +16,7 @@ public static class ModuleScaffold
     /// 获取泛型参数同一个命名空间下的所有模块
     /// </summary>
     /// <returns></returns>
-    public static IEnumerable<IModule> GetModules<T>(this T module) where T : IModule
+    public static List<IModule> GetModules<T>(this T module) where T : IModule
     {
         var basic = typeof(T);
         
@@ -26,8 +26,7 @@ public static class ModuleScaffold
             .Where(x => x!.FullName!.Contains(basic.Namespace!))
             .ToList();
 
-        foreach (var type in types)
-            yield return Activator.CreateInstance(type) as IModule;
+        return types.Select(t => Activator.CreateInstance(t) as IModule).ToList();
     }
 
     /// <summary>
@@ -35,7 +34,7 @@ public static class ModuleScaffold
     /// </summary>
     /// <param name="modules"></param>
     /// <param name="base"></param>
-    public static void Raise(this IEnumerable<IModule> modules, MessageReceiverBase @base)
+    public static void Raise(this List<IModule> modules, MessageReceiverBase @base)
     {
         foreach (var module in modules)
         {

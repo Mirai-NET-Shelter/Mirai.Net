@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
+using Mirai.Net.Modules;
 using Mirai.Net.Sessions;
 using Mirai.Net.Sessions.Http.Managers;
 using Mirai.Net.Utils.Internal;
@@ -138,6 +140,18 @@ public static class MiraiScaffold
     public static T Concretize<T>(this MessageReceiverBase @base) where T : MessageReceiverBase
     {
         return (T)@base;
+    }
+
+    /// <summary>
+    /// 使用模块
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="modules"></param>
+    /// <returns></returns>
+    public static IObservable<MessageReceiverBase> WithModules(this IObservable<MessageReceiverBase> source, List<IModule> modules)
+    {
+        source.Subscribe(modules.Raise);
+        return source;
     }
 
     #endregion
