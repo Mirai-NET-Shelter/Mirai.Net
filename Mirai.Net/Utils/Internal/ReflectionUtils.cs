@@ -89,8 +89,7 @@ internal static class ReflectionUtils
                     .Select(x =>
                     {
                         var node = x.ToObject<ForwardMessage.ForwardNode>();
-                        node!.MessageChain = x.FetchJToken("messageChain")!.Select(z => GetMessageBase(z.ToString()))
-                            .ToArray();
+                        node!.MessageChain = x.Fetch("messageChain")!.DeserializeMessageChain();
 
                         return node;
                     })
