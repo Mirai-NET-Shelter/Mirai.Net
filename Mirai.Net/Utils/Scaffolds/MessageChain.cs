@@ -95,6 +95,16 @@ public partial class MessageChain : List<MessageBase>
     {
         return messageBase.ToMessageChain();
     }
+
+    /// <summary>
+    /// 转换string为单文本消息链
+    /// </summary>
+    /// <param name="message"></param>
+    /// <returns></returns>
+    public static implicit operator MessageChain(string message)
+    {
+        return new PlainMessage(message).ToMessageChain();
+    }
     
     /// <summary>
     /// 拼接两个消息链

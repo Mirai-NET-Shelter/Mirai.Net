@@ -5,6 +5,8 @@ using Manganese.Text;
 using Mirai.Net.Data.Exceptions;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Sessions;
+using Newtonsoft.Json;
+using NullValueHandling = Newtonsoft.Json.NullValueHandling;
 
 namespace Mirai.Net.Utils.Internal;
 
@@ -83,8 +85,14 @@ internal static class MiraiHttpUtils
         var result = withSessionKey
             ? await url
                 .WithHeader("Authorization", $"session {MiraiBot.Instance.HttpSessionKey}")
-                .PostJsonAsync(json)
-            : await url.PostJsonAsync(json);
+                .PostStringAsync(json.ToJsonString(new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                }))
+            : await url.PostStringAsync(json.ToJsonString(new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            }));
 
         var re = await result.GetStringAsync();
         re.EnsureSuccess($"url={url}\r\npayload={json.ToJsonString()}");

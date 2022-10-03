@@ -181,43 +181,7 @@ public static class MiraiScaffold
         return await MessageManager
             .SendTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, chain);
     }
-
-    /// <summary>
-    ///     发送群消息
-    /// </summary>
-    /// <param name="receiver"></param>
-    /// <param name="message"></param>
-    /// <returns></returns>
-    public static async Task<string> SendMessageAsync(this GroupMessageReceiver receiver, string message)
-    {
-        return await MessageManager
-            .SendGroupMessageAsync(receiver.Sender.Group.Id, message);
-    }
-
-    /// <summary>
-    ///     发送好友消息
-    /// </summary>
-    /// <param name="receiver"></param>
-    /// <param name="message"></param>
-    /// <returns></returns>
-    public static async Task<string> SendMessageAsync(this FriendMessageReceiver receiver, string message)
-    {
-        return await MessageManager
-            .SendFriendMessageAsync(receiver.Sender.Id, message);
-    }
-
-    /// <summary>
-    ///     发送临时消息
-    /// </summary>
-    /// <param name="receiver"></param>
-    /// <param name="message"></param>
-    /// <returns></returns>
-    public static async Task<string> SendMessageAsync(this TempMessageReceiver receiver, string message)
-    {
-        return await MessageManager
-            .SendTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, message);
-    }
-
+    
     /// <summary>
     ///     撤回收到的消息
     /// </summary>
@@ -294,48 +258,6 @@ public static class MiraiScaffold
 
         return await MessageManager
             .QuoteTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, id, chain);
-    }
-
-    /// <summary>
-    /// 回复消息
-    /// </summary>
-    /// <param name="receiver"></param>
-    /// <param name="message"></param>
-    /// <returns></returns>
-    public static async Task<string> QuoteMessageAsync(this FriendMessageReceiver receiver, string message)
-    {
-        var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
-
-        return await MessageManager
-            .QuoteFriendMessageAsync(receiver.Sender.Id, id, message);
-    }
-
-    /// <summary>
-    /// 回复消息
-    /// </summary>
-    /// <param name="receiver"></param>
-    /// <param name="message"></param>
-    /// <returns></returns>
-    public static async Task<string> QuoteMessageAsync(this GroupMessageReceiver receiver, string message)
-    {
-        var id = receiver.MessageChain.ToList().OfType<SourceMessage>().First().MessageId;
-
-        return await MessageManager
-            .QuoteGroupMessageAsync(receiver.Sender.Group.Id, id, message);
-    }
-
-    /// <summary>
-    /// 回复消息
-    /// </summary>
-    /// <param name="receiver"></param>
-    /// <param name="message"></param>
-    /// <returns></returns>
-    public static async Task<string> QuoteMessageAsync(this TempMessageReceiver receiver, string message)
-    {
-        var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
-
-        return await MessageManager
-            .QuoteTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, id, message);
     }
 
     #endregion

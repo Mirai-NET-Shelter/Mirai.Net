@@ -41,12 +41,7 @@ namespace Mirai.Net.Test
                 {
                     if (r.MessageChain.GetPlainMessage() == "/t")
                     {
-                        var id = await r.SendMessageAsync(new PlainMessage("Echo") + new ImageMessage
-                        {
-                            Url = "https://picsum.photos/200/300",
-                            Width = "200",
-                            Height = "300"
-                        });
+                        var id = await r.SendMessageAsync("awd");
                         var msg = await MessageManager
                             .GetMessageReceiverByIdAsync<GroupMessageReceiver>(id, r.GroupId);
 
