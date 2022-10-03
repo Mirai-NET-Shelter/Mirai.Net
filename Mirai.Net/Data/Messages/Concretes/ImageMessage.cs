@@ -47,16 +47,4 @@ public record ImageMessage : MessageBase
     /// </summary>
     [JsonProperty("height")]
     public string Height { get; set; }
-
-    /// <summary>
-    ///     图片的类型
-    /// </summary>
-    [JsonProperty("imageType")]
-    public string ImageType { get; set; }
-
-    /// <summary>
-    ///     指示图片是否为Emoji
-    /// </summary>
-    [JsonProperty("isEmoji")]
-    public bool IsEmoji { get; set; }
 }
