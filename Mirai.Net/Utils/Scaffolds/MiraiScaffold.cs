@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Manganese.Text;
 using Mirai.Net.Data.Events.Concretes.Request;
@@ -73,6 +74,56 @@ public static class MiraiScaffold
     public static bool IsFriend(this MiraiBot bot, Friend friend)
     {
         return bot.Friends.Value.Any(x => x.Id == friend.Id);
+    }
+
+    /// <summary>
+    /// An encapsulation of 'OfType.Subscribe' for GroupMessageReceiver
+    /// </summary>
+    /// <param name="observable"></param>
+    /// <param name="action"></param>
+    /// <returns></returns>
+    public static IDisposable SubscribeGroupMessage(this IObservable<MessageReceiverBase> observable, Action<GroupMessageReceiver> action)
+    {
+        return observable.OfType<GroupMessageReceiver>().Subscribe(action);
+    }
+
+    /// <summary>
+    /// An encapsulation of 'OfType.Subscribe' for GroupMessageReceiver
+    /// </summary>
+    /// <param name="observable"></param>
+    /// <param name="action"></param>
+    /// <returns></returns>
+    public static IDisposable SubscribeGroupMessageAsync(this IObservable<MessageReceiverBase> observable, Func<GroupMessageReceiver, Task> action)
+    {
+        return observable.OfType<GroupMessageReceiver>().Subscribe(r =>
+        {
+            action(r);
+        });
+    }
+
+    /// <summary>
+    /// An encapsulation of 'OfType.Subscribe' for FriendMessageReceiver
+    /// </summary>
+    /// <param name="observable"></param>
+    /// <param name="action"></param>
+    /// <returns></returns>
+    public static IDisposable SubscribeFriendMessage(this IObservable<MessageReceiverBase> observable, Action<FriendMessageReceiver> action)
+    {
+        return observable.OfType<FriendMessageReceiver>().Subscribe(action);
+    }
+    
+    /// <summary>
+    /// An encapsulation of 'OfType.Subscribe' for GroupMessageReceiver
+    /// </summary>
+    /// <param name="observable"></param>
+    /// <param name="action"></param>
+    /// <returns></returns>
+    public static IDisposable SubscribeFriendMessageAsync(this IObservable<MessageReceiverBase> observable, Func<FriendMessageReceiver, Task> action)
+    {
+        return observable.OfType<FriendMessageReceiver>().Subscribe(r =>
+        {
+            action(r);
+        });
     }
 
     #endregion

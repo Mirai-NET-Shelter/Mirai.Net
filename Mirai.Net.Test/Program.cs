@@ -34,15 +34,13 @@ namespace Mirai.Net.Test
             };
             
             await bot.LaunchAsync();
-            
+
             bot.MessageReceived
-                .OfType<GroupMessageReceiver>()
-                .Subscribe(async r =>
+                .SubscribeGroupMessageAsync(async r =>
                 {
-                    var ums = r.MessageChain.OfType<UnknownMessage>();
-                    if (ums.Any())
+                    if (r.MessageChain.GetPlainMessage() == "/t")
                     {
-                        ums.Output(x => x.ToJsonString());
+                        await r.SendMessageAsync("Echo");
                     }
                 });
 
