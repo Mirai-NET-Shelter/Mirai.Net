@@ -12,7 +12,7 @@ public record Member
     /// <summary>
     /// 群员资料
     /// </summary>
-    [JsonIgnore] public Profile MmeberProfile => this.GetMemberProfileAsync().GetAwaiter().GetResult();
+    [JsonIgnore] public Profile MemberProfile => this.GetMemberProfileAsync().GetAwaiter().GetResult();
     
     /// <summary>
     ///     群员的QQ号
