@@ -1,11 +1,11 @@
-﻿using System.Threading.Tasks;
-using Flurl;
+﻿using Flurl;
 using Flurl.Http;
 using Manganese.Text;
 using Mirai.Net.Data.Exceptions;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Sessions;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 using NullValueHandling = Newtonsoft.Json.NullValueHandling;
 
 namespace Mirai.Net.Utils.Internal;

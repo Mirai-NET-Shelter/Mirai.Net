@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Manganese.Text;
-using Mirai.Net.Data.Messages;
-using Mirai.Net.Data.Messages.Concretes;
+﻿using Mirai.Net.Data.Messages;
 using Mirai.Net.Sessions.Http.Managers;
 using Mirai.Net.Utils.Internal;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Mirai.Net.Utils.Scaffolds;
 
@@ -36,7 +33,7 @@ public static class MessageScaffold
     {
         return new MessageChain { origin };
     }
-    
+
     /// <summary>
     /// 转义成兼容mirai码的文本
     /// </summary>
@@ -49,7 +46,7 @@ public static class MessageScaffold
             .Replace(":", @"\:")
             .Replace(",", @"\,")
             .Replace("\\", @"\\");
-        
+
         return result;
     }
 
@@ -78,7 +75,7 @@ public static class MessageScaffold
     {
         await messageIdTask.RecallAfter(target, TimeSpan.FromMilliseconds(milliseconds));
     }
-    
+
     /// <summary>
     /// 在指定时间之后发送消息，这是个同步方法
     /// </summary>

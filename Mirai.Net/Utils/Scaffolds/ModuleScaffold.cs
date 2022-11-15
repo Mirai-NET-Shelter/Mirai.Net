@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Mirai.Net.Data.Messages;
+using Mirai.Net.Modules;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Mirai.Net.Data.Messages;
-using Mirai.Net.Modules;
 
 namespace Mirai.Net.Utils.Scaffolds;
 
@@ -19,7 +19,7 @@ public static class ModuleScaffold
     public static List<IModule> GetModules<T>(this T module) where T : IModule
     {
         var basic = typeof(T);
-        
+
         var types = Assembly.GetAssembly(basic).GetTypes()
             .Where(x => x.IsClass && !x.IsAbstract && !x.IsInterface)
             .Where(x => x.GetInterfaces().Any(x => x == typeof(IModule)))

@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using Mirai.Net.Data.Events.Concretes.Request;
+﻿using Mirai.Net.Data.Events.Concretes.Request;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Utils.Internal;
+using System.Threading.Tasks;
 
 namespace Mirai.Net.Sessions.Http.Managers;
 

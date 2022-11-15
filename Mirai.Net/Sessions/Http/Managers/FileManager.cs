@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Flurl.Http;
+﻿using Flurl.Http;
 using Manganese.Text;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Utils.Internal;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using File = Mirai.Net.Data.Shared.File;
 
 namespace Mirai.Net.Sessions.Http.Managers;
@@ -145,7 +144,7 @@ public static class FileManager
 
         var response = await result.GetStringAsync();
         response.EnsureSuccess("这大抵是个玄学问题罢。");
-        
+
         var re = response.ToJObject();
 
         return !re.ContainsKey("name") ? null : re.ToObject<File>();

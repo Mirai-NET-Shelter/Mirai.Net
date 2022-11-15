@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using Manganese.Text;
+﻿using Manganese.Text;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Concretes;
 using Mirai.Net.Data.Messages;
@@ -10,6 +6,10 @@ using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Utils.Scaffolds;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace Mirai.Net.Utils.Internal;
 
@@ -39,14 +39,14 @@ internal static class ReflectionUtils
             })
             .Where(i => i != null);
     }
-    
+
     /// <summary>
     ///     默认消息接收器实例
     /// </summary>
     private static readonly IEnumerable<MessageReceiverBase> MessageReceiverBases =
         GetDefaultInstances<MessageReceiverBase>(
             "Mirai.Net.Data.Messages.Receivers");
-    
+
     /// <summary>
     ///     默认消息实例
     /// </summary>
@@ -58,7 +58,7 @@ internal static class ReflectionUtils
     /// </summary>
     private static readonly IEnumerable<EventBase> EventBases =
         GetDefaultInstances<EventBase>("Mirai.Net.Data.Events.Concretes");
-    
+
     /// <summary>
     ///     根据json动态解析对应的消息子类
     /// </summary>
@@ -77,7 +77,7 @@ internal static class ReflectionUtils
                 quote!.Origin = data.FetchJToken("origin")!
                     .Select(x => GetMessageBase(x.ToString()))
                     .ToArray();
-            
+
                 return quote;
             }
 
@@ -108,9 +108,9 @@ internal static class ReflectionUtils
             re!.RawJson = data;
             return re;
         }
-        
+
     }
-    
+
     /// <summary>
     ///     根据json动态解析正确的消息接收器子类
     /// </summary>

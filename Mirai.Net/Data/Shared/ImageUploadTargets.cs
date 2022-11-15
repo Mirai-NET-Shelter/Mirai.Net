@@ -11,18 +11,21 @@ public enum ImageUploadTargets
     /// <summary>
     /// 好友
     /// </summary>
-    [Description("friend")] [EnumMember(Value = "friend")]
+    [Description("friend")]
+    [EnumMember(Value = "friend")]
     Friend,
 
     /// <summary>
     /// 群
     /// </summary>
-    [Description("group")] [EnumMember(Value = "group")]
+    [Description("group")]
+    [EnumMember(Value = "group")]
     Group,
 
     /// <summary>
     /// 临时消息
     /// </summary>
-    [Description("temp")] [EnumMember(Value = "temp")]
+    [Description("temp")]
+    [EnumMember(Value = "temp")]
     Temp
 }

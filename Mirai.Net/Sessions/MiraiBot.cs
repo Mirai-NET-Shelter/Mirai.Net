@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.WebSockets;
-using System.Reactive.Linq;
-using System.Reactive.Subjects;
-using System.Threading.Tasks;
-using Flurl;
+﻿using Flurl;
 using Manganese.Text;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Events.Concretes.Message;
@@ -17,8 +10,14 @@ using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Sessions.Http.Managers;
 using Mirai.Net.Utils.Internal;
-using Mirai.Net.Utils.Scaffolds;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.WebSockets;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
+using System.Threading.Tasks;
 using Websocket.Client;
 
 namespace Mirai.Net.Sessions;
@@ -64,7 +63,7 @@ public class MiraiBot : IDisposable
 
     [JsonIgnore]
     internal string HttpSessionKey { get; set; }
-    
+
     [JsonIgnore]
     private string _qq;
     [JsonIgnore]
@@ -89,19 +88,19 @@ public class MiraiBot : IDisposable
     ///     Mirai.Net总是需要一个VerifyKey
     /// </summary>
     public string VerifyKey { get; set; }
-    
+
     /// <summary>
     /// 群列表
     /// </summary>
     [JsonIgnore]
-    public Lazy<IEnumerable<Group>> Groups => 
+    public Lazy<IEnumerable<Group>> Groups =>
         new(() => AccountManager.GetGroupsAsync().GetAwaiter().GetResult());
-    
+
     /// <summary>
     /// 好友列表
     /// </summary>
     [JsonIgnore]
-    public Lazy<IEnumerable<Friend>> Friends => 
+    public Lazy<IEnumerable<Friend>> Friends =>
         new(() => AccountManager.GetFriendsAsync().GetAwaiter().GetResult());
 
     #endregion
@@ -216,7 +215,7 @@ public class MiraiBot : IDisposable
                 ProcessWebSocketData(data);
             });
     }
-    
+
     private void ProcessWebSocketData(string data)
     {
         var dataType = data.Fetch("type");
@@ -244,7 +243,7 @@ public class MiraiBot : IDisposable
                     Receiver = (receiver as GroupMessageReceiver)!
                 });
             }
-            
+
             _messageReceivedSubject.OnNext(receiver);
         }
         else if (dataType.Contains("Event"))

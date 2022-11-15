@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Manganese.Array;
+﻿using Manganese.Array;
 using Manganese.Text;
 using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Utils.Scaffolds;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 // ReSharper disable once CheckNamespace
 namespace Mirai.Net.Data.Messages;
@@ -42,7 +42,7 @@ public partial class MessageChain : List<MessageBase>
 
         return plain.Select(x => x.Text).JoinToString("");
     }
-    
+
     /// <summary>
     /// 获取消息链中的文本消息并且保持原有连贯性
     /// </summary>
@@ -65,7 +65,7 @@ public partial class MessageChain : List<MessageBase>
     {
         return await receiver.SendMessageAsync(this);
     }
-    
+
     /// <summary>
     /// 将本消息链发送到指定接收器
     /// </summary>
@@ -75,7 +75,7 @@ public partial class MessageChain : List<MessageBase>
     {
         return await receiver.SendMessageAsync(this);
     }
-    
+
     /// <summary>
     /// 将本消息链发送到指定接收器
     /// </summary>
@@ -105,7 +105,7 @@ public partial class MessageChain : List<MessageBase>
     {
         return new PlainMessage(message).ToMessageChain();
     }
-    
+
     /// <summary>
     /// 拼接两个消息链
     /// </summary>

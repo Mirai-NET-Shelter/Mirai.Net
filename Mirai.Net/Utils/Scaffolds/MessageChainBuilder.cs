@@ -31,7 +31,7 @@ public class MessageChainBuilder
         _chain.Add(messageBase);
         return this;
     }
-    
+
     /// <summary>
     /// 追加一条文本消息
     /// </summary>
@@ -42,7 +42,7 @@ public class MessageChainBuilder
         _chain.Add(new PlainMessage(text));
         return this;
     }
-    
+
     /// <summary>
     /// 追加一条at消息
     /// </summary>
@@ -77,7 +77,7 @@ public class MessageChainBuilder
         });
         return this;
     }
-    
+
     /// <summary>
     /// 追加一套at全体成员消息
     /// </summary>
@@ -85,7 +85,7 @@ public class MessageChainBuilder
     public MessageChainBuilder AtAll()
     {
         _chain.Add(new AtAllMessage());
-    
+
         return this;
     }
 
@@ -103,7 +103,7 @@ public class MessageChainBuilder
 
         return this;
     }
-    
+
     /// <summary>
     /// 追加图片消息
     /// </summary>
@@ -118,7 +118,7 @@ public class MessageChainBuilder
 
         return this;
     }
-    
+
     /// <summary>
     /// 追加图片消息
     /// </summary>
@@ -133,7 +133,7 @@ public class MessageChainBuilder
 
         return this;
     }
-    
+
     /// <summary>
     /// 追加图片消息
     /// </summary>
@@ -148,7 +148,7 @@ public class MessageChainBuilder
 
         return this;
     }
-    
+
     /// <summary>
     /// 追加图片消息
     /// </summary>
@@ -163,7 +163,7 @@ public class MessageChainBuilder
 
         return this;
     }
-    
+
     /// <summary>
     /// 追加图片消息
     /// </summary>
@@ -178,7 +178,7 @@ public class MessageChainBuilder
 
         return this;
     }
-    
+
     /// <summary>
     /// 追加闪照消息
     /// </summary>
@@ -193,7 +193,7 @@ public class MessageChainBuilder
 
         return this;
     }
-    
+
     /// <summary>
     /// 追加闪照消息
     /// </summary>
@@ -208,7 +208,7 @@ public class MessageChainBuilder
 
         return this;
     }
-    
+
     /// <summary>
     /// 追加闪照消息
     /// </summary>
@@ -268,7 +268,7 @@ public class MessageChainBuilder
 
         return this;
     }
-    
+
     /// <summary>
     /// 追加一条语音消息
     /// </summary>
@@ -283,7 +283,7 @@ public class MessageChainBuilder
 
         return this;
     }
-    
+
     /// <summary>
     /// 追加一条语音消息
     /// </summary>
@@ -298,7 +298,7 @@ public class MessageChainBuilder
 
         return this;
     }
-    
+
     /// <summary>
     /// 追加一条语音消息
     /// </summary>

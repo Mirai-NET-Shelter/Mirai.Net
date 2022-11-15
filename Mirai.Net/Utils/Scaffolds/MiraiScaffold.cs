@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reactive.Linq;
-using System.Threading.Tasks;
-using Manganese.Text;
+﻿using Manganese.Text;
 using Mirai.Net.Data.Events.Concretes.Request;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
@@ -14,6 +9,11 @@ using Mirai.Net.Modules;
 using Mirai.Net.Sessions;
 using Mirai.Net.Sessions.Http.Managers;
 using Mirai.Net.Utils.Internal;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reactive.Linq;
+using System.Threading.Tasks;
 
 namespace Mirai.Net.Utils.Scaffolds;
 
@@ -112,7 +112,7 @@ public static class MiraiScaffold
     {
         return observable.OfType<FriendMessageReceiver>().Subscribe(action);
     }
-    
+
     /// <summary>
     /// An encapsulation of 'OfType.Subscribe' for GroupMessageReceiver
     /// </summary>
@@ -195,7 +195,7 @@ public static class MiraiScaffold
         return await MessageManager
             .SendTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, chain);
     }
-    
+
     /// <summary>
     ///     撤回收到的消息
     /// </summary>
@@ -309,7 +309,7 @@ public static class MiraiScaffold
     {
         await RequestManager.HandleNewFriendRequestedAsync(@event, NewFriendRequestHandlers.Reject, message);
     }
-    
+
     /// <summary>
     /// 拒绝好友请求且屏蔽对方
     /// </summary>
@@ -333,7 +333,7 @@ public static class MiraiScaffold
         await RequestManager
             .HandleNewMemberRequestedAsync(requestedEvent, handler, message);
     }
-    
+
     /// <summary>
     /// 同意加群请求
     /// </summary>
@@ -361,7 +361,7 @@ public static class MiraiScaffold
     {
         await RequestManager.HandleNewMemberRequestedAsync(requestedEvent, NewMemberRequestHandlers.Dismiss);
     }
-    
+
     /// <summary>
     /// 拒绝加群请求并屏蔽
     /// </summary>
@@ -371,7 +371,7 @@ public static class MiraiScaffold
     {
         await RequestManager.HandleNewMemberRequestedAsync(requestedEvent, NewMemberRequestHandlers.RejectAndBlock, message);
     }
-    
+
     /// <summary>
     /// 忽略加群请求并屏蔽
     /// </summary>
@@ -394,7 +394,7 @@ public static class MiraiScaffold
         await RequestManager
             .HandleNewInvitationRequestedAsync(requestedEvent, handler, message);
     }
-    
+
     /// <summary>
     /// 同意邀请
     /// </summary>

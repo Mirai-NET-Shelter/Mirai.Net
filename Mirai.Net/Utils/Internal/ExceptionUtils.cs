@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Manganese.Text;
+using System.Collections.Generic;
 using System.Linq;
-using Manganese.Text;
 
 namespace Mirai.Net.Utils.Internal;
 

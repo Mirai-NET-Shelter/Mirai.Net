@@ -17,7 +17,7 @@ public record TempMessageReceiver : MessageReceiverBase
     /// 发送者
     /// </summary>
     [JsonProperty("sender")] public Member Sender { get; set; }
-    
+
     /// <summary>
     /// 群号
     /// </summary>
