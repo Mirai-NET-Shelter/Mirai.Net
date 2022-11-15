@@ -12,16 +12,16 @@ public record MarketFaceMessage : MessageBase
     /// 消息类型
     /// </summary>
     public override Messages Type { get; set; } = Messages.MarketFace;
-    
+
     /// <summary>
     /// 表情id
     /// </summary>
     [JsonProperty("id")]
-    public string Id {get; set;}
-    
+    public string Id { get; set; }
+
     /// <summary>
     /// 表情名称
     /// </summary>
     [JsonProperty("name")]
-    public string Name {get; set;}
+    public string Name { get; set; }
 }

@@ -17,7 +17,7 @@ public record StrangerMessageReceiver : MessageReceiverBase
     /// 发送者
     /// </summary>
     [JsonProperty("sender")] public Friend Sender { get; set; }
-    
+
     /// <summary>
     /// 昵称
     /// </summary>

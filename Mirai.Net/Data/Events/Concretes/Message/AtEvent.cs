@@ -1,5 +1,4 @@
 ﻿using Mirai.Net.Data.Messages.Receivers;
-using Mirai.Net.Data.Shared;
 
 namespace Mirai.Net.Data.Events.Concretes.Message;
 

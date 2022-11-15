@@ -17,10 +17,10 @@ public record OtherClientOnlineEvent : EventBase
     /// </summary>
     [JsonProperty("client")]
     public Shared.OtherClient Client { get; set; }
-    
+
     /// <summary>
     /// 详细设备类型
     /// </summary>
     [JsonProperty("kind")]
-    public long Kind {get; set;}
+    public long Kind { get; set; }
 }

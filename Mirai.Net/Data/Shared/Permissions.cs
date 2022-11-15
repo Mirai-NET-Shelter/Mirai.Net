@@ -11,18 +11,21 @@ public enum Permissions
     /// <summary>
     /// 群主
     /// </summary>
-    [EnumMember(Value = "OWNER")] [Description("OWNER")]
+    [EnumMember(Value = "OWNER")]
+    [Description("OWNER")]
     Owner,
 
     /// <summary>
     /// 管理员
     /// </summary>
-    [EnumMember(Value = "ADMINISTRATOR")] [Description("ADMINISTRATOR")]
+    [EnumMember(Value = "ADMINISTRATOR")]
+    [Description("ADMINISTRATOR")]
     Administrator,
 
     /// <summary>
     /// 群员
     /// </summary>
-    [EnumMember(Value = "MEMBER")] [Description("MEMBER")]
+    [EnumMember(Value = "MEMBER")]
+    [Description("MEMBER")]
     Member
 }

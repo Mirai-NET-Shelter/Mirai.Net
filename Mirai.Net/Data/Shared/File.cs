@@ -90,29 +90,29 @@ public record File
         /// 下载链接
         /// </summary>
         [JsonProperty("url")] public string Url { get; set; }
-        
+
         /// <summary>
         /// 下载次数
         /// </summary>
         [JsonProperty("downloadTimes")]
-        public string DownloadTimes {get; set;}
-        
+        public string DownloadTimes { get; set; }
+
         /// <summary>
         /// 上传者id
         /// </summary>
         [JsonProperty("uploaderId")]
-        public string UploaderId {get; set;}
-        
+        public string UploaderId { get; set; }
+
         /// <summary>
         /// 上传时间戳
         /// </summary>
         [JsonProperty("uploadTime")]
-        public string UploadTime {get; set;}
-        
+        public string UploadTime { get; set; }
+
         /// <summary>
         /// 最后修改时间
         /// </summary>
         [JsonProperty("lastModifyTime")]
-        public string LastModifyTime {get; set;}
+        public string LastModifyTime { get; set; }
     }
 }

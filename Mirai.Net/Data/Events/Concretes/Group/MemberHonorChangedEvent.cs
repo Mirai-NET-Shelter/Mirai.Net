@@ -1,8 +1,8 @@
-﻿using System.ComponentModel;
-using System.Runtime.Serialization;
-using Mirai.Net.Data.Shared;
+﻿using Mirai.Net.Data.Shared;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace Mirai.Net.Data.Events.Concretes.Group;
 
@@ -19,13 +19,15 @@ public record MemberHonorChangedEvent : EventBase
         /// <summary>
         /// 得到称号
         /// </summary>
-        [EnumMember(Value = "achieve")] [Description("achieve")]
+        [EnumMember(Value = "achieve")]
+        [Description("achieve")]
         Achieve,
 
         /// <summary>
         /// 失去称号
         /// </summary>
-        [EnumMember(Value = "lose")] [Description("lose")]
+        [EnumMember(Value = "lose")]
+        [Description("lose")]
         Lose
     }
 

@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Mirai.Net.Sessions;
-using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Messages.Concretes;
 

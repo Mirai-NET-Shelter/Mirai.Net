@@ -1,13 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Mirai.Net.Data.Messages;
+﻿using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Utils.Internal;
 using Newtonsoft.Json;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Mirai.Net.Sessions.Http.Managers;
 
@@ -189,7 +189,8 @@ public static class GroupManager
     {
         var payload = new
         {
-            target = groupId, messageId
+            target = groupId,
+            messageId
         };
 
         await HttpEndpoints.SetEssence.PostJsonAsync(payload);

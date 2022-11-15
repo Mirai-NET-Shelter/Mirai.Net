@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Timers;
 
 namespace Mirai.Net.Utils.Internal;
 
@@ -22,7 +21,7 @@ public static class DispatchUtils
             await action();
         });
     }
-    
+
     /// <summary>
     /// 在等待指定的时间后执行异步操作
     /// </summary>
@@ -32,7 +31,7 @@ public static class DispatchUtils
     {
         ExecuteScheduledActionAsync(TimeSpan.FromMilliseconds(duration), action);
     }
-    
+
     /// <summary>
     /// 在等待指定的事件后执行同步操作
     /// </summary>

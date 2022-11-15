@@ -12,7 +12,7 @@ public interface IModule
     /// </summary>
     /// <param name="base"></param>
     void Execute(MessageReceiverBase @base);
-    
+
     /// <summary>
     /// 是否启用模块
     /// </summary>

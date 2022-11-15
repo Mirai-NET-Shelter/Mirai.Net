@@ -58,7 +58,7 @@ internal enum HttpEndpoints
 
     [Description("resp/botInvitedJoinGroupRequestEvent")]
     BotInvited,
-    
+
     [Description("messageFromId")]
     MessageFromId
 }

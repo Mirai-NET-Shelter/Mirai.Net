@@ -1,5 +1,4 @@
-﻿using Mirai.Net.Utils.Scaffolds;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Messages.Concretes;
 

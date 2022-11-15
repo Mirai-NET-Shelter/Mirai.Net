@@ -17,7 +17,7 @@ public record FriendMessageReceiver : MessageReceiverBase
     /// 发送者，某好友
     /// </summary>
     [JsonProperty("sender")] public Friend Sender { get; set; }
-    
+
     /// <summary>
     /// 好友昵称
     /// </summary>
