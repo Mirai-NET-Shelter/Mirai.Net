@@ -44,18 +44,25 @@ public enum MessageReceivers
     OtherClient,
 
     /// <summary>
-    /// 好友同步消息
+    /// 好友消息的同步消息
     /// </summary>
     [Description("FriendSyncMessage")]
     [EnumMember(Value = "FriendSyncMessage")]
     FriendSync,
 
     /// <summary>
-    /// 群同步消息
+    /// 群消息的同步消息
     /// </summary>
     [Description("GroupSyncMessage")]
     [EnumMember(Value = "GroupSyncMessage")]
     GroupSync,
+
+    /// <summary>
+    /// 临时消息的同步消息
+    /// </summary>
+    [Description("TempSyncMessage")]
+    [EnumMember(Value = "TempSyncMessage")]
+    TempSync,
 
     /// <summary>
     /// 未知类型的接收器

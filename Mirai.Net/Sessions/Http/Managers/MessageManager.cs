@@ -57,16 +57,15 @@ public static class MessageManager
     /// <param name="timeStart">起始时间, UTC+8 时间戳, 单位为秒. 可以为 0, 即表示从可以获取的最早的消息起. 负数将会被看是 0.</param>
     /// <param name="timeEnd">结束时间, UTC+8 时间戳, 单位为秒. 可以为 <c>long.MaxValue</c>, 即表示到可以获取的最晚的消息为止. 低于 timeStart 的值将会被看作是 timeStart 的值.</param>
     /// <returns></returns>
-    public static async Task<IEnumerable<MessageChain>> GetRoamingMessagesAsync(string target, string timeStart, string timeEnd)
+    public static async Task<IEnumerable<MessageReceiverBase>> GetRoamingMessagesAsync(string target, long timeStart = 0, long timeEnd = 0)
     {
-        var response = await HttpEndpoints.RoamingMessages.GetAsync(new
+        var response = await HttpEndpoints.RoamingMessages.PostJsonAsync(new
         {
             timeStart,
             timeEnd,
-            target
+            target = target.ToInt64(),
         });
-
-        return ((JArray)response.ToJObject()["data"]).Values<MessageChain>();
+        return JsonConvert.DeserializeObject<IEnumerable<MessageReceiverBase>>(response.Fetch("data"));
     }
 
     /// <summary>

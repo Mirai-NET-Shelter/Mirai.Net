@@ -19,7 +19,7 @@ public static class FileManager
     /// <summary>
     ///     获取群文件列表
     /// </summary>
-    /// <param name="target"></param>
+    /// <param name="groupId"></param>
     /// <param name="withDownloadInfo">附带下载信息，默认不附带</param>
     /// <param name="folderId">文件夹id，空字符串即为根目录</param>
     /// <returns></returns>
@@ -41,7 +41,7 @@ public static class FileManager
     /// <summary>
     ///     获取群文件信息
     /// </summary>
-    /// <param name="target">群号</param>
+    /// <param name="groupId">群号</param>
     /// <param name="fileId">文件id</param>
     /// <param name="withDownloadInfo"></param>
     /// <returns></returns>
@@ -60,7 +60,7 @@ public static class FileManager
     /// <summary>
     ///     创建群文件夹
     /// </summary>
-    /// <param name="target"></param>
+    /// <param name="groupId"></param>
     /// <param name="name"></param>
     /// <returns></returns>
     public static async Task<File> CreateFolderAsync(string groupId, string name)
@@ -78,7 +78,7 @@ public static class FileManager
     /// <summary>
     ///     删除群文件
     /// </summary>
-    /// <param name="target"></param>
+    /// <param name="groupId"></param>
     /// <param name="fileId"></param>
     public static async Task DeleteFileAsync(string groupId, string fileId)
     {
@@ -92,7 +92,7 @@ public static class FileManager
     /// <summary>
     ///     移动群文件
     /// </summary>
-    /// <param name="target"></param>
+    /// <param name="groupId"></param>
     /// <param name="fileId">移动文件id</param>
     /// <param name="destination">移动目标文件夹id</param>
     public static async Task MoveFileAsync(string groupId, string fileId, string destination)
@@ -108,7 +108,7 @@ public static class FileManager
     /// <summary>
     ///     重命名群文件
     /// </summary>
-    /// <param name="target"></param>
+    /// <param name="groupId"></param>
     /// <param name="fileId">重命名文件id</param>
     /// <param name="newName">新文件名</param>
     public static async Task RenameFileAsync(string groupId, string fileId, string newName)
@@ -124,7 +124,7 @@ public static class FileManager
     /// <summary>
     ///     上传群文件，参考https://github.com/project-mirai/mirai-api-http/issues/456
     /// </summary>
-    /// <param name="target">上传到哪个群</param>
+    /// <param name="groupId">上传到哪个群</param>
     /// <param name="filePath">文件的路径</param>
     /// <param name="uploadPath">上传路径，例如/xx（不可以指定文件名，默认为上传到根目录）</param>
     /// <returns>有几率返回null，这是个mirai-api-http的玄学问题</returns>
