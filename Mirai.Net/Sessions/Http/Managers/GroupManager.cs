@@ -1,4 +1,5 @@
-﻿using Mirai.Net.Data.Messages;
+﻿using Manganese.Text;
+using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Messages.Receivers;
 using Mirai.Net.Data.Sessions;
@@ -6,6 +7,7 @@ using Mirai.Net.Data.Shared;
 using Mirai.Net.Utils.Internal;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -311,4 +313,73 @@ public static class GroupManager
     }
 
     #endregion
+
+    #region Anno
+
+    /// <summary>
+    /// 获取指定群公告列表
+    /// </summary>
+    /// <param name="group">群号</param>
+    /// <param name="offset">分页参数</param>
+    /// <param name="size">分页参数，默认10</param>
+    /// <returns></returns>
+    public static async Task<IEnumerable<Announcement>> GetGroupAnnouncementAsync(string group, long offset = 0, long size = 10)
+    {
+        var response = await HttpEndpoints.GetAnnouncement.GetAsync(new
+        {
+            id = group,
+            offset,
+            size
+        });
+
+        return JsonConvert.DeserializeObject<IEnumerable<Announcement>>(response.Fetch("data"));
+    }
+
+    /// <summary>
+    /// 向指定群发布群公告
+    /// </summary>
+    /// <param name="group">群号</param>
+    /// <param name="content">公告内容</param>
+    /// <param name="pinned">是否置顶</param>
+    /// <returns></returns>
+    public static async Task<Announcement> PublishGroupAnnouncementAsync(string group, string content, bool pinned = true)
+    {
+        var setting = new AnnouncementSetting
+        {
+            Target = group,
+            Content = content
+        };
+        var result = await PublishGroupAnnouncementAsync(setting);
+        return result;
+    }
+
+    /// <summary>
+    /// 向指定群发布群公告
+    /// </summary>
+    /// <param name="announcementSetting">群公告设置</param>
+    /// <returns></returns>
+    public static async Task<Announcement> PublishGroupAnnouncementAsync(AnnouncementSetting announcementSetting)
+    {
+        var response = await HttpEndpoints.PubAnnouncement.PostJsonAsync(announcementSetting);
+
+        return JsonConvert.DeserializeObject<Announcement>(response.Fetch("data"));
+    }
+
+    /// <summary>
+    /// 删除指定群中一条公告
+    /// </summary>
+    /// <param name="group">群号</param>
+    /// <param name="fid">群公告唯一id</param>
+    /// <returns></returns>
+    public static async Task DeleteGroupAnnouncementAsync(string group, string fid)
+    {
+        await HttpEndpoints.DelAnnouncement.PostJsonAsync(new
+        {
+            id = group,
+            fid
+        });
+    }
+
+    #endregion
+
 }
