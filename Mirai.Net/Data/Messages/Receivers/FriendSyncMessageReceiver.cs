@@ -18,7 +18,7 @@ namespace Mirai.Net.Data.Messages.Receivers
         /// <summary>
         /// 好友信息
         /// </summary>
-        [JsonProperty("subject")] public Friend Subject { get; set; }
+        [JsonProperty("subject")] public Friend TargetFriend { get; set; }
 
     }
 }

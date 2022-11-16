@@ -18,7 +18,7 @@ namespace Mirai.Net.Data.Messages.Receivers
         /// <summary>
         /// 群信息
         /// </summary>
-        [JsonProperty("subject")] public Group Subject { get; set; }
+        [JsonProperty("subject")] public Group TargetGroup { get; set; }
 
     }
 }
