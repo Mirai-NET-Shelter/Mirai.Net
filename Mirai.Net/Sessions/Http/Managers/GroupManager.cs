@@ -347,10 +347,11 @@ public static class GroupManager
         var setting = new AnnouncementSetting
         {
             Target = group,
-            Content = content
+            Content = content,
+            Pinned = pinned
         };
-        var result = await PublishGroupAnnouncementAsync(setting);
-        return result;
+
+        return await PublishGroupAnnouncementAsync(setting);
     }
 
     /// <summary>

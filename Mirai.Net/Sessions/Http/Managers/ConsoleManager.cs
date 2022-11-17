@@ -131,17 +131,17 @@ namespace Mirai.Net.Sessions.Http.Managers
             [JsonProperty("name")] public string Name { get; private set; }
 
             /// <summary>
-            /// 命令名称
+            /// 发送命令的好友, 从控制台发送为 null
             /// </summary>
             [JsonProperty("friend")] public string FriendId { get; private set; }
 
             /// <summary>
-            /// 命令名称
+            /// 发送命令的群成员, 从控制台发送为 nul
             /// </summary>
             [JsonProperty("member")] public string MemberId { get; private set; }
 
             /// <summary>
-            /// 命令名称
+            /// 指令的参数, 以消息类型传递
             /// </summary>
             [JsonProperty("args")] public dynamic Args { get; private set; }
         }
