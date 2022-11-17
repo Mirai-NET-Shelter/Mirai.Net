@@ -268,6 +268,13 @@ public enum Events
     At,
 
     /// <summary>
+    /// 命令被执行
+    /// </summary>
+    [Description("CommandExecutedEven")]
+    [EnumMember(Value = "CommandExecutedEven")]
+    CommandExecuted,
+
+    /// <summary>
     /// 未知类型的事件
     /// </summary>
     Unknown

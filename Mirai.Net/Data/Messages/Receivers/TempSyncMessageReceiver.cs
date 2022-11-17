@@ -1,8 +1,5 @@
 ﻿using Mirai.Net.Data.Shared;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Mirai.Net.Data.Messages.Receivers
 {

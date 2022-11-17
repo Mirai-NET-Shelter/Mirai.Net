@@ -50,6 +50,10 @@ internal enum HttpEndpoints
     [Description("memberInfo")] MemberInfo,
     [Description("userProfile")] UserProfile,
 
+    [Description("anno/list")] GetAnnouncement,
+    [Description("anno/publish")] PubAnnouncement,
+    [Description("anno/delete")] DelAnnouncement,
+
     [Description("resp/newFriendRequestEvent")]
     NewFriendRequested,
 
@@ -60,5 +64,8 @@ internal enum HttpEndpoints
     BotInvited,
 
     [Description("messageFromId")]
-    MessageFromId
+    MessageFromId,
+
+    [Description("cmd/execute")] ExecuteCommand,
+    [Description("cmd/register")] RegisterCommand
 }
