@@ -1,5 +1,6 @@
 ﻿using Manganese.Array;
 using Mirai.Net.Data.Events;
+using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Utils.Internal;
 using Newtonsoft.Json;
@@ -48,9 +49,12 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <para>控制台支持以不同消息类型作为指令的参数, 执行命令需要以消息类型作为参数, 若执行纯文本的命令, 构建多个文本格式的消息控制台会将第一个消息作为指令名, 后续消息作为参数</para>
         /// </param>
         /// <returns></returns>
-        public static async Task ExecuteCommandAsync(object[] command)
+        public static async Task ExecuteCommandAsync(MessageBase[] command)
         {
-            await HttpEndpoints.ExecuteCommand.PostJsonAsync(command);
+            await HttpEndpoints.ExecuteCommand.PostJsonAsync(new
+            {
+                command
+            });
         }
 
         /// <summary>
