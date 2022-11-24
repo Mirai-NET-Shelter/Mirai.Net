@@ -3,7 +3,7 @@
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>2.4.6</PackageVersion>
+        <PackageVersion>2.4.8</PackageVersion>
         <Title>Mirai.Net</Title>
         <Description>基于mirai-api-http的轻量级mirai社区sdk</Description>
         <Copyright>Copyright 2022 AHpx reserve all rights.</Copyright>
