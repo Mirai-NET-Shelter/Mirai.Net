@@ -1,14 +1,14 @@
 # Mirai.Net 2.4.8
 
-Mirai.Net 是基于 [mirai-api-http] 实现的 C# 版轻量级 [mirai] 社区 SDK。
+Mirai.NET 是基于 [mirai-api-http] 实现的 C# 版轻量级 [mirai] 社区 SDK。
 
 此项目遵循 [AGPL-3.0](https://github.com/AHpxChina/Mirai.Net/blob/master/LICENSE) 协议开源。
 
-本项目**新建立的** QQ 群: [752379554](https://jq.qq.com/?_wv=1027&k=gdWqppEO)（原来的已被停封）欢迎加入群聊探讨 ~~甚至水群聊天~~
+QQ 群: [752379554](https://jq.qq.com/?_wv=1027&k=gdWqppEO)欢迎加入群聊探讨 ~~以及水群聊天~~
 
-项目文档：[Mirai.Net Documents](https://sinoahpx.github.io/Mirai.Net.Documents)
+文档：[Mirai.Net Documents](https://sinoahpx.github.io/Mirai.Net.Documents)
 
-如果你觉得这是个很酷的项目的话，不妨考虑给它点一个 Star。
+如果你这个项目还不错，不妨考虑给它点一个 Star。
 
 如果你还觉得挺酷但还不够好的话，也欢迎提交 Pull Request 和 Issue。
 
@@ -26,89 +26,6 @@ Mirai.Net 是基于 [mirai-api-http] 实现的 C# 版轻量级 [mirai] 社区 SD
   - Mirai.Net，主项目
   - Mirai.Net.Test，控制台测试项目
   - Mirai.Net.UnitTest，单元测试项目（现在没啥用了）
-
-<details>
-  <summary>实现的接口列表</summary>
-
-_斜体的标注的接口是不稳定的_
-
-~~删除线标注的接口是未实现的~~
-
-- 账号信息
-  - 获取好友列表
-  - 获取群列表
-  - 获取群成员列表
-  - 获取 Bot 资料
-  - 获取好友资料
-  - 获取群成员资料
-  - 获取陌生人资料
-- 消息操作
-  - 发送好友消息
-  - 发送群消息
-  - 发送临时会话消息
-  - 发送头像戳一戳消息
-  - 撤回消息
-  - 根据消息id获取消息链
-  - 监测同步消息
-  - 根据QQID获取好友漫游消息
-- 文件操作
-  - 查看文件列表
-  - 获取文件信息
-  - 创建文件夹
-  - 删除文件
-  - 移动文件
-  - 重命名文件
-- 多媒体内容上传
-  - 图片文件上传
-  - 语音文件上传
-  - 群文件上传
-- 账号管理
-  - 删除好友
-- 群管理
-  - 禁言群成员
-  - 解除群成员禁言
-  - 移除群成员
-  - 退出群聊
-  - 全体禁言
-  - 解除全体禁言
-  - 设置群精华消息
-  - 获取群设置
-  - 修改群设置
-  - 获取群员设置
-  - 修改群员设置
-  - 获取群公告
-  - 发布群公告
-  - 删除群公告
-- 事件处理
-  - 添加好友申请
-  - 用户入群申请
-  - Bot 被邀请入群申请
-
-</details>
-
-<details>
-  <summary>支持的消息类型</summary>
-
-- Quote - 回复消息
-- At - @消息
-- AtAll - @全体成员
-- Face - QQ 表情
-- Plain - 纯文本
-- Image - 图片
-- FlashImage - 闪照
-- Voice - 语音
-- Xml - XML 消息
-- Json - JSON 消息
-- App - App 消息
-- Poke - 戳一戳
-- Dice - 不知道是啥玩意
-- MusicShare - 音乐分享
-- ForwardMessage - 转发消息
-- File - 文件
-- MarketFace - 商城表情
-- MiraiCode - Mirai码
-
-</details>
 
 ## 快速上手
 
