@@ -17,4 +17,9 @@ public record MemberJoinedEvent : EventBase
     /// 当事人
     /// </summary>
     [JsonProperty("member")] public Member Member { get; set; }
+
+    /// <summary>
+    /// 肇事者
+    /// </summary>
+    [JsonProperty("invitor")] public Member Invitor { get; set; }
 }
