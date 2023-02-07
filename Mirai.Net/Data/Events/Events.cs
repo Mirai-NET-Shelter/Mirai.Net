@@ -100,6 +100,13 @@ public enum Events
     Kicked,
 
     /// <summary>
+    ///     Bot因群主解散群而退出群
+    /// </summary>
+    [Description("BotLeaveEventDisband")]
+    [EnumMember(Value = "BotLeaveEventDisband")]
+    Disbanded,
+
+    /// <summary>
     ///     群消息撤回
     /// </summary>
     [Description("GroupRecallEvent")]
