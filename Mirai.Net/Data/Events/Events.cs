@@ -270,8 +270,8 @@ public enum Events
     /// <summary>
     /// 命令被执行
     /// </summary>
-    [Description("CommandExecutedEven")]
-    [EnumMember(Value = "CommandExecutedEven")]
+    [Description("CommandExecutedEvent")]
+    [EnumMember(Value = "CommandExecutedEvent")]
     CommandExecuted,
 
     /// <summary>
