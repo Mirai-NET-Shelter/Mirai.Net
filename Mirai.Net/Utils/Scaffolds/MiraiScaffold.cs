@@ -172,6 +172,24 @@ public static class MiraiScaffold
     }
 
     /// <summary>
+    ///  发送群消息，并在指定方法执行后撤回
+    /// </summary>
+    /// <param name="receiver"></param>
+    /// <param name="chain">消息链</param>
+    /// <param name="action">要执行的方法</param>
+    /// <returns></returns>
+    public static async Task<string> SendRecallAfterMethod(this GroupMessageReceiver receiver,
+        MessageChain chain, Func<Task> action)
+    {
+        string messageId = await MessageManager
+            .SendGroupMessageAsync(receiver.Sender.Group.Id, chain);
+        await action();
+        await MessageManager
+            .RecallAsync(messageId, receiver.GroupId);
+        return messageId;
+    }
+
+    /// <summary>
     ///     发送好友消息
     /// </summary>
     /// <param name="receiver"></param>
