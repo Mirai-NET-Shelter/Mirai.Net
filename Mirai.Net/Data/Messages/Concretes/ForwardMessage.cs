@@ -16,6 +16,12 @@ public record ForwardMessage : MessageBase
     public override Messages Type { get; set; } = Messages.Forward;
 
     /// <summary>
+    ///     预览卡片
+    /// </summary>
+    [JsonProperty("display")] 
+    public ForwardDisplay Display { get; set; }
+
+    /// <summary>
     ///     消息节点
     /// </summary>
     [JsonProperty("nodeList")]
@@ -30,9 +36,22 @@ public record ForwardMessage : MessageBase
     /// <returns></returns>
     public static ForwardMessage FromChains(string id, string name, IEnumerable<MessageChain> chains)
     {
+        var chainsList= chains.ToList();
         var re = new ForwardMessage
         {
-            NodeList = chains.Select(c => new ForwardNode
+            Display = new ForwardDisplay
+            {
+                Title = "群聊的聊天记录",
+                Brief = "[聊天记录]",
+                Source = "聊天记录",
+                Preview = chainsList.Select(c =>
+                {
+                    var plainText = c.GetPlainMessage();
+                    return $"{name}:{ (string.IsNullOrEmpty(plainText) ? "图片或其他消息" : plainText)}";
+                }).ToList(),
+                Summary = $"查看{chainsList.Count}条转发消息"
+            },
+            NodeList = chainsList.Select(c => new ForwardNode
             {
                 SenderId = id,
                 SenderName = name,
@@ -79,5 +98,37 @@ public record ForwardMessage : MessageBase
         /// </summary>
         [JsonProperty("sourceId")]
         public string SourceId { get; set; }
+    }
+
+    /// <summary>
+    /// 卡片预览
+    /// </summary>
+    public record ForwardDisplay
+    {
+        /// <summary>
+        ///     标题(群聊的聊天记录)
+        /// </summary>
+        [JsonProperty("title")]
+        public string Title { get; set; }
+        /// <summary>
+        ///     概要([聊天记录])
+        /// </summary>
+        [JsonProperty("brief")]
+        public string Brief { get; set; }
+        /// <summary>
+        ///     来源 (聊天记录)
+        /// </summary>
+        [JsonProperty("source")]
+        public string Source { get; set; }
+        /// <summary>
+        ///     信息预览(["msg1", "msg2", "msg3", "msg4"])
+        /// </summary>
+        [JsonProperty("preview")]
+        public List<string> Preview { get; set; }
+        /// <summary>
+        ///     总结(查看x条转发消息)
+        /// </summary>
+        [JsonProperty("summary")]
+        public string Summary { get; set; }
     }
 }
