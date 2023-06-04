@@ -70,7 +70,7 @@ public static class MessageManager
     /// <summary>
     ///     发送好友消息
     /// </summary>
-    /// <param name="target"></param>
+    /// <param name="friendId"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
     public static async Task<string> SendFriendMessageAsync(string friendId, MessageChain chain)
@@ -98,7 +98,7 @@ public static class MessageManager
     /// <summary>
     ///     发送群消息
     /// </summary>
-    /// <param name="target"></param>
+    /// <param name="groupId"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
     public static async Task<string> SendGroupMessageAsync(string groupId, MessageChain chain)

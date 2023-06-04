@@ -16,6 +16,12 @@ public record ForwardMessage : MessageBase
     public override Messages Type { get; set; } = Messages.Forward;
 
     /// <summary>
+    /// 点进消息前的显示内容
+    /// </summary>
+    [JsonProperty("display")]
+    public ForwardDisplay Display { get; set; } = default;
+
+    /// <summary>
     ///     消息节点
     /// </summary>
     [JsonProperty("nodeList")]
@@ -79,5 +85,42 @@ public record ForwardMessage : MessageBase
         /// </summary>
         [JsonProperty("sourceId")]
         public string SourceId { get; set; }
+    }
+
+    /// <summary>
+    /// 未进入转发消息时的显示内容
+    /// </summary>
+    public record ForwardDisplay
+    {
+        /// <summary>
+        ///     标题
+        /// </summary>
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        /// <summary>
+        ///     在未进入聊天页面时所产生的消息提示
+        /// </summary>
+        [JsonProperty("brief")]
+        public string Brief { get; set; }
+
+        /// <summary>
+        ///     来源
+        /// </summary>
+        [JsonProperty("source")]
+        public string Source { get; set; }
+
+        /// <summary>
+        ///     消息内容预览
+        /// </summary>
+        [JsonProperty("preview")]
+        public IEnumerable<string> Preview { get; set; }
+
+        /// <summary>
+        ///     消息总结
+        /// </summary>
+        [JsonProperty("summary")]
+        public string Summary { get; set; }
+
     }
 }
