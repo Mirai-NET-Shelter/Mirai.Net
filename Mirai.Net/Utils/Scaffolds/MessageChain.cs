@@ -110,7 +110,7 @@ public partial class MessageChain : List<MessageBase>
     {
         System.Text.StringBuilder builder = new();
 
-        this.ForEach(x => x.SerializeToMiraiCode());
+        this.ForEach(x => builder.Append(x.SerializeToMiraiCode()));
 
         return builder.ToString();
     }
@@ -204,4 +204,23 @@ public partial class MessageChain : List<MessageBase>
     /// <param name="right"></param>
     /// <returns></returns>
     public static bool operator !=(MessageChain left, MessageChain right) => left == right ? false : true;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="msg"></param>
+    /// <returns></returns>
+    public override bool Equals(object msg)
+    {
+        return (object)this == msg;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
 }

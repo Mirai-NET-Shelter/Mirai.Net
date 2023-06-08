@@ -68,8 +68,7 @@ public record MessageBase
 
             case PokeMessage msg:
 
-                return $"""
-                [mirai:poke:{msg.Name switch
+                return $"[mirai:poke:{msg.Name switch
                 {
                     "Poke" => "戳一戳,1,-1",
 
@@ -84,8 +83,7 @@ public record MessageBase
                     "FangDaZhao" => "放大招,6,-1",
 
                     _ => throw new("该Poke消息还未支持！")
-                }}]
-                """;
+                }}]";
 
             case DiceMessage msg:
 
