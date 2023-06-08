@@ -5,6 +5,7 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageVersion>2.4.9</PackageVersion>
         <Title>Mirai.Net</Title>
+        <LangVersion>latest</LangVersion>
         <Description>基于mirai-api-http的轻量级mirai社区sdk</Description>
         <Copyright>Copyright 2022 AHpx reserve all rights.</Copyright>
         <PackageProjectUrl>https://github.com/SinoAHpx/Mirai.Net</PackageProjectUrl>
