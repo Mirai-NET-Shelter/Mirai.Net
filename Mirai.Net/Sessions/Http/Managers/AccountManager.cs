@@ -73,7 +73,7 @@ public static class AccountManager
     /// <summary>
     ///     删除好友
     /// </summary>
-    /// <param name="target"></param>
+    /// <param name="friendId"></param>
     public static async Task DeleteFriendAsync(string friendId)
     {
         _ = await HttpEndpoints.DeleteFriend.PostJsonAsync(new
@@ -122,7 +122,7 @@ public static class AccountManager
     ///     获取群员资料
     /// </summary>
     /// <param name="id"></param>
-    /// <param name="target">群号</param>
+    /// <param name="memberId">群号</param>
     public static async Task<Profile> GetMemberProfileAsync(string id, string memberId)
     {
         return await GetProfileAsync(HttpEndpoints.MemberProfile, new
