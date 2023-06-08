@@ -105,7 +105,7 @@ public record ForwardMessage : MessageBase
         public string Brief { get; set; }
 
         /// <summary>
-        ///     来源
+        ///     目前未发现在哪能显示，建议不填
         /// </summary>
         [JsonProperty("source")]
         public string Source { get; set; }

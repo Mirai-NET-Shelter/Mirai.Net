@@ -43,6 +43,22 @@ public partial class MessageChain : List<MessageBase>
         return plain.Select(x => x.Text).JoinToString("");
     }
 
+#nullable enable
+
+    /// <summary>
+    /// 获取该消息的消息来源 如果没有引用则返回null
+    /// </summary>
+    /// <returns></returns>
+    public SourceMessage? GetSourceMessage() => this.OfType<SourceMessage>().FirstOrDefault();
+
+    /// <summary>
+    /// 获取该消息的消息来源 如果没有引用则返回null
+    /// </summary>
+    /// <returns></returns>
+    public QuoteMessage? GetQuoteMessage() => this.OfType<QuoteMessage>().FirstOrDefault();
+
+#nullable disable
+
     /// <summary>
     /// 获取消息链中的文本消息并且保持原有连贯性
     /// </summary>
@@ -84,6 +100,19 @@ public partial class MessageChain : List<MessageBase>
     public async Task<string> SendToAsync(TempMessageReceiver receiver)
     {
         return await receiver.SendMessageAsync(this);
+    }
+
+    /// <summary>
+    /// 将该消息链序列化为mirai码
+    /// </summary>
+    /// <returns></returns>
+    public string SerializeToMiraiCode()
+    {
+        System.Text.StringBuilder builder = new();
+
+        this.ForEach(x => x.SerializeToMiraiCode());
+
+        return builder.ToString();
     }
 
     /// <summary>
@@ -131,4 +160,48 @@ public partial class MessageChain : List<MessageBase>
         chain.Add(msg);
         return chain;
     }
+
+    /// <summary>
+    /// 返回两个消息链是否相等
+    /// </summary>
+    /// <param name="left"></param>
+    /// <param name="right"></param>
+    /// <returns></returns>
+    public static bool operator ==(MessageChain left, MessageChain right)
+    {
+        if (left.Count != right.Count) return false;
+
+        if ((left.OfType<MiraiCodeMessage>().FirstOrDefault()?.Code ?? left.SerializeToMiraiCode()) == (right.OfType<MiraiCodeMessage>().FirstOrDefault()?.Code ?? right.SerializeToMiraiCode()))
+            return true;
+
+        for (int i = 0; i < left.Count; i++)
+        {
+            if (left[i].Type != right[i].Type) return false;
+
+            if (left[i].Type == Messages.Source || right[i].Type == Messages.Source)
+                continue;
+
+            // 这段代码用了一种极其诡异的方法判断是否相等
+            // 首先检查能否转换为图片消息然后挨个判断四个属性 都不相等就返回false 有一个相等就返回true
+            // 然后看不能转换的时候利用record直接判左右相等
+            // 最后把前面所有的一切套进if里顺便加反转 如果为true什么都不做 如果为false直接返回false
+            if (!((left[i], right[i]) switch
+            {
+                (ImageMessage leftmsg, ImageMessage rightmsg) => (leftmsg.ImageId != rightmsg.ImageId && leftmsg.Url != rightmsg.Url && leftmsg.Path != rightmsg.Path && leftmsg.Base64 != rightmsg.Base64) ? false : true,
+
+                (var leftmsg, var rightmsg) => leftmsg == rightmsg ? true : false
+            })) return false;
+        }
+
+        // 如果还有代码没有直接返回false能走到这里那么估计完全相等了直接返回true
+        return true;
+    }
+
+    /// <summary>
+    /// 返回两个消息链是否不等
+    /// </summary>
+    /// <param name="left"></param>
+    /// <param name="right"></param>
+    /// <returns></returns>
+    public static bool operator !=(MessageChain left, MessageChain right) => left == right ? false : true;
 }
