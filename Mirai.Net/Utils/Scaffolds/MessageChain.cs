@@ -31,6 +31,29 @@ public partial class MessageChain : List<MessageBase>
     }
 
     /// <summary>
+    /// 运行时安全的Mirai码
+    /// </summary>
+    public string MiraiCode
+    {
+        get
+        {
+            System.Text.StringBuilder builder = new();
+
+            this.ForEach(x => 
+            {
+                try
+                {
+                    builder.Append(x.SerializeToMiraiCode());
+                }
+                catch
+                {}
+            });
+
+            return builder.ToString();
+        }
+    }
+
+    /// <summary>
     /// 获取消息链中的纯文本消息
     /// </summary>
     /// <returns>如果没有文本消息返回空字符串</returns>
@@ -46,7 +69,7 @@ public partial class MessageChain : List<MessageBase>
 #nullable enable
 
     /// <summary>
-    /// 获取该消息的消息来源 如果没有引用则返回null
+    /// 获取该消息的消息来源 如果没有来源则返回null
     /// </summary>
     /// <returns></returns>
     public SourceMessage? GetSourceMessage() => this.OfType<SourceMessage>().FirstOrDefault();
@@ -169,10 +192,11 @@ public partial class MessageChain : List<MessageBase>
     /// <returns></returns>
     public static bool operator ==(MessageChain left, MessageChain right)
     {
-        if (left.Count != right.Count) return false;
+        left = left.Where(x => x is not SourceMessage).ToMessageChain();
 
-        if ((left.OfType<MiraiCodeMessage>().FirstOrDefault()?.Code ?? left.SerializeToMiraiCode()) == (right.OfType<MiraiCodeMessage>().FirstOrDefault()?.Code ?? right.SerializeToMiraiCode()))
-            return true;
+        right = right.Where(x => x is not SourceMessage).ToMessageChain();
+
+        if (left.Count != right.Count) return false;
 
         for (int i = 0; i < left.Count; i++)
         {
@@ -203,7 +227,7 @@ public partial class MessageChain : List<MessageBase>
     /// <param name="left"></param>
     /// <param name="right"></param>
     /// <returns></returns>
-    public static bool operator !=(MessageChain left, MessageChain right) => left == right ? false : true;
+    public static bool operator !=(MessageChain left, MessageChain right) => !(left == right);
 
     /// <summary>
     /// 
