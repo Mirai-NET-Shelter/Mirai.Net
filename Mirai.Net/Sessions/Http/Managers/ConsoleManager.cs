@@ -29,7 +29,7 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <param name="password"></param>
         /// <param name="protocol"></param>
         /// <returns></returns>
-        public static async Task LoginAsync(string qq, string password, Protocol? protocol)
+        public static async Task LoginAsync(string qq, string password, Protocol? protocol = null)
         {
             var command = protocol is null
                 ? new PlainMessage[]
