@@ -20,7 +20,10 @@ namespace Mirai.Net.Sessions.Http.Managers
     {
 #nullable enable
         /// <summary>
-        /// 登录指令
+        /// <para>登录指令</para>
+        /// <para>登录后的账号会生成新的SessionKey 使用已有的MiraiBot实例是无法连接到该账号的</para>
+        /// <para>如果配置相同（QQ Address VerifyKey）可以再次在同一个MiraiBot上使用LaunchAsync方法之后就可以正常使用了</para>
+        /// <para>在LaunchAsync之前使用的任何Subscribe方法都不会应用于新登录的账号 必须重新Subscribe</para>
         /// </summary>
         /// <param name="qq"></param>
         /// <param name="password"></param>
