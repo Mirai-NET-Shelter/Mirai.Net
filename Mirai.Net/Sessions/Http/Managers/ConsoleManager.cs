@@ -78,6 +78,23 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <para>命令与参数</para>
         /// </param>
         /// <returns></returns>
+        public static async Task ExecuteCommandAsync(string commands)
+        {
+            var command = new PlainMessage(commands);
+
+            await HttpEndpoints.ExecuteCommand.PostJsonAsync(new
+            {
+                command
+            });
+        }
+
+        /// <summary>
+        /// 执行命令
+        /// </summary>
+        /// <param name="commands">
+        /// <para>命令与参数</para>
+        /// </param>
+        /// <returns></returns>
         public static async Task ExecuteCommandAsync(params string[] commands)
         {
             var builder = new System.Text.StringBuilder();
