@@ -69,16 +69,16 @@ public partial class MessageChain : List<MessageBase>
 #nullable enable
 
     /// <summary>
-    /// 获取该消息的消息来源 如果没有来源则返回null
+    /// 获取该消息的消息来源 如果有多个来源返回最后一个 如果没有来源则返回null
     /// </summary>
     /// <returns></returns>
-    public SourceMessage? GetSourceMessage() => this.OfType<SourceMessage>().FirstOrDefault();
+    public SourceMessage? GetSourceMessage() => this.OfType<SourceMessage>().LastOrDefault();
 
     /// <summary>
-    /// 获取该消息的消息引用 如果没有引用则返回null
+    /// 获取该消息的消息引用 如果有多个引用返回最后一个 如果没有引用则返回null
     /// </summary>
     /// <returns></returns>
-    public QuoteMessage? GetQuoteMessage() => this.OfType<QuoteMessage>().FirstOrDefault();
+    public QuoteMessage? GetQuoteMessage() => this.OfType<QuoteMessage>().LastOrDefault();
 
 #nullable disable
 
