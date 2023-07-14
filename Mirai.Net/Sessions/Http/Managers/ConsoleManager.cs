@@ -32,19 +32,8 @@ namespace Mirai.Net.Sessions.Http.Managers
         public static async Task LoginAsync(string qq, string password, Protocol? protocol = null)
         {
             var command = protocol is null
-                ? new PlainMessage[]
-                {
-                    "/login",
-                    qq,
-                    password
-                }
-                : new PlainMessage[]
-                {
-                    "/login",
-                    qq,
-                    password,
-                    protocol.ToString()
-                };
+                ? new PlainMessage[] { $"/login {qq} {password}" }
+                : new PlainMessage[] { $"/login {qq} {password} {protocol.ToString()}" };
 
             await HttpEndpoints.ExecuteCommand.PostJsonAsync(new
             {
@@ -74,7 +63,7 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <returns></returns>
         public static async Task LogoutAsync(string qq)
         {
-            var command = new PlainMessage[] { "/logout", qq };
+            var command = new PlainMessage[] { $"/logout {qq}" };
 
             await HttpEndpoints.ExecuteCommand.PostJsonAsync(new
             {
