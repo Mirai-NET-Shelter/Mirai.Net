@@ -3,7 +3,7 @@
     <PropertyGroup>
         <LangVersion>latest</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>2.4.9</PackageVersion>
+        <PackageVersion>2.5.0</PackageVersion>
         <Title>Mirai.Net</Title>
         <LangVersion>latest</LangVersion>
         <Description>基于mirai-api-http的轻量级mirai社区sdk</Description>

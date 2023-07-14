@@ -19,7 +19,7 @@ public record ForwardMessage : MessageBase
     /// 点进消息前的显示内容
     /// </summary>
     [JsonProperty("display")]
-    public ForwardDisplay Display { get; set; } = default;
+    public ForwardDisplay Display { get; set; }
 
     /// <summary>
     ///     消息节点
@@ -93,6 +93,27 @@ public record ForwardMessage : MessageBase
     public record ForwardDisplay
     {
         /// <summary>
+        ///     生成转发消息的外层显示
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="brief"></param>
+        /// <param name="source"></param>
+        /// <param name="preview"></param>
+        /// <param name="summary"></param>
+        public ForwardDisplay(string title = default, string brief = default, string source = default, IEnumerable<string> preview = default, string summary = default)
+        {
+            this.Title = title;
+
+            this.Brief = brief;
+
+            this.Source = source;
+
+            this.Preview = preview;
+
+            this.Summary = summary;
+        }
+
+        /// <summary>
         ///     标题
         /// </summary>
         [JsonProperty("title")]
@@ -121,6 +142,5 @@ public record ForwardMessage : MessageBase
         /// </summary>
         [JsonProperty("summary")]
         public string Summary { get; set; }
-
     }
 }

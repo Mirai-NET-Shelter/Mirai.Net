@@ -45,7 +45,7 @@ public record MessageBase
             case ImageMessage msg:
 
                 if (string.IsNullOrEmpty(msg.ImageId))
-                    throw new("ImageId为空！");
+                    throw new System.ArgumentNullException("ImageId为空！");
 
                 else
                     return $"[mirai:image:{msg.ImageId}]";
@@ -61,7 +61,7 @@ public record MessageBase
             case FaceMessage msg:
 
                 if (string.IsNullOrEmpty(msg.FaceId))
-                    throw new("FaceId为空！");
+                    throw new System.ArgumentNullException("FaceId为空！");
 
                 else
                     return $"[mirai:face:{msg.FaceId}]";
@@ -82,7 +82,7 @@ public record MessageBase
 
                     "FangDaZhao" => "放大招,6,-1",
 
-                    _ => throw new("该Poke消息还未支持！")
+                    _ => throw new System.NotSupportedException("该Poke消息还未支持！")
                 };
 
                 return $"[mirai:poke:{poke}]";
@@ -91,7 +91,7 @@ public record MessageBase
 
                 return $"[mirai:dice:{msg.Value}]";
 
-            case MusicShareMessage msg: // MusicShare在mirai的2.15.0-M1版本中显示为[mirai:origin:MUSIC_SHARE]MusicShare(*这里有一长串省略的内容) 与https://github.com/mamoe/mirai/blob/dev/docs/Messages.md中所说的[mirai:musicshare:$args]不符 因此这里先采用后者的方式 使用半角逗号分隔 至少保证序列化的稳定
+            case MusicShareMessage msg: // MusicShare在mirai的2.15.0-M1版本中显示为[mirai:origin:MUSIC_SHARE]MusicShare(*这里有一长串省略的内容) 与https://github.com/mamoe/mirai/blob/dev/docs/Messages.md 中所说的[mirai:musicshare:$args]不符 因此这里先采用后者的方式 使用半角逗号分隔 至少保证序列化的稳定
 
                 return $"[mirai:musicshare:{msg.Kind},{msg.Title},{msg.Summary},{msg.JumpUrl},{msg.PictureUrl},{msg.MusicUrl},{msg.Brief}]";
 
@@ -101,7 +101,7 @@ public record MessageBase
 
             default:
 
-                throw new("遇到了不支持序列化的消息！");
+                throw new System.NotSupportedException("遇到了不支持序列化的消息！");
         }
     }
 

@@ -75,7 +75,7 @@ public partial class MessageChain : List<MessageBase>
     public SourceMessage? GetSourceMessage() => this.OfType<SourceMessage>().FirstOrDefault();
 
     /// <summary>
-    /// 获取该消息的消息来源 如果没有引用则返回null
+    /// 获取该消息的消息引用 如果没有引用则返回null
     /// </summary>
     /// <returns></returns>
     public QuoteMessage? GetQuoteMessage() => this.OfType<QuoteMessage>().FirstOrDefault();
@@ -126,7 +126,7 @@ public partial class MessageChain : List<MessageBase>
     }
 
     /// <summary>
-    /// 将该消息链序列化为mirai码
+    /// 将该消息链序列化为mirai码 不会捕获异常
     /// </summary>
     /// <returns></returns>
     public string SerializeToMiraiCode()
@@ -202,18 +202,17 @@ public partial class MessageChain : List<MessageBase>
         {
             if (left[i].Type != right[i].Type) return false;
 
-            if (left[i].Type == Messages.Source || right[i].Type == Messages.Source)
-                continue;
-
             // 这段代码用了一种极其诡异的方法判断是否相等
-            // 首先检查能否转换为图片消息然后挨个判断四个属性 都不相等就返回false 有一个相等就返回true
+            // 首先检查能否转换为图片消息或者语音消息然后挨个判断四个属性 都不相等就返回false 有一个相等就返回true
             // 然后看不能转换的时候利用record直接判左右相等
             // 最后把前面所有的一切套进if里顺便加反转 如果为true什么都不做 如果为false直接返回false
             if (!((left[i], right[i]) switch
             {
-                (ImageMessage leftmsg, ImageMessage rightmsg) => (leftmsg.ImageId != rightmsg.ImageId && leftmsg.Url != rightmsg.Url && leftmsg.Path != rightmsg.Path && leftmsg.Base64 != rightmsg.Base64) ? false : true,
+                (ImageMessage leftmsg, ImageMessage rightmsg) => !(leftmsg.ImageId != rightmsg.ImageId && leftmsg.Url != rightmsg.Url && leftmsg.Path != rightmsg.Path && leftmsg.Base64 != rightmsg.Base64),
 
-                (var leftmsg, var rightmsg) => leftmsg == rightmsg ? true : false
+                (VoiceMessage leftmsg, VoiceMessage rightmsg) => !(leftmsg.VoiceId != rightmsg.VoiceId && leftmsg.Url != rightmsg.Url && leftmsg.Path != rightmsg.Path && leftmsg.Base64 != rightmsg.Base64),
+
+                (var leftmsg, var rightmsg) => leftmsg == rightmsg
             })) return false;
         }
 

@@ -3,7 +3,7 @@
 namespace Mirai.Net.Data.Messages.Concretes;
 
 /// <summary>
-/// 我也不知道是啥玩意
+/// 戳一戳系列消息
 /// </summary>
 public record PokeMessage : MessageBase
 {

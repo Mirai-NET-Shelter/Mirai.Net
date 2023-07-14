@@ -1,12 +1,14 @@
 ﻿using Manganese.Array;
 using Mirai.Net.Data.Events;
 using Mirai.Net.Data.Messages;
+using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Utils.Internal;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Reactive;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Mirai.Net.Sessions.Http.Managers
 {
@@ -14,42 +16,104 @@ namespace Mirai.Net.Sessions.Http.Managers
     /// <summary>
     /// 控制台管理器
     /// </summary>
-    /// 在功能稳定前保持可见性为 internal
-    [Experimental]
-#if DEBUG
     public static class ConsoleManager
-#else
-    internal static class ConsoleManager
-#endif
     {
+#nullable enable
+        /// <summary>
+        /// 登录指令
+        /// </summary>
+        /// <param name="qq"></param>
+        /// <param name="password"></param>
+        /// <param name="protocol"></param>
+        /// <returns></returns>
+        public static async Task LoginAsync(string qq, string password, Protocol? protocol)
+        {
+            var command = protocol is null
+                ? new PlainMessage[]
+                {
+                    "/login",
+                    qq,
+                    password
+                }
+                : new PlainMessage[]
+                {
+                    "/login",
+                    qq,
+                    password,
+                    protocol.ToString()
+                };
+
+            await HttpEndpoints.ExecuteCommand.PostJsonAsync(new
+            {
+                command
+            });
+        }
+#nullable restore
 
         /// <summary>
-        /// 内部小把戏
+        /// 关闭指令
         /// </summary>
-        /// 在功能稳定前使用此方法加入内部事件类型
-        static ConsoleManager()
+        /// <returns></returns>
+        public static async Task StopAsync()
         {
-            var field = typeof(ReflectionUtils).GetField("EventBases", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
-            if (field != null)
+            var command = new PlainMessage[] { "/stop" };
+
+            await HttpEndpoints.ExecuteCommand.PostJsonAsync(new
             {
-                if (field.GetValue(null) == null)
-                {
-                    field.SetValue(null, ReflectionUtils.GetDefaultInstances<EventBase>("Mirai.Net.Data.Events.Concretes"));
-                }
-                var eventBases = field.GetValue(null);
-                ((IEnumerable<EventBase>)eventBases).Add(new EventBase[] { new CommandExecutedEvent() });
-            }
+                command
+            });
+        }
+
+        /// <summary>
+        /// 登出指令
+        /// </summary>
+        /// <param name="qq"></param>
+        /// <returns></returns>
+        public static async Task LogoutAsync(string qq)
+        {
+            var command = new PlainMessage[] { "/logout", qq };
+
+            await HttpEndpoints.ExecuteCommand.PostJsonAsync(new
+            {
+                command
+            });
         }
 
         /// <summary>
         /// 执行命令
         /// </summary>
-        /// <param name="command">
+        /// <param name="commands">
         /// <para>命令与参数</para>
+        /// </param>
+        /// <returns></returns>
+        public static async Task ExecuteCommandAsync(params string[] commands)
+        {
+            var builder = new System.Text.StringBuilder();
+
+            foreach (var item in commands)
+            {
+                builder.Append(item);
+
+                builder.Append(' ');
+            }
+
+            var command = new PlainMessage[] { builder.ToString().Trim() };
+
+            await HttpEndpoints.ExecuteCommand.PostJsonAsync(new
+            {
+                command
+            });
+        }
+
+        /// <summary>
+        /// 使用消息执行命令
+        /// </summary>
+        /// <param name="command">
+        /// <para>命令与参数 如果使用纯文本的话需要将整条命令写在同一个PlainMessage中</para>
         /// <para>控制台支持以不同消息类型作为指令的参数, 执行命令需要以消息类型作为参数, 若执行纯文本的命令, 构建多个文本格式的消息控制台会将第一个消息作为指令名, 后续消息作为参数</para>
         /// </param>
         /// <returns></returns>
-        public static async Task ExecuteCommandAsync(MessageBase[] command)
+        public static async Task ExecuteMessageCommandAsync(IEnumerable<MessageBase> command)
         {
             await HttpEndpoints.ExecuteCommand.PostJsonAsync(new
             {
@@ -87,9 +151,8 @@ namespace Mirai.Net.Sessions.Http.Managers
         }
 
         /// <summary>
-        /// 命令
+        /// 注册用的命令
         /// </summary>
-        /// 在功能稳定前保持此类为内部类
         public record Command
         {
 
@@ -103,7 +166,7 @@ namespace Mirai.Net.Sessions.Http.Managers
             /// 指令别名
             /// </summary>
             [JsonProperty("alias")]
-            public string[] Alias { get; set; }
+            public IEnumerable<string> Alias { get; set; }
 
             /// <summary>
             /// 使用说明
@@ -121,7 +184,6 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <summary>
         /// 命令被执行
         /// </summary>
-        /// 在功能稳定前保持此类为内部类
         public record CommandExecutedEvent : EventBase
         {
             /// <summary>
@@ -132,23 +194,44 @@ namespace Mirai.Net.Sessions.Http.Managers
             /// <summary>
             /// 命令名称
             /// </summary>
-            [JsonProperty("name")] public string Name { get; private set; }
-
+            [JsonProperty("name")] public string Name { get; set; }
+#nullable enable
             /// <summary>
             /// 发送命令的好友, 从控制台发送为 null
             /// </summary>
-            [JsonProperty("friend")] public string FriendId { get; private set; }
+            [JsonProperty("friend")] public string? FriendId { get; set; }
 
             /// <summary>
-            /// 发送命令的群成员, 从控制台发送为 nul
+            /// 发送命令的群成员, 从控制台发送为 null
             /// </summary>
-            [JsonProperty("member")] public string MemberId { get; private set; }
-
+            [JsonProperty("member")] public string? MemberId { get; set; }
+#nullable restore
             /// <summary>
             /// 指令的参数, 以消息类型传递
             /// </summary>
-            [JsonProperty("args")] public dynamic Args { get; private set; }
+            [JsonProperty("args")] public dynamic Args { get; set; }
         }
 
+    }
+
+    /// <summary>
+    /// 可选的登录协议
+    /// </summary>
+    public enum Protocol
+    {
+        /// <summary>
+        /// 安卓手机
+        /// </summary>
+        ANDROID_PHONE,
+
+        /// <summary>
+        /// 安卓平板
+        /// </summary>
+        ANDROID_PAD,
+
+        /// <summary>
+        /// 安卓手表
+        /// </summary>
+        ANDROID_WATCH
     }
 }
