@@ -80,7 +80,7 @@ namespace Mirai.Net.Sessions.Http.Managers
         /// <returns></returns>
         public static async Task ExecuteCommandAsync(string commands)
         {
-            var command = new PlainMessage(commands);
+            var command = new PlainMessage[] { commands };
 
             await HttpEndpoints.ExecuteCommand.PostJsonAsync(new
             {
