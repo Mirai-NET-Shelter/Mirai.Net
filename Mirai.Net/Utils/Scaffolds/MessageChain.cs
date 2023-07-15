@@ -31,6 +31,29 @@ public partial class MessageChain : List<MessageBase>
     }
 
     /// <summary>
+    /// 运行时安全的Mirai码
+    /// </summary>
+    public string MiraiCode
+    {
+        get
+        {
+            System.Text.StringBuilder builder = new();
+
+            this.ForEach(x => 
+            {
+                try
+                {
+                    builder.Append(x.SerializeToMiraiCode());
+                }
+                catch
+                {}
+            });
+
+            return builder.ToString();
+        }
+    }
+
+    /// <summary>
     /// 获取消息链中的纯文本消息
     /// </summary>
     /// <returns>如果没有文本消息返回空字符串</returns>
@@ -46,16 +69,16 @@ public partial class MessageChain : List<MessageBase>
 #nullable enable
 
     /// <summary>
-    /// 获取该消息的消息来源 如果没有引用则返回null
+    /// 获取该消息的消息来源 如果有多个来源返回最后一个 如果没有来源则返回null
     /// </summary>
     /// <returns></returns>
-    public SourceMessage? GetSourceMessage() => this.OfType<SourceMessage>().FirstOrDefault();
+    public SourceMessage? GetSourceMessage() => this.OfType<SourceMessage>().LastOrDefault();
 
     /// <summary>
-    /// 获取该消息的消息来源 如果没有引用则返回null
+    /// 获取该消息的消息引用 如果有多个引用返回最后一个 如果没有引用则返回null
     /// </summary>
     /// <returns></returns>
-    public QuoteMessage? GetQuoteMessage() => this.OfType<QuoteMessage>().FirstOrDefault();
+    public QuoteMessage? GetQuoteMessage() => this.OfType<QuoteMessage>().LastOrDefault();
 
 #nullable disable
 
@@ -103,7 +126,7 @@ public partial class MessageChain : List<MessageBase>
     }
 
     /// <summary>
-    /// 将该消息链序列化为mirai码
+    /// 将该消息链序列化为mirai码 不会捕获异常
     /// </summary>
     /// <returns></returns>
     public string SerializeToMiraiCode()
@@ -169,27 +192,27 @@ public partial class MessageChain : List<MessageBase>
     /// <returns></returns>
     public static bool operator ==(MessageChain left, MessageChain right)
     {
-        if (left.Count != right.Count) return false;
+        left = left.Where(x => x is not SourceMessage).ToMessageChain();
 
-        if ((left.OfType<MiraiCodeMessage>().FirstOrDefault()?.Code ?? left.SerializeToMiraiCode()) == (right.OfType<MiraiCodeMessage>().FirstOrDefault()?.Code ?? right.SerializeToMiraiCode()))
-            return true;
+        right = right.Where(x => x is not SourceMessage).ToMessageChain();
+
+        if (left.Count != right.Count) return false;
 
         for (int i = 0; i < left.Count; i++)
         {
             if (left[i].Type != right[i].Type) return false;
 
-            if (left[i].Type == Messages.Source || right[i].Type == Messages.Source)
-                continue;
-
             // 这段代码用了一种极其诡异的方法判断是否相等
-            // 首先检查能否转换为图片消息然后挨个判断四个属性 都不相等就返回false 有一个相等就返回true
+            // 首先检查能否转换为图片消息或者语音消息然后挨个判断四个属性 都不相等就返回false 有一个相等就返回true
             // 然后看不能转换的时候利用record直接判左右相等
             // 最后把前面所有的一切套进if里顺便加反转 如果为true什么都不做 如果为false直接返回false
             if (!((left[i], right[i]) switch
             {
-                (ImageMessage leftmsg, ImageMessage rightmsg) => (leftmsg.ImageId != rightmsg.ImageId && leftmsg.Url != rightmsg.Url && leftmsg.Path != rightmsg.Path && leftmsg.Base64 != rightmsg.Base64) ? false : true,
+                (ImageMessage leftmsg, ImageMessage rightmsg) => !(leftmsg.ImageId != rightmsg.ImageId && leftmsg.Url != rightmsg.Url && leftmsg.Path != rightmsg.Path && leftmsg.Base64 != rightmsg.Base64),
 
-                (var leftmsg, var rightmsg) => leftmsg == rightmsg ? true : false
+                (VoiceMessage leftmsg, VoiceMessage rightmsg) => !(leftmsg.VoiceId != rightmsg.VoiceId && leftmsg.Url != rightmsg.Url && leftmsg.Path != rightmsg.Path && leftmsg.Base64 != rightmsg.Base64),
+
+                (var leftmsg, var rightmsg) => leftmsg == rightmsg
             })) return false;
         }
 
@@ -203,7 +226,7 @@ public partial class MessageChain : List<MessageBase>
     /// <param name="left"></param>
     /// <param name="right"></param>
     /// <returns></returns>
-    public static bool operator !=(MessageChain left, MessageChain right) => left == right ? false : true;
+    public static bool operator !=(MessageChain left, MessageChain right) => !(left == right);
 
     /// <summary>
     /// 

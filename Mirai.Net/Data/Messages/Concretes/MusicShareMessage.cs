@@ -13,7 +13,7 @@ public record MusicShareMessage : MessageBase
     public override Messages Type { get; set; } = Messages.MusicShare;
 
     /// <summary>
-    /// 类型
+    /// 类型，即分享自的软件平台
     /// </summary>
     [JsonProperty("kind")] public string Kind { get; set; }
 
