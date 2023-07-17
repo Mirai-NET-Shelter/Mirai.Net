@@ -93,6 +93,12 @@ public record ForwardMessage : MessageBase
     public record ForwardDisplay
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public ForwardDisplay()
+        {}
+
+        /// <summary>
         ///     生成转发消息的外层显示
         /// </summary>
         /// <param name="title"></param>
