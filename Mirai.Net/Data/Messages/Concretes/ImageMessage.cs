@@ -47,4 +47,10 @@ public record ImageMessage : MessageBase
     /// </summary>
     [JsonProperty("height")]
     public string Height { get; set; }
+
+    /// <summary>
+    ///     图片是否作为表情发送，QQ会根据该属性决定是否自动缩小显示的尺寸
+    /// </summary>
+    [JsonProperty("isEmoji")]
+    public string IsEmoji { get; set; }
 }
