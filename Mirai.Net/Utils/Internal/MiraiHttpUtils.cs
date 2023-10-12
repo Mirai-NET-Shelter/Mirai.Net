@@ -23,21 +23,23 @@ internal static class MiraiHttpUtils
     {
         var obj = json.ToJObject();
 
-        if (obj.ContainsKey("code"))
+        var code = obj["code"]?.ToString();
+
+        if (code is null or "0") return;
+
+        var message = $"原因: {json.OfErrorMessage()}\r\n备注: ";
+        message += string.IsNullOrEmpty(appendix)
+            ? MiraiBot.Instance.ToJsonString()
+            : appendix;
+
+        var exception = new InvalidResponseException(message)
         {
-            var code = obj.Fetch("code");
-            if (code != "0")
-            {
-                var message = $"原因: {json.OfErrorMessage()}";
-
-                if (!appendix.IsNullOrEmpty())
-                    message += $"\r\n备注: {appendix}";
-                else
-                    message += $"\r\n备注: {MiraiBot.Instance.ToJsonString()}";
-
-                throw new InvalidResponseException(message);
+            Data = {
+                ["code"] = code,
+                ["msg"] = obj.TryGetValue("msg", out var value) ? value.ToString() : null
             }
-        }
+        };
+        throw exception;
     }
 
     #endregion
