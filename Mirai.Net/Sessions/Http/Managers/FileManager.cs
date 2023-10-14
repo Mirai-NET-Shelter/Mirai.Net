@@ -6,6 +6,8 @@ using Mirai.Net.Utils.Internal;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using File = Mirai.Net.Data.Shared.File;
 
@@ -122,27 +124,36 @@ public static class FileManager
     }
 
     /// <summary>
-    ///     上传群文件，参考https://github.com/project-mirai/mirai-api-http/issues/456
+    ///     上传群文件，修复 https://github.com/SinoAHpx/Mirai.Net/issues/72 中提到的编码错误
     /// </summary>
     /// <param name="groupId">上传到哪个群</param>
     /// <param name="filePath">文件的路径</param>
-    /// <param name="uploadPath">上传路径，例如/xx（不可以指定文件名，默认为上传到根目录）</param>
+    /// <param name="uploadPath">上传路径，例如/xx</param>
+    /// <param name="fileName">上传的文件名</param>
     /// <returns>有几率返回null，这是个mirai-api-http的玄学问题</returns>
-    public static async Task<File> UploadFileAsync(string groupId, string filePath, string uploadPath = "/")
+    public static async Task<File> UploadFileAsync(string groupId, string filePath, string uploadPath = "/", string fileName = null)
     {
-        uploadPath ??= $"/{Path.GetFileName(filePath)}";
+        fileName ??= Path.GetFileName(filePath);
 
         var url = $"http://{MiraiBot.Instance.Address.HttpAddress}/{HttpEndpoints.FileUpload.GetDescription()}";
 
-        var result = await url
-            .WithHeader("Authorization", $"session {MiraiBot.Instance.HttpSessionKey}")
-            .PostMultipartAsync(x => x
-                .AddString("type", "group")
-                .AddString("path", uploadPath)
-                .AddString("target", groupId)
-                .AddFile("file", filePath));
+        using var fileStream = System.IO.File.Open(filePath, FileMode.Open);
+        var streamContent = new StreamContent(fileStream);
+        var hackedFileName = new string(Encoding.UTF8.GetBytes(fileName).Select(b => (char)b).ToArray());
+        streamContent.Headers.Add("Content-Disposition", $@"form-data; name=""file""; filename=""{hackedFileName}""; filename*=""{hackedFileName}""");
 
-        var response = await result.GetStringAsync();
+        var response = await url
+            .PostAsync(new MultipartFormDataContent
+            {
+                { new StringContent(MiraiBot.Instance.HttpSessionKey), "sessionKey" },
+                { new StringContent("group"), "type" },
+                { new StringContent(groupId), "target" },
+                { new StringContent(uploadPath), "path" },
+                { streamContent, "file", fileName }
+            })
+            .ReceiveString();
+
+
         response.EnsureSuccess("这大抵是个玄学问题罢。");
 
         var re = response.ToJObject();
