@@ -26,9 +26,9 @@ public record MessageReceiverBase
     /// <summary>
     /// 发送消息
     /// </summary>
-    /// <param name="chain"></param>
+    /// <param name="chain">消息链</param>
     /// <returns></returns>
-    /// <exception cref="NotSupportedException"></exception>
+    /// <exception cref="NotSupportedException">直接尝试呼叫此方法时掷出</exception>
     public virtual Task<string> SendMessageAsync(MessageChain chain)
     {
         throw new NotSupportedException("Direct call to virtual MessageReceiverBase.SendMessageAsync is not supported.");
