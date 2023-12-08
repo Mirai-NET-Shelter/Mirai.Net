@@ -42,7 +42,7 @@ public record GroupMessageReceiver : MessageReceiverBase
     public override MessageReceivers Type { get; set; } = MessageReceivers.Group;
 
     /// <summary>
-    /// 发送消息群消息
+    /// 发送群消息
     /// </summary>
     /// <param name="chain">消息链</param>
     /// <returns></returns>
