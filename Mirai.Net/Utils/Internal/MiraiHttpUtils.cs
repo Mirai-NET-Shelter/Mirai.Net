@@ -6,6 +6,7 @@ using Mirai.Net.Data.Sessions;
 using Mirai.Net.Sessions;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using NullValueHandling = Newtonsoft.Json.NullValueHandling;
 
@@ -116,12 +117,16 @@ public static class MiraiHttpUtils
         {
             var result = withSessionKey
                 ? await url
-                    .WithHeader("Authorization", $"session {MiraiBot.Instance.HttpSessionKey}")
+                    .WithHeaders(new Dictionary<string, string>() { { "Content-Type", "application/json" }
+                        , { "Authorization", $"session {MiraiBot.Instance.HttpSessionKey}" }
+                    })
                     .PostStringAsync(json.ToJsonString(new JsonSerializerSettings
                     {
                         NullValueHandling = NullValueHandling.Ignore
                     }))
-                : await url.PostStringAsync(json.ToJsonString(new JsonSerializerSettings
+                : await url
+                    .WithHeaders(new Dictionary<string, string>() { { "Content-Type", "application/json" } })
+                    .PostStringAsync(json.ToJsonString(new JsonSerializerSettings
                 {
                     NullValueHandling = NullValueHandling.Ignore
                 }));
