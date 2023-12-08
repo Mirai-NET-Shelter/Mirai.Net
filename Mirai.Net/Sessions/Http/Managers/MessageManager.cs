@@ -1,9 +1,12 @@
 ﻿using Manganese.Text;
+
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Utils.Internal;
+
 using Newtonsoft.Json;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -14,9 +17,9 @@ namespace Mirai.Net.Sessions.Http.Managers;
 /// </summary>
 public static class MessageManager
 {
-    #region Private helpers
+    #region Non-Public helpers
 
-    private static async Task<string> SendMessageAsync(HttpEndpoints endpoints, object payload)
+    internal static async Task<string> SendMessageAsync(HttpEndpoints endpoints, object payload)
     {
         var response = await endpoints.PostJsonAsync(payload);
 

@@ -1,4 +1,9 @@
-﻿using Mirai.Net.Data.Shared;
+﻿using Mirai.Net.Data.Sessions;
+using System.Threading.Tasks;
+
+using Mirai.Net.Data.Shared;
+using Mirai.Net.Sessions.Http.Managers;
+
 using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Messages.Receivers;
@@ -35,4 +40,20 @@ public record GroupMessageReceiver : MessageReceiverBase
     /// 消息接收器类型
     /// </summary>
     public override MessageReceivers Type { get; set; } = MessageReceivers.Group;
+
+    /// <summary>
+    /// 发送消息群消息
+    /// </summary>
+    /// <param name="chain">消息链</param>
+    /// <returns></returns>
+    public override async Task<string> SendMessageAsync(MessageChain chain)
+    {
+        var payload = new
+        {
+            target = Sender.Group.Id,
+            messageChain = chain
+        };
+
+        return await MessageManager.SendMessageAsync(HttpEndpoints.SendGroupMessage, payload);
+    }
 }

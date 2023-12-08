@@ -1,4 +1,9 @@
-﻿using Mirai.Net.Data.Shared;
+﻿using Mirai.Net.Data.Sessions;
+using System.Threading.Tasks;
+
+using Mirai.Net.Data.Shared;
+using Mirai.Net.Sessions.Http.Managers;
+
 using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Messages.Receivers;
@@ -35,4 +40,20 @@ public record FriendMessageReceiver : MessageReceiverBase
     /// </summary>
     [JsonIgnore]
     public string FriendId => Sender.Id;
+
+    /// <summary>
+    /// 发送好友消息
+    /// </summary>
+    /// <param name="chain">消息链</param>
+    /// <returns></returns>
+    public override async Task<string> SendMessageAsync(MessageChain chain)
+    {
+        var payload = new
+        {
+            target = Sender.Id,
+            messageChain = chain
+        };
+
+        return await MessageManager.SendMessageAsync(HttpEndpoints.SendFriendMessage, payload);
+    }
 }
