@@ -3,7 +3,11 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Events.Concretes.Group;
 
-public abstract class GroupSettingChangedEventBase<T> : EventBase
+/// <summary>
+/// 群设置改变基类
+/// </summary>
+/// <typeparam name="T"></typeparam>
+public abstract record GroupSettingChangedEventBase<T> : EventBase
 {
     /// <summary>
     ///     原来的

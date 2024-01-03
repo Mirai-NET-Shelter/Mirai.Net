@@ -3,10 +3,20 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Events.Concretes.Group;
 
-public abstract class GroupMemberSettingChangedEventBase<T> : EventBase
+/// <summary>
+/// 群成员设置改变基类
+/// </summary>
+/// <typeparam name="T"></typeparam>
+public abstract record GroupMemberSettingChangedEventBase<T> : EventBase
 {
+    /// <summary>
+    /// 原来的值
+    /// </summary>
     [JsonProperty("origin")] public T Origin { get; set; }
 
+    /// <summary>
+    /// 当前的值
+    /// </summary>
     [JsonProperty("current")] public T Current { get; set; }
 
     /// <summary>

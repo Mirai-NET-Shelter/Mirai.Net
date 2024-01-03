@@ -3,9 +3,15 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Shared;
 
-public class Friend
+/// <summary>
+/// 好友
+/// </summary>
+public record Friend
 {
-    [JsonIgnore] public Profile Profile => this.GetFriendProfileAsync().GetAwaiter().GetResult();
+    /// <summary>
+    /// 好友的资料
+    /// </summary>
+    [JsonIgnore] public Profile FriendProfile => this.GetFriendProfileAsync().GetAwaiter().GetResult();
 
     /// <summary>
     ///     好友的QQ号

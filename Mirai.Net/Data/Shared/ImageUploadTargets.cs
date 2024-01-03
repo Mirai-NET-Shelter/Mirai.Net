@@ -3,14 +3,29 @@ using System.Runtime.Serialization;
 
 namespace Mirai.Net.Data.Shared;
 
+/// <summary>
+/// 图片上传目标
+/// </summary>
 public enum ImageUploadTargets
 {
-    [Description("friend")] [EnumMember(Value = "friend")]
+    /// <summary>
+    /// 好友
+    /// </summary>
+    [Description("friend")]
+    [EnumMember(Value = "friend")]
     Friend,
 
-    [Description("group")] [EnumMember(Value = "group")]
+    /// <summary>
+    /// 群
+    /// </summary>
+    [Description("group")]
+    [EnumMember(Value = "group")]
     Group,
 
-    [Description("temp")] [EnumMember(Value = "temp")]
+    /// <summary>
+    /// 临时消息
+    /// </summary>
+    [Description("temp")]
+    [EnumMember(Value = "temp")]
     Temp
 }

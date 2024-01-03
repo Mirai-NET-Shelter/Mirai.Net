@@ -16,19 +16,19 @@ public class InvalidAddressException : Exception
     //    http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dncscol/html/csharp07192001.asp
     //
 
-    public InvalidAddressException()
+    internal InvalidAddressException()
     {
     }
 
-    public InvalidAddressException(string message) : base(message)
+    internal InvalidAddressException(string message) : base(message)
     {
     }
 
-    public InvalidAddressException(string message, Exception inner) : base(message, inner)
+    internal InvalidAddressException(string message, Exception inner) : base(message, inner)
     {
     }
 
-    protected InvalidAddressException(
+    internal InvalidAddressException(
         SerializationInfo info,
         StreamingContext context) : base(info, context)
     {

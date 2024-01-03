@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using AHpx.Extensions.JsonExtensions;
+﻿using Manganese.Text;
 using Mirai.Net.Data.Events.Concretes.Request;
 using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
@@ -12,9 +9,17 @@ using Mirai.Net.Modules;
 using Mirai.Net.Sessions;
 using Mirai.Net.Sessions.Http.Managers;
 using Mirai.Net.Utils.Internal;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reactive.Linq;
+using System.Threading.Tasks;
 
 namespace Mirai.Net.Utils.Scaffolds;
 
+/// <summary>
+/// mirai相关拓展方法
+/// </summary>
 public static class MiraiScaffold
 {
     #region MiraiBot extensions
@@ -72,54 +77,54 @@ public static class MiraiScaffold
         return bot.Friends.Value.Any(x => x.Id == friend.Id);
     }
 
-    #endregion
-
-    #region Legacy command module extensions
-
     /// <summary>
-    ///     执行命令模块
+    /// An encapsulation of 'OfType.Subscribe' for GroupMessageReceiver
     /// </summary>
     /// <param name="observable"></param>
-    /// <param name="modules"></param>
+    /// <param name="action"></param>
     /// <returns></returns>
-    [Obsolete]
-    public static IObservable<MessageReceiverBase> WithCommandModules(this IObservable<MessageReceiverBase> observable,
-        params ICommandModule[] modules)
+    public static IDisposable SubscribeGroupMessage(this IObservable<MessageReceiverBase> observable, Action<GroupMessageReceiver> action)
     {
-        observable.Subscribe(x => { x.ExecuteCommandModules(modules); });
-
-        return observable;
+        return observable.OfType<GroupMessageReceiver>().Subscribe(action);
     }
 
     /// <summary>
-    ///     执行指定类型同命名空间下所有命令模块（除非它没开启）
+    /// An encapsulation of 'OfType.Subscribe' for GroupMessageReceiver
     /// </summary>
     /// <param name="observable"></param>
+    /// <param name="action"></param>
     /// <returns></returns>
-    [Obsolete]
-    public static IObservable<MessageReceiverBase> WithCommandModules<T>(
-        this IObservable<MessageReceiverBase> observable) where T : ICommandModule
+    public static IDisposable SubscribeGroupMessageAsync(this IObservable<MessageReceiverBase> observable, Func<GroupMessageReceiver, Task> action)
     {
-        var particular = CommandScaffold.LoadCommandModules<T>();
-        observable.Subscribe(x => { x.ExecuteCommandModules(particular); });
-
-        return observable;
+        return observable.OfType<GroupMessageReceiver>().Subscribe(r =>
+        {
+            action(r);
+        });
     }
 
     /// <summary>
-    ///     执行指定命名空间下所有命令模块（除非它没开启）
+    /// An encapsulation of 'OfType.Subscribe' for FriendMessageReceiver
     /// </summary>
     /// <param name="observable"></param>
-    /// <param name="namespace"></param>
+    /// <param name="action"></param>
     /// <returns></returns>
-    [Obsolete]
-    public static IObservable<MessageReceiverBase> WithCommandModules(this IObservable<MessageReceiverBase> observable,
-        string @namespace)
+    public static IDisposable SubscribeFriendMessage(this IObservable<MessageReceiverBase> observable, Action<FriendMessageReceiver> action)
     {
-        var particular = CommandScaffold.LoadCommandModules(@namespace);
-        observable.Subscribe(x => { x.ExecuteCommandModules(particular); });
+        return observable.OfType<FriendMessageReceiver>().Subscribe(action);
+    }
 
-        return observable;
+    /// <summary>
+    /// An encapsulation of 'OfType.Subscribe' for GroupMessageReceiver
+    /// </summary>
+    /// <param name="observable"></param>
+    /// <param name="action"></param>
+    /// <returns></returns>
+    public static IDisposable SubscribeFriendMessageAsync(this IObservable<MessageReceiverBase> observable, Func<FriendMessageReceiver, Task> action)
+    {
+        return observable.OfType<FriendMessageReceiver>().Subscribe(r =>
+        {
+            action(r);
+        });
     }
 
     #endregion
@@ -137,6 +142,18 @@ public static class MiraiScaffold
         return (T)@base;
     }
 
+    /// <summary>
+    /// 使用模块
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="modules"></param>
+    /// <returns></returns>
+    public static IObservable<MessageReceiverBase> WithModules(this IObservable<MessageReceiverBase> source, List<IModule> modules)
+    {
+        source.Subscribe(modules.Raise);
+        return source;
+    }
+
     #endregion
 
     #region Message extension
@@ -148,7 +165,7 @@ public static class MiraiScaffold
     /// <param name="chain"></param>
     /// <returns></returns>
     public static async Task<string> SendMessageAsync(this GroupMessageReceiver receiver,
-        params MessageBase[] chain)
+        MessageChain chain)
     {
         return await MessageManager
             .SendGroupMessageAsync(receiver.Sender.Group.Id, chain);
@@ -161,7 +178,7 @@ public static class MiraiScaffold
     /// <param name="chain"></param>
     /// <returns></returns>
     public static async Task<string> SendMessageAsync(this FriendMessageReceiver receiver,
-        params MessageBase[] chain)
+        MessageChain chain)
     {
         return await MessageManager
             .SendFriendMessageAsync(receiver.Sender.Id, chain);
@@ -173,61 +190,53 @@ public static class MiraiScaffold
     /// <param name="receiver"></param>
     /// <param name="chain"></param>
     /// <returns></returns>
-    public static async Task<string> SendMessageAsync(this TempMessageReceiver receiver, params MessageBase[] chain)
+    public static async Task<string> SendMessageAsync(this TempMessageReceiver receiver, MessageChain chain)
     {
         return await MessageManager
             .SendTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, chain);
     }
 
     /// <summary>
-    ///     发送群消息
+    ///     撤回收到的消息
     /// </summary>
     /// <param name="receiver"></param>
-    /// <param name="message"></param>
-    /// <returns></returns>
-    public static async Task<string> SendMessageAsync(this GroupMessageReceiver receiver, string message)
+    public static async Task RecallAsync(this GroupMessageReceiver receiver)
     {
-        return await MessageManager
-            .SendGroupMessageAsync(receiver.Sender.Group.Id, message);
-    }
-
-    /// <summary>
-    ///     发送好友消息
-    /// </summary>
-    /// <param name="receiver"></param>
-    /// <param name="message"></param>
-    /// <returns></returns>
-    public static async Task<string> SendMessageAsync(this FriendMessageReceiver receiver, string message)
-    {
-        return await MessageManager
-            .SendFriendMessageAsync(receiver.Sender.Id, message);
-    }
-
-    /// <summary>
-    ///     发送临时消息
-    /// </summary>
-    /// <param name="receiver"></param>
-    /// <param name="message"></param>
-    /// <returns></returns>
-    public static async Task<string> SendMessageAsync(this TempMessageReceiver receiver, string message)
-    {
-        return await MessageManager
-            .SendTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, message);
+        var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
+        await MessageManager
+            .RecallAsync(id, receiver.GroupId);
     }
 
     /// <summary>
     ///     撤回收到的消息
     /// </summary>
     /// <param name="receiver"></param>
-    public static async Task RecallAsync(this MessageReceiverBase receiver)
+    public static async Task RecallAsync(this FriendMessageReceiver receiver)
     {
         var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
         await MessageManager
-            .RecallAsync(id);
+            .RecallAsync(id, receiver.FriendId);
     }
 
+    /// <summary>
+    ///     撤回收到的消息
+    /// </summary>
+    /// <param name="receiver"></param>
+    public static async Task RecallAsync(this TempMessageReceiver receiver)
+    {
+        var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
+        await MessageManager
+            .RecallAsync(id, receiver.Sender.Id);
+    }
+
+    /// <summary>
+    /// 回复消息
+    /// </summary>
+    /// <param name="receiver"></param>
+    /// <param name="chain"></param>
+    /// <returns></returns>
     public static async Task<string> QuoteMessageAsync(this FriendMessageReceiver receiver,
-        params MessageBase[] chain)
+        MessageChain chain)
     {
         var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
 
@@ -235,8 +244,14 @@ public static class MiraiScaffold
             .QuoteFriendMessageAsync(receiver.Sender.Id, id, chain);
     }
 
+    /// <summary>
+    /// 回复消息
+    /// </summary>
+    /// <param name="receiver"></param>
+    /// <param name="chain"></param>
+    /// <returns></returns>
     public static async Task<string> QuoteMessageAsync(this GroupMessageReceiver receiver,
-        params MessageBase[] chain)
+        MessageChain chain)
     {
         var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
 
@@ -244,37 +259,19 @@ public static class MiraiScaffold
             .QuoteGroupMessageAsync(receiver.Sender.Group.Id, id, chain);
     }
 
+    /// <summary>
+    /// 回复消息
+    /// </summary>
+    /// <param name="receiver"></param>
+    /// <param name="chain"></param>
+    /// <returns></returns>
     public static async Task<string> QuoteMessageAsync(this TempMessageReceiver receiver,
-        params MessageBase[] chain)
+        MessageChain chain)
     {
         var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
 
         return await MessageManager
             .QuoteTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, id, chain);
-    }
-
-    public static async Task<string> QuoteMessageAsync(this FriendMessageReceiver receiver, string message)
-    {
-        var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
-
-        return await MessageManager
-            .QuoteFriendMessageAsync(receiver.Sender.Id, id, message);
-    }
-
-    public static async Task<string> QuoteMessageAsync(this GroupMessageReceiver receiver, string message)
-    {
-        var id = receiver.MessageChain.ToList().OfType<SourceMessage>().First().MessageId;
-
-        return await MessageManager
-            .QuoteGroupMessageAsync(receiver.Sender.Group.Id, id, message);
-    }
-
-    public static async Task<string> QuoteMessageAsync(this TempMessageReceiver receiver, string message)
-    {
-        var id = receiver.MessageChain.OfType<SourceMessage>().First().MessageId;
-
-        return await MessageManager
-            .QuoteTempMessageAsync(receiver.Sender.Id, receiver.Sender.Group.Id, id, message);
     }
 
     #endregion
@@ -287,10 +284,40 @@ public static class MiraiScaffold
     /// <param name="event"></param>
     /// <param name="handler"></param>
     /// <param name="message"></param>
+    [Obsolete("请使用直接Approve/RejectAndBlock/RejectAsync 等方法")]
     public static async Task Handle(this NewFriendRequestedEvent @event,
         NewFriendRequestHandlers handler, string message = "")
     {
         await RequestManager.HandleNewFriendRequestedAsync(@event, handler, message);
+    }
+
+    /// <summary>
+    /// 同意好友请求
+    /// </summary>
+    /// <param name="event"></param>
+    public static async Task ApproveAsync(this NewFriendRequestedEvent @event)
+    {
+        await RequestManager.HandleNewFriendRequestedAsync(@event, NewFriendRequestHandlers.Approve);
+    }
+
+    /// <summary>
+    /// 拒绝好友请求
+    /// </summary>
+    /// <param name="event">事件</param>
+    /// <param name="message">回复的消息</param>
+    public static async Task RejectAsync(this NewFriendRequestedEvent @event, string message = "")
+    {
+        await RequestManager.HandleNewFriendRequestedAsync(@event, NewFriendRequestHandlers.Reject, message);
+    }
+
+    /// <summary>
+    /// 拒绝好友请求且屏蔽对方
+    /// </summary>
+    /// <param name="event">事件</param>
+    /// <param name="message">回复的消息</param>
+    public static async Task RejectAndBlockAsync(this NewFriendRequestedEvent @event, string message = "")
+    {
+        await RequestManager.HandleNewFriendRequestedAsync(@event, NewFriendRequestHandlers.RejectAndBlock, message);
     }
 
     /// <summary>
@@ -299,6 +326,7 @@ public static class MiraiScaffold
     /// <param name="requestedEvent"></param>
     /// <param name="handler"></param>
     /// <param name="message"></param>
+    [Obsolete("请使用直接Approve/RejectAndBlock/RejectAsync 等方法")]
     public static async Task Handle(this NewMemberRequestedEvent requestedEvent,
         NewMemberRequestHandlers handler, string message = "")
     {
@@ -307,16 +335,84 @@ public static class MiraiScaffold
     }
 
     /// <summary>
+    /// 同意加群请求
+    /// </summary>
+    /// <param name="requestedEvent"></param>
+    public static async Task ApproveAsync(this NewMemberRequestedEvent requestedEvent)
+    {
+        await RequestManager.HandleNewMemberRequestedAsync(requestedEvent, NewMemberRequestHandlers.Approve);
+    }
+
+    /// <summary>
+    /// 拒绝加群请求
+    /// </summary>
+    /// <param name="requestedEvent">事件源</param>
+    /// <param name="message">回复消息</param>
+    public static async Task RejectAsync(this NewMemberRequestedEvent requestedEvent, string message = "")
+    {
+        await RequestManager.HandleNewMemberRequestedAsync(requestedEvent, NewMemberRequestHandlers.Reject, message);
+    }
+
+    /// <summary>
+    /// 忽略加群请求
+    /// </summary>
+    /// <param name="requestedEvent"></param>
+    public static async Task DismissAsync(this NewMemberRequestedEvent requestedEvent)
+    {
+        await RequestManager.HandleNewMemberRequestedAsync(requestedEvent, NewMemberRequestHandlers.Dismiss);
+    }
+
+    /// <summary>
+    /// 拒绝加群请求并屏蔽
+    /// </summary>
+    /// <param name="requestedEvent"></param>
+    /// <param name="message">回复消息</param>
+    public static async Task RejectAndBlockAsync(this NewMemberRequestedEvent requestedEvent, string message = "")
+    {
+        await RequestManager.HandleNewMemberRequestedAsync(requestedEvent, NewMemberRequestHandlers.RejectAndBlock, message);
+    }
+
+    /// <summary>
+    /// 忽略加群请求并屏蔽
+    /// </summary>
+    /// <param name="requestedEvent"></param>
+    public static async Task DismissAndBlockAsync(this NewMemberRequestedEvent requestedEvent)
+    {
+        await RequestManager.HandleNewMemberRequestedAsync(requestedEvent, NewMemberRequestHandlers.DismissAndBlock);
+    }
+
+    /// <summary>
     ///     处理bot被邀请进群请求
     /// </summary>
     /// <param name="requestedEvent"></param>
     /// <param name="handler"></param>
     /// <param name="message"></param>
-    public static async Task Handle(NewInvitationRequestedEvent requestedEvent,
+    [Obsolete("请使用直接Approve/RejectAndBlock/RejectAsync 等方法")]
+    public static async Task Handle(this NewInvitationRequestedEvent requestedEvent,
         NewInvitationRequestHandlers handler, string message)
     {
         await RequestManager
             .HandleNewInvitationRequestedAsync(requestedEvent, handler, message);
+    }
+
+    /// <summary>
+    /// 同意邀请
+    /// </summary>
+    /// <param name="requestedEvent"></param>
+    public static async Task ApproveAsync(this NewInvitationRequestedEvent requestedEvent)
+    {
+        await RequestManager.HandleNewInvitationRequestedAsync(requestedEvent, NewInvitationRequestHandlers.Approve,
+            "");
+    }
+
+    /// <summary>
+    /// 拒绝邀请
+    /// </summary>
+    /// <param name="requestedEvent"></param>
+    public static async Task RejectAsync(this NewInvitationRequestedEvent requestedEvent)
+    {
+        await RequestManager.HandleNewInvitationRequestedAsync(requestedEvent, NewInvitationRequestHandlers.Reject,
+            "");
     }
 
     #endregion

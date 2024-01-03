@@ -24,6 +24,7 @@ internal enum HttpEndpoints
     [Description("sendTempMessage")] SendTempMessage,
     [Description("sendNudge")] SendNudge,
     [Description("recall")] Recall,
+    [Description("roamingMessages")] RoamingMessages,
 
     [Description("file/list")] FileList,
     [Description("file/info")] FileInfo,
@@ -47,6 +48,11 @@ internal enum HttpEndpoints
     [Description("setEssence")] SetEssence,
     [Description("groupConfig")] GroupConfig,
     [Description("memberInfo")] MemberInfo,
+    [Description("userProfile")] UserProfile,
+
+    [Description("anno/list")] GetAnnouncement,
+    [Description("anno/publish")] PubAnnouncement,
+    [Description("anno/delete")] DelAnnouncement,
 
     [Description("resp/newFriendRequestEvent")]
     NewFriendRequested,
@@ -56,7 +62,10 @@ internal enum HttpEndpoints
 
     [Description("resp/botInvitedJoinGroupRequestEvent")]
     BotInvited,
-    
+
     [Description("messageFromId")]
-    MessageFromId
+    MessageFromId,
+
+    [Description("cmd/execute")] ExecuteCommand,
+    [Description("cmd/register")] RegisterCommand
 }

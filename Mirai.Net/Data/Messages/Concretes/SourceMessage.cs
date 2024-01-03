@@ -2,7 +2,11 @@
 
 namespace Mirai.Net.Data.Messages.Concretes;
 
-public class SourceMessage : MessageBase
+/// <summary>
+/// 源消息
+/// <remarks>仅在接收消息时有效，且总是消息链的第一个元素</remarks>
+/// </summary>
+public record SourceMessage : MessageBase
 {
     /// <summary>
     ///     消息id
@@ -16,5 +20,8 @@ public class SourceMessage : MessageBase
     [JsonProperty("time")]
     public string Time { get; set; }
 
+    /// <summary>
+    /// 消息类型
+    /// </summary>
     public override Messages Type { get; set; } = Messages.Source;
 }

@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AHpx.Extensions.StringExtensions;
-using Mirai.Net.Data.Messages;
-using Mirai.Net.Data.Messages.Concretes;
+﻿using Mirai.Net.Data.Messages;
+using Mirai.Net.Sessions.Http.Managers;
+using Mirai.Net.Utils.Internal;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Mirai.Net.Utils.Scaffolds;
 
@@ -11,133 +12,90 @@ namespace Mirai.Net.Utils.Scaffolds;
 /// </summary>
 public static class MessageScaffold
 {
-    public static MessageBase[] Append(this string origin, params MessageBase[] append)
+    /// <summary>
+    /// 把枚举接口转换为高层MessageChain对象
+    /// </summary>
+    /// <param name="source"></param>
+    /// <typeparam name="TSource"></typeparam>
+    /// <returns></returns>
+    public static MessageChain ToMessageChain<TSource>(this IEnumerable<TSource> source) where TSource : MessageBase
     {
-        var re = new List<MessageBase> { new PlainMessage(origin) };
-        re.AddRange(append);
-
-        return re.ToArray();
-    }
-    
-    public static MessageBase[] Append(this string origin, IEnumerable<MessageBase> append)
-    {
-        var re = new List<MessageBase> { new PlainMessage(origin) };
-        re.AddRange(append);
-
-        return re.ToArray();
+        return new MessageChain(source);
     }
 
-    public static MessageBase[] Append(this string origin, string append)
+    /// <summary>
+    /// 把单个消息对象转换成MessageChain对象
+    /// </summary>
+    /// <param name="origin"></param>
+    /// <typeparam name="TSource"></typeparam>
+    /// <returns></returns>
+    public static MessageChain ToMessageChain<TSource>(this TSource origin) where TSource : MessageBase
     {
-        var re = new List<MessageBase> { new PlainMessage(origin), new PlainMessage(append) };
-
-        return re.ToArray();
+        return new MessageChain { origin };
     }
 
-    public static MessageBase[] Append(this MessageBase messageBase, params MessageBase[] append)
+    /// <summary>
+    /// 转义成兼容mirai码的文本
+    /// </summary>
+    /// <returns></returns>
+    public static string EscapeMiraiCode(this string origin)
     {
-        var re = new List<MessageBase> { messageBase };
-        re.AddRange(append);
+        var result = origin
+            .Replace("[", @"\[")
+            .Replace("]", @"\]")
+            .Replace(":", @"\:")
+            .Replace(",", @"\,")
+            .Replace("\\", @"\\");
 
-        return re.ToArray();
-    }
-    
-    public static MessageBase[] Append(this MessageBase messageBase, IEnumerable<MessageBase> append)
-    {
-        var re = new List<MessageBase> { messageBase };
-        re.AddRange(append);
-
-        return re.ToArray();
-    }
-
-    public static MessageBase[] Append(this MessageBase messageBase, string append)
-    {
-        var re = new List<MessageBase> { messageBase, new PlainMessage(append) };
-
-        return re.ToArray();
+        return result;
     }
 
-    public static MessageBase[] Append(this IEnumerable<MessageBase> bases, params MessageBase[] append)
+    /// <summary>
+    /// 在指定的时间之后撤回消息
+    /// </summary>
+    /// <param name="messageIdTask"></param>
+    /// <param name="target">好友id或群id</param>
+    /// <param name="duration"></param>
+    public static async Task RecallAfter(this Task<string> messageIdTask, string target, TimeSpan duration)
     {
-        var re = bases.ToList();
-        re.AddRange(append);
-
-        return re.ToArray();
-    }
-
-    public static MessageBase[] Append(this IEnumerable<MessageBase> bases, string append)
-    {
-        var re = bases.ToList();
-        re.Add(new PlainMessage(append));
-
-        return re.ToArray();
-    }
-    
-    public static MessageBase[] Append(this IEnumerable<MessageBase> bases, IEnumerable<MessageBase> append)
-    {
-        var re = bases.ToList();
-        re.AddRange(append);
-
-        return re.ToArray();
-    }
-
-    public static bool Contains(this IEnumerable<MessageBase> bases, string message)
-    {
-        return bases.Select(x => x.ToJsonString()).Any(x => x.Contains(message));
-    }
-    
-    public static bool Contains(this IEnumerable<MessageBase> bases, string message, out MessageBase messageBase)
-    {
-        foreach (var @base in bases)
+        var messageId = await messageIdTask;
+        DispatchUtils.ExecuteScheduledActionAsync(duration, async () =>
         {
-            var json = @base.ToJsonString();
-            if (json.Contains(message))
-            {
-                messageBase = @base;
-                return true;
-            }
-        }
-
-        messageBase = null;
-        return false;
+            await MessageManager.RecallAsync(messageId, target);
+        });
     }
-    
-    public static bool Contains(this IEnumerable<MessageBase> bases, string message, out IEnumerable<MessageBase> origin)
+
+    /// <summary>
+    /// 在指定的时间之后撤回消息
+    /// </summary>
+    /// <param name="messageIdTask"></param>
+    /// <param name="target">好友id或群id</param>
+    /// <param name="milliseconds"></param>
+    public static async Task RecallAfter(this Task<string> messageIdTask, string target, int milliseconds)
     {
-        var messageBases = bases.ToList();
-        foreach (var @base in messageBases)
+        await messageIdTask.RecallAfter(target, TimeSpan.FromMilliseconds(milliseconds));
+    }
+
+    /// <summary>
+    /// 在指定时间之后发送消息，这是个同步方法
+    /// </summary>
+    /// <param name="messageTask"></param>
+    /// <param name="duration"></param>
+    public static void SendAfter(this Task<string> messageTask, TimeSpan duration)
+    {
+        DispatchUtils.ExecuteScheduledActionAsync(duration, async () =>
         {
-            var json = @base.ToJsonString();
-            if (json.Contains(message))
-            {
-                origin = messageBases;
-                return true;
-            }
-        }
-
-        origin = null;
-        return false;
+            await messageTask;
+        });
     }
 
-    public static string GetPlainMessage(this IEnumerable<MessageBase> messageChain)
+    /// <summary>
+    /// 在指定时间之后发送消息，这是个同步方法
+    /// </summary>
+    /// <param name="messageTask"></param>
+    /// <param name="milliseconds"></param>
+    public static void SendAfter(this Task<string> messageTask, int milliseconds)
     {
-        var messageBases = messageChain.ToList();
-        if (messageBases.OfType<PlainMessage>().Any())
-        {
-            return messageBases
-                .OfType<PlainMessage>()
-                .Select(x => x.Text)
-                .Aggregate((s, s1) => s + s1)
-                .Trim();
-        }
-
-        return null;
-    }
-    
-    public static IEnumerable<string> GetSeparatedPlainMessage(this IEnumerable<MessageBase> messageChain)
-    {
-        return messageChain
-            .OfType<PlainMessage>()
-            .Select(x => x.Text);
+        messageTask.SendAfter(TimeSpan.FromMilliseconds(milliseconds));
     }
 }

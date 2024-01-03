@@ -1,11 +1,14 @@
-﻿using System.Threading.Tasks;
-using Mirai.Net.Data.Events.Concretes.Request;
+﻿using Mirai.Net.Data.Events.Concretes.Request;
 using Mirai.Net.Data.Sessions;
 using Mirai.Net.Data.Shared;
 using Mirai.Net.Utils.Internal;
+using System.Threading.Tasks;
 
 namespace Mirai.Net.Sessions.Http.Managers;
 
+/// <summary>
+/// 请求管理器
+/// </summary>
 public static class RequestManager
 {
     /// <summary>

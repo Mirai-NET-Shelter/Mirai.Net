@@ -2,7 +2,10 @@
 
 namespace Mirai.Net.Data.Messages.Concretes;
 
-public class VoiceMessage : MessageBase
+/// <summary>
+/// 语音消息
+/// </summary>
+public record VoiceMessage : MessageBase
 {
     /// <summary>
     ///     语音的voiceId，不为空时将忽略url属性
@@ -28,5 +31,8 @@ public class VoiceMessage : MessageBase
     [JsonProperty("base64")]
     public string Base64 { get; set; }
 
+    /// <summary>
+    /// 消息类型
+    /// </summary>
     public override Messages Type { get; set; } = Messages.Voice;
 }

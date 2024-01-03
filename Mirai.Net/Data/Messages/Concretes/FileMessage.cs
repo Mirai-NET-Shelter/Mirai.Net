@@ -2,8 +2,14 @@
 
 namespace Mirai.Net.Data.Messages.Concretes;
 
-public class FileMessage : MessageBase
+/// <summary>
+/// 文件
+/// </summary>
+public record FileMessage : MessageBase
 {
+    /// <summary>
+    /// 消息类型
+    /// </summary>
     public override Messages Type { get; set; } = Messages.File;
 
     /// <summary>

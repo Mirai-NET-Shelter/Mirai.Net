@@ -7,10 +7,13 @@ namespace Mirai.Net.Data.Shared;
 /// <summary>
 ///     群成员
 /// </summary>
-public class Member
+public record Member
 {
-    [JsonIgnore] public Profile Profile => this.GetMemberProfileAsync().GetAwaiter().GetResult();
-    
+    /// <summary>
+    /// 群员资料
+    /// </summary>
+    [JsonIgnore] public Profile MemberProfile => this.GetMemberProfileAsync().GetAwaiter().GetResult();
+
     /// <summary>
     ///     群员的QQ号
     /// </summary>

@@ -3,7 +3,10 @@ using Newtonsoft.Json.Converters;
 
 namespace Mirai.Net.Data.Shared;
 
-public class Group
+/// <summary>
+/// 群
+/// </summary>
+public record Group
 {
     /// <summary>
     ///     群号

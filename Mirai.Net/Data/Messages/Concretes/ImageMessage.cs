@@ -2,8 +2,14 @@
 
 namespace Mirai.Net.Data.Messages.Concretes;
 
-public class ImageMessage : MessageBase
+/// <summary>
+/// 图片
+/// </summary>
+public record ImageMessage : MessageBase
 {
+    /// <summary>
+    /// 消息类型
+    /// </summary>
     public override Messages Type { get; set; } = Messages.Image;
 
     /// <summary>
@@ -29,4 +35,16 @@ public class ImageMessage : MessageBase
     /// </summary>
     [JsonProperty("base64")]
     public string Base64 { get; set; }
+
+    /// <summary>
+    ///     图片的宽度
+    /// </summary>
+    [JsonProperty("width")]
+    public string Width { get; set; }
+
+    /// <summary>
+    ///     图片的高度
+    /// </summary>
+    [JsonProperty("height")]
+    public string Height { get; set; }
 }

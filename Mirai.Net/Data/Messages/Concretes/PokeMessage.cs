@@ -2,7 +2,10 @@
 
 namespace Mirai.Net.Data.Messages.Concretes;
 
-public class PokeMessage : MessageBase
+/// <summary>
+/// 戳一戳系列消息
+/// </summary>
+public record PokeMessage : MessageBase
 {
     /// <summary>
     ///     "Poke": 戳一戳
@@ -15,5 +18,8 @@ public class PokeMessage : MessageBase
     [JsonProperty("name")]
     public string Name { get; set; }
 
+    /// <summary>
+    /// 消息类型
+    /// </summary>
     public override Messages Type { get; set; } = Messages.Poke;
 }

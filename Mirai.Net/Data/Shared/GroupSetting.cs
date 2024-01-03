@@ -2,7 +2,10 @@
 
 namespace Mirai.Net.Data.Shared;
 
-public class GroupSetting
+/// <summary>
+/// 群设置
+/// </summary>
+public record GroupSetting
 {
     /// <summary>
     ///     群名称

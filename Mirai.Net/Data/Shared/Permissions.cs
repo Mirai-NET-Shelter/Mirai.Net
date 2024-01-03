@@ -3,14 +3,29 @@ using System.Runtime.Serialization;
 
 namespace Mirai.Net.Data.Shared;
 
+/// <summary>
+/// 群内权限
+/// </summary>
 public enum Permissions
 {
-    [EnumMember(Value = "OWNER")] [Description("OWNER")]
+    /// <summary>
+    /// 群主
+    /// </summary>
+    [EnumMember(Value = "OWNER")]
+    [Description("OWNER")]
     Owner,
 
-    [EnumMember(Value = "ADMINISTRATOR")] [Description("ADMINISTRATOR")]
+    /// <summary>
+    /// 管理员
+    /// </summary>
+    [EnumMember(Value = "ADMINISTRATOR")]
+    [Description("ADMINISTRATOR")]
     Administrator,
 
-    [EnumMember(Value = "MEMBER")] [Description("MEMBER")]
+    /// <summary>
+    /// 群员
+    /// </summary>
+    [EnumMember(Value = "MEMBER")]
+    [Description("MEMBER")]
     Member
 }

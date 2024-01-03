@@ -2,9 +2,9 @@ name: .NET
 
 on:
   push:
-    branches: [ "2.2" ]
+    branches: [ "2.4" ]
   pull_request:
-    branches: [ "2.2" ]
+    branches: [ "2.4" ]
 
 jobs:
   build:
@@ -21,3 +21,34 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+    - name: Push package
+      run: |
+        # Grab some versioning information
+        commithash=$(git rev-parse --short HEAD)
+        currtime=$(date +%s)
+        echo "commit hash is $commithash"
+        echo "time is $currtime"
+
+        # Enter project directory
+        cd Mirai.Net
+
+        # Build package
+        dotnet restore
+        dotnet build
+
+        # Pack a nuget package with all the default config
+        dotnet pack
+
+        # Enter package output directory
+        cd bin/Debug
+
+        # Getting file named with .nupkg extension
+        file=""
+        cdir=`ls ./*.nupkg`
+        for eachfile in $cdir
+        do
+          file=$eachfile
+        done
+        
+        # Push it to source "nuget"
+        dotnet nuget push $file --api-key ${{ secrets.NUGET_KEY  }} --source "nuget" --skip-duplicate

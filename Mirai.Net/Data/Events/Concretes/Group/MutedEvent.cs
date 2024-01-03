@@ -3,8 +3,14 @@ using Newtonsoft.Json;
 
 namespace Mirai.Net.Data.Events.Concretes.Group;
 
-public class MutedEvent : EventBase
+/// <summary>
+/// Bot被禁言
+/// </summary>
+public record MutedEvent : EventBase
 {
+    /// <summary>
+    /// 事件类型
+    /// </summary>
     public override Events Type { get; set; } = Events.Muted;
 
     /// <summary>

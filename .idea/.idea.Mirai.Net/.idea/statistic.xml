@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="Statistic">
-    <option name="fileTypes" value="cache;copycomplete;exe;dll;editorconfig;info;json;nuspec;pdb;props;sln;targets;txt;xml" />
-    <option name="separateTabsFileTypes" value="axaml;xaml;cs;" />
-  </component>
-</project>

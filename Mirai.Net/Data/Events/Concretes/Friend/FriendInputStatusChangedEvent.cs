@@ -2,8 +2,14 @@
 
 namespace Mirai.Net.Data.Events.Concretes.Friend;
 
-public class FriendInputStatusChangedEvent : EventBase
+/// <summary>
+/// 好友输入状态改变
+/// </summary>
+public record FriendInputStatusChangedEvent : EventBase
 {
+    /// <summary>
+    /// 事件类型
+    /// </summary>
     public override Events Type { get; set; } = Events.FriendInputStatusChanged;
 
     /// <summary>
