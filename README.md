@@ -1,4 +1,4 @@
-# Mirai.Net 2.5.1
+# Mirai.Net 2.5.2
 
 Mirai.NET 是基于 [mirai-api-http] 实现的 C# 版轻量级 [mirai] 社区 SDK。
 

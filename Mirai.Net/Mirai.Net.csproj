@@ -24,10 +24,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Flurl" Version="3.0.6" />
-        <PackageReference Include="Flurl.Http" Version="3.2.4" />
+        <PackageReference Include="Flurl" Version="4.0.0" />
+        <PackageReference Include="Flurl.Http" Version="4.0.0" />
         <PackageReference Include="Manganese" Version="1.2.2" />
-        <PackageReference Include="Websocket.Client" Version="4.4.43" />
+        <PackageReference Include="Websocket.Client" Version="4.7.0" />
 
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
             <_Parameter1>Mirai.Net.UnitTest</_Parameter1>
