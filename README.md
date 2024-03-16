@@ -133,3 +133,4 @@ await MessageManager.SendGroupMessageAsync("xx", new MessageChainBuilder().Plain
 [mirai-api-http]: https://github.com/project-mirai/mirai-api-http
 [mirai]: https://github.com/mamoe/mirai
 [文档]: https://sinoahpx.github.io/Mirai.Net.Documents/
+
