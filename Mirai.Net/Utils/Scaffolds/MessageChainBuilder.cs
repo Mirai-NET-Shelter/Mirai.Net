@@ -1,6 +1,7 @@
 ﻿using Mirai.Net.Data.Messages;
 using Mirai.Net.Data.Messages.Concretes;
 using Mirai.Net.Data.Shared;
+using System;
 
 namespace Mirai.Net.Utils.Scaffolds;
 
@@ -10,6 +11,7 @@ namespace Mirai.Net.Utils.Scaffolds;
 public class MessageChainBuilder
 {
     private readonly MessageChain _chain = new();
+    private bool _skipNext = false;
 
     /// <summary>
     /// 清除已追加的消息
@@ -17,7 +19,7 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder Clear()
     {
-        _chain.Clear();
+        ExecuteOrSkip(_chain.Clear);
         return this;
     }
 
@@ -28,7 +30,7 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder Append(MessageBase messageBase)
     {
-        _chain.Add(messageBase);
+        ExecuteOrSkip(() => _chain.Add(messageBase));
         return this;
     }
 
@@ -39,7 +41,7 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder Plain(string text)
     {
-        _chain.Add(new PlainMessage(text));
+        ExecuteOrSkip(() => _chain.Add(new PlainMessage(text)));
         return this;
     }
 
@@ -50,7 +52,7 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder At(string qq)
     {
-        _chain.Add(new AtMessage(qq));
+        ExecuteOrSkip(() => _chain.Add(new AtMessage(qq)));
         return this;
     }
 
@@ -71,9 +73,11 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder App(string content)
     {
-        _chain.Add(new AppMessage
-        {
-            Content = content
+        ExecuteOrSkip(() => {
+            _chain.Add(new AppMessage
+            {
+                Content = content
+            });
         });
         return this;
     }
@@ -84,8 +88,7 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder AtAll()
     {
-        _chain.Add(new AtAllMessage());
-
+        ExecuteOrSkip(() => _chain.Add(new AtAllMessage()));
         return this;
     }
 
@@ -96,11 +99,12 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder Dice(string value)
     {
-        _chain.Add(new DiceMessage
-        {
-            Value = value
+        ExecuteOrSkip(() => {
+            _chain.Add(new DiceMessage
+            {
+                Value = value
+            });
         });
-
         return this;
     }
 
@@ -111,11 +115,12 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder ImageFromUrl(string url)
     {
-        _chain.Add(new ImageMessage
-        {
-            Url = url
+        ExecuteOrSkip(() => {
+            _chain.Add(new ImageMessage
+            {
+                Url = url
+            });
         });
-
         return this;
     }
 
@@ -126,11 +131,12 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder ImageFromBase64(string base64)
     {
-        _chain.Add(new ImageMessage
-        {
-            Base64 = base64
+        ExecuteOrSkip(() => {
+            _chain.Add(new ImageMessage
+            {
+                Base64 = base64
+            });
         });
-
         return this;
     }
 
@@ -141,11 +147,12 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder ImageFromPath(string file)
     {
-        _chain.Add(new ImageMessage
-        {
-            Path = file
+        ExecuteOrSkip(() => {
+            _chain.Add(new ImageMessage
+            {
+                Path = file
+            });
         });
-
         return this;
     }
 
@@ -156,11 +163,12 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder ImageFromId(string id)
     {
-        _chain.Add(new ImageMessage
-        {
-            ImageId = id
+        ExecuteOrSkip(() => {
+            _chain.Add(new ImageMessage
+            {
+                ImageId = id
+            });
         });
-
         return this;
     }
 
@@ -171,11 +179,12 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder FlashImageFromUrl(string url)
     {
-        _chain.Add(new FlashImageMessage
-        {
-            Url = url
+        ExecuteOrSkip(() => {
+            _chain.Add(new FlashImageMessage
+            {
+                Url = url
+            });
         });
-
         return this;
     }
 
@@ -186,11 +195,12 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder FlashImageFromBase64(string base64)
     {
-        _chain.Add(new FlashImageMessage
-        {
-            Base64 = base64
+        ExecuteOrSkip(() => {
+            _chain.Add(new FlashImageMessage
+            {
+                Base64 = base64
+            });
         });
-
         return this;
     }
 
@@ -201,11 +211,12 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder FlashImageFromPath(string file)
     {
-        _chain.Add(new FlashImageMessage
-        {
-            Path = file
+        ExecuteOrSkip(() => {
+            _chain.Add(new FlashImageMessage
+            {
+                Path = file
+            });
         });
-
         return this;
     }
 
@@ -216,11 +227,13 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder FlashImageFromId(string id)
     {
-        _chain.Add(new FlashImageMessage
+        ExecuteOrSkip(() =>
         {
-            ImageId = id
+            _chain.Add(new FlashImageMessage
+            {
+                ImageId = id
+            });
         });
-
         return this;
     }
 
@@ -231,11 +244,12 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder Json(string json)
     {
-        _chain.Add(new JsonMessage
-        {
-            Json = json
+        ExecuteOrSkip(() => {
+            _chain.Add(new JsonMessage
+            {
+                Json = json
+            });
         });
-
         return this;
     }
 
@@ -246,11 +260,12 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder Xml(string xml)
     {
-        _chain.Add(new XmlMessage
-        {
-            Xml = xml
+        ExecuteOrSkip(() => {
+            _chain.Add(new XmlMessage
+            {
+                Xml = xml
+            });
         });
-
         return this;
     }
 
@@ -261,11 +276,12 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder VoiceFromPath(string path)
     {
-        _chain.Add(new VoiceMessage
-        {
-            Path = path
+        ExecuteOrSkip(() => {
+            _chain.Add(new VoiceMessage
+            {
+                Path = path
+            });
         });
-
         return this;
     }
 
@@ -276,11 +292,12 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder VoiceFromBase64(string base64)
     {
-        _chain.Add(new VoiceMessage
-        {
-            Base64 = base64
+        ExecuteOrSkip(() => {
+            _chain.Add(new VoiceMessage
+            {
+                Base64 = base64
+            });
         });
-
         return this;
     }
 
@@ -291,11 +308,12 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder VoiceFromId(string id)
     {
-        _chain.Add(new VoiceMessage
-        {
-            VoiceId = id
+        ExecuteOrSkip(() => {
+            _chain.Add(new VoiceMessage
+            {
+                VoiceId = id
+            });
         });
-
         return this;
     }
 
@@ -306,11 +324,12 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChainBuilder VoiceFromUrl(string url)
     {
-        _chain.Add(new VoiceMessage
-        {
-            Url = url
+        ExecuteOrSkip(() => {
+            _chain.Add(new VoiceMessage
+            {
+                Url = url
+            });
         });
-
         return this;
     }
 
@@ -320,6 +339,25 @@ public class MessageChainBuilder
     /// <returns></returns>
     public MessageChain Build()
     {
+        //Build方法无视_skipNext的值，直接返回消息链
         return _chain;
+    }
+
+    /// <summary>
+    /// 判断条件，如果为false，则跳过下一个元素
+    /// </summary>
+    /// <returns></returns>
+    public MessageChainBuilder If(bool condition)
+    {
+        _skipNext = !condition;
+        return this;
+    }
+
+    // 中间方法，根据_skipNext的值决定是否执行传入的操作
+    private void ExecuteOrSkip(Action action)
+    {
+        if (!_skipNext) 
+            action.Invoke();
+        _skipNext = false;  // Reset the skip flag after each operation
     }
 }
